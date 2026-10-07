@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Gramify raw references
+references/gramify/raw/*
+!references/gramify/raw/.gitkeep
+
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+
+# Logs
+*.log
+EOF
