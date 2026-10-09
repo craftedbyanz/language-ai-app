@@ -1,0 +1,9 @@
+{
+  "@@locale": "en",
+  "appTitle": "Lingua",
+  "@appTitle": {"description": "Application title"},
+  "foundationReady": "Ready to learn.",
+  "@foundationReady": {"description": "Temporary foundation screen; not a product feature"},
+  "pageUnavailable": "This page is unavailable.",
+  "@pageUnavailable": {"description": "Fallback for an unknown route"}
+}

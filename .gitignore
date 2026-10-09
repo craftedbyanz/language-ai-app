@@ -20,3 +20,18 @@ dist/
 # Logs
 *.log
 EOF
+
+# Flutter / Dart tooling
+.dart_tool/
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+.widget_preview/
+*.iml
+.idea/
+
+# FVM local links
+.fvm/

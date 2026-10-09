@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+  exclude:
+    - references/**
+    - build/**
+    - .dart_tool/**
+    - android/**
+    - ios/**
+    - macos/**
+
+linter:
+  rules:
+    avoid_dynamic_calls: true
+    cancel_subscriptions: true
+    close_sinks: true
+    discarded_futures: true
+    unawaited_futures: true

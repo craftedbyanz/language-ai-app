@@ -1,0 +1,11 @@
+# Testing strategy
+
+Run `sh tool/ci.sh` with Flutter/Dart on PATH. It resolves the lockfile, checks generated-token freshness, regenerates localization/routes, checks tracked generation drift, checks formatting, analyzes, checks architecture and runs all unit/widget/golden tests.
+
+Current tests cover sealed outcomes, injected environments/flags, typed routing and unknown routes, safe root error hooks, localization, large text, responsive constraints, canonical breakpoint edges, alias rejection, token determinism/freshness/profile pairing, architectural violations and reusable surface goldens across compact/regular/wide widths.
+
+Goldens use Flutter's deterministic test font and fixed Android target-platform theme on the pinned SDK. Only foundation primitives have goldens. Inspect changes visually before accepting `flutter test --update-goldens test/design_system/surface_golden_test.dart`; never update all baselines to silence unexplained failures.
+
+The independent production bootstrap smoke is `flutter test integration_test/bootstrap_test.dart -d macos`. It exercises native startup without backend/plugins. Use Android/iOS device IDs when their toolchains are available. App Store/Play Store signing is outside this task.
+
+Future coverage follows actual complexity: pure domain unit tests; repository/service tests with fake adapters; Notifier/AsyncNotifier tests with ProviderContainer overrides; widget tests using canonical theme/localization; component goldens for relevant sizes; integration tests for critical user flows. Prefer fakes, never real network credentials. Do not manufacture product tests before product code exists.

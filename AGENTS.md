@@ -13,6 +13,22 @@ The backend is developed in a separate repository.
 
 This repository owns only the mobile/desktop Flutter client.
 
+Feature-first
+MVVM/UDF
+Pragmatic Hexagonal
+Selective DDD
+
+domain = pure Dart
+design_system ↛ features
+core ↛ features
+presentation ↛ generated API
+
+Riverpod
+typed go_router
+design-system/ source of truth
+no raw design values
+no automatic commits
+
 ## Source of Truth
 
 UI/UX specification:
