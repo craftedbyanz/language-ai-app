@@ -1,0 +1,33 @@
+📱 Application: GramaGo
+🗨️ Dialog: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 22
+⚙️  Interactable elements: 5
+⏱️  Execution time: 0.15s
+
+Accessibility Tree
+  elem_4 [button] close button disabled
+  elem_5 [button] zoom button
+  elem_7 [button] minimize button
+  elem_12 [button] Ở lại
+  elem_13 [button] Thoát
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_6 [group] group
+  menuitem_14 [menu] menu bar
+  elem_0 [other] Gramify
+  elem_8 [other] Gramify value="Gramify"
+  elem_9 [other] alert
+  elem_10 [other] Thoát bài tập? value="Thoát bài tập?"
+  elem_11 [other] Bạn chưa hoàn thành bài tập. Tiến độ sẽ không được lưu nếu bạn thoát bây giờ. value="Bạn chưa hoàn thành bài tập. Tiến độ sẽ không được lưu nếu bạn thoát bây giờ."
+  menuitem_15 [other] Apple
+  menuitem_16 [other] Gramify
+  menuitem_17 [other] File
+  menuitem_18 [other] Edit
+  menuitem_19 [other] View
+  menuitem_20 [other] Window
+  menuitem_21 [other] Help
+
+Snapshot ID: ps1_ffc8cff59ce6ba5908803e20d1956a60
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

@@ -1,0 +1,646 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tokens-studio/figma-plugin/main/src/config/tokens.schema.json",
+  "meta": {
+    "source": "Black-box reverse engineering of GramaGo (com.tranhuy.projectx). Canonical window 788x1083pt; alternate 554x772 (S047-S050, S001-554 only); canvas 908x1083 (S051).",
+    "evidence": "77 PNGs / 21 AX snapshots (43 files). 63 state IDs / 62 distinct evidenced states (S058 = active alias of S010): S001–S050 (S038 unused) + S051–S054 + S055–S064 (final targeted crawl). Reconciled 2026-10-09.",
+    "confidence": {
+      "measured": "bounds from the macOS accessibility tree (integer-rounded, +/-1); colour hex = exact pixel values read from 1x screenshots (flat fills; text colours are the darkest glyph pixel and so are lower bounds on darkness)",
+      "estimated": "corner radii (circle fit to corner pixels, rms ~0.5-1.6 px, valid only for the 1x capture), shadows (falloff read off three sheet edges)",
+      "missing": "font family/sizes/weights, border widths, dark mode, motion, Home ModeCard 02/03 fill + radius (card 01 only), Flow Letter gradient stops (point samples), corner radius of the sheet bottom corners"
+    },
+    "rules": {
+      "inactiveWindow": "Captures with a greyed traffic-light (32 of 63) support structure/layout ONLY. They must not define canonical fills, enabled/disabled states or opacity. Home ModeCard fill, Home banner, deck header, menu backdrop and submit-enabled grey were all proven wrong this way.",
+      "viewport": "Canonical = 788x1083. 554x772 is ~0.704x content scale; none of its values are tokens. 908x1083 is a canvas (window + desktop strip), geometry = 788.",
+      "colourEncoding": "PNGs carry three encodings: untagged sRGB (S001-S018 originals), a 'Display' profile (S019-S046), and Display P3 (13:36+ captures). Raw hex from P3/Display files is NOT sRGB. Each colour below is tagged with its encoding; values marked sRGBnormalised were converted with the embedded profile (rendering intent 0). P3 blues/greens shift by 10-20 per channel.",
+      "confidence": "measured = pixel read; fit = circle fit to corner pixels (1x, ±1.5pt); estimated; inferred; candidate = unverified in an active canonical capture"
+    },
+    "finalCrawl": {
+      "date": "2026-10-09",
+      "evidence": "S055–S064 (active captures); qualitative only — no hex measured in this pass",
+      "addedRoles": {
+        "verdict.success": "green ✓ (S056, S061) — hex not measured; use semantic/success candidate #2CB782 (INFERRED)",
+        "verdict.error": "red ✕ (S060) — use semantic/error #EF4444 (INFERRED same role)",
+        "verdict.partial": "blue thumbs-up 'Gần đúng' (S028) — hex not measured",
+        "score.fluency": "orange number 'Trôi chảy 88' (S028) — hex not measured",
+        "bullet.keyImprovements": "purple (S056)",
+        "bullet.meo": "lime (S060)",
+        "bullet.loiSai": "orange (S028)",
+        "bullet.canCaiThien": "purple (S028)",
+        "scenario.aiBubble": "grey fill (S064) — hex not measured",
+        "editorCard.grammar": "blue in active S058 (exact hex not re-measured)"
+      },
+      "progressStepperSegments": {
+        "writing": 10,
+        "grammar": 20,
+        "scenario": 8,
+        "tag": "MEASURED (pixel-row segment count S058/S064; writing from earlier captures)"
+      },
+      "rule": "Do not promote any finalCrawl role to a hex token without a measurement pass."
+    }
+  },
+  "space": {
+    "micro": {
+      "value": "{space.1}",
+      "comment": "title-to-subtitle 3-4pt (2 of 3 sections)"
+    },
+    "1": {
+      "value": "4",
+      "type": "spacing",
+      "status": "measured-as-range"
+    },
+    "2": {
+      "value": "8",
+      "type": "spacing",
+      "status": "measured",
+      "comment": "chip gaps Home x8, S002 rail x8, row wrap"
+    },
+    "3": {
+      "value": "9",
+      "type": "spacing",
+      "status": "measured",
+      "comment": "topic-grid column & row gap (S002, S008)"
+    },
+    "4": {
+      "value": "12",
+      "type": "spacing",
+      "status": "measured",
+      "comment": "Home page margin; carousel/strip item gap 12-13"
+    },
+    "5": {
+      "value": "12.5",
+      "type": "spacing",
+      "status": "DROPPED - fabricated range",
+      "comment": "carousel pitch alternates 12/13 -> fractional"
+    },
+    "6": {
+      "value": "16",
+      "type": "spacing",
+      "status": "DROPPED - fabricated range (section gaps 13-39 have no single value)",
+      "comment": "section gaps span 13-39; see notes"
+    },
+    "pageMarginHome": {
+      "value": "12",
+      "type": "spacing",
+      "status": "measured"
+    },
+    "pageMarginScreen": {
+      "value": "18",
+      "type": "spacing",
+      "status": "measured",
+      "comment": "pushed screens; right 19"
+    },
+    "contentWidth": {
+      "value": "763",
+      "type": "dimension",
+      "status": "measured",
+      "comment": "at 788pt window"
+    },
+    "rowMenu": {
+      "value": "54",
+      "status": "measured"
+    },
+    "rowSettings": {
+      "value": "62",
+      "status": "measured",
+      "comment": "rows 61, pitch 62-63"
+    },
+    "rowWord": {
+      "value": "87",
+      "status": "measured"
+    }
+  },
+  "size": {
+    "iconInline": {
+      "value": "15",
+      "status": "measured",
+      "comment": "Streamline inline icons 14-16"
+    },
+    "iconButton": {
+      "value": "36",
+      "status": "measured"
+    },
+    "navBackButton": {
+      "value": "33",
+      "status": "measured"
+    },
+    "chipHeight": {
+      "value": "30",
+      "status": "measured",
+      "comment": "29-31 with AX rounding"
+    },
+    "topicCard": {
+      "value": "371x123",
+      "status": "measured"
+    },
+    "modeCardActive": {
+      "value": "670x385",
+      "status": "measured",
+      "confidence": "single instance"
+    },
+    "modeCardInactive": {
+      "value": "670x369",
+      "status": "measured",
+      "confidence": "2 instances"
+    },
+    "bannerHeightPromo": {
+      "value": "77",
+      "status": "measured",
+      "confidence": "single instance"
+    },
+    "bannerHeightFeature": {
+      "value": "160",
+      "status": "measured",
+      "confidence": "single instance"
+    },
+    "featureTile": {
+      "value": "123x146",
+      "status": "measured",
+      "comment": "AX-only, off-screen"
+    },
+    "letterTile": {
+      "value": "27",
+      "status": "measured",
+      "comment": "AX-only, off-screen"
+    },
+    "lessonCTA": {
+      "value": "89x35",
+      "status": "measured",
+      "comment": "later cards 82-95x32"
+    },
+    "sheetAction": {
+      "value": "200x38",
+      "status": "measured",
+      "confidence": "single screen"
+    },
+    "dialogAction": {
+      "value": "112x30",
+      "status": "measured",
+      "confidence": "single dialog"
+    },
+    "intervalButton": {
+      "value": "49x77",
+      "status": "measured"
+    }
+  },
+  "typography": {
+    "_note": "frame heights measured from AX; font sizes ESTIMATED at ~1.2 line-height; family unknown",
+    "displayXl": {
+      "frameHeight": 39,
+      "estimatedSize": 32,
+      "weight": "extrabold",
+      "status": "measured frame / estimated size"
+    },
+    "display": {
+      "frameHeight": 26,
+      "estimatedSize": 22,
+      "weight": "bold",
+      "status": "measured frame / estimated size"
+    },
+    "title": {
+      "frameHeight": 17,
+      "estimatedSize": 15,
+      "weight": "semibold",
+      "status": "measured frame / estimated size"
+    },
+    "sectionTitle": {
+      "frameHeight": 19,
+      "estimatedSize": 16,
+      "weight": "bold",
+      "status": "measured frame / estimated size"
+    },
+    "body": {
+      "frameHeight": 13,
+      "estimatedSize": 11,
+      "weight": "regular",
+      "status": "measured frame / estimated size"
+    },
+    "bodyStrong": {
+      "frameHeight": 16,
+      "estimatedSize": 13,
+      "weight": "medium",
+      "status": "measured frame / estimated size"
+    },
+    "caption": {
+      "frameHeight": 9,
+      "estimatedSize": 8,
+      "weight": "regular",
+      "status": "measured frame / estimated size"
+    },
+    "micro": {
+      "frameHeight": 8,
+      "estimatedSize": 7,
+      "weight": "semibold",
+      "transform": "uppercase+tracking",
+      "status": "measured frame / estimated size"
+    }
+  },
+  "radius": {
+    "_status": "Circle fit to corner pixels of flat fills in ACTIVE canonical 788x1083 captures unless stated; 1x so ~±1.5pt. Fit rms 0.3-0.9px.",
+    "lessonCard": {
+      "value": 24,
+      "status": "measured-fit",
+      "comment": "S003-active white card 613 wide, BL 24.1 / BR 25.0 (rms 0.7). S021 earlier 23.0/23.5."
+    },
+    "answerCard": {
+      "value": 24,
+      "status": "measured-fit",
+      "comment": "S004/S005 active 761x224, BL 23.3 / BR 23.9 (rms 0.5-0.6)"
+    },
+    "topicCard": {
+      "value": 23,
+      "status": "measured-fit (inactive S020; fit rms 1.6 — CANDIDATE)",
+      "comment": "S020 371x122, TL 24 / TR 22, rms 1.6"
+    },
+    "banner": {
+      "value": 17.5,
+      "status": "measured-fit",
+      "comment": "S001 active Plus banner 761x76, TR 17.8 / BR 18.6; earlier 17"
+    },
+    "listCard": {
+      "value": 17,
+      "status": "measured-fit",
+      "comment": "S043 language card, 62-64 tall"
+    },
+    "previewCard": {
+      "value": "not tokenised",
+      "status": "alternate-viewport",
+      "comment": "S048 values (18.5) come from a 554x772 capture (~0.70x). Normalised ~26 is ESTIMATED only. Re-shoot at 788 needed."
+    },
+    "pillCta": {
+      "value": "height/2",
+      "status": "measured-fit",
+      "comment": "confirm 22.5 vs h/2=21; paywall CTA 19 vs h/2=20; composer 16"
+    },
+    "chatBubble": {
+      "value": 14,
+      "status": "measured-fit",
+      "comment": "user bubble 122x30; effectively a pill for one line"
+    },
+    "pill": {
+      "value": "height/2",
+      "status": "observed shape"
+    },
+    "circle": {
+      "value": "size/2",
+      "status": "observed shape"
+    },
+    "homeModeCard": {
+      "value": 28,
+      "status": "measured-fit",
+      "comment": "S001-active card 01, 669x334, all four corners 28.1-28.5 (rms 0.34-0.40). Inactive grey card fit is invalid (rms 2.8-4.2)."
+    },
+    "alert": {
+      "value": 24,
+      "status": "measured-fit",
+      "comment": "S007-rendered alert 260x161; TL 24.1 / TR 23.8 (rms 0.31), brightness-threshold fit. Replaces the NSAlert '~16' estimate. Bottom corners not measured (alert over purple)."
+    },
+    "sheet": {
+      "value": 19.5,
+      "status": "measured-fit",
+      "comment": "S032 active top corners TL 18.7 / TR 19.8; S030 TR 20.7 (TL noisy). Floating card, all four corners rounded (bottom corners not measured). Width 445-446."
+    },
+    "srsCard": {
+      "value": 25.5,
+      "status": "measured-fit",
+      "comment": "S052 active 460x583 card, BL 26.1 / BR 25.1 (rms 1.3); top corners disturbed by stacked cards"
+    },
+    "wordRowCard": {
+      "value": 8,
+      "status": "candidate",
+      "comment": "S013 active, 748x76 row card, fit 6-9 (rms ~1); low confidence"
+    }
+  },
+  "color": {
+    "_status": "Hex are RAW pixel values from the stated encoding. 'srgb' sibling = profile-converted value. Colours seen only in inactive captures are CANDIDATE.",
+    "surface": {
+      "page": {
+        "value": "#F9FAFB",
+        "status": "measured",
+        "comment": "#F9FAFB (neutral, encoding-invariant). #FFFFFF page on S013, S018, S029, S030, S033, S044; #F8F9FA on S015/S052; #F6F7F8 band on S002. Not 'every screen except two'."
+      },
+      "card": {
+        "value": "#FFFFFF",
+        "status": "measured"
+      },
+      "cardMuted": {
+        "value": "#F3F4F6",
+        "status": "measured",
+        "comment": "feedback correction panel, score chip, preview panel"
+      },
+      "topicCard": {
+        "value": "#EDEEEF",
+        "status": "measured",
+        "comment": "inactive S002/S008/S020 fill #EDEEEF. In ACTIVE S002 the card interior reads #FCFDFE (near-white) — topic-card fill is CANDIDATE; do not tokenise #EDEEEF as canonical."
+      },
+      "divider": {
+        "value": "#E5E7EB",
+        "status": "measured",
+        "comment": "inactive progress segment, dot-matrix dots"
+      },
+      "scrim": {
+        "value": "rgba(0,0,0,0.21)",
+        "status": "measured",
+        "comment": "Surface-specific, not global. S031/S032 FAB+info-sheet: page #F9FAFB -> #C4C5C6 (flat, ≈ -53/channel, ≈21% black). S007 alert (active S004 -> S007): fit k=0.40 b=103 -> ≈60% of #AAAAAA, page #F9FAFB -> #CACACA. S014 SRS tutorial: page -> #959595. NOT dimmed behind S006 feedback card, S028 popover, S030 create sheet, S045 paywall."
+      },
+      "modeCardObserved": {
+        "value": "#D4D4D5",
+        "status": "INACTIVE-ARTEFACT",
+        "comment": "DO NOT USE. Window-inactive rendering. Same pixel in 13:36 inactive control; active = #3A81F5 raw(P3) = #0883FD sRGB-normalised."
+      },
+      "scrimAlert": {
+        "value": "#CACACA over page; #CCCCCC over white",
+        "status": "measured",
+        "comment": "S007 rendered; includes title bar"
+      },
+      "modeCard01Active": {
+        "value": "#3A81F5",
+        "encoding": "Display P3 raw",
+        "srgb": "#0883FD",
+        "status": "measured (active)",
+        "comment": "S001-active 13:46, flat fill; card 02 peek (grammar) raw -> sRGB #C6A8FE (lavender, translucent peek). Fill vs gradient unresolved: 4 samples equal."
+      },
+      "submitDisabled": {
+        "value": "#898990",
+        "status": "measured (active S004 ring centre)",
+        "comment": "disabled; inactive window shows #D3D3D4 for BOTH states."
+      },
+      "submitEnabled": {
+        "value": "#000318",
+        "status": "measured (active S005 ring centre, sRGB)",
+        "comment": "dark filled circle with white chevron; resolves C09"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#0B0F21",
+        "status": "measured",
+        "comment": "chat text; Home title darkest pixel was #000000"
+      },
+      "secondary": {
+        "value": "#505A6C",
+        "status": "measured",
+        "comment": "darkest pixel of 13-pt subtitle; thin glyphs bias lighter"
+      },
+      "tertiary": {
+        "value": "#676D7A",
+        "status": "measured",
+        "comment": "italic translation line in chat"
+      },
+      "caption": {
+        "value": "#737985",
+        "status": "measured"
+      },
+      "eyebrow": {
+        "value": "#9AA0AB",
+        "status": "measured",
+        "comment": "ALL-CAPS micro labels"
+      }
+    },
+    "brand": {
+      "homeBlue": {
+        "value": "#3B82F6",
+        "encoding": "sRGB (untagged S001-S018 originals)",
+        "status": "measured",
+        "comment": "Same pixel in P3 captures is raw #4E80EE = sRGB #3C82F6. So Plus banner, deck bar and 'inputDefault' are ONE colour; the N3 'gradient/state' difference was an encoding difference, not state."
+      },
+      "paywallBlue": {
+        "value": "#4383FC",
+        "status": "measured",
+        "comment": "'plus' wordmark, plan badge/border",
+        "srgb": "#0088FF"
+      },
+      "heroBlue": {
+        "value": "#567DF3",
+        "status": "measured",
+        "comment": "sRGB-normalised equals homeBlue; INFERRED same token as brand blue.",
+        "srgb": "#3B82F6"
+      },
+      "indigo": {
+        "value": "#475DE8",
+        "status": "measured",
+        "comment": "raw in 'Display' profile; sRGB-normalised #2563EB (=Tailwind blue-600, INFERRED). Raw #475DE8 only valid when read from a Display-profile PNG.",
+        "srgb": "#2563EB"
+      },
+      "inputDefault": {
+        "value": "#4E80EE",
+        "encoding": "Display P3 raw",
+        "srgb": "#3C82F6",
+        "status": "measured",
+        "comment": "== homeBlue after normalisation. Not a separate token."
+      },
+      "navy": {
+        "value": "#131827",
+        "status": "measured",
+        "comment": "paywall CTA; flashcard banner left edge #0E1635"
+      },
+      "cyan": {
+        "value": "#4CD0EC",
+        "status": "measured",
+        "comment": "language-select CTA",
+        "srgb": "#23D3EE"
+      }
+    },
+    "accent": {
+      "orange": {
+        "value": "#F37A29",
+        "status": "measured",
+        "comment": "selected-chip outline #F37A29 raw 'Display' (sRGB ≈ #FB720E); untagged S002 outline #FA6600. Orange is the selected-chip + streak accent only, not the grammar mode accent."
+      },
+      "orangeSoft": {
+        "value": "#F09343",
+        "status": "measured",
+        "comment": "cloud icon, 'Orange' swatch"
+      },
+      "lime": {
+        "value": "#CDFD1A",
+        "status": "measured",
+        "comment": "#CDFD1A measured only in inactive untagged S001/S008/S009; active P3 dot raw #D7FC59 = sRGB #CDFD27 (consistent). Grammar CTA/title period is lime, NOT orange (C02)."
+      },
+      "gold": {
+        "value": "#E3B217",
+        "status": "measured",
+        "comment": "trophy; star #EEA32F"
+      },
+      "pink": {
+        "value": "#E7519A",
+        "status": "measured",
+        "comment": "heart, stat icon"
+      }
+    },
+    "semantic": {
+      "success": {
+        "value": "#2CB782",
+        "status": "measured",
+        "comment": "CEFR confirm, toggles on, check, selected radio, stat icon; text green #20B37B",
+        "srgb": "#10B981"
+      },
+      "successTint": {
+        "value": "#DCEEEA",
+        "status": "measured",
+        "comment": "correct word chip in feedback"
+      },
+      "error": {
+        "value": "#EF4444",
+        "status": "measured",
+        "comment": "verdict icon; wrong-word text red not sampled"
+      },
+      "scoreRed": {
+        "value": "#E8504B",
+        "status": "measured",
+        "comment": "chat score dot; number #E84B46",
+        "srgb": "#EF4444"
+      },
+      "highlight": {
+        "value": "#FEF9C3",
+        "status": "measured",
+        "comment": "source-sentence highlight in writing editor"
+      },
+      "editorWriting": {
+        "value": "#A855F7",
+        "status": "measured (sRGB)",
+        "comment": "Inactive untagged S004 raw #A855F7 == active P3 raw #9D59EF after normalisation. N1 resolved: same colour, different encoding. Still user-configurable (Màu nền / Màu ô nhập).",
+        "rawActiveP3": "#9D59EF"
+      },
+      "editorGrammar": {
+        "value": "#007AFF",
+        "status": "measured",
+        "comment": "grammar answer card; same caveat"
+      },
+      "gradeAgain": {
+        "value": "#EE3437",
+        "status": "measured (active S052 sRGB-normalised)",
+        "comment": "SRS ↩ Học lại; raw P3 #DC4841"
+      },
+      "gradeHard": {
+        "value": "#F59800",
+        "status": "measured (active S052)",
+        "comment": "SRS 6m Khó (orange clock)"
+      },
+      "gradeGood": {
+        "value": "#307CF5",
+        "status": "measured (active S052)",
+        "comment": "SRS 1d Tốt (blue check)"
+      },
+      "gradeEasy": {
+        "value": "#7BC800",
+        "status": "measured (active S052)",
+        "comment": "SRS 4d Dễ (green star)"
+      },
+      "badgeVerbBg": {
+        "value": "#DBE9FE",
+        "status": "measured (active S052)",
+        "comment": "POS badge bg; text ≈ blue"
+      }
+    },
+    "inputBoxChoices": {
+      "default": "#4E80EE",
+      "orange": "#F09343",
+      "yellow": "#F7CE46",
+      "green": "#65C466",
+      "blue": "#3B86F7",
+      "pink": "#EB445A",
+      "purple": "#BB3ED9",
+      "indigo": "#6466E9",
+      "_encoding": "Display P3 raw, S048 (554x772, inactive) — CANDIDATE; sRGB-normalised: default #3C82F6, orange #FF8D28, yellow #FFCC01, green #35C759, blue #0088FF, pink #FF2C55, purple #CB30E0, indigo #6466F1 (= iOS system colours, INFERRED)"
+    },
+    "cefr": {
+      "A1": "#2BC25C",
+      "A2": "#7FCA25",
+      "B1": "#E3B425",
+      "B2": "#F27626",
+      "C1": "#E74B46",
+      "C2": "#D4322A"
+    },
+    "flowLetterBackgrounds": {
+      "_status": "gradients; TL / centre / BR point samples only",
+      "lobbyTopics": [
+        "#BB438D",
+        "#68294D",
+        "#29111F"
+      ],
+      "natureRound": [
+        "#7EAB49",
+        "#719B3E",
+        "#000100"
+      ],
+      "difficultyHelp": [
+        "#6326AE",
+        "#3C1082",
+        "#000001"
+      ],
+      "settings": [
+        "#405DB6",
+        "#213787",
+        "#000102"
+      ]
+    },
+    "_encodingNote": "Hex under cefr/flowLetterBackgrounds/inputBoxChoices were read from 'Display' (B) or P3 (C) files. Treat as RAW; sRGB-normalised siblings are in the 2026-10-09 reconciliation table (DESIGN_SYSTEM.md). inputBoxChoices are from the 554x772 P3 capture S048 (colours valid, geometry not)."
+  },
+  "layout": {
+    "navBarHeight": {
+      "value": 41,
+      "status": "measured"
+    },
+    "titleBarHeight": {
+      "value": 32,
+      "status": "measured"
+    },
+    "windowControls": {
+      "value": "16x16",
+      "status": "measured"
+    },
+    "editorEntry": {
+      "value": "763x460",
+      "status": "measured"
+    },
+    "feedbackSheetHeight": {
+      "value": 458,
+      "status": "measured",
+      "comment": "content group"
+    },
+    "dialogSize": {
+      "value": "260x161",
+      "status": "measured",
+      "comment": "AX alert 260x161; pixel outline 262 wide incl. border"
+    },
+    "gridColumns": {
+      "value": 2,
+      "status": "measured"
+    },
+    "windowSizesSeen": {
+      "value": "canonical 788x1083 (57 PNGs); alternate 554x772 (S047-S050 + S001-active-554); canvas 908x1083 (S051)",
+      "status": "measured",
+      "comment": "554x772 content is ~0.704x (Plus banner 54 vs 76 tall). Cause of resize UNKNOWN. No 554 value is a canonical token."
+    },
+    "halfSheet": {
+      "value": "445-446 wide, x 171-616",
+      "status": "measured",
+      "comment": "S006 y 431-811 (inactive), S032 y 504-849 (active, bottom beyond), S030 y 542-811, S028/S045 y 304-811. A floating card, not bottom-attached."
+    }
+  },
+  "motion": {
+    "_status": "existence observed, values not measured; second session saw typing-indicator dots (S026), sheet slide-in blur frames (S046), carousel unchanged",
+    "sheetPresentation": {
+      "status": "observed"
+    },
+    "carouselScale": {
+      "status": "inferred",
+      "comment": "active card 385 vs 369 tall"
+    }
+  },
+  "elevation": {
+    "_status": "ESTIMATED from falloff of sheet edges. 'Cards are flat' contradicted for SRS card/lesson card (C-gap audit); keep as candidate.",
+    "sheetShadow": {
+      "description": "soft, large, slightly downward",
+      "edgeDarkness": "~15-25% black at the edge",
+      "falloff": "~38pt sideways, ~48pt downward",
+      "status": "estimated"
+    },
+    "cards": {
+      "description": "no shadow on topic/lesson cards (hairline border on white lesson card); SRS card and S006/S028/S030 sheets have soft shadow",
+      "status": "observed; CANDIDATE"
+    }
+  },
+  "elevation_notes": "S028 popover bottom edge pixels (x=400): y=812 #BBBCBD -> y=860 #F9FAFB; right edge (y=600): x=617 #D7D8D8 -> x=655 #F9FAFB; S006 over purple: y=812 #865CB7 -> y=850 #A554F3.",
+  "_reconciliation": "2026-10-09: radii homeModeCard/alert/sheet/srsCard measured from active captures; modeCardObserved quarantined; previewCard un-tokenised (554 viewport); encoding rules added; grade colours + submit states added. Source files: screenshots/ and accessibility/ via SCREEN_INDEX.md."
+}

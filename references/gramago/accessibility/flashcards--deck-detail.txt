@@ -1,0 +1,95 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 84
+⚙️  Interactable elements: 30
+⏱️  Execution time: 0.30s
+
+Accessibility Tree
+  elem_5 [button] Học flashcard
+  elem_7 [button] Thêm
+  elem_23 [button] Ôn tập (10)
+  elem_24 [button] Flow Letter
+  elem_30 [button] Newest value_settable=false
+  elem_31 [button] Filters value_settable=false
+  elem_34 [button] Âm Lượng Cao
+  elem_40 [button] Âm Lượng Cao
+  elem_46 [button] Âm Lượng Cao
+  elem_52 [button] Âm Lượng Cao
+  elem_58 [button] Âm Lượng Cao
+  elem_63 [button] Âm Lượng Cao
+  elem_69 [button] Âm Lượng Cao
+  elem_74 [button] Âm Lượng Cao
+  elem_78 [button] Tìm Kiếm
+  elem_79 [button] close button
+  elem_80 [button] full screen button
+  elem_82 [button] minimize button
+  elem_11 [image] Đồ Ăn
+  elem_14 [image] Tia Lửa
+  elem_16 [image] Dấu Trang
+  elem_18 [image] Đồng Hồ Với Mũi Tên Hình Tròn
+  elem_36 [image] Thùng Rác
+  elem_42 [image] Thùng Rác
+  elem_48 [image] Thùng Rác
+  elem_54 [image] Thùng Rác
+  elem_60 [image] Thùng Rác
+  elem_65 [image] Thùng Rác
+  elem_71 [image] Thùng Rác
+  elem_76 [image] Thùng Rác
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] Nav bar
+  elem_8 [group] group
+  elem_9 [group] group
+  elem_10 [group] group
+  elem_32 [group] group
+  elem_81 [group] group
+  elem_0 [other] Gramify
+  elem_6 [other] Nấu ăn & Ẩm thực
+  elem_12 [other] Nấu ăn & Ẩm thực
+  elem_13 [other] Từ vựng về nấu ăn, ẩm thực
+  elem_15 [other] 10
+  elem_17 [other] 0
+  elem_19 [other] 0
+  elem_20 [other] Mới
+  elem_21 [other] Đang học
+  elem_22 [other] Ôn tập
+  elem_25 [other] Deck Progress
+  elem_26 [other] 10 cards
+  elem_27 [other] Mới
+  elem_28 [other] Đang học
+  elem_29 [other] Ôn tập
+  elem_33 [other] Guava
+  elem_35 [other] MỚI
+  elem_37 [other] Một loại cây hoặc bụi cây nhiệt đới cho quả ngọt.
+  elem_38 [other] /ˈɡwɑvə/
+  elem_39 [other] Blitz
+  elem_41 [other] MỚI
+  elem_43 [other] Một cuộc tấn công bất ngờ, áp đảo, đặc biệt là cuộc không kích.
+  elem_44 [other] /blɪts/
+  elem_45 [other] Melon
+  elem_47 [other] MỚI
+  elem_49 [other] Một loại trái cây lớn, tròn với vỏ cứng và thịt ngọt, mọng nước, như dưa hấu hoặc dưa lưới.
+  elem_50 [other] /ˈmɛlən/
+  elem_51 [other] Flabby
+  elem_53 [other] MỚI
+  elem_55 [other] Mềm, lỏng lẻo và không săn chắc, thường dùng để chỉ các bộ phận cơ thể thiếu cơ bắp.
+  elem_56 [other] /ˈflæb.i/
+  elem_57 [other] Watermelons
+  elem_59 [other] MỚI
+  elem_61 [other] Một loại cây thân leo lớn, tròn hoặc bầu dục màu xanh lá cây, cho ra quả ngọt và mọng nước.
+  elem_62 [other] Bakes
+  elem_64 [other] MỚI
+  elem_66 [other] Nấu thức ăn bằng nhiệt khô, đặc biệt là trong lò nướng (ngôi thứ ba số ít hiện tại).
+  elem_67 [other] /beɪks/
+  elem_68 [other] Waffles
+  elem_70 [other] MỚI
+  elem_72 [other] Số nhiều của 'waffle': những chiếc bánh dẹt, giòn với hoa văn hình vuông, thường ăn kèm với si-rô hoặc trái cây.
+  elem_73 [other] Caramelized
+  elem_75 [other] MỚI
+  elem_77 [other] Biến đường thành caramel bằng cách đun nóng, thường cho đến khi nó chuyển màu nâu và ngọt.
+  elem_83 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_eb767acb97a05831a889ea1895b9e4cc
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

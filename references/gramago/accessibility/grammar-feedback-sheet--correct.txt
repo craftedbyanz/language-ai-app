@@ -1,0 +1,42 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 30
+⚙️  Interactable elements: 11
+⏱️  Execution time: 0.16s
+
+Accessibility Tree
+  elem_4 [button] Sheet Grabber value="Collapsed"
+  elem_14 [button] Xem phân tích AI
+  elem_15 [button] Câu tiếp theo
+  elem_16 [button] close button
+  elem_17 [button] full screen button
+  elem_20 [button] minimize button
+  elem_8 [image] Đã Chọn
+  elem_10 [image] Đã Chọn
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_5 [group] group
+  elem_6 [group] group
+  elem_7 [group] group
+  elem_18 [group] group
+  elem_19 [group] group
+  menuitem_22 [menu] menu bar
+  elem_0 [other] Gramify
+  elem_9 [other] Chính xác
+  elem_11 [other] CÂU TRẢ LỜI CỦA BẠN
+  elem_12 [other] We have been friends since we were children.
+  elem_13 [other] Xem phân tích chi tiết từ AI cho câu trả lời của bạn.
+  elem_21 [other] Gramify value="Gramify"
+  menuitem_23 [other] Apple
+  menuitem_24 [other] Gramify
+  menuitem_25 [other] File
+  menuitem_26 [other] Edit
+  menuitem_27 [other] View
+  menuitem_28 [other] Window
+  menuitem_29 [other] Help
+
+Snapshot ID: ps1_76fea80374c6c505f7f9a0eb4116b5fc
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

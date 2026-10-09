@@ -1,0 +1,65 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 54
+⚙️  Interactable elements: 36
+⏱️  Execution time: 0.33s
+
+Accessibility Tree
+  elem_5 [button] Back
+  elem_6 [button] AI
+  elem_15 [button] Dành cho bạn
+  elem_16 [button] Giao tiếp
+  elem_17 [button] Hằng ngày
+  elem_18 [button] Công việc
+  elem_19 [button] Du lịch
+  elem_20 [button] Mua sắm
+  elem_21 [button] Ẩm thực
+  elem_22 [button] Sức khỏe
+  elem_23 [button] Phim ảnh
+  elem_24 [button] Âm nhạc
+  elem_25 [button] Trò chơi
+  elem_26 [button] Thể thao
+  elem_27 [button] Văn hóa
+  elem_28 [button] Truyện ngắn
+  elem_29 [button] Tiểu luận
+  elem_30 [button] Email
+  elem_31 [button] Học thuật
+  elem_32 [button] IELTS
+  elem_33 [button] Công nghệ
+  elem_37 [button] Giải quyết vấn đề, 15 Sets
+  elem_38 [button] Nghệ thuật và thủ công, 14 Sets
+  elem_39 [button] Kiến trúc đô thị, 14 Sets
+  elem_40 [button] Thư giãn và sở thích, 15 Sets
+  elem_41 [button] Mua sắm thực phẩm, 14 Sets
+  elem_42 [button] Tiệc tùng và sự kiện xã hội, 13 Sets
+  elem_43 [button] Công nghệ và bảo mật, 13 Sets
+  elem_44 [button] Giải quyết xung đột với bạn bè, 15 Sets
+  elem_45 [button] Chiến lược khách hàng, 14 Sets
+  elem_46 [button] Kỹ năng hội thoại cơ bản, 16 Sets
+  elem_47 [button] Trải nghiệm du lịch đa dạng, 14 Sets
+  elem_48 [button] Chính sách nhân sự, 14 Sets
+  elem_49 [button] close button
+  elem_50 [button] full screen button
+  elem_52 [button] minimize button
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] Nav bar
+  elem_7 [group] group
+  elem_8 [group] group
+  elem_9 [group] group
+  elem_14 [group] group
+  elem_36 [group] group
+  elem_51 [group] group
+  elem_0 [other] Gramify
+  elem_10 [other] CHẾ ĐỘ TẠO
+  elem_11 [other] Viết nên
+  elem_12 [other] câu chuyện
+  elem_13 [other] DANH MỤC
+  elem_34 [other] CHỦ ĐỀ CỦA BẠN
+  elem_35 [other] 12 chủ đề
+  elem_53 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_b55c00f41bb6fa7c128fe2fcdc0d00ef
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

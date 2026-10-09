@@ -1,0 +1,90 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 79
+⚙️  Interactable elements: 36
+⏱️  Execution time: 0.26s
+
+Accessibility Tree
+  elem_6 [button] US
+  elem_19 [button] Chuỗi:, 0 ngày
+  elem_20 [button] Rotate-Left--Streamline-Flex
+  elem_23 [button] Sun--Streamline-Flex
+  elem_33 [button] Đăng ký Gramify Plus, Mở khóa mức sử dụng cao hơn và làm chủ kỹ năng ngôn ngữ của bạn.
+  elem_38 [button] 01, LUYỆN VIẾT, Đoạn văn, Rèn luyện dịch và viết các đoạn văn., KHÁM PHÁ
+  elem_39 [button] 02, NGỮ PHÁP, Sửa câu, Sửa lỗi nhanh với các câu ngắn., KHÁM PHÁ
+  elem_40 [button] 03, GIAO TIẾP, Hội thoại, Mô phỏng đa dạng các tình huống., KHÁM PHÁ
+  elem_44 [button] Làm tôi bất ngờ
+  elem_45 [button] Du lịch
+  elem_46 [button] Kinh doanh
+  elem_47 [button] Ẩm thực
+  elem_48 [button] Mua sắm
+  elem_49 [button] Sức khỏe
+  elem_50 [button] Xã hội
+  elem_51 [button] IELTS
+  elem_52 [button] Đời sống
+  elem_53 [button] Giải trí
+  elem_54 [button] VOCABULARY FLASHCARD, Lưu từ mới, ôn tập theo SRS và theo dõi tiến bộ mỗi ngày., Mở Flashcard, Resilient, Kiên cường, Acquire, Tiếp thu
+  elem_66 [button] 3 Chế Độ Luyện Tập Chính
+  elem_67 [button] Trợ Lý AI & Hệ Thống Phản Hồi
+  elem_68 [button] AI Magic Generator
+  elem_69 [button] Hệ thống Flashcard & SRS
+  elem_70 [button] Hệ Thống Theo Dõi Tiến Độ
+  elem_71 [button] Chức Năng Ôn Tập Thông Minh
+  elem_72 [button] C, A, T, S, Mini Game: Flow Letter
+  elem_74 [button] close button
+  elem_75 [button] full screen button
+  elem_77 [button] minimize button
+  elem_7 [image] Star-Circle--Streamline-Flex
+  elem_9 [image] Multiple-Stars--Streamline-Flex
+  elem_11 [image] Star-Badge--Streamline-Flex
+  elem_13 [image] Show-Layer--Streamline-Flex
+  elem_15 [image] Ngọn Lửa
+  elem_17 [image] Investing-And-Banking--Streamline-Flex
+  elem_21 [image] Star-Circle--Streamline-Flex
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] group
+  elem_5 [group] group
+  elem_8 [group] group
+  elem_24 [group] group
+  elem_25 [group] group
+  elem_30 [group] collection
+  elem_31 [group] group
+  elem_32 [group] group
+  elem_36 [group] group
+  elem_37 [group] group
+  elem_43 [group] group
+  elem_65 [group] group
+  elem_76 [group] group
+  elem_0 [other] Gramify
+  elem_10 [other] Insight
+  elem_12 [other] Nâng cấp Gramify Plus
+  elem_14 [other] Học flashcard
+  elem_16 [other] Chuỗi của tôi
+  elem_18 [other] Chơi FlowLetter
+  elem_22 [other] Menu
+  elem_26 [other] Chào buổi chiều,
+  elem_27 [other] An
+  elem_28 [other] Bạn chưa biết học gì hôm nay?
+  elem_29 [other] Tạo bài học với AI
+  elem_34 [other] Chế độ học tập
+  elem_35 [other] Nâng cao kỹ năng viết, ngữ pháp và giao tiếp cùng AI.
+  elem_41 [other] Gramify đề xuất
+  elem_42 [other] Các chủ đề được chọn lọc để giúp bạn học nhanh hơn.
+  elem_55 [other] Flow Letter
+  elem_56 [other] Thử ngay
+  elem_57 [other] Xếp chữ cái thành từ vựng
+  elem_58 [other] H
+  elem_59 [other] E
+  elem_60 [other] L
+  elem_61 [other] L
+  elem_62 [other] O
+  elem_63 [other] Gramify 101
+  elem_64 [other] Tất cả những gì bạn cần biết về Gramify và cách ứng dụng giúp bạn học tập hiệu quả.
+  elem_73 [other] Menu
+  elem_78 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_28de8204306abe553a97b4a569cbc4c8
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

@@ -1,0 +1,54 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 42
+⚙️  Interactable elements: 12
+⏱️  Execution time: 0.15s
+
+Accessibility Tree
+  elem_4 [button] Sheet Grabber value="Half screen"
+  elem_32 [button] Thích
+  elem_33 [button] Không Thích
+  elem_34 [button] Sửa
+  elem_35 [button] Tiếp theo
+  elem_36 [button] close button
+  elem_37 [button] full screen button
+  elem_40 [button] minimize button
+  elem_8 [image] Đóng
+  elem_10 [image] Tia Lửa
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_5 [group] group
+  elem_6 [group] group
+  elem_7 [group] group
+  elem_38 [group] group
+  elem_39 [group] group
+  elem_0 [other] Gramify
+  elem_9 [other] Chưa đúng
+  elem_11 [other] SỬA LỖI
+  elem_12 [other] Chạm từ để tra cứu
+  elem_13 [other] We
+  elem_14 [other] is
+  elem_15 [other] friend
+  elem_16 [other] have
+  elem_17 [other] been
+  elem_18 [other] friends
+  elem_19 [other] since
+  elem_20 [other] small
+  elem_21 [other] .
+  elem_22 [other] we
+  elem_23 [other] were
+  elem_24 [other] children
+  elem_25 [other] .
+  elem_26 [other] GIẢI THÍCH
+  elem_27 [other] Câu dịch của bạn chưa đúng ngữ pháp và diễn đạt tự nhiên trong tiếng Anh. Bạn dùng “We is” sai vì với “we” phải đi với “are” hoặc cấu trúc khác phù hợp hơn. Từ “friend” cũng cần ở dạng số nhiều là “friends” vì nói về quan hệ bạn bè giữa hai người trở lên. Ngoài ra, “since small” không tự nhiên trong tiếng Anh; nên dùng “since we were children” hoặc “since childhood” để diễn đạt đúng ý “từ khi còn nhỏ”. Nhìn chung, câu của bạn hiểu được ý chính nhưng cần sửa khá nhiều để đúng chuẩn.
+  elem_28 [other] MẸO
+  elem_29 [other] Dùng đúng động từ theo chủ ngữ: we are / we have been.
+  elem_30 [other] Dùng dạng số nhiều: friends.
+  elem_31 [other] Diễn đạt thời gian tự nhiên hơn: since childhood / since we were children.
+  elem_41 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_c612908ccf6adf4763fe3170c4b4ada2
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

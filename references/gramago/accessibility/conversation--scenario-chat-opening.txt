@@ -1,0 +1,37 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 25
+⚙️  Interactable elements: 6
+⏱️  Execution time: 0.16s
+
+Accessibility Tree
+  elem_6 [button] Đóng
+  elem_7 [button] Thêm value_settable=false
+  elem_18 [button] Lên disabled
+  elem_19 [button] close button
+  elem_20 [button] full screen button
+  elem_23 [button] minimize button
+  elem_17 [textField] Dịch sang tiếng Anh... value_settable=true
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] group
+  elem_5 [group] group
+  elem_9 [group] group
+  elem_16 [group] group
+  elem_21 [group] group
+  elem_22 [group] group
+  elem_0 [other] Gramify
+  elem_8 [other] MỞ RỘNG VỐN TỪ TỰ NHIÊN: MUA TRÁI CÂY Ở CHỢ
+  elem_10 [other] Người bán hàng
+  elem_11 [other] Chào bạn, bạn muốn mua gì?
+  elem_12 [other] Hello, what would you like to buy?
+  elem_13 [other] Khách hàng
+  elem_14 [other] Tôi muốn mua táo.
+  elem_15 [other] DỊCH CÂU NÀY
+  elem_24 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_9d57f42044240fc998c26266fcb68ff4
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

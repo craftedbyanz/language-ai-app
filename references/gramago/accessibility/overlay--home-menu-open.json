@@ -1,0 +1,1371 @@
+{
+ "target_receipt": {
+  "process_start_identity": 1791390537574409,
+  "process_start_identity_decimal": "1791390537574409",
+  "pid": 98192,
+  "window_id": 3957
+ },
+ "data": {
+  "semantic_scope": "exact_or_requested",
+  "mutation_targeting_available": true,
+  "used_cache": false,
+  "window_title": "Gramify",
+  "ui_elements": [
+   {
+    "bounds": {
+     "height": 27.720000000000027,
+     "x": 1748.12,
+     "width": 40.039999999999964,
+     "y": 116.55999999999995
+    },
+    "role_description": "button",
+    "id": "elem_6",
+    "description": "US",
+    "label": "US",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 24.639999999999986,
+     "x": 1339.635,
+     "width": 133.59500000000003,
+     "y": 1070.205
+    },
+    "role_description": "button",
+    "id": "elem_19",
+    "description": "Chuỗi:, 0 ngày",
+    "label": "Chuỗi:, 0 ngày",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 36.960000000000036,
+     "x": 1030.48,
+     "width": 36.959999999999994,
+     "y": 1103.7
+    },
+    "role_description": "button",
+    "id": "elem_20",
+    "description": "Rotate-Left--Streamline-Flex",
+    "label": "Rotate-Left--Streamline-Flex",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 36.960000000000036,
+     "x": 1745.04,
+     "width": 36.960000000000036,
+     "y": 1103.7
+    },
+    "role_description": "button",
+    "id": "elem_23",
+    "description": "Sun--Streamline-Flex",
+    "label": "Sun--Streamline-Flex",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 77,
+     "x": 1024.32,
+     "width": 763.8399999999999,
+     "y": 258.24
+    },
+    "role_description": "button",
+    "id": "elem_33",
+    "description": "Đăng ký Gramify Plus, Mở khóa mức sử dụng cao hơn và làm chủ kỹ năng ngôn ngữ của bạn.",
+    "label": "Đăng ký Gramify Plus, Mở khóa mức sử dụng cao hơn và làm chủ kỹ năng ngôn ngữ của bạn.",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 385,
+     "x": 1024.32,
+     "width": 670.285,
+     "y": 417.63
+    },
+    "role_description": "button",
+    "id": "elem_38",
+    "description": "01, LUYỆN VIẾT, Đoạn văn, Rèn luyện dịch và viết các đoạn văn., KHÁM PHÁ",
+    "label": "01, LUYỆN VIẾT, Đoạn văn, Rèn luyện dịch và viết các đoạn văn., KHÁM PHÁ",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 369.6,
+     "x": 1706.9250000000002,
+     "width": 670.285,
+     "y": 433.03
+    },
+    "role_description": "button",
+    "id": "elem_39",
+    "description": "02, NGỮ PHÁP, Sửa câu, Sửa lỗi nhanh với các câu ngắn., KHÁM PHÁ",
+    "label": "02, NGỮ PHÁP, Sửa câu, Sửa lỗi nhanh với các câu ngắn., KHÁM PHÁ",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 369.6,
+     "x": 2389.5299999999997,
+     "width": 669.9000000000001,
+     "y": 433.03
+    },
+    "role_description": "button",
+    "id": "elem_40",
+    "description": "03, GIAO TIẾP, Hội thoại, Mô phỏng đa dạng các tình huống., KHÁM PHÁ",
+    "label": "03, GIAO TIẾP, Hội thoại, Mô phỏng đa dạng các tình huống., KHÁM PHÁ",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1024.32,
+     "width": 120.50500000000002,
+     "y": 890.025
+    },
+    "role_description": "button",
+    "id": "elem_44",
+    "description": "Làm tôi bất ngờ",
+    "label": "Làm tôi bất ngờ",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1152.525,
+     "width": 76.22999999999999,
+     "y": 890.025
+    },
+    "role_description": "button",
+    "id": "elem_45",
+    "description": "Du lịch",
+    "label": "Du lịch",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1236.455,
+     "width": 100.48499999999999,
+     "y": 890.025
+    },
+    "role_description": "button",
+    "id": "elem_46",
+    "description": "Kinh doanh",
+    "label": "Kinh doanh",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.644999999999982,
+     "x": 1344.6399999999999,
+     "width": 81.23500000000001,
+     "y": 889.64
+    },
+    "role_description": "button",
+    "id": "elem_47",
+    "description": "Ẩm thực",
+    "label": "Ẩm thực",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1433.575,
+     "width": 88.16500000000002,
+     "y": 890.025
+    },
+    "role_description": "button",
+    "id": "elem_48",
+    "description": "Mua sắm",
+    "label": "Mua sắm",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1024.32,
+     "width": 89.32,
+     "y": 927.37
+    },
+    "role_description": "button",
+    "id": "elem_49",
+    "description": "Sức khỏe",
+    "label": "Sức khỏe",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 30.029999999999973,
+     "x": 1121.34,
+     "width": 77.38499999999999,
+     "y": 926.985
+    },
+    "role_description": "button",
+    "id": "elem_50",
+    "description": "Xã hội",
+    "label": "Xã hội",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 30.029999999999973,
+     "x": 1206.425,
+     "width": 71.995,
+     "y": 926.985
+    },
+    "role_description": "button",
+    "id": "elem_51",
+    "description": "IELTS",
+    "label": "IELTS",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1286.12,
+     "width": 87.00999999999999,
+     "y": 927.37
+    },
+    "role_description": "button",
+    "id": "elem_52",
+    "description": "Đời sống",
+    "label": "Đời sống",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 29.25999999999999,
+     "x": 1380.83,
+     "width": 76.61500000000001,
+     "y": 927.37
+    },
+    "role_description": "button",
+    "id": "elem_53",
+    "description": "Giải trí",
+    "label": "Giải trí",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 160.15999999999997,
+     "x": 1024.32,
+     "width": 763.8399999999999,
+     "y": 975.495
+    },
+    "role_description": "button",
+    "id": "elem_54",
+    "description": "VOCABULARY FLASHCARD, Lưu từ mới, ôn tập theo SRS và theo dõi tiến bộ mỗi ngày., Mở Flashcard, Resilient, Kiên cường, Acquire, Tiếp thu",
+    "label": "VOCABULARY FLASHCARD, Lưu từ mới, ôn tập theo SRS và theo dõi tiến bộ mỗi ngày., Mở Flashcard, Resilient, Kiên cường, Acquire, Tiếp thu",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1024.32,
+     "width": 123.20000000000002,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_66",
+    "description": "3 Chế Độ Luyện Tập Chính",
+    "label": "3 Chế Độ Luyện Tập Chính",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1159.84,
+     "width": 123.20000000000002,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_67",
+    "description": "Trợ Lý AI & Hệ Thống Phản Hồi",
+    "label": "Trợ Lý AI & Hệ Thống Phản Hồi",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1295.3600000000001,
+     "width": 123.19999999999999,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_68",
+    "description": "AI Magic Generator",
+    "label": "AI Magic Generator",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1430.88,
+     "width": 123.20000000000005,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_69",
+    "description": "Hệ thống Flashcard & SRS",
+    "label": "Hệ thống Flashcard & SRS",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1566.4,
+     "width": 123.20000000000005,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_70",
+    "description": "Hệ Thống Theo Dõi Tiến Độ",
+    "label": "Hệ Thống Theo Dõi Tiến Độ",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1701.92,
+     "width": 123.19999999999993,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_71",
+    "description": "Chức Năng Ôn Tập Thông Minh",
+    "label": "Chức Năng Ôn Tập Thông Minh",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1837.44,
+     "width": 123.19999999999993,
+     "y": 1335.855
+    },
+    "role_description": "button",
+    "id": "elem_72",
+    "description": "C, A, T, S, Mini Game: Flow Letter",
+    "label": "C, A, T, S, Mini Game: Flow Letter",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 16,
+     "x": 1020,
+     "width": 16,
+     "y": 71
+    },
+    "role_description": "close button",
+    "id": "elem_74",
+    "label": "close button",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 16,
+     "x": 1066,
+     "width": 16,
+     "y": 71
+    },
+    "role_description": "full screen button",
+    "id": "elem_75",
+    "label": "full screen button",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "role": "button",
+    "help": "this button also has an action to zoom the window",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 16,
+     "x": 1043,
+     "width": 16,
+     "y": 71
+    },
+    "role_description": "minimize button",
+    "id": "elem_78",
+    "label": "minimize button",
+    "ax_role": "AXButton",
+    "is_enabled": true,
+    "role": "button",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 254.10000000000002,
+     "x": 981.97,
+     "width": 254.1,
+     "y": 736.41
+    },
+    "role_description": "image",
+    "id": "elem_7",
+    "description": "Star-Circle--Streamline-Flex",
+    "label": "Star-Circle--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 15.399999999999977,
+     "x": 1366.585,
+     "width": 15.399999999999977,
+     "y": 691.0655555555555
+    },
+    "role_description": "image",
+    "id": "elem_9",
+    "description": "Multiple-Stars--Streamline-Flex",
+    "label": "Multiple-Stars--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 15.400000000000091,
+     "x": 1311.145,
+     "width": 15.400000000000034,
+     "y": 744.9655555555555
+    },
+    "role_description": "image",
+    "id": "elem_11",
+    "description": "Star-Badge--Streamline-Flex",
+    "label": "Star-Badge--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 15.399999999999977,
+     "x": 1341.56,
+     "width": 15.400000000000034,
+     "y": 798.8655555555556
+    },
+    "role_description": "image",
+    "id": "elem_13",
+    "description": "Show-Layer--Streamline-Flex",
+    "label": "Show-Layer--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "y": 852.3805555555556,
+     "x": 1346.18,
+     "width": 12.704999999999984,
+     "height": 16.55499999999995
+    },
+    "identifier": "flame.fill",
+    "role_description": "image",
+    "id": "elem_15",
+    "description": "Ngọn Lửa",
+    "label": "Ngọn Lửa",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 15.399999999999977,
+     "x": 1333.8600000000001,
+     "width": 15.399999999999977,
+     "y": 906.6655555555556
+    },
+    "role_description": "image",
+    "id": "elem_17",
+    "description": "Investing-And-Banking--Streamline-Flex",
+    "label": "Investing-And-Banking--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 16.940000000000055,
+     "x": 1378.135,
+     "width": 16.939999999999998,
+     "y": 1113.71
+    },
+    "role_description": "image",
+    "id": "elem_21",
+    "description": "Star-Circle--Streamline-Flex",
+    "label": "Star-Circle--Streamline-Flex",
+    "ax_role": "AXImage",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "image",
+    "is_actionable": true
+   },
+   {
+    "bounds": {
+     "height": 1051,
+     "x": 1012,
+     "width": 788,
+     "y": 95
+    },
+    "role_description": "group",
+    "id": "elem_1",
+    "label": "group",
+    "ax_role": "AXGroup",
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1051.82,
+     "x": 1012,
+     "width": 788.48,
+     "y": 95
+    },
+    "role_description": "group",
+    "id": "elem_2",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1051.82,
+     "x": 1012,
+     "width": 788.48,
+     "y": 95
+    },
+    "role_description": "group",
+    "id": "elem_3",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1051.82,
+     "x": 1012,
+     "width": 788.48,
+     "y": 95
+    },
+    "role_description": "group",
+    "id": "elem_4",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1051.82,
+     "x": 1012,
+     "width": 788.48,
+     "y": 95
+    },
+    "role_description": "group",
+    "id": "elem_5",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 269.5,
+     "x": 1012,
+     "width": 788.48,
+     "y": 671.73
+    },
+    "role_description": "group",
+    "id": "elem_8",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1464.54,
+     "x": 1012,
+     "width": 788.48,
+     "y": 110.40000000000009
+    },
+    "role_description": "group",
+    "id": "elem_24",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 1365.595,
+     "x": 1012,
+     "width": 788.48,
+     "y": 116.55999999999995
+    },
+    "role_description": "group",
+    "id": "elem_25",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 77,
+     "x": 1012,
+     "width": 788.48,
+     "y": 258.24
+    },
+    "role_description": "collection",
+    "id": "elem_30",
+    "is_selected": false,
+    "label": "collection",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 77,
+     "x": 1012,
+     "width": 788.48,
+     "y": 258.24
+    },
+    "role_description": "group",
+    "id": "elem_31",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 77,
+     "x": 1024.32,
+     "width": 763.8399999999999,
+     "y": 258.24
+    },
+    "role_description": "group",
+    "id": "elem_32",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 412.72,
+     "x": 1012,
+     "width": 2060.52,
+     "y": 405.30999999999995
+    },
+    "role_description": "group",
+    "id": "elem_36",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 385,
+     "x": 1024.32,
+     "width": 2035.1100000000001,
+     "y": 417.63
+    },
+    "role_description": "group",
+    "id": "elem_37",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 67.375,
+     "x": 1012,
+     "width": 522.0600000000001,
+     "y": 889.64
+    },
+    "role_description": "group",
+    "id": "elem_43",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 146.29999999999995,
+     "x": 1012,
+     "width": 960.96,
+     "y": 1335.855
+    },
+    "role_description": "group",
+    "id": "elem_65",
+    "is_selected": false,
+    "label": "group",
+    "ax_role": "AXGroup",
+    "is_enabled": true,
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 14,
+     "x": 1067,
+     "width": 14,
+     "y": 72
+    },
+    "role_description": "group",
+    "id": "elem_76",
+    "label": "group",
+    "ax_role": "AXGroup",
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 14,
+     "x": 1067,
+     "width": 14,
+     "y": 72
+    },
+    "role_description": "group",
+    "id": "elem_77",
+    "label": "group",
+    "ax_role": "AXGroup",
+    "role": "group",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "y": 63,
+     "x": 1012,
+     "width": 788,
+     "height": 1083
+    },
+    "identifier": "SceneWindow",
+    "role_description": "standard window",
+    "id": "elem_0",
+    "label": "Gramify",
+    "ax_role": "AXWindow",
+    "title": "Gramify",
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 18.480000000000018,
+     "x": 1405.085,
+     "width": 48.50999999999999,
+     "y": 689.5255555555556
+    },
+    "role_description": "text",
+    "id": "elem_10",
+    "description": "Insight",
+    "label": "Insight",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 18.480000000000018,
+     "x": 1349.645,
+     "width": 159.77500000000003,
+     "y": 743.4255555555555
+    },
+    "role_description": "text",
+    "id": "elem_12",
+    "description": "Nâng cấp Gramify Plus",
+    "label": "Nâng cấp Gramify Plus",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 18.480000000000018,
+     "x": 1380.06,
+     "width": 98.945,
+     "y": 797.3255555555555
+    },
+    "role_description": "text",
+    "id": "elem_14",
+    "description": "Học flashcard",
+    "label": "Học flashcard",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 18.480000000000018,
+     "x": 1383.1399999999999,
+     "width": 92.40000000000003,
+     "y": 851.2255555555555
+    },
+    "role_description": "text",
+    "id": "elem_16",
+    "description": "Chuỗi của tôi",
+    "label": "Chuỗi của tôi",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 18.480000000000018,
+     "x": 1372.3600000000001,
+     "width": 113.95999999999998,
+     "y": 905.1255555555556
+    },
+    "role_description": "text",
+    "id": "elem_18",
+    "description": "Chơi FlowLetter",
+    "label": "Chơi FlowLetter",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 16.170000000000073,
+     "x": 1401.2350000000001,
+     "width": 33.495000000000005,
+     "y": 1114.095
+    },
+    "role_description": "text",
+    "id": "elem_22",
+    "description": "Menu",
+    "label": "Menu",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 26.950000000000045,
+     "x": 1024.32,
+     "width": 170.94,
+     "y": 116.55999999999995
+    },
+    "role_description": "text",
+    "id": "elem_26",
+    "description": "Chào buổi chiều,",
+    "label": "Chào buổi chiều,",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 26.950000000000045,
+     "x": 1024.32,
+     "width": 28.105000000000004,
+     "y": 145.04999999999995
+    },
+    "role_description": "text",
+    "id": "elem_27",
+    "description": "An",
+    "label": "An",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 13.860000000000014,
+     "x": 1024.32,
+     "width": 154,
+     "y": 187.39999999999998
+    },
+    "role_description": "text",
+    "id": "elem_28",
+    "description": "Bạn chưa biết học gì hôm nay?",
+    "label": "Bạn chưa biết học gì hôm nay?",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 16.16999999999996,
+     "x": 1024.32,
+     "width": 102.79500000000002,
+     "y": 208.57500000000005
+    },
+    "role_description": "text",
+    "id": "elem_29",
+    "description": "Tạo bài học với AI",
+    "label": "Tạo bài học với AI",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 19.25,
+     "x": 1024.32,
+     "width": 113.96000000000001,
+     "y": 362.96000000000004
+    },
+    "role_description": "text",
+    "id": "elem_34",
+    "description": "Chế độ học tập",
+    "label": "Chế độ học tập",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 13.860000000000127,
+     "x": 1024.32,
+     "width": 269.885,
+     "y": 385.28999999999996
+    },
+    "role_description": "text",
+    "id": "elem_35",
+    "description": "Nâng cao kỹ năng viết, ngữ pháp và giao tiếp cùng AI.",
+    "label": "Nâng cao kỹ năng viết, ngữ pháp và giao tiếp cùng AI.",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 19.25,
+     "x": 1024.32,
+     "width": 120.12,
+     "y": 841.13
+    },
+    "role_description": "text",
+    "id": "elem_41",
+    "description": "Gramify đề xuất",
+    "label": "Gramify đề xuất",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 13.860000000000014,
+     "x": 1024.32,
+     "width": 274.89,
+     "y": 863.46
+    },
+    "role_description": "text",
+    "id": "elem_42",
+    "description": "Các chủ đề được chọn lọc để giúp bạn học nhanh hơn.",
+    "label": "Các chủ đề được chọn lọc để giúp bạn học nhanh hơn.",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 16.170000000000073,
+     "x": 1036.64,
+     "width": 68.915,
+     "y": 1182.625
+    },
+    "role_description": "text",
+    "id": "elem_55",
+    "description": "Flow Letter",
+    "label": "Flow Letter",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 9.240000000000009,
+     "x": 1735.8000000000002,
+     "width": 33.879999999999995,
+     "y": 1191.865
+    },
+    "role_description": "text",
+    "id": "elem_56",
+    "description": "Thử ngay",
+    "label": "Thử ngay",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 10.009999999999991,
+     "x": 1036.64,
+     "width": 102.41,
+     "y": 1200.335
+    },
+    "role_description": "text",
+    "id": "elem_57",
+    "description": "Xếp chữ cái thành từ vựng",
+    "label": "Xếp chữ cái thành từ vựng",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 27.7199999999998,
+     "x": 1324.62,
+     "width": 27.720000000000027,
+     "y": 1225.7450000000001
+    },
+    "role_description": "text",
+    "id": "elem_58",
+    "description": "H",
+    "label": "H",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 27.7199999999998,
+     "x": 1358.5,
+     "width": 27.720000000000027,
+     "y": 1225.7450000000001
+    },
+    "role_description": "text",
+    "id": "elem_59",
+    "description": "E",
+    "label": "E",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 27.7199999999998,
+     "x": 1392.38,
+     "width": 27.720000000000027,
+     "y": 1225.7450000000001
+    },
+    "role_description": "text",
+    "id": "elem_60",
+    "description": "L",
+    "label": "L",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 27.7199999999998,
+     "x": 1426.26,
+     "width": 27.720000000000027,
+     "y": 1225.7450000000001
+    },
+    "role_description": "text",
+    "id": "elem_61",
+    "description": "L",
+    "label": "L",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 27.7199999999998,
+     "x": 1460.1399999999999,
+     "width": 27.720000000000027,
+     "y": 1225.7450000000001
+    },
+    "role_description": "text",
+    "id": "elem_62",
+    "description": "O",
+    "label": "O",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 19.25,
+     "x": 1024.32,
+     "width": 87.78,
+     "y": 1284.265
+    },
+    "role_description": "text",
+    "id": "elem_63",
+    "description": "Gramify 101",
+    "label": "Gramify 101",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 13.860000000000127,
+     "x": 1024.32,
+     "width": 425.425,
+     "y": 1309.675
+    },
+    "role_description": "text",
+    "id": "elem_64",
+    "description": "Tất cả những gì bạn cần biết về Gramify và cách ứng dụng giúp bạn học tập hiệu quả.",
+    "label": "Tất cả những gì bạn cần biết về Gramify và cách ứng dụng giúp bạn học tập hiệu quả.",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 242.54999999999995,
+     "x": 1328.47,
+     "width": 502.42499999999995,
+     "y": 742.1850000000001
+    },
+    "role_description": "text",
+    "id": "elem_73",
+    "description": "Menu",
+    "label": "Menu",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "is_selected": false,
+    "role": "other",
+    "is_actionable": false
+   },
+   {
+    "bounds": {
+     "height": 17.310546875,
+     "x": 1094,
+     "width": 56,
+     "y": 69.689453125
+    },
+    "role_description": "text",
+    "id": "elem_79",
+    "label": "Gramify",
+    "ax_role": "AXStaticText",
+    "is_enabled": true,
+    "value": "Gramify",
+    "role": "other",
+    "is_actionable": false
+   }
+  ],
+  "interactable_count": 36,
+  "element_count": 80,
+  "focused_element": {
+   "role": "AXGroup",
+   "windowID": 3957,
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ],
+   "processIdentifier": 98192
+  },
+  "snapshot_id": "ps1_fb6e6573e6448e6b00a6fb282ba75e60",
+  "application_name": "GramaGo",
+  "execution_time": 0.35518205165863037,
+  "capture_mode": "window",
+  "is_dialog": false,
+  "snapshot_reusable": true
+ },
+ "success": true
+}

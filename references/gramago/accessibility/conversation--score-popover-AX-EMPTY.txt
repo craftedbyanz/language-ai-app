@@ -1,0 +1,62 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 50
+⚙️  Interactable elements: 9
+⏱️  Execution time: 0.18s
+
+Accessibility Tree
+  elem_4 [button] Sheet Grabber value="Half screen"
+  elem_11 [button] Đóng
+  elem_45 [button] close button
+  elem_46 [button] full screen button
+  elem_48 [button] minimize button
+  elem_7 [image] Thích
+  elem_13 [image] Tia Lửa
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_5 [group] group
+  elem_6 [group] group
+  elem_12 [group] group
+  elem_47 [group] group
+  elem_0 [other] Gramify
+  elem_8 [other] Gần đúng
+  elem_9 [other] Trôi chảy
+  elem_10 [other] 88
+  elem_14 [other] SỬA LỖI
+  elem_15 [other] Chạm từ để tra cứu
+  elem_16 [other] I
+  elem_17 [other] had
+  elem_18 [other] a
+  elem_19 [other] busy
+  elem_20 [other] day
+  elem_21 [other] today
+  elem_22 [other] .
+  elem_23 [other] I
+  elem_24 [other] worked
+  elem_25 [other] ,
+  elem_26 [other] and
+  elem_27 [other] then
+  elem_28 [other] I
+  elem_29 [other] had
+  elem_30 [other] lunch
+  elem_31 [other] with
+  elem_32 [other] my
+  elem_33 [other] a
+  elem_34 [other] friend
+  elem_35 [other] .
+  elem_36 [other] PHẢN HỒI
+  elem_37 [other] Câu của bạn hoàn toàn hiểu được và không có lỗi ngữ pháp nghiêm trọng. Trong hội thoại tiếng Anh, người bản xứ thường thêm 'today' để câu tự nhiên và cụ thể hơn: 'I had a busy day today.' Ngoài ra, nếu bạn chỉ nói chung chung, 'a friend' thường tự nhiên hơn 'my friend' vì không cần nhấn mạnh sở hữu. Nhìn chung, câu của bạn tốt, rõ ý và phù hợp với ngữ cảnh.
+  elem_38 [other] LỖI SAI
+  elem_39 [other] Không có lỗi ngữ pháp lớn.
+  elem_40 [other] Câu đầu có thể tự nhiên hơn nếu thêm 'today'.
+  elem_41 [other] 'my friend' có thể đổi thành 'a friend' để nghe tự nhiên hơn trong ngữ cảnh chung.
+  elem_42 [other] NHỮNG ĐIỂM CẦN CẢI THIỆN
+  elem_43 [other] Bạn có thể thêm 'today' để câu nghe tự nhiên hơn trong hội thoại.
+  elem_44 [other] Thay 'my friend' bằng 'a friend' nếu không cần nhấn mạnh là bạn của bạn.
+  elem_49 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_d8fd3cf2b050618debf073da160112bb
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

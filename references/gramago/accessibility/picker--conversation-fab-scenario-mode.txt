@@ -1,0 +1,60 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 48
+⚙️  Interactable elements: 22
+⏱️  Execution time: 0.28s
+
+Accessibility Tree
+  elem_5 [button] Back
+  elem_6 [button] AI
+  elem_9 [button] Chế độ Kịch bản
+  elem_10 [button] Giọng: Thoải mái
+  elem_11 [button] Thông Tin
+  elem_12 [button] Đóng
+  elem_19 [button] Dành cho bạn
+  elem_20 [button] Học tập & Nghiên cứu
+  elem_21 [button] Ẩm thực
+  elem_22 [button] Sân bay & Khách sạn
+  elem_23 [button] Công nghệ
+  elem_24 [button] Giao tiếp
+  elem_25 [button] Sức khỏe
+  elem_26 [button] Văn hóa & Phim ảnh
+  elem_27 [button] Vui chơi & Giải trí
+  elem_28 [button] Mua sắm
+  elem_29 [button] Công việc
+  elem_33 [button] Mở rộng vốn từ tự nhiên, 1 Sets
+  elem_34 [button] close button
+  elem_35 [button] full screen button
+  elem_38 [button] minimize button
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] Nav bar
+  elem_7 [group] group
+  elem_8 [group] group
+  elem_13 [group] group
+  elem_18 [group] group
+  elem_32 [group] group
+  elem_36 [group] group
+  elem_37 [group] group
+  menuitem_40 [menu] menu bar
+  elem_0 [other] Gramify
+  elem_14 [other] CHẾ ĐỘ TẠO
+  elem_15 [other] Thực hành
+  elem_16 [other] giao tiếp
+  elem_17 [other] DANH MỤC
+  elem_30 [other] CHỦ ĐỀ CỦA BẠN
+  elem_31 [other] 1 chủ đề
+  elem_39 [other] Gramify value="Gramify"
+  menuitem_41 [other] Apple
+  menuitem_42 [other] Gramify
+  menuitem_43 [other] File
+  menuitem_44 [other] Edit
+  menuitem_45 [other] View
+  menuitem_46 [other] Window
+  menuitem_47 [other] Help
+
+Snapshot ID: ps1_ea54ff6f4a4cdce177d47052b3c4a148
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

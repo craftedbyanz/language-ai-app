@@ -1,0 +1,460 @@
+{
+  "target_receipt" : {
+    "window_id" : 10211,
+    "process_start_identity" : 1791511541909323,
+    "process_start_identity_decimal" : "1791511541909323",
+    "pid" : 580
+  },
+  "data" : {
+    "screenshot_annotated" : "",
+    "screenshot_raw" : "",
+    "interactable_count" : 6,
+    "is_dialog" : false,
+    "element_count" : 25,
+    "focused_element" : {
+      "processIdentifier" : 580,
+      "windowID" : 10211,
+      "role" : "AXTextField",
+      "frame" : [
+        [
+          1021.64,
+          1115.48
+        ],
+        [
+          698.775,
+          13.8599999999999
+        ]
+      ]
+    },
+    "snapshot_reusable" : true,
+    "execution_time" : 0.20855998992919922,
+    "ui_elements" : [
+      {
+        "description" : "Đóng",
+        "identifier" : "xmark",
+        "is_actionable" : true,
+        "role" : "button",
+        "is_selected" : false,
+        "ax_role" : "AXButton",
+        "is_enabled" : true,
+        "id" : "elem_6",
+        "role_description" : "button",
+        "bounds" : {
+          "y" : 120.25500000000011,
+          "width" : 14.244999999999997,
+          "height" : 13.474999999999909,
+          "x" : 1013.17
+        },
+        "label" : "Đóng"
+      },
+      {
+        "description" : "Thêm",
+        "is_actionable" : true,
+        "is_selected" : false,
+        "role" : "button",
+        "is_value_settable" : false,
+        "ax_role" : "AXPopUpButton",
+        "is_enabled" : true,
+        "id" : "elem_7",
+        "role_description" : "pop up button",
+        "bounds" : {
+          "x" : 1748.52,
+          "width" : 27.720000000000027,
+          "y" : 112.94000000000005,
+          "height" : 27.719999999999914
+        },
+        "label" : "Thêm"
+      },
+      {
+        "description" : "Lên",
+        "identifier" : "arrow.up",
+        "is_actionable" : false,
+        "role" : "button",
+        "is_selected" : false,
+        "ax_role" : "AXButton",
+        "is_enabled" : false,
+        "id" : "elem_18",
+        "role_description" : "button",
+        "bounds" : {
+          "y" : 1106.8175,
+          "width" : 31.184999999999945,
+          "height" : 31.18500000000006,
+          "x" : 1741.975
+        },
+        "label" : "Lên"
+      },
+      {
+        "is_actionable" : true,
+        "role" : "button",
+        "ax_role" : "AXButton",
+        "is_enabled" : true,
+        "id" : "elem_19",
+        "role_description" : "close button",
+        "bounds" : {
+          "x" : 1005,
+          "width" : 16,
+          "y" : 72,
+          "height" : 16
+        },
+        "label" : "close button"
+      },
+      {
+        "is_actionable" : true,
+        "role" : "button",
+        "ax_role" : "AXButton",
+        "is_enabled" : true,
+        "id" : "elem_20",
+        "role_description" : "full screen button",
+        "help" : "this button also has an action to zoom the window",
+        "bounds" : {
+          "x" : 1051,
+          "width" : 16,
+          "y" : 72,
+          "height" : 16
+        },
+        "label" : "full screen button"
+      },
+      {
+        "is_actionable" : true,
+        "role" : "button",
+        "ax_role" : "AXButton",
+        "is_enabled" : true,
+        "id" : "elem_23",
+        "role_description" : "minimize button",
+        "bounds" : {
+          "x" : 1028,
+          "width" : 16,
+          "y" : 72,
+          "height" : 16
+        },
+        "label" : "minimize button"
+      },
+      {
+        "is_actionable" : true,
+        "is_selected" : false,
+        "is_value_settable" : true,
+        "role" : "textField",
+        "ax_role" : "AXTextField",
+        "is_enabled" : true,
+        "id" : "elem_17",
+        "role_description" : "text field",
+        "selected_text_range" : {
+          "length" : 0,
+          "location" : 0
+        },
+        "bounds" : {
+          "x" : 1021.64,
+          "width" : 698.775,
+          "y" : 1115.48,
+          "height" : 13.8599999999999
+        },
+        "label" : "Dịch sang tiếng Anh..."
+      },
+      {
+        "is_actionable" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "id" : "elem_1",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788,
+          "y" : 96,
+          "height" : 1051
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_2",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788.48,
+          "y" : 96,
+          "height" : 1051.82
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_3",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788.48,
+          "y" : 96,
+          "height" : 1051.82
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_4",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788.48,
+          "y" : 96,
+          "height" : 1051.82
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_5",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788.48,
+          "y" : 96,
+          "height" : 1051.82
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_9",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 788.48,
+          "y" : 157.60000000000002,
+          "height" : 178.64
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "is_enabled" : true,
+        "id" : "elem_16",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 997,
+          "width" : 188.65,
+          "y" : 1068.51,
+          "height" : 28.49000000000001
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "id" : "elem_21",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 1052,
+          "width" : 14,
+          "y" : 73,
+          "height" : 14
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "role" : "group",
+        "ax_role" : "AXGroup",
+        "id" : "elem_22",
+        "role_description" : "group",
+        "bounds" : {
+          "x" : 1052,
+          "width" : 14,
+          "y" : 73,
+          "height" : 14
+        },
+        "label" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "identifier" : "SceneWindow",
+        "role" : "other",
+        "ax_role" : "AXWindow",
+        "id" : "elem_0",
+        "role_description" : "standard window",
+        "title" : "Gramify",
+        "bounds" : {
+          "y" : 64,
+          "width" : 788,
+          "height" : 1083,
+          "x" : 997
+        },
+        "label" : "Gramify"
+      },
+      {
+        "description" : "MỞ RỘNG VỐN TỪ TỰ NHIÊN: MUA TRÁI CÂY Ở CHỢ",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_8",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1288.06,
+          "width" : 206.36,
+          "y" : 146.82000000000005,
+          "height" : 7.699999999999932
+        },
+        "label" : "MỞ RỘNG VỐN TỪ TỰ NHIÊN: MUA TRÁI CÂY Ở CHỢ"
+      },
+      {
+        "description" : "Người bán hàng",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_10",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1018.56,
+          "width" : 64.68,
+          "y" : 166.84000000000003,
+          "height" : 10.009999999999991
+        },
+        "label" : "Người bán hàng"
+      },
+      {
+        "description" : "Chào bạn, bạn muốn mua gì?",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_11",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1026.26,
+          "width" : 157.85000000000002,
+          "y" : 190.71000000000004,
+          "height" : 13.089999999999918
+        },
+        "label" : "Chào bạn, bạn muốn mua gì?"
+      },
+      {
+        "description" : "Hello, what would you like to buy?",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_12",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1026.26,
+          "width" : 158.235,
+          "y" : 213.80999999999995,
+          "height" : 11.550000000000068
+        },
+        "label" : "Hello, what would you like to buy?"
+      },
+      {
+        "description" : "Khách hàng",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_13",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1715.4099999999999,
+          "width" : 48.510000000000105,
+          "y" : 248.46000000000004,
+          "height" : 10.009999999999991
+        },
+        "label" : "Khách hàng"
+      },
+      {
+        "description" : "Tôi muốn mua táo.",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_14",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1655.35,
+          "width" : 100.87,
+          "y" : 272.33000000000004,
+          "height" : 13.090000000000032
+        },
+        "label" : "Tôi muốn mua táo."
+      },
+      {
+        "description" : "DỊCH CÂU NÀY",
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "id" : "elem_15",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1655.35,
+          "width" : 47.35500000000002,
+          "y" : 290.03999999999996,
+          "height" : 6.930000000000064
+        },
+        "label" : "DỊCH CÂU NÀY"
+      },
+      {
+        "is_actionable" : false,
+        "role" : "other",
+        "ax_role" : "AXStaticText",
+        "is_enabled" : true,
+        "value" : "Gramify",
+        "id" : "elem_24",
+        "role_description" : "text",
+        "bounds" : {
+          "x" : 1079,
+          "width" : 56,
+          "y" : 70.689453125,
+          "height" : 17.310546875
+        },
+        "label" : "Gramify"
+      }
+    ],
+    "application_name" : "GramaGo",
+    "semantic_scope" : "exact_or_requested",
+    "window_title" : "Gramify",
+    "ui_map" : "",
+    "capture_mode" : "window",
+    "snapshot_id" : "ps1_a6140ad00d66379bbf0c0d4df292200f",
+    "mutation_targeting_available" : true,
+    "used_cache" : false
+  },
+  "success" : true,
+  "debug_logs" : [
+    "[2026-10-09T04:19:05.974Z] DEBUG: Runtime host: remote onDemand via \/Users\/payx-an.nguyen2\/Library\/Application Support\/Peekaboo\/daemon-e854978f5f9287d2.sock (build 4.9.0 (4.9.0))",
+    "[2026-10-09T04:19:05.974Z] VERBOSE [Operation]: Starting operation {operation=see_command, mode=auto, annotate=false, hasAnalyzePrompt=false, app=GramaGo, menubar=false}",
+    "[2026-10-09T04:19:05.974Z] VERBOSE [Performance]: Starting timer 'see_command'",
+    "[2026-10-09T04:19:06.015Z] VERBOSE [Capture]: Starting capture and detection phase",
+    "[2026-10-09T04:19:06.182Z] VERBOSE [Capture]: Capture completed successfully {elementCount=25, screenshotSize=0, snapshotId=ps1_a6140ad00d66379bbf0c0d4df292200f, observedFocus=rawTrue=1 rawFalse=24 rawUnknown=0 rawFocusedTypes=[textField:1] rawResolver=unique cached=false partial=false truncated=false attached=true}"
+  ]
+}

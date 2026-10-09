@@ -1,8 +1,11 @@
 # Home Screen
 
+> **Reconciled 2026-10-09:** canonical Home is [S001 active](../screenshots/S001-home-active-verification.png). Mode-card fill `#D4D4D5` in the inactive captures is an artefact (active = blue, radius ≈ 28). Navigation destinations listed as INFERRED below have since been OBSERVED (Insight, Flow Letter, flashcards, streak, history, profile, paywall, language, AI composer, Gramify 101). AX: [home--default](../accessibility/home--default.json).
+
 Source: read-only Peekaboo inspection of the running GramaGo app, 2026-10-08.
-Snapshots: `ps1_295a5e0ba7a4e59c362f61b245392574` (inspect_ui), `ps1_354b88c10790f7f1884f4e0532767283` (see + OCR).
-Nothing was clicked, typed or scrolled. **Every navigation destination below is therefore INFERRED, never OBSERVED.**
+Snapshots: `ps1_295a5e0ba7a4e59c362f61b245392574` (inspect_ui), `ps1_354b88c10790f7f1884f4e0532767283` (see + OCR), `ps1_c4573f9be507ff2d63515c2e5750f1ee` (repository screenshot capture).
+Screenshot: [S001-home-inactive-original.png](../screenshots/S001-home-inactive-original.png).
+Nothing was clicked, typed or scrolled during documentation. **Every navigation destination below is INFERRED, except Home → Writing Topic Picker, which was later observed** (see [flows/home-to-writing.md](../flows/home-to-writing.md)).
 
 ## Provenance legend
 

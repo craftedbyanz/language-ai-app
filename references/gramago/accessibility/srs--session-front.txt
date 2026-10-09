@@ -1,0 +1,39 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 28
+⚙️  Interactable elements: 9
+⏱️  Execution time: 0.15s
+
+Accessibility Tree
+  elem_4 [button] Đóng
+  elem_5 [button] Thêm value_settable=false
+  elem_19 [button] 1m, Học lại
+  elem_20 [button] 6m, Khó
+  elem_21 [button] 1d, Tốt
+  elem_22 [button] 4d, Dễ
+  elem_23 [button] close button
+  elem_24 [button] full screen button
+  elem_26 [button] minimize button
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_25 [group] group
+  elem_0 [other] Gramify
+  elem_6 [other] Molding
+  elem_7 [other] Sweetener
+  elem_8 [other] Caramelized
+  elem_9 [other] VERB
+  elem_10 [other] NOUN
+  elem_11 [other] VERB
+  elem_12 [other] Caramelized
+  elem_13 [other] Sweetener
+  elem_14 [other] Molding
+  elem_15 [other] /ˈməʊl.dɪŋ/
+  elem_16 [other] CHẠM ĐỂ LẬT
+  elem_17 [other] CHẠM ĐỂ LẬT
+  elem_18 [other] CHẠM ĐỂ LẬT
+  elem_27 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_8a92106a701cafc83b624b2530b3ecf6
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

@@ -1,0 +1,517 @@
+{
+ "data": {
+  "element_count": 29,
+  "execution_time": 0.14772701263427734,
+  "interactable_count": 9,
+  "used_cache": false,
+  "semantic_scope": "exact_or_requested",
+  "snapshot_reusable": true,
+  "snapshot_id": "ps1_1ee8d3812e22af29011ee3b63598d09f",
+  "application_name": "GramaGo",
+  "mutation_targeting_available": true,
+  "ui_elements": [
+   {
+    "id": "elem_4",
+    "role": "button",
+    "label": "Đóng",
+    "description": "Đóng",
+    "bounds": {
+     "x": 1031.635,
+     "height": 14.629999999999882,
+     "y": 120.02500000000009,
+     "width": 16.169999999999998
+    },
+    "identifier": "xmark",
+    "is_actionable": true,
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "is_selected": false,
+    "role_description": "button"
+   },
+   {
+    "id": "elem_5",
+    "role": "button",
+    "label": "Thêm",
+    "description": "Thêm",
+    "bounds": {
+     "x": 1757.3600000000001,
+     "height": 30.799999999999955,
+     "y": 111.94000000000005,
+     "width": 30.799999999999955
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXPopUpButton",
+    "is_value_settable": false,
+    "role_description": "pop up button"
+   },
+   {
+    "id": "elem_19",
+    "role": "button",
+    "label": "1m, Học lại",
+    "description": "1m, Học lại",
+    "bounds": {
+     "x": 1284.58,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "width": 49.28000000000003
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXButton",
+    "role_description": "button"
+   },
+   {
+    "id": "elem_20",
+    "role": "button",
+    "label": "6m, Khó",
+    "description": "6m, Khó",
+    "bounds": {
+     "x": 1349.26,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "width": 49.28000000000003
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXButton",
+    "role_description": "button"
+   },
+   {
+    "id": "elem_21",
+    "role": "button",
+    "label": "1d, Tốt",
+    "description": "1d, Tốt",
+    "bounds": {
+     "x": 1413.94,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "width": 49.28000000000003
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "is_selected": true,
+    "ax_role": "AXButton",
+    "role_description": "button"
+   },
+   {
+    "id": "elem_22",
+    "role": "button",
+    "label": "4d, Dễ",
+    "description": "4d, Dễ",
+    "bounds": {
+     "x": 1478.62,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "width": 49.27999999999997
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXButton",
+    "role_description": "button"
+   },
+   {
+    "id": "elem_23",
+    "role": "button",
+    "label": "close button",
+    "bounds": {
+     "x": 1020,
+     "height": 16,
+     "y": 71,
+     "width": 16
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "role_description": "close button"
+   },
+   {
+    "id": "elem_24",
+    "role": "button",
+    "label": "full screen button",
+    "bounds": {
+     "x": 1066,
+     "height": 16,
+     "y": 71,
+     "width": 16
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "help": "this button also has an action to zoom the window",
+    "role_description": "full screen button"
+   },
+   {
+    "id": "elem_27",
+    "role": "button",
+    "label": "minimize button",
+    "bounds": {
+     "x": 1043,
+     "height": 16,
+     "y": 71,
+     "width": 16
+    },
+    "is_actionable": true,
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "role_description": "minimize button"
+   },
+   {
+    "id": "elem_1",
+    "role": "group",
+    "label": "group",
+    "bounds": {
+     "x": 1012,
+     "height": 1051,
+     "y": 95,
+     "width": 788
+    },
+    "is_actionable": false,
+    "ax_role": "AXGroup",
+    "role_description": "group"
+   },
+   {
+    "id": "elem_2",
+    "role": "group",
+    "label": "group",
+    "bounds": {
+     "x": 1012,
+     "height": 1051.82,
+     "y": 95,
+     "width": 788.48
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXGroup",
+    "role_description": "group"
+   },
+   {
+    "id": "elem_3",
+    "role": "group",
+    "label": "group",
+    "bounds": {
+     "x": 1012,
+     "height": 1051.82,
+     "y": 95,
+     "width": 788.48
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXGroup",
+    "role_description": "group"
+   },
+   {
+    "id": "elem_25",
+    "role": "group",
+    "label": "group",
+    "bounds": {
+     "x": 1067,
+     "height": 14,
+     "y": 72,
+     "width": 14
+    },
+    "is_actionable": false,
+    "ax_role": "AXGroup",
+    "role_description": "group"
+   },
+   {
+    "id": "elem_26",
+    "role": "group",
+    "label": "group",
+    "bounds": {
+     "x": 1067,
+     "height": 14,
+     "y": 72,
+     "width": 14
+    },
+    "is_actionable": false,
+    "ax_role": "AXGroup",
+    "role_description": "group"
+   },
+   {
+    "id": "elem_0",
+    "role": "other",
+    "label": "Gramify",
+    "bounds": {
+     "x": 1012,
+     "height": 1083,
+     "y": 63,
+     "width": 788
+    },
+    "is_actionable": false,
+    "identifier": "SceneWindow",
+    "ax_role": "AXWindow",
+    "title": "Gramify",
+    "role_description": "standard window"
+   },
+   {
+    "id": "elem_6",
+    "role": "other",
+    "label": "Molding",
+    "description": "Molding",
+    "bounds": {
+     "x": 1384.68,
+     "height": 13.8599999999999,
+     "y": 160.45000000000005,
+     "width": 43.120000000000005
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_7",
+    "role": "other",
+    "label": "Sweetener",
+    "description": "Sweetener",
+    "bounds": {
+     "x": 1474.471625,
+     "height": 7.257249999999999,
+     "y": 163.75137500000005,
+     "width": 32.936750000000075
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_8",
+    "role": "other",
+    "label": "Caramelized",
+    "description": "Caramelized",
+    "bounds": {
+     "x": 1560.0475000000001,
+     "height": 6.0060000000000855,
+     "y": 164.37699999999995,
+     "width": 31.184999999999945
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_9",
+    "role": "other",
+    "label": "VERB",
+    "description": "VERB",
+    "bounds": {
+     "x": 1395.0596,
+     "height": 8.131199999999922,
+     "y": 540.3218,
+     "width": 22.360799999999927
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_10",
+    "role": "other",
+    "label": "NOUN",
+    "description": "NOUN",
+    "bounds": {
+     "x": 1392.8497,
+     "height": 8.685600000000022,
+     "y": 560.7113999999999,
+     "width": 26.780599999999993
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_11",
+    "role": "other",
+    "label": "VERB",
+    "description": "VERB",
+    "bounds": {
+     "x": 1393.535,
+     "height": 9.240000000000009,
+     "y": 569.7049999999999,
+     "width": 25.409999999999968
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_12",
+    "role": "other",
+    "label": "Caramelized",
+    "description": "Caramelized",
+    "bounds": {
+     "x": 1343.7314000000001,
+     "height": 25.748800000000074,
+     "y": 568.781,
+     "width": 125.01720000000006
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_13",
+    "role": "other",
+    "label": "Sweetener",
+    "description": "Sweetener",
+    "bounds": {
+     "x": 1347.6122,
+     "height": 27.504400000000032,
+     "y": 591.111,
+     "width": 117.25559999999996
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_14",
+    "role": "other",
+    "label": "Molding",
+    "description": "Molding",
+    "bounds": {
+     "x": 1359.8475,
+     "height": 29.25999999999999,
+     "y": 602.0450000000001,
+     "width": 92.78499999999997
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_15",
+    "role": "other",
+    "label": "/ˈməʊl.dɪŋ/",
+    "description": "/ˈməʊl.dɪŋ/",
+    "bounds": {
+     "x": 1377.1725000000001,
+     "height": 10.780000000000086,
+     "y": 649.785,
+     "width": 58.13499999999999
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_16",
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "description": "CHẠM ĐỂ LẬT",
+    "bounds": {
+     "x": 1378.4584,
+     "height": 8.131200000000035,
+     "y": 789.6786,
+     "width": 55.563199999999995
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_17",
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "description": "CHẠM ĐỂ LẬT",
+    "bounds": {
+     "x": 1376.5642,
+     "height": 8.685600000000022,
+     "y": 827.0698,
+     "width": 59.35160000000002
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "id": "elem_18",
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "description": "CHẠM ĐỂ LẬT",
+    "bounds": {
+     "x": 1374.67,
+     "height": 9.240000000000009,
+     "y": 867.695,
+     "width": 63.139999999999986
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "is_selected": false,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   },
+   {
+    "value": "Gramify",
+    "id": "elem_28",
+    "role": "other",
+    "label": "Gramify",
+    "bounds": {
+     "x": 1094,
+     "height": 17.310546875,
+     "y": 69.689453125,
+     "width": 56
+    },
+    "is_actionable": false,
+    "is_enabled": true,
+    "ax_role": "AXStaticText",
+    "role_description": "text"
+   }
+  ],
+  "is_dialog": false,
+  "window_title": "Gramify",
+  "focused_element": {
+   "processIdentifier": 98192,
+   "windowID": 3957,
+   "role": "AXGroup",
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ]
+  },
+  "capture_mode": "window"
+ },
+ "target_receipt": {
+  "pid": 98192,
+  "window_id": 3957,
+  "process_start_identity": 1791390537574409,
+  "process_start_identity_decimal": "1791390537574409"
+ },
+ "success": true
+}

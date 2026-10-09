@@ -1,0 +1,1487 @@
+{
+ "data": {
+  "used_cache": false,
+  "element_count": 85,
+  "is_dialog": false,
+  "interactable_count": 30,
+  "window_title": "Gramify",
+  "semantic_scope": "exact_or_requested",
+  "ui_elements": [
+   {
+    "role_description": "back button",
+    "ax_role": "AXButton",
+    "identifier": "BackButton",
+    "id": "elem_5",
+    "label": "Học flashcard",
+    "description": "Học flashcard",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 33.879999999999995,
+     "height": 33.87999999999988,
+     "y": 110.40000000000009,
+     "x": 1019.7
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_7",
+    "label": "Thêm",
+    "description": "Thêm",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "height": 27.720000000000027,
+     "width": 27.720000000000027,
+     "x": 1761.98,
+     "y": 113.48000000000002
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_23",
+    "label": "Ôn tập (10)",
+    "description": "Ôn tập (10)",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "height": 35.41999999999996,
+     "width": 369.59999999999997,
+     "x": 1030.48,
+     "y": 369.12
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_24",
+    "label": "Flow Letter",
+    "description": "Flow Letter",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "height": 35.41999999999996,
+     "width": 369.59999999999997,
+     "x": 1412.4,
+     "y": 369.12
+    }
+   },
+   {
+    "is_value_settable": false,
+    "role_description": "pop up button",
+    "ax_role": "AXPopUpButton",
+    "id": "elem_30",
+    "label": "Newest",
+    "description": "Newest",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "height": 23.870000000000005,
+     "width": 66.22,
+     "x": 1030.48,
+     "y": 490.01
+    }
+   },
+   {
+    "is_value_settable": false,
+    "role_description": "pop up button",
+    "ax_role": "AXPopUpButton",
+    "id": "elem_31",
+    "label": "Filters",
+    "description": "Filters",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "height": 23.870000000000005,
+     "width": 56.59500000000003,
+     "x": 1725.405,
+     "y": 490.01
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_34",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.4849999999999,
+     "y": 535.44,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_40",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 622.065,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_46",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 708.69,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_52",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 795.315,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_58",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 881.94,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_63",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 959.325,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_69",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.485000000000014,
+     "y": 1045.95,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "speaker.wave.2.fill",
+    "id": "elem_74",
+    "label": "Âm Lượng Cao",
+    "description": "Âm Lượng Cao",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.335000000000036,
+     "height": 23.4849999999999,
+     "y": 1123.335,
+     "x": 1708.85
+    }
+   },
+   {
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "identifier": "magnifyingglass",
+    "id": "elem_78",
+    "label": "Tìm Kiếm",
+    "description": "Tìm Kiếm",
+    "role": "button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 27.720000000000027,
+     "height": 27.719999999999914,
+     "y": 1108.3200000000002,
+     "x": 1754.28
+    }
+   },
+   {
+    "role_description": "close button",
+    "ax_role": "AXButton",
+    "id": "elem_79",
+    "label": "close button",
+    "is_enabled": true,
+    "role": "button",
+    "is_actionable": true,
+    "bounds": {
+     "height": 16,
+     "width": 16,
+     "x": 1020,
+     "y": 71
+    }
+   },
+   {
+    "role_description": "full screen button",
+    "ax_role": "AXButton",
+    "help": "this button also has an action to zoom the window",
+    "id": "elem_80",
+    "label": "full screen button",
+    "is_enabled": true,
+    "role": "button",
+    "is_actionable": true,
+    "bounds": {
+     "height": 16,
+     "width": 16,
+     "x": 1066,
+     "y": 71
+    }
+   },
+   {
+    "role_description": "minimize button",
+    "ax_role": "AXButton",
+    "id": "elem_83",
+    "label": "minimize button",
+    "is_enabled": true,
+    "role": "button",
+    "is_actionable": true,
+    "bounds": {
+     "height": 16,
+     "width": 16,
+     "x": 1043,
+     "y": 71
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "fork.knife",
+    "id": "elem_11",
+    "label": "Đồ Ăn",
+    "description": "Đồ Ăn",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 15.014999999999986,
+     "height": 25.02500000000009,
+     "y": 182.77999999999997,
+     "x": 1398.925
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "sparkles",
+    "id": "elem_14",
+    "label": "Tia Lửa",
+    "description": "Tia Lửa",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 10.009999999999991,
+     "height": 12.32000000000005,
+     "y": 309.05999999999995,
+     "x": 1322.31
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "book.fill",
+    "id": "elem_16",
+    "label": "Dấu Trang",
+    "description": "Dấu Trang",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 12.319999999999993,
+     "height": 10.009999999999991,
+     "y": 310.21500000000003,
+     "x": 1395.075
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "clock.arrow.circlepath",
+    "id": "elem_18",
+    "label": "Đồng Hồ Với Mũi Tên Hình Tròn",
+    "description": "Đồng Hồ Với Mũi Tên Hình Tròn",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 11.935000000000002,
+     "height": 10.779999999999973,
+     "y": 309.83000000000004,
+     "x": 1462.065
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_36",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999882,
+     "y": 554.69,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_42",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 641.315,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_48",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 727.94,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_54",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 814.565,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_60",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 896.57,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_65",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 978.575,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_71",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.629999999999995,
+     "y": 1060.58,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "image",
+    "ax_role": "AXImage",
+    "identifier": "trash.fill",
+    "id": "elem_76",
+    "label": "Thùng Rác",
+    "description": "Thùng Rác",
+    "role": "image",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "bounds": {
+     "width": 13.090000000000032,
+     "height": 14.63000000000011,
+     "y": 1137.965,
+     "x": 1797.7849999999999
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_1",
+    "label": "group",
+    "role": "group",
+    "is_actionable": false,
+    "bounds": {
+     "height": 1051,
+     "width": 788,
+     "x": 1012,
+     "y": 95
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_2",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 1051.82,
+     "width": 788.48,
+     "x": 1012,
+     "y": 95
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_3",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 1051.82,
+     "width": 788.48,
+     "x": 1012,
+     "y": 95
+    }
+   },
+   {
+    "role_description": "Nav bar",
+    "ax_role": "AXGroup",
+    "identifier": "_TtGC7SwiftUI32NavigationStackHosting",
+    "id": "elem_4",
+    "label": "Nav bar",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 41.57999999999993,
+     "width": 788.48,
+     "x": 1012,
+     "y": 110.40000000000009
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_8",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 1051.82,
+     "width": 788.48,
+     "x": 1012,
+     "y": 95
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_9",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 1051.82,
+     "width": 788.48,
+     "x": 1012,
+     "y": 95
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_10",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 1270.5,
+     "width": 788.48,
+     "x": 1012,
+     "y": 151.98000000000002
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_32",
+    "label": "group",
+    "is_enabled": true,
+    "role": "group",
+    "is_selected": false,
+    "is_actionable": false,
+    "bounds": {
+     "height": 631.3999999999999,
+     "width": 768.075,
+     "x": 1042.8,
+     "y": 535.44
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_81",
+    "label": "group",
+    "role": "group",
+    "is_actionable": false,
+    "bounds": {
+     "height": 14,
+     "width": 14,
+     "x": 1067,
+     "y": 72
+    }
+   },
+   {
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_82",
+    "label": "group",
+    "role": "group",
+    "is_actionable": false,
+    "bounds": {
+     "height": 14,
+     "width": 14,
+     "x": 1067,
+     "y": 72
+    }
+   },
+   {
+    "role_description": "standard window",
+    "ax_role": "AXWindow",
+    "identifier": "SceneWindow",
+    "title": "Gramify",
+    "id": "elem_0",
+    "label": "Gramify",
+    "role": "other",
+    "is_actionable": false,
+    "bounds": {
+     "width": 788,
+     "height": 1083,
+     "y": 63,
+     "x": 1012
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_6",
+    "label": "Nấu ăn & Ẩm thực",
+    "description": "Nấu ăn & Ẩm thực",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.169999999999845,
+     "width": 105.10500000000002,
+     "x": 1353.495,
+     "y": 119.25500000000011
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_12",
+    "label": "Nấu ăn & Ẩm thực",
+    "description": "Nấu ăn & Ẩm thực",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 26.950000000000045,
+     "width": 185.95500000000004,
+     "x": 1313.2625,
+     "y": 232.05999999999995
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_13",
+    "label": "Từ vựng về nấu ăn, ẩm thực",
+    "description": "Từ vựng về nấu ăn, ẩm thực",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.8599999999999,
+     "width": 135.51999999999998,
+     "x": 1338.48,
+     "y": 265.1700000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_15",
+    "label": "10",
+    "description": "10",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 23.09999999999991,
+     "width": 20.79000000000002,
+     "x": 1336.3625,
+     "y": 303.6700000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_17",
+    "label": "0",
+    "description": "0",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 23.09999999999991,
+     "width": 13.090000000000032,
+     "x": 1411.4375,
+     "y": 303.6700000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_19",
+    "label": "0",
+    "description": "0",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 23.09999999999991,
+     "width": 13.089999999999975,
+     "x": 1477.6575,
+     "y": 303.6700000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_20",
+    "label": "Mới",
+    "description": "Mới",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 16.55499999999995,
+     "x": 1330.78,
+     "y": 332.93000000000006
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_21",
+    "label": "Đang học",
+    "description": "Đang học",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 42.35000000000002,
+     "x": 1387.9524999999999,
+     "y": 332.93000000000006
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_22",
+    "label": "Ôn tập",
+    "description": "Ôn tập",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 30.414999999999964,
+     "x": 1461.1025,
+     "y": 332.93000000000006
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_25",
+    "label": "Deck Progress",
+    "description": "Deck Progress",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.8599999999999,
+     "width": 75.845,
+     "x": 1030.48,
+     "y": 429.18000000000006
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_26",
+    "label": "10 cards",
+    "description": "10 cards",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.8599999999999,
+     "width": 43.504999999999995,
+     "x": 1738.495,
+     "y": 429.18000000000006
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_27",
+    "label": "Mới",
+    "description": "Mới",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 16.169999999999998,
+     "x": 1041.26,
+     "y": 469.22
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_28",
+    "label": "Đang học",
+    "description": "Đang học",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 42.349999999999994,
+     "x": 1080.53,
+     "y": 469.22
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_29",
+    "label": "Ôn tập",
+    "description": "Ôn tập",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 11.549999999999955,
+     "width": 30.41500000000002,
+     "x": 1145.98,
+     "y": 469.22
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_33",
+    "label": "Guava",
+    "description": "Guava",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.169999999999845,
+     "width": 38.5,
+     "x": 1042.8,
+     "y": 539.0975000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_35",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 542.9475
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_37",
+    "label": "Một loại cây hoặc bụi cây nhiệt đới cho quả ngọt.",
+    "description": "Một loại cây hoặc bụi cây nhiệt đới cho quả ngọt.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.8599999999999,
+     "width": 247.17000000000002,
+     "x": 1042.8,
+     "y": 565.085
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_38",
+    "label": "/ˈɡwɑvə/",
+    "description": "/ˈɡwɑvə/",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 7.699999999999932,
+     "width": 28.49,
+     "x": 1042.8,
+     "y": 580.485
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_39",
+    "label": "Blitz",
+    "description": "Blitz",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.170000000000073,
+     "width": 25.794999999999998,
+     "x": 1042.8,
+     "y": 625.7225
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_41",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 629.5725
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_43",
+    "label": "Một cuộc tấn công bất ngờ, áp đảo, đặc biệt là cuộc không kích.",
+    "description": "Một cuộc tấn công bất ngờ, áp đảo, đặc biệt là cuộc không kích.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 325.71,
+     "x": 1042.8,
+     "y": 651.71
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_44",
+    "label": "/blɪts/",
+    "description": "/blɪts/",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 7.7000000000000455,
+     "width": 18.48,
+     "x": 1042.8,
+     "y": 667.11
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_45",
+    "label": "Melon",
+    "description": "Melon",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.170000000000073,
+     "width": 37.345,
+     "x": 1042.8,
+     "y": 712.3475
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_47",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 716.1975
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_49",
+    "label": "Một loại trái cây lớn, tròn với vỏ cứng và thịt ngọt, mọng nước, như dưa hấu hoặc dưa lưới.",
+    "description": "Một loại trái cây lớn, tròn với vỏ cứng và thịt ngọt, mọng nước, như dưa hấu hoặc dưa lưới.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 447.755,
+     "x": 1042.8,
+     "y": 738.335
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_50",
+    "label": "/ˈmɛlən/",
+    "description": "/ˈmɛlən/",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 7.7000000000000455,
+     "width": 26.565,
+     "x": 1042.8,
+     "y": 753.735
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_51",
+    "label": "Flabby",
+    "description": "Flabby",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.170000000000073,
+     "width": 41.19500000000001,
+     "x": 1042.8,
+     "y": 798.9725
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_53",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 802.8225
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_55",
+    "label": "Mềm, lỏng lẻo và không săn chắc, thường dùng để chỉ các bộ phận cơ thể thiếu cơ bắp.",
+    "description": "Mềm, lỏng lẻo và không săn chắc, thường dùng để chỉ các bộ phận cơ thể thiếu cơ bắp.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 439.67,
+     "x": 1042.8,
+     "y": 824.96
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_56",
+    "label": "/ˈflæb.i/",
+    "description": "/ˈflæb.i/",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 7.7000000000000455,
+     "width": 24.639999999999997,
+     "x": 1042.8,
+     "y": 840.36
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_57",
+    "label": "Watermelons",
+    "description": "Watermelons",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.170000000000073,
+     "width": 80.08,
+     "x": 1042.8,
+     "y": 885.5975
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_59",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 889.4475
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_61",
+    "label": "Một loại cây thân leo lớn, tròn hoặc bầu dục màu xanh lá cây, cho ra quả ngọt và mọng nước.",
+    "description": "Một loại cây thân leo lớn, tròn hoặc bầu dục màu xanh lá cây, cho ra quả ngọt và mọng nước.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 462.385,
+     "x": 1042.8,
+     "y": 911.585
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_62",
+    "label": "Bakes",
+    "description": "Bakes",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.16999999999996,
+     "width": 36.575,
+     "x": 1042.8,
+     "y": 962.9825000000001
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_64",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 966.8325
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_66",
+    "label": "Nấu thức ăn bằng nhiệt khô, đặc biệt là trong lò nướng (ngôi thứ ba số ít hiện tại).",
+    "description": "Nấu thức ăn bằng nhiệt khô, đặc biệt là trong lò nướng (ngôi thứ ba số ít hiện tại).",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 403.865,
+     "x": 1042.8,
+     "y": 988.97
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_67",
+    "label": "/beɪks/",
+    "description": "/beɪks/",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 7.7000000000000455,
+     "width": 22.715,
+     "x": 1042.8,
+     "y": 1004.37
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_68",
+    "label": "Waffles",
+    "description": "Waffles",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.16999999999996,
+     "width": 46.2,
+     "x": 1042.8,
+     "y": 1049.6075
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_70",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 1053.4575
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_72",
+    "label": "Số nhiều của 'waffle': những chiếc bánh dẹt, giòn với hoa văn hình vuông, thường ăn kèm với si-rô hoặc trái cây.",
+    "description": "Số nhiều của 'waffle': những chiếc bánh dẹt, giòn với hoa văn hình vuông, thường ăn kèm với si-rô hoặc trái cây.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.860000000000014,
+     "width": 559.0200000000001,
+     "x": 1042.8,
+     "y": 1075.595
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_73",
+    "label": "Caramelized",
+    "description": "Caramelized",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 16.170000000000073,
+     "width": 75.46000000000001,
+     "x": 1042.8,
+     "y": 1126.9925
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_75",
+    "label": "MỚI",
+    "description": "MỚI",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 8.470000000000027,
+     "width": 15.014999999999986,
+     "x": 1748.505,
+     "y": 1130.8425
+    }
+   },
+   {
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_77",
+    "label": "Biến đường thành caramel bằng cách đun nóng, thường cho đến khi nó chuyển màu nâu và ngọt.",
+    "description": "Biến đường thành caramel bằng cách đun nóng, thường cho đến khi nó chuyển màu nâu và ngọt.",
+    "role": "other",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "bounds": {
+     "height": 13.8599999999999,
+     "width": 485.48499999999996,
+     "x": 1042.8,
+     "y": 1152.98
+    }
+   },
+   {
+    "ax_role": "AXStaticText",
+    "role_description": "text",
+    "id": "elem_84",
+    "label": "Gramify",
+    "is_enabled": true,
+    "role": "other",
+    "value": "Gramify",
+    "is_actionable": false,
+    "bounds": {
+     "height": 17.310546875,
+     "width": 56,
+     "x": 1094,
+     "y": 69.689453125
+    }
+   }
+  ],
+  "execution_time": 0.3430190086364746,
+  "mutation_targeting_available": true,
+  "snapshot_reusable": true,
+  "snapshot_id": "ps1_6e23824dc5ddf552aba8a2849bb0be14",
+  "capture_mode": "window",
+  "application_name": "GramaGo",
+  "focused_element": {
+   "role": "AXGroup",
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ],
+   "windowID": 3957,
+   "processIdentifier": 98192
+  }
+ },
+ "target_receipt": {
+  "process_start_identity": 1791390537574409,
+  "process_start_identity_decimal": "1791390537574409",
+  "pid": 98192,
+  "window_id": 3957
+ },
+ "success": true
+}

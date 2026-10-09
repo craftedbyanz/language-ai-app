@@ -1,0 +1,48 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 37
+⚙️  Interactable elements: 11
+⏱️  Execution time: 0.18s
+
+Accessibility Tree
+  elem_5 [button] Back
+  elem_13 [button] CẤP ĐỘ, A1
+  elem_25 [button] Bắt đầu
+  elem_27 [button] Bắt đầu
+  elem_29 [button] Bắt đầu
+  elem_31 [button] close button
+  elem_32 [button] full screen button
+  elem_35 [button] minimize button
+  elem_26 [image] Chiếc Lá
+  elem_28 [image] Cây, Được Tô Kín
+  elem_30 [image] Lá Cây Với Mũi Tên Đi Theo Đường Tròn
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] Nav bar
+  elem_7 [group] group
+  elem_8 [group] group
+  elem_14 [group] group
+  elem_15 [group] group
+  elem_33 [group] group
+  elem_34 [group] group
+  elem_0 [other] Gramify
+  elem_6 [other] Bài học
+  elem_9 [other] BỘ SƯU TẬP
+  elem_10 [other] Nghệ thuật và thủ công
+  elem_11 [other] .
+  elem_12 [other] Tìm hiểu về các ngành nghề thủ công và nghệ thuật truyền thống.
+  elem_16 [other] Vườn nho núi lửa Lanzarote
+  elem_17 [other] 01
+  elem_18 [other] Rừng sồi bần ở Alentejo
+  elem_19 [other] 02
+  elem_20 [other] Vườn gia vị ở Grenada
+  elem_21 [other] 03
+  elem_22 [other] Khám phá cách những người nông dân trồng nho trên đất núi lửa.
+  elem_23 [other] Tìm hiểu về nghề thu hoạch vỏ cây sồi bần tại vùng Alentejo.
+  elem_24 [other] Khám phá các loại gia vị tươi ngon tại những khu vườn trên đảo.
+  elem_36 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_d6bf46f57b0cf37bd7364cb2c484d70b
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

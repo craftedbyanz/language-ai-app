@@ -1,0 +1,32 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 20
+⚙️  Interactable elements: 8
+⏱️  Execution time: 0.11s
+
+Accessibility Tree
+  elem_6 [button] Đóng
+  elem_7 [button] Thêm value_settable=false
+  elem_11 [button] Hoàn Tác disabled
+  elem_13 [button] Chuyển Tiếp
+  elem_14 [button] close button
+  elem_15 [button] full screen button
+  elem_18 [button] minimize button
+  elem_10 [textField] We is friend since small. value="We is friend since small." value_settable=true
+  elem_9 [image] Hai Mũi Tên Có Đầu Hình Tam Giác Đang Hoán Đổi Vị Trí
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] group
+  elem_5 [group] group
+  elem_12 [group] group
+  elem_16 [group] group
+  elem_17 [group] group
+  elem_0 [other] Gramify
+  elem_8 [other] Chúng tôi là bạn từ khi còn nhỏ.
+  elem_19 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_c869c4f78013fffc28023872f4f6e33a
+Target receipt: pid=580 process_start_identity=1791511541909323 window_id=10211
+Agent: Use a tool like view_image to inspect it.

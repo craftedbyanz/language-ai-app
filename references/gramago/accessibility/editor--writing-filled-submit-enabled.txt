@@ -1,0 +1,43 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 31
+⚙️  Interactable elements: 11
+⚠️  Warning: AX tree incomplete at incomplete accessibility read. Retry once to obtain a fresh observation. If the exact target is a transient sheet without an independent AX-window identity, inspect its owning process or app tree for read-only dialog elements. Partial app-tree evidence does not provide a reusable snapshot or mutation authority. Use screenshot/OCR evidence for other persistent failures; increase the timeout only when the app is slow to respond.
+⏱️  Execution time: 0.22s
+
+Accessibility Tree
+  elem_6 [button] Đóng
+  elem_7 [button] Thêm value_settable=false
+  elem_12 [button] Hoàn Tác disabled
+  elem_14 [button] Chuyển Tiếp
+  elem_15 [button] close button
+  elem_16 [button] full screen button
+  elem_19 [button] minimize button
+  elem_9 [textField] Lanzarote là một hòn đảo rất xinh đẹp ở Tây Ban Nha. Mặt đất ở đây có tro và đá núi lửa đen. Những người nông dân trồng nho xanh trên đất tối màu này. Họ đào những cái hố nhỏ để bảo vệ cây non. Những bức tường đá thấp giúp ngăn luồng gió mạnh. Những tảng đá đen giúp giữ nước bên trong đất. Cảnh quan này trông giống như một cảnh trên mặt trăng. Nhiều người đến thăm nơi này để xem các vườn nho. Bạn có thể đi bộ qua những hàng nho xanh. Rượu vang từ những quả nho này có vị rất đặc biệt. value="Lanzarote là một hòn đảo rất xinh đẹp ở Tây Ban Nha. Mặt đất ở đây có tro và đá núi lửa đen. Những người nông dân trồng nho xanh trên đất tối màu này. Họ đào những cái hố nhỏ để bảo vệ cây non. Những bức tường đá thấp giúp ngăn luồng gió mạnh. Những tảng đá đen giúp giữ nước bên trong đất. Cảnh quan này trông giống như một cảnh trên mặt trăng. Nhiều người đến thăm nơi này để xem các vườn nho. Bạn có thể đi bộ qua những hàng nho xanh. Rượu vang từ những quả nho này có vị rất đặc biệt. " value_settable=false
+  elem_11 [textField] Lanzarote is a beautiful island in Spain. value="Lanzarote is a beautiful island in Spain. " value_settable=true
+  menuitem_29 [textField] search text field value="" value_settable=true
+  elem_10 [image] Hai Mũi Tên Có Đầu Hình Tam Giác Đang Hoán Đổi Vị Trí
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_4 [group] group
+  elem_5 [group] group
+  elem_13 [group] group
+  elem_17 [group] group
+  elem_18 [group] group
+  menuitem_21 [menu] menu bar
+  elem_0 [other] Gramify
+  elem_8 [other] THE VOLCANIC VINEYARDS OF LANZAROTE
+  elem_20 [other] Gramify value="Gramify"
+  menuitem_22 [other] Apple
+  menuitem_23 [other] Gramify
+  menuitem_24 [other] File
+  menuitem_25 [other] Edit
+  menuitem_26 [other] View
+  menuitem_27 [other] Window
+  menuitem_28 [other] Help
+  menuitem_30 [other] search result
+
+Snapshot ID: ps1_b52da13eab39c87a40cfa7bfdf8b4325
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

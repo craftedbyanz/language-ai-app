@@ -1,0 +1,403 @@
+{
+ "success": true,
+ "target_receipt": {
+  "process_start_identity_decimal": "1791390537574409",
+  "pid": 98192,
+  "window_id": 3957,
+  "process_start_identity": 1791390537574409
+ },
+ "data": {
+  "snapshot_id": "ps1_2fd03097b7dc9967ed0d7bf5c6aa7565",
+  "focused_element": {
+   "windowID": 3957,
+   "role": "AXTextArea",
+   "frame": [
+    [
+     1024.32,
+     632.46
+    ],
+    [
+     763.8399999999999,
+     460.46000000000004
+    ]
+   ],
+   "processIdentifier": 98192
+  },
+  "semantic_scope": "exact_or_requested",
+  "is_dialog": false,
+  "window_title": "Gramify",
+  "interactable_count": 8,
+  "ui_elements": [
+   {
+    "is_actionable": true,
+    "role": "button",
+    "is_enabled": true,
+    "description": "Đóng",
+    "ax_role": "AXButton",
+    "label": "Đóng",
+    "identifier": "xmark",
+    "id": "elem_6",
+    "bounds": {
+     "y": 120.02500000000009,
+     "width": 16.169999999999998,
+     "height": 14.629999999999882,
+     "x": 1031.635
+    },
+    "role_description": "button",
+    "is_selected": false
+   },
+   {
+    "is_actionable": true,
+    "role": "button",
+    "is_enabled": true,
+    "description": "Thêm",
+    "ax_role": "AXPopUpButton",
+    "label": "Thêm",
+    "bounds": {
+     "height": 30.799999999999955,
+     "y": 111.94000000000005,
+     "x": 1757.3600000000001,
+     "width": 30.799999999999955
+    },
+    "id": "elem_7",
+    "is_value_settable": false,
+    "role_description": "pop up button",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "button",
+    "is_enabled": false,
+    "description": "Hoàn Tác",
+    "ax_role": "AXButton",
+    "label": "Hoàn Tác",
+    "identifier": "arrow.uturn.backward",
+    "id": "elem_13",
+    "bounds": {
+     "y": 1109.475,
+     "width": 33.495000000000005,
+     "height": 26.56499999999994,
+     "x": 1030.48
+    },
+    "role_description": "button",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "button",
+    "is_enabled": false,
+    "description": "Chuyển Tiếp",
+    "ax_role": "AXButton",
+    "label": "Chuyển Tiếp",
+    "identifier": "chevron.right",
+    "id": "elem_15",
+    "bounds": {
+     "y": 1109.2825,
+     "width": 26.949999999999932,
+     "height": 26.950000000000045,
+     "x": 1755.0500000000002
+    },
+    "role_description": "button",
+    "is_selected": false
+   },
+   {
+    "is_actionable": true,
+    "role": "button",
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "label": "close button",
+    "bounds": {
+     "height": 16,
+     "y": 71,
+     "x": 1020,
+     "width": 16
+    },
+    "id": "elem_16",
+    "role_description": "close button"
+   },
+   {
+    "is_actionable": true,
+    "role": "button",
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "label": "full screen button",
+    "bounds": {
+     "height": 16,
+     "y": 71,
+     "x": 1066,
+     "width": 16
+    },
+    "id": "elem_17",
+    "role_description": "full screen button",
+    "help": "this button also has an action to zoom the window"
+   },
+   {
+    "is_actionable": true,
+    "role": "button",
+    "is_enabled": true,
+    "ax_role": "AXButton",
+    "label": "minimize button",
+    "bounds": {
+     "height": 16,
+     "y": 71,
+     "x": 1043,
+     "width": 16
+    },
+    "id": "elem_20",
+    "role_description": "minimize button"
+   },
+   {
+    "is_actionable": true,
+    "role": "textField",
+    "is_enabled": true,
+    "ax_role": "AXTextArea",
+    "is_value_settable": false,
+    "label": "Lanzarote là một hòn đảo rất xinh đẹp ở Tây Ban Nha. Mặt đất ở đây có tro và đá núi lửa đen. Những người nông dân trồng nho xanh trên đất tối màu này. Họ đào những cái hố nhỏ để bảo vệ cây non. Những bức tường đá thấp giúp ngăn luồng gió mạnh. Những tảng đá đen giúp giữ nước bên trong đất. Cảnh quan này trông giống như một cảnh trên mặt trăng. Nhiều người đến thăm nơi này để xem các vườn nho. Bạn có thể đi bộ qua những hàng nho xanh. Rượu vang từ những quả nho này có vị rất đặc biệt.",
+    "bounds": {
+     "height": 429.65999999999997,
+     "y": 181.24,
+     "x": 1039.72,
+     "width": 733.04
+    },
+    "value": "Lanzarote là một hòn đảo rất xinh đẹp ở Tây Ban Nha. Mặt đất ở đây có tro và đá núi lửa đen. Những người nông dân trồng nho xanh trên đất tối màu này. Họ đào những cái hố nhỏ để bảo vệ cây non. Những bức tường đá thấp giúp ngăn luồng gió mạnh. Những tảng đá đen giúp giữ nước bên trong đất. Cảnh quan này trông giống như một cảnh trên mặt trăng. Nhiều người đến thăm nơi này để xem các vườn nho. Bạn có thể đi bộ qua những hàng nho xanh. Rượu vang từ những quả nho này có vị rất đặc biệt. ",
+    "id": "elem_9",
+    "role_description": "text entry area",
+    "is_selected": false
+   },
+   {
+    "is_actionable": true,
+    "role": "textField",
+    "is_enabled": true,
+    "ax_role": "AXTextArea",
+    "is_value_settable": true,
+    "label": "text entry area",
+    "bounds": {
+     "height": 460.46000000000004,
+     "y": 632.46,
+     "x": 1024.32,
+     "width": 763.8399999999999
+    },
+    "id": "elem_11",
+    "role_description": "text entry area",
+    "selected_text_range": {
+     "length": 0,
+     "location": 0
+    },
+    "is_selected": false
+   },
+   {
+    "is_actionable": true,
+    "role": "image",
+    "is_enabled": true,
+    "description": "Hai Mũi Tên Có Đầu Hình Tam Giác Đang Hoán Đổi Vị Trí",
+    "ax_role": "AXImage",
+    "label": "Hai Mũi Tên Có Đầu Hình Tam Giác Đang Hoán Đổi Vị Trí",
+    "identifier": "arrow.trianglehead.swap",
+    "id": "elem_10",
+    "bounds": {
+     "y": 622.45,
+     "width": 14.629999999999995,
+     "height": 14.245000000000005,
+     "x": 1398.925
+    },
+    "role_description": "image",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 1051,
+     "y": 95,
+     "x": 1012,
+     "width": 788
+    },
+    "id": "elem_1",
+    "role_description": "group"
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "is_enabled": true,
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012,
+     "width": 788.48
+    },
+    "id": "elem_2",
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "is_enabled": true,
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012,
+     "width": 788.48
+    },
+    "id": "elem_3",
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "is_enabled": true,
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012,
+     "width": 788.48
+    },
+    "id": "elem_4",
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "is_enabled": true,
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012,
+     "width": 788.48
+    },
+    "id": "elem_5",
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "is_enabled": true,
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 28.489999999999895,
+     "y": 1108.705,
+     "x": 1073.215,
+     "width": 325.71000000000004
+    },
+    "id": "elem_14",
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 14,
+     "y": 72,
+     "x": 1067,
+     "width": 14
+    },
+    "id": "elem_18",
+    "role_description": "group"
+   },
+   {
+    "is_actionable": false,
+    "role": "group",
+    "ax_role": "AXGroup",
+    "label": "group",
+    "bounds": {
+     "height": 14,
+     "y": 72,
+     "x": 1067,
+     "width": 14
+    },
+    "id": "elem_19",
+    "role_description": "group"
+   },
+   {
+    "title": "Gramify",
+    "is_actionable": false,
+    "role": "other",
+    "ax_role": "AXWindow",
+    "label": "Gramify",
+    "identifier": "SceneWindow",
+    "id": "elem_0",
+    "bounds": {
+     "y": 63,
+     "width": 788,
+     "height": 1083,
+     "x": 1012
+    },
+    "role_description": "standard window"
+   },
+   {
+    "is_actionable": false,
+    "role": "other",
+    "is_enabled": true,
+    "description": "THE VOLCANIC VINEYARDS OF LANZAROTE",
+    "ax_role": "AXStaticText",
+    "label": "THE VOLCANIC VINEYARDS OF LANZAROTE",
+    "bounds": {
+     "height": 7.7000000000000455,
+     "y": 148.89999999999998,
+     "x": 1319.615,
+     "width": 173.25
+    },
+    "id": "elem_8",
+    "role_description": "text",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "other",
+    "is_enabled": true,
+    "description": "Nhập bản dịch của bạn...",
+    "ax_role": "AXStaticText",
+    "label": "Nhập bản dịch của bạn...",
+    "bounds": {
+     "height": 18.480000000000018,
+     "y": 853.45,
+     "x": 1320.77,
+     "width": 170.94000000000005
+    },
+    "id": "elem_12",
+    "role_description": "text",
+    "is_selected": false
+   },
+   {
+    "is_actionable": false,
+    "role": "other",
+    "is_enabled": true,
+    "ax_role": "AXStaticText",
+    "label": "Gramify",
+    "bounds": {
+     "height": 17.310546875,
+     "y": 69.689453125,
+     "x": 1094,
+     "width": 56
+    },
+    "value": "Gramify",
+    "id": "elem_21",
+    "role_description": "text"
+   }
+  ],
+  "mutation_targeting_available": true,
+  "used_cache": false,
+  "element_count": 22,
+  "capture_mode": "window",
+  "snapshot_reusable": true,
+  "application_name": "GramaGo",
+  "execution_time": 0.19428396224975586
+ }
+}

@@ -1,0 +1,44 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 33
+⚙️  Interactable elements: 7
+⏱️  Execution time: 0.15s
+
+Accessibility Tree
+  elem_4 [button] Quay Lại
+  elem_24 [button] Gợi ý
+  elem_25 [button] Xoay
+  elem_26 [button] Bỏ qua
+  elem_28 [button] close button
+  elem_29 [button] full screen button
+  elem_31 [button] minimize button
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_15 [group] group
+  elem_30 [group] group
+  elem_0 [other] Gramify
+  elem_5 [other] LEVEL 1
+  elem_6 [other] 1/10
+  elem_7 [other] Nấu ăn & Ẩm thực
+  elem_8 [other] D
+  elem_9 [other] N
+  elem_10 [other] O
+  elem_11 [other] G
+  elem_12 [other] M
+  elem_13 [other] I
+  elem_14 [other] L
+  elem_16 [other] D
+  elem_17 [other] N
+  elem_18 [other] O
+  elem_19 [other] G
+  elem_20 [other] M
+  elem_21 [other] I
+  elem_22 [other] L
+  elem_23 [other] ← Vuốt ngang để xem các chữ →
+  elem_27 [other] Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).
+  elem_32 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_e10c2bc757d698458d7ed9b8b0647886
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

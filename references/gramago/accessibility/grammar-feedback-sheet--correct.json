@@ -1,0 +1,554 @@
+{
+  "success" : true,
+  "target_receipt" : {
+    "process_start_identity" : 1791511541909323,
+    "window_id" : 10211,
+    "process_start_identity_decimal" : "1791511541909323",
+    "pid" : 580
+  },
+  "debug_logs" : [
+    "[2026-10-09T02:12:35.063Z] DEBUG: Runtime host: remote onDemand via \/Users\/payx-an.nguyen2\/Library\/Application Support\/Peekaboo\/daemon-e854978f5f9287d2.sock (build 4.9.0 (4.9.0))",
+    "[2026-10-09T02:12:35.063Z] VERBOSE [Operation]: Starting operation {mode=auto, annotate=false, menubar=false, hasAnalyzePrompt=false, app=GramaGo, operation=see_command}",
+    "[2026-10-09T02:12:35.063Z] VERBOSE [Performance]: Starting timer 'see_command'",
+    "[2026-10-09T02:12:35.080Z] VERBOSE [Capture]: Starting capture and detection phase",
+    "[2026-10-09T02:12:35.249Z] VERBOSE [Capture]: Capture completed successfully {snapshotId=ps1_02c0cf4346ae2466604a22ddff4c7072, elementCount=30, screenshotSize=0, observedFocus=rawTrue=1 rawFalse=29 rawUnknown=0 rawFocusedTypes=[group:1] rawResolver=unique cached=false partial=false truncated=false attached=true}"
+  ],
+  "data" : {
+    "focused_element" : {
+      "windowID" : 10211,
+      "role" : "AXGroup",
+      "processIdentifier" : 580,
+      "frame" : [
+        [
+          1012,
+          95
+        ],
+        [
+          788,
+          1051
+        ]
+      ]
+    },
+    "execution_time" : 0.18562495708465576,
+    "element_count" : 30,
+    "screenshot_raw" : "",
+    "interactable_count" : 11,
+    "ui_elements" : [
+      {
+        "is_actionable" : true,
+        "help" : "Double tap to dismiss sheet.",
+        "value" : "Collapsed",
+        "role_description" : "button",
+        "id" : "elem_4",
+        "bounds" : {
+          "height" : 18.480000000000018,
+          "y" : 625.53,
+          "x" : 1367.74,
+          "width" : 77
+        },
+        "label" : "Sheet Grabber",
+        "is_selected" : false,
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true,
+        "description" : "Sheet Grabber"
+      },
+      {
+        "is_actionable" : true,
+        "role_description" : "button",
+        "id" : "elem_14",
+        "bounds" : {
+          "width" : 96.25,
+          "height" : 11.934999999999945,
+          "y" : 784.9200000000001,
+          "x" : 1358.115
+        },
+        "label" : "Xem phân tích AI",
+        "is_selected" : false,
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true,
+        "description" : "Xem phân tích AI"
+      },
+      {
+        "is_actionable" : true,
+        "role_description" : "button",
+        "id" : "elem_15",
+        "bounds" : {
+          "width" : 409.64000000000004,
+          "height" : 40.039999999999964,
+          "y" : 825.73,
+          "x" : 1201.42
+        },
+        "label" : "Câu tiếp theo",
+        "is_selected" : false,
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true,
+        "description" : "Câu tiếp theo"
+      },
+      {
+        "is_actionable" : true,
+        "role_description" : "close button",
+        "id" : "elem_16",
+        "bounds" : {
+          "width" : 16,
+          "height" : 16,
+          "y" : 71,
+          "x" : 1020
+        },
+        "label" : "close button",
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : true,
+        "help" : "this button also has an action to zoom the window",
+        "role_description" : "full screen button",
+        "id" : "elem_17",
+        "bounds" : {
+          "width" : 16,
+          "height" : 16,
+          "y" : 71,
+          "x" : 1066
+        },
+        "label" : "full screen button",
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : true,
+        "role_description" : "minimize button",
+        "id" : "elem_20",
+        "bounds" : {
+          "width" : 16,
+          "height" : 16,
+          "y" : 71,
+          "x" : 1043
+        },
+        "label" : "minimize button",
+        "ax_role" : "AXButton",
+        "role" : "button",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : true,
+        "is_selected" : true,
+        "role_description" : "image",
+        "id" : "elem_8",
+        "bounds" : {
+          "height" : 25.410000000000082,
+          "y" : 649.4,
+          "x" : 1203.73,
+          "width" : 25.409999999999997
+        },
+        "label" : "Đã Chọn",
+        "identifier" : "checkmark.circle.fill",
+        "ax_role" : "AXImage",
+        "role" : "image",
+        "is_enabled" : true,
+        "description" : "Đã Chọn"
+      },
+      {
+        "is_actionable" : true,
+        "is_selected" : true,
+        "role_description" : "image",
+        "id" : "elem_10",
+        "bounds" : {
+          "height" : 9.240000000000009,
+          "y" : 705.61,
+          "x" : 1214.51,
+          "width" : 9.240000000000009
+        },
+        "label" : "Đã Chọn",
+        "identifier" : "checkmark.circle.fill",
+        "ax_role" : "AXImage",
+        "role" : "image",
+        "is_enabled" : true,
+        "description" : "Đã Chọn"
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_1",
+        "bounds" : {
+          "width" : 788,
+          "height" : 1051,
+          "y" : 95,
+          "x" : 1012
+        },
+        "label" : "group",
+        "ax_role" : "AXGroup",
+        "role" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_2",
+        "bounds" : {
+          "width" : 788.48,
+          "height" : 1051.82,
+          "y" : 95,
+          "x" : 1012
+        },
+        "label" : "group",
+        "is_selected" : false,
+        "ax_role" : "AXGroup",
+        "role" : "group",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_3",
+        "bounds" : {
+          "width" : 788.48,
+          "height" : 1051.82,
+          "y" : 95,
+          "x" : 1012
+        },
+        "label" : "group",
+        "is_selected" : false,
+        "ax_role" : "AXGroup",
+        "role" : "group",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : true,
+        "is_selected" : false,
+        "help" : "",
+        "role_description" : "group",
+        "id" : "elem_5",
+        "bounds" : {
+          "height" : 3155.46,
+          "y" : -956.8199999999997,
+          "x" : 223.51999999999998,
+          "width" : 2365.44
+        },
+        "label" : "group",
+        "identifier" : "PopoverDismissRegion",
+        "ax_role" : "AXGroup",
+        "role" : "group",
+        "is_enabled" : true,
+        "description" : ""
+      },
+      {
+        "is_actionable" : true,
+        "is_selected" : false,
+        "help" : "",
+        "role_description" : "group",
+        "id" : "elem_6",
+        "bounds" : {
+          "height" : 3155.46,
+          "y" : -956.8199999999997,
+          "x" : 223.51999999999998,
+          "width" : 2365.44
+        },
+        "label" : "group",
+        "identifier" : "PopoverDismissRegion",
+        "ax_role" : "AXGroup",
+        "role" : "group",
+        "is_enabled" : true,
+        "description" : ""
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_7",
+        "bounds" : {
+          "width" : 446.59999999999997,
+          "height" : 245.245,
+          "y" : 628.61,
+          "x" : 1182.94
+        },
+        "label" : "group",
+        "is_selected" : false,
+        "ax_role" : "AXGroup",
+        "role" : "group",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_18",
+        "bounds" : {
+          "width" : 14,
+          "height" : 14,
+          "y" : 72,
+          "x" : 1067
+        },
+        "label" : "group",
+        "ax_role" : "AXGroup",
+        "role" : "group"
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "group",
+        "id" : "elem_19",
+        "bounds" : {
+          "width" : 14,
+          "height" : 14,
+          "y" : 72,
+          "x" : 1067
+        },
+        "label" : "group",
+        "ax_role" : "AXGroup",
+        "role" : "group"
+      },
+      {
+        "is_actionable" : true,
+        "role_description" : "menu bar",
+        "id" : "menuitem_22",
+        "bounds" : {
+          "width" : 1800,
+          "height" : 39,
+          "y" : 0,
+          "x" : 0
+        },
+        "label" : "menu bar",
+        "is_selected" : false,
+        "ax_role" : "AXMenuBar",
+        "role" : "menu",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "standard window",
+        "title" : "Gramify",
+        "id" : "elem_0",
+        "label" : "Gramify",
+        "identifier" : "SceneWindow",
+        "ax_role" : "AXWindow",
+        "role" : "other",
+        "bounds" : {
+          "height" : 1083,
+          "y" : 63,
+          "x" : 1012,
+          "width" : 788
+        }
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "text",
+        "id" : "elem_9",
+        "bounds" : {
+          "width" : 78.15500000000003,
+          "height" : 20.019999999999982,
+          "y" : 652.095,
+          "x" : 1240.69
+        },
+        "label" : "Chính xác",
+        "is_selected" : false,
+        "ax_role" : "AXStaticText",
+        "role" : "other",
+        "is_enabled" : true,
+        "description" : "Chính xác"
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "text",
+        "id" : "elem_11",
+        "bounds" : {
+          "width" : 99.33000000000001,
+          "height" : 8.470000000000027,
+          "y" : 705.995,
+          "x" : 1229.14
+        },
+        "label" : "CÂU TRẢ LỜI CỦA BẠN",
+        "is_selected" : false,
+        "ax_role" : "AXStaticText",
+        "role" : "other",
+        "is_enabled" : true,
+        "description" : "CÂU TRẢ LỜI CỦA BẠN"
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "text",
+        "id" : "elem_12",
+        "bounds" : {
+          "width" : 295.295,
+          "height" : 16.16999999999996,
+          "y" : 723.32,
+          "x" : 1213.74
+        },
+        "label" : "We have been friends since we were children.",
+        "is_selected" : false,
+        "ax_role" : "AXStaticText",
+        "role" : "other",
+        "is_enabled" : true,
+        "description" : "We have been friends since we were children."
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "text",
+        "id" : "elem_13",
+        "bounds" : {
+          "width" : 232.15499999999997,
+          "height" : 11.549999999999955,
+          "y" : 767.21,
+          "x" : 1290.1625
+        },
+        "label" : "Xem phân tích chi tiết từ AI cho câu trả lời của bạn.",
+        "is_selected" : false,
+        "ax_role" : "AXStaticText",
+        "role" : "other",
+        "is_enabled" : true,
+        "description" : "Xem phân tích chi tiết từ AI cho câu trả lời của bạn."
+      },
+      {
+        "is_actionable" : false,
+        "value" : "Gramify",
+        "role_description" : "text",
+        "id" : "elem_21",
+        "bounds" : {
+          "width" : 56,
+          "height" : 17.310546875,
+          "y" : 69.689453125,
+          "x" : 1094
+        },
+        "label" : "Gramify",
+        "ax_role" : "AXStaticText",
+        "role" : "other",
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "role_description" : "menu bar item",
+        "title" : "Apple",
+        "id" : "menuitem_23",
+        "label" : "Apple",
+        "bounds" : {
+          "width" : 34,
+          "height" : 39,
+          "y" : 0,
+          "x" : 10
+        },
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "is_enabled" : true,
+        "is_selected" : false
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "Gramify",
+        "id" : "menuitem_24",
+        "label" : "Gramify",
+        "identifier" : "com.apple.menu.application",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 43,
+          "width" : 72
+        },
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "File",
+        "id" : "menuitem_25",
+        "label" : "File",
+        "identifier" : "com.apple.menu.file",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 114,
+          "width" : 42
+        },
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "Edit",
+        "id" : "menuitem_26",
+        "label" : "Edit",
+        "identifier" : "com.apple.menu.edit",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 155,
+          "width" : 45
+        },
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "View",
+        "id" : "menuitem_27",
+        "label" : "View",
+        "identifier" : "com.apple.menu.view",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 199,
+          "width" : 50
+        },
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "Window",
+        "id" : "menuitem_28",
+        "label" : "Window",
+        "identifier" : "com.apple.menu.window",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 248,
+          "width" : 69
+        },
+        "is_enabled" : true
+      },
+      {
+        "is_actionable" : false,
+        "is_selected" : false,
+        "role_description" : "menu bar item",
+        "title" : "Help",
+        "id" : "menuitem_29",
+        "label" : "Help",
+        "identifier" : "com.apple.menu.help",
+        "ax_role" : "AXMenuBarItem",
+        "role" : "other",
+        "bounds" : {
+          "height" : 39,
+          "y" : 0,
+          "x" : 316,
+          "width" : 49
+        },
+        "is_enabled" : true
+      }
+    ],
+    "used_cache" : false,
+    "application_name" : "GramaGo",
+    "snapshot_id" : "ps1_02c0cf4346ae2466604a22ddff4c7072",
+    "window_title" : "Gramify",
+    "screenshot_annotated" : "",
+    "semantic_scope" : "exact_or_requested",
+    "capture_mode" : "window",
+    "snapshot_reusable" : true,
+    "is_dialog" : false,
+    "ui_map" : "",
+    "mutation_targeting_available" : true
+  }
+}

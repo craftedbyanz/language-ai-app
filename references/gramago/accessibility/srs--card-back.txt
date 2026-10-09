@@ -1,0 +1,41 @@
+📱 Application: GramaGo
+[win] Window: Gramify
+🧊 Detection method: AXorcist
+📊 UI elements detected: 30
+⚙️  Interactable elements: 10
+⏱️  Execution time: 0.13s
+
+Accessibility Tree
+  elem_4 [button] Đóng
+  elem_5 [button] Thêm value_settable=false
+  elem_10 [button] Âm Lượng Cao
+  elem_21 [button] 1m, Học lại
+  elem_22 [button] 6m, Khó
+  elem_23 [button] 1d, Tốt
+  elem_24 [button] 4d, Dễ
+  elem_25 [button] close button
+  elem_26 [button] full screen button
+  elem_28 [button] minimize button
+  elem_1 [group] group
+  elem_2 [group] group
+  elem_3 [group] group
+  elem_27 [group] group
+  elem_0 [other] Gramify
+  elem_6 [other] Molding
+  elem_7 [other] Sweetener
+  elem_8 [other] Caramelized
+  elem_9 [other] VERB
+  elem_11 [other] Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).
+  elem_12 [other] To give something a particular shape or form, often using a mold.
+  elem_13 [other] VERB
+  elem_14 [other] NOUN
+  elem_15 [other] Caramelized
+  elem_16 [other] Sweetener
+  elem_17 [other] CHẠM ĐỂ LẬT
+  elem_18 [other] CHẠM ĐỂ LẬT
+  elem_19 [other] Ví dụ
+  elem_20 [other] "The artist was molding clay into a beautiful sculpture."
+  elem_29 [other] Gramify value="Gramify"
+
+Snapshot ID: ps1_9c5202e33804266d6cbaac22874b93ee
+Target receipt: pid=98192 process_start_identity=1791390537574409 window_id=3957

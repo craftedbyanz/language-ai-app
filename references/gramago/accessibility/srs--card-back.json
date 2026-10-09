@@ -1,0 +1,552 @@
+{
+ "data": {
+  "snapshot_reusable": true,
+  "execution_time": 0.1200261116027832,
+  "application_name": "GramaGo",
+  "focused_element": {
+   "windowID": 3957,
+   "role": "AXGroup",
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ],
+   "processIdentifier": 98192
+  },
+  "window_title": "Gramify",
+  "element_count": 31,
+  "interactable_count": 10,
+  "is_dialog": false,
+  "snapshot_id": "ps1_9de21abee1e07ddd18d5f7934bd6b5d6",
+  "mutation_targeting_available": true,
+  "capture_mode": "window",
+  "ui_elements": [
+   {
+    "is_selected": false,
+    "role": "button",
+    "identifier": "xmark",
+    "label": "Đóng",
+    "id": "elem_4",
+    "ax_role": "AXButton",
+    "bounds": {
+     "y": 120.02500000000009,
+     "x": 1031.635,
+     "width": 16.169999999999998,
+     "height": 14.629999999999882
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "Đóng",
+    "role_description": "button"
+   },
+   {
+    "is_selected": false,
+    "role": "button",
+    "label": "Thêm",
+    "id": "elem_5",
+    "ax_role": "AXPopUpButton",
+    "bounds": {
+     "width": 30.799999999999955,
+     "y": 111.94000000000005,
+     "x": 1757.3600000000001,
+     "height": 30.799999999999955
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_value_settable": false,
+    "description": "Thêm",
+    "role_description": "pop up button"
+   },
+   {
+    "is_selected": false,
+    "role": "button",
+    "identifier": "speaker.wave.2.fill",
+    "label": "Âm Lượng Cao",
+    "id": "elem_10",
+    "ax_role": "AXButton",
+    "bounds": {
+     "y": 342.55500000000006,
+     "x": 1584.88,
+     "width": 33.879999999999995,
+     "height": 33.87999999999988
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "Âm Lượng Cao",
+    "role_description": "button"
+   },
+   {
+    "is_selected": false,
+    "role": "button",
+    "label": "1m, Học lại",
+    "id": "elem_21",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 49.28000000000003,
+     "y": 1032.0900000000001,
+     "x": 1284.58,
+     "height": 77.76999999999998
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "1m, Học lại",
+    "role_description": "button"
+   },
+   {
+    "is_selected": false,
+    "role": "button",
+    "label": "6m, Khó",
+    "id": "elem_22",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 49.28000000000003,
+     "y": 1032.0900000000001,
+     "x": 1349.26,
+     "height": 77.76999999999998
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "6m, Khó",
+    "role_description": "button"
+   },
+   {
+    "is_selected": true,
+    "role": "button",
+    "label": "1d, Tốt",
+    "id": "elem_23",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 49.28000000000003,
+     "y": 1032.0900000000001,
+     "x": 1413.94,
+     "height": 77.76999999999998
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "1d, Tốt",
+    "role_description": "button"
+   },
+   {
+    "is_selected": false,
+    "role": "button",
+    "label": "4d, Dễ",
+    "id": "elem_24",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 49.27999999999997,
+     "y": 1032.0900000000001,
+     "x": 1478.62,
+     "height": 77.76999999999998
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "description": "4d, Dễ",
+    "role_description": "button"
+   },
+   {
+    "role": "button",
+    "label": "close button",
+    "id": "elem_25",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 16,
+     "y": 71,
+     "x": 1020,
+     "height": 16
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "close button"
+   },
+   {
+    "help": "this button also has an action to zoom the window",
+    "role": "button",
+    "label": "full screen button",
+    "id": "elem_26",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 16,
+     "y": 71,
+     "x": 1066,
+     "height": 16
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "full screen button"
+   },
+   {
+    "role": "button",
+    "label": "minimize button",
+    "id": "elem_29",
+    "ax_role": "AXButton",
+    "bounds": {
+     "width": 16,
+     "y": 71,
+     "x": 1043,
+     "height": 16
+    },
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "minimize button"
+   },
+   {
+    "role": "group",
+    "label": "group",
+    "id": "elem_1",
+    "ax_role": "AXGroup",
+    "bounds": {
+     "width": 788,
+     "y": 95,
+     "x": 1012,
+     "height": 1051
+    },
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "role": "group",
+    "label": "group",
+    "id": "elem_2",
+    "ax_role": "AXGroup",
+    "bounds": {
+     "width": 788.48,
+     "y": 95,
+     "x": 1012,
+     "height": 1051.82
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "role": "group",
+    "label": "group",
+    "id": "elem_3",
+    "ax_role": "AXGroup",
+    "bounds": {
+     "width": 788.48,
+     "y": 95,
+     "x": 1012,
+     "height": 1051.82
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "group",
+    "is_selected": false
+   },
+   {
+    "role": "group",
+    "label": "group",
+    "id": "elem_27",
+    "ax_role": "AXGroup",
+    "bounds": {
+     "width": 14,
+     "y": 72,
+     "x": 1067,
+     "height": 14
+    },
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "role": "group",
+    "label": "group",
+    "id": "elem_28",
+    "ax_role": "AXGroup",
+    "bounds": {
+     "width": 14,
+     "y": 72,
+     "x": 1067,
+     "height": 14
+    },
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "title": "Gramify",
+    "role": "other",
+    "identifier": "SceneWindow",
+    "label": "Gramify",
+    "id": "elem_0",
+    "ax_role": "AXWindow",
+    "bounds": {
+     "y": 63,
+     "x": 1012,
+     "width": 788,
+     "height": 1083
+    },
+    "is_actionable": false,
+    "role_description": "standard window"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Molding",
+    "id": "elem_6",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 43.120000000000005,
+     "y": 160.45000000000005,
+     "x": 1384.68,
+     "height": 13.8599999999999
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Molding",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Sweetener",
+    "id": "elem_7",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 32.936750000000075,
+     "y": 163.75137500000005,
+     "x": 1474.471625,
+     "height": 7.257249999999999
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Sweetener",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Caramelized",
+    "id": "elem_8",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 31.184999999999945,
+     "y": 164.37699999999995,
+     "x": 1560.0475000000001,
+     "height": 6.0060000000000855
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Caramelized",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "VERB",
+    "id": "elem_9",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 20.405000000000086,
+     "y": 354.875,
+     "x": 1552.155,
+     "height": 9.240000000000009
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "VERB",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).",
+    "id": "elem_11",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 408.87000000000006,
+     "y": 401.845,
+     "x": 1201.805,
+     "height": 50.819999999999936
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "To give something a particular shape or form, often using a mold.",
+    "id": "elem_12",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 374.99,
+     "y": 457.2850000000001,
+     "x": 1218.745,
+     "height": 16.169999999999845
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "To give something a particular shape or form, often using a mold.",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "VERB",
+    "id": "elem_13",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 22.360799999999927,
+     "y": 540.3218,
+     "x": 1395.0596,
+     "height": 8.131199999999922
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "VERB",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "NOUN",
+    "id": "elem_14",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 26.780599999999993,
+     "y": 560.7113999999999,
+     "x": 1392.8497,
+     "height": 8.685600000000022
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "NOUN",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Caramelized",
+    "id": "elem_15",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 125.01720000000006,
+     "y": 568.781,
+     "x": 1343.7314000000001,
+     "height": 25.748800000000074
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Caramelized",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Sweetener",
+    "id": "elem_16",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 117.25559999999996,
+     "y": 591.111,
+     "x": 1347.6122,
+     "height": 27.504400000000032
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Sweetener",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "id": "elem_17",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 55.563199999999995,
+     "y": 789.6786,
+     "x": 1378.4584,
+     "height": 8.131200000000035
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "CHẠM ĐỂ LẬT",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "id": "elem_18",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 59.35160000000002,
+     "y": 827.0698,
+     "x": 1376.5642,
+     "height": 8.685600000000022
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "CHẠM ĐỂ LẬT",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "Ví dụ",
+    "id": "elem_19",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 20.404999999999973,
+     "y": 843.0550000000001,
+     "x": 1396.0375,
+     "height": 10.009999999999991
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "Ví dụ",
+    "role_description": "text"
+   },
+   {
+    "is_selected": false,
+    "role": "other",
+    "label": "\"The artist was molding clay into a beautiful sculpture.\"",
+    "id": "elem_20",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 299.145,
+     "y": 857.6850000000001,
+     "x": 1256.6675,
+     "height": 14.629999999999995
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "description": "\"The artist was molding clay into a beautiful sculpture.\"",
+    "role_description": "text"
+   },
+   {
+    "role": "other",
+    "label": "Gramify",
+    "id": "elem_30",
+    "ax_role": "AXStaticText",
+    "bounds": {
+     "width": 56,
+     "y": 69.689453125,
+     "x": 1094,
+     "height": 17.310546875
+    },
+    "is_enabled": true,
+    "is_actionable": false,
+    "value": "Gramify",
+    "role_description": "text"
+   }
+  ],
+  "used_cache": false,
+  "semantic_scope": "exact_or_requested"
+ },
+ "target_receipt": {
+  "pid": 98192,
+  "window_id": 3957,
+  "process_start_identity_decimal": "1791390537574409",
+  "process_start_identity": 1791390537574409
+ },
+ "success": true
+}

@@ -1,0 +1,651 @@
+{
+ "data": {
+  "interactable_count": 11,
+  "application_name": "GramaGo",
+  "window_title": "Gramify",
+  "mutation_targeting_available": true,
+  "used_cache": false,
+  "execution_time": 0.1663360595703125,
+  "element_count": 37,
+  "is_dialog": false,
+  "ui_elements": [
+   {
+    "ax_role": "AXButton",
+    "id": "elem_5",
+    "identifier": "BackButton",
+    "bounds": {
+     "x": 1019.7,
+     "y": 110.40000000000009,
+     "width": 33.879999999999995,
+     "height": 33.87999999999988
+    },
+    "description": "Back",
+    "role": "button",
+    "label": "Back",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "back button"
+   },
+   {
+    "ax_role": "AXButton",
+    "id": "elem_13",
+    "bounds": {
+     "y": 253.235,
+     "x": 1366.585,
+     "width": 79.695,
+     "height": 19.63499999999999
+    },
+    "description": "CẤP ĐỘ, A1",
+    "role": "button",
+    "label": "CẤP ĐỘ, A1",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "button"
+   },
+   {
+    "ax_role": "AXButton",
+    "id": "elem_25",
+    "bounds": {
+     "y": 558.925,
+     "x": 1123.265,
+     "width": 89.32000000000001,
+     "height": 35.42000000000007
+    },
+    "description": "Bắt đầu",
+    "role": "button",
+    "label": "Bắt đầu",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "button"
+   },
+   {
+    "ax_role": "AXButton",
+    "id": "elem_27",
+    "bounds": {
+     "y": 551.0304791259766,
+     "x": 1772.779080810547,
+     "width": 82.38238647460935,
+     "height": 32.66888549804685
+    },
+    "description": "Bắt đầu",
+    "role": "button",
+    "label": "Bắt đầu",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "button"
+   },
+   {
+    "ax_role": "AXButton",
+    "id": "elem_29",
+    "bounds": {
+     "y": 550.7938018798828,
+     "x": 2400.6180187988284,
+     "width": 82.17437744140625,
+     "height": 32.58640563964843
+    },
+    "description": "Bắt đầu",
+    "role": "button",
+    "label": "Bắt đầu",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "button"
+   },
+   {
+    "bounds": {
+     "y": 71,
+     "x": 1020,
+     "width": 16,
+     "height": 16
+    },
+    "ax_role": "AXButton",
+    "id": "elem_31",
+    "role": "button",
+    "label": "close button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "close button"
+   },
+   {
+    "ax_role": "AXButton",
+    "id": "elem_32",
+    "bounds": {
+     "y": 71,
+     "x": 1066,
+     "width": 16,
+     "height": 16
+    },
+    "role": "button",
+    "label": "full screen button",
+    "help": "this button also has an action to zoom the window",
+    "is_actionable": true,
+    "is_enabled": true,
+    "role_description": "full screen button"
+   },
+   {
+    "bounds": {
+     "y": 71,
+     "x": 1043,
+     "width": 16,
+     "height": 16
+    },
+    "ax_role": "AXButton",
+    "id": "elem_35",
+    "role": "button",
+    "label": "minimize button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "minimize button"
+   },
+   {
+    "ax_role": "AXImage",
+    "id": "elem_26",
+    "identifier": "leaf.fill",
+    "bounds": {
+     "x": 1589.5945581054689,
+     "y": 506.88340515136724,
+     "width": 116.08088378906245,
+     "height": 106.0081896972656
+    },
+    "description": "Chiếc Lá",
+    "role": "image",
+    "label": "Chiếc Lá",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "image"
+   },
+   {
+    "ax_role": "AXImage",
+    "id": "elem_28",
+    "identifier": "tree.fill",
+    "bounds": {
+     "x": 2177.7950390625,
+     "y": 469.6682345581055,
+     "width": 132.39422485351565,
+     "height": 132.8964120483398
+    },
+    "description": "Cây, Được Tô Kín",
+    "role": "image",
+    "label": "Cây, Được Tô Kín",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "image"
+   },
+   {
+    "ax_role": "AXImage",
+    "id": "elem_30",
+    "identifier": "leaf.arrow.circlepath",
+    "bounds": {
+     "x": 2832.3612109375,
+     "y": 487.1934655761719,
+     "width": 106.31320068359378,
+     "height": 112.3242669677735
+    },
+    "description": "Lá Cây Với Mũi Tên Đi Theo Đường Tròn",
+    "role": "image",
+    "label": "Lá Cây Với Mũi Tên Đi Theo Đường Tròn",
+    "is_enabled": true,
+    "is_actionable": true,
+    "is_selected": false,
+    "role_description": "image"
+   },
+   {
+    "bounds": {
+     "y": 95,
+     "x": 1012,
+     "width": 788,
+     "height": 1051
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_1",
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 95,
+     "x": 1012,
+     "width": 788.48,
+     "height": 1051.82
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_2",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 95,
+     "x": 1012,
+     "width": 788.48,
+     "height": 1051.82
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_3",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "ax_role": "AXGroup",
+    "id": "elem_4",
+    "identifier": "Bài học",
+    "bounds": {
+     "y": 110.40000000000009,
+     "x": 1012,
+     "width": 788.48,
+     "height": 41.57999999999993
+    },
+    "role": "group",
+    "label": "Nav bar",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "Nav bar"
+   },
+   {
+    "bounds": {
+     "y": 95,
+     "x": 1012,
+     "width": 788.48,
+     "height": 1051.82
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_7",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 95,
+     "x": 1012,
+     "width": 788.48,
+     "height": 1051.82
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_8",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 272.485,
+     "x": 1012,
+     "width": 8490.405,
+     "height": 369.6
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_14",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 320.225,
+     "x": 1123.265,
+     "width": 1815.4094116210938,
+     "height": 292.6665948486328
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_15",
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 72,
+     "x": 1067,
+     "width": 14,
+     "height": 14
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_33",
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "bounds": {
+     "y": 72,
+     "x": 1067,
+     "width": 14,
+     "height": 14
+    },
+    "ax_role": "AXGroup",
+    "id": "elem_34",
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group"
+   },
+   {
+    "ax_role": "AXWindow",
+    "id": "elem_0",
+    "title": "Gramify",
+    "identifier": "SceneWindow",
+    "bounds": {
+     "x": 1012,
+     "y": 63,
+     "width": 788,
+     "height": 1083
+    },
+    "role": "other",
+    "label": "Gramify",
+    "is_actionable": false,
+    "role_description": "standard window"
+   },
+   {
+    "ax_role": "AXHeading",
+    "id": "elem_6",
+    "bounds": {
+     "y": 118.48500000000013,
+     "x": 1382.755,
+     "width": 46.585000000000036,
+     "height": 17.71000000000015
+    },
+    "description": "Bài học",
+    "role": "other",
+    "label": "Bài học",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "heading"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_9",
+    "bounds": {
+     "y": 164.29999999999995,
+     "x": 1375.825,
+     "width": 60.83000000000004,
+     "height": 9.240000000000009
+    },
+    "description": "BỘ SƯU TẬP",
+    "role": "other",
+    "label": "BỘ SƯU TẬP",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_10",
+    "bounds": {
+     "y": 185.86,
+     "x": 1280.345,
+     "width": 242.16499999999996,
+     "height": 29.25999999999999
+    },
+    "description": "Nghệ thuật và thủ công",
+    "role": "other",
+    "label": "Nghệ thuật và thủ công",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_11",
+    "bounds": {
+     "y": 185.86,
+     "x": 1522.51,
+     "width": 9.625,
+     "height": 29.25999999999999
+    },
+    "description": ".",
+    "role": "other",
+    "label": ".",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_12",
+    "bounds": {
+     "y": 227.44000000000005,
+     "x": 1242.4225000000001,
+     "width": 327.635,
+     "height": 13.8599999999999
+    },
+    "description": "Tìm hiểu về các ngành nghề thủ công và nghệ thuật truyền thống.",
+    "role": "other",
+    "label": "Tìm hiểu về các ngành nghề thủ công và nghệ thuật truyền thống.",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_16",
+    "bounds": {
+     "y": 320.225,
+     "x": 1123.3728,
+     "width": 261.03000000000003,
+     "height": 26.949999999999932
+    },
+    "description": "Vườn nho núi lửa Lanzarote",
+    "role": "other",
+    "label": "Vườn nho núi lửa Lanzarote",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_17",
+    "bounds": {
+     "y": 320.225,
+     "x": 1673.7072,
+     "width": 15.399999999999977,
+     "height": 17.709999999999923
+    },
+    "description": "01",
+    "role": "other",
+    "label": "01",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_18",
+    "bounds": {
+     "y": 330.8706360809326,
+     "x": 1772.7009790488282,
+     "width": 210.21714449462888,
+     "height": 24.85675695037844
+    },
+    "description": "Rừng sồi bần ở Alentejo",
+    "role": "other",
+    "label": "Rừng sồi bần ở Alentejo",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_19",
+    "bounds": {
+     "y": 330.8706360809326,
+     "x": 2277.804484141632,
+     "width": 16.689536809539504,
+     "height": 16.33444028167719
+    },
+    "description": "02",
+    "role": "other",
+    "label": "02",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_20",
+    "bounds": {
+     "y": 331.1898,
+     "x": 2400.717176,
+     "width": 194.80999999999995,
+     "height": 24.793999999999983
+    },
+    "description": "Vườn gia vị ở Grenada",
+    "role": "other",
+    "label": "Vườn gia vị ở Grenada",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_21",
+    "bounds": {
+     "y": 331.1898,
+     "x": 2904.191224,
+     "width": 17.001599999999826,
+     "height": 16.293199999999956
+    },
+    "description": "03",
+    "role": "other",
+    "label": "03",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_22",
+    "bounds": {
+     "y": 353.33500000000004,
+     "x": 1123.3728,
+     "width": 325.71000000000004,
+     "height": 13.8599999999999
+    },
+    "description": "Khám phá cách những người nông dân trồng nho trên đất núi lửa.",
+    "role": "other",
+    "label": "Khám phá cách những người nông dân trồng nho trên đất núi lửa.",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_23",
+    "bounds": {
+     "y": 361.40893747711175,
+     "x": 1772.7009790488282,
+     "width": 276.97529173278815,
+     "height": 12.783475003051763
+    },
+    "description": "Tìm hiểu về nghề thu hoạch vỏ cây sồi bần tại vùng Alentejo.",
+    "role": "other",
+    "label": "Tìm hiểu về nghề thu hoạch vỏ cây sồi bần tại vùng Alentejo.",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_24",
+    "bounds": {
+     "y": 361.65099999999995,
+     "x": 2400.717176,
+     "width": 291.50659999999993,
+     "height": 12.75120000000004
+    },
+    "description": "Khám phá các loại gia vị tươi ngon tại những khu vườn trên đảo.",
+    "role": "other",
+    "label": "Khám phá các loại gia vị tươi ngon tại những khu vườn trên đảo.",
+    "is_enabled": true,
+    "is_actionable": false,
+    "is_selected": false,
+    "role_description": "text"
+   },
+   {
+    "ax_role": "AXStaticText",
+    "id": "elem_36",
+    "bounds": {
+     "y": 69.689453125,
+     "x": 1094,
+     "width": 56,
+     "height": 17.310546875
+    },
+    "value": "Gramify",
+    "role": "other",
+    "label": "Gramify",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text"
+   }
+  ],
+  "snapshot_id": "ps1_917bc16a8079a81b33ded9e61b02079e",
+  "focused_element": {
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ],
+   "windowID": 3957,
+   "processIdentifier": 98192,
+   "role": "AXGroup"
+  },
+  "capture_mode": "window",
+  "semantic_scope": "exact_or_requested",
+  "snapshot_reusable": true
+ },
+ "success": true,
+ "target_receipt": {
+  "window_id": 3957,
+  "pid": 98192,
+  "process_start_identity": 1791390537574409,
+  "process_start_identity_decimal": "1791390537574409"
+ }
+}

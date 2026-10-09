@@ -1,0 +1,806 @@
+{
+ "target_receipt": {
+  "window_id": 3957,
+  "pid": 98192,
+  "process_start_identity_decimal": "1791390537574409",
+  "process_start_identity": 1791390537574409
+ },
+ "success": true,
+ "data": {
+  "window_title": "Gramify",
+  "capture_mode": "window",
+  "semantic_scope": "exact_or_requested",
+  "element_count": 45,
+  "interactable_count": 16,
+  "snapshot_id": "ps1_01b5b01e5cd1e73cae641eb049b4cbcf",
+  "snapshot_reusable": true,
+  "application_name": "GramaGo",
+  "ui_elements": [
+   {
+    "description": "Đóng",
+    "bounds": {
+     "height": 14.629999999999882,
+     "y": 120.02500000000009,
+     "width": 16.169999999999998,
+     "x": 1031.635
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "Đóng",
+    "is_enabled": true,
+    "identifier": "xmark",
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_4"
+   },
+   {
+    "description": "Thêm",
+    "bounds": {
+     "width": 30.799999999999955,
+     "height": 30.799999999999955,
+     "y": 111.94000000000005,
+     "x": 1757.3600000000001
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "Thêm",
+    "is_enabled": true,
+    "is_value_settable": false,
+    "is_actionable": true,
+    "role_description": "pop up button",
+    "ax_role": "AXPopUpButton",
+    "id": "elem_5"
+   },
+   {
+    "description": "Âm Lượng Cao",
+    "bounds": {
+     "height": 33.87999999999988,
+     "y": 342.55500000000006,
+     "width": 33.879999999999995,
+     "x": 1584.88
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "Âm Lượng Cao",
+    "is_enabled": true,
+    "identifier": "speaker.wave.2.fill",
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_10"
+   },
+   {
+    "description": "1m, Học lại",
+    "bounds": {
+     "width": 49.28000000000003,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "x": 1284.58
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "1m, Học lại",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_21"
+   },
+   {
+    "description": "6m, Khó",
+    "bounds": {
+     "width": 49.28000000000003,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "x": 1349.26
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "6m, Khó",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_22"
+   },
+   {
+    "description": "1d, Tốt",
+    "bounds": {
+     "width": 49.28000000000003,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "x": 1413.94
+    },
+    "is_selected": true,
+    "role": "button",
+    "label": "1d, Tốt",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_23"
+   },
+   {
+    "description": "4d, Dễ",
+    "bounds": {
+     "width": 49.27999999999997,
+     "height": 77.76999999999998,
+     "y": 1032.0900000000001,
+     "x": 1478.62
+    },
+    "is_selected": false,
+    "role": "button",
+    "label": "4d, Dễ",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "button",
+    "ax_role": "AXButton",
+    "id": "elem_24"
+   },
+   {
+    "bounds": {
+     "width": 16,
+     "height": 16,
+     "y": 71,
+     "x": 1020
+    },
+    "role": "button",
+    "label": "close button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "close button",
+    "ax_role": "AXButton",
+    "id": "elem_29"
+   },
+   {
+    "bounds": {
+     "width": 16,
+     "height": 16,
+     "y": 71,
+     "x": 1066
+    },
+    "role": "button",
+    "label": "full screen button",
+    "help": "this button also has an action to zoom the window",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "full screen button",
+    "ax_role": "AXButton",
+    "id": "elem_30"
+   },
+   {
+    "bounds": {
+     "width": 16,
+     "height": 16,
+     "y": 71,
+     "x": 1043
+    },
+    "role": "button",
+    "label": "minimize button",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "minimize button",
+    "ax_role": "AXButton",
+    "id": "elem_33"
+   },
+   {
+    "is_value_settable": true,
+    "bounds": {
+     "height": 26,
+     "y": 1144,
+     "width": 342,
+     "x": -1
+    },
+    "value": "",
+    "role": "textField",
+    "label": "search text field",
+    "is_enabled": true,
+    "identifier": "_SC_SEARCH_FIELD",
+    "is_actionable": true,
+    "role_description": "search text field",
+    "ax_role": "AXTextField",
+    "id": "menuitem_43"
+   },
+   {
+    "bounds": {
+     "width": 788,
+     "height": 1051,
+     "y": 95,
+     "x": 1012
+    },
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_1"
+   },
+   {
+    "bounds": {
+     "width": 788.48,
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012
+    },
+    "is_selected": false,
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_2"
+   },
+   {
+    "bounds": {
+     "width": 788.48,
+     "height": 1051.82,
+     "y": 95,
+     "x": 1012
+    },
+    "is_selected": false,
+    "role": "group",
+    "label": "group",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_3"
+   },
+   {
+    "bounds": {
+     "width": 14,
+     "height": 14,
+     "y": 72,
+     "x": 1067
+    },
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_31"
+   },
+   {
+    "bounds": {
+     "width": 14,
+     "height": 14,
+     "y": 72,
+     "x": 1067
+    },
+    "role": "group",
+    "label": "group",
+    "is_actionable": false,
+    "role_description": "group",
+    "ax_role": "AXGroup",
+    "id": "elem_32"
+   },
+   {
+    "bounds": {
+     "width": 144,
+     "height": 82,
+     "y": 140,
+     "x": 1650
+    },
+    "is_selected": false,
+    "role": "menu",
+    "label": "menu",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "menu",
+    "ax_role": "AXMenu",
+    "id": "elem_25"
+   },
+   {
+    "bounds": {
+     "width": 1800,
+     "height": 39,
+     "y": 0,
+     "x": 0
+    },
+    "is_selected": false,
+    "role": "menu",
+    "label": "menu bar",
+    "is_enabled": true,
+    "is_actionable": true,
+    "role_description": "menu bar",
+    "ax_role": "AXMenuBar",
+    "id": "menuitem_35"
+   },
+   {
+    "bounds": {
+     "height": 1083,
+     "y": 63,
+     "width": 788,
+     "x": 1012
+    },
+    "role": "other",
+    "title": "Gramify",
+    "label": "Gramify",
+    "identifier": "SceneWindow",
+    "is_actionable": false,
+    "role_description": "standard window",
+    "ax_role": "AXWindow",
+    "id": "elem_0"
+   },
+   {
+    "description": "Molding",
+    "bounds": {
+     "width": 43.120000000000005,
+     "height": 13.8599999999999,
+     "y": 160.45000000000005,
+     "x": 1384.68
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Molding",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_6"
+   },
+   {
+    "description": "Sweetener",
+    "bounds": {
+     "width": 32.936750000000075,
+     "height": 7.257249999999999,
+     "y": 163.75137500000005,
+     "x": 1474.471625
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Sweetener",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_7"
+   },
+   {
+    "description": "Caramelized",
+    "bounds": {
+     "width": 31.184999999999945,
+     "height": 6.0060000000000855,
+     "y": 164.37699999999995,
+     "x": 1560.0475000000001
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Caramelized",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_8"
+   },
+   {
+    "description": "VERB",
+    "bounds": {
+     "width": 20.405000000000086,
+     "height": 9.240000000000009,
+     "y": 354.875,
+     "x": 1552.155
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "VERB",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_9"
+   },
+   {
+    "description": "Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).",
+    "bounds": {
+     "width": 408.87000000000006,
+     "height": 50.819999999999936,
+     "y": 401.845,
+     "x": 1201.805
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Tạo hình, đúc khuôn, nặn (thành hình dạng cụ thể).",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_11"
+   },
+   {
+    "description": "To give something a particular shape or form, often using a mold.",
+    "bounds": {
+     "width": 374.99,
+     "height": 16.169999999999845,
+     "y": 457.2850000000001,
+     "x": 1218.745
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "To give something a particular shape or form, often using a mold.",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_12"
+   },
+   {
+    "description": "VERB",
+    "bounds": {
+     "width": 22.360799999999927,
+     "height": 8.131199999999922,
+     "y": 540.3218,
+     "x": 1395.0596
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "VERB",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_13"
+   },
+   {
+    "description": "NOUN",
+    "bounds": {
+     "width": 26.780599999999993,
+     "height": 8.685600000000022,
+     "y": 560.7113999999999,
+     "x": 1392.8497
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "NOUN",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_14"
+   },
+   {
+    "description": "Caramelized",
+    "bounds": {
+     "width": 125.01720000000006,
+     "height": 25.748800000000074,
+     "y": 568.781,
+     "x": 1343.7314000000001
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Caramelized",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_15"
+   },
+   {
+    "description": "Sweetener",
+    "bounds": {
+     "width": 117.25559999999996,
+     "height": 27.504400000000032,
+     "y": 591.111,
+     "x": 1347.6122
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Sweetener",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_16"
+   },
+   {
+    "description": "CHẠM ĐỂ LẬT",
+    "bounds": {
+     "width": 55.563199999999995,
+     "height": 8.131200000000035,
+     "y": 789.6786,
+     "x": 1378.4584
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_17"
+   },
+   {
+    "description": "CHẠM ĐỂ LẬT",
+    "bounds": {
+     "width": 59.35160000000002,
+     "height": 8.685600000000022,
+     "y": 827.0698,
+     "x": 1376.5642
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "CHẠM ĐỂ LẬT",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_18"
+   },
+   {
+    "description": "Ví dụ",
+    "bounds": {
+     "width": 20.404999999999973,
+     "height": 10.009999999999991,
+     "y": 843.0550000000001,
+     "x": 1396.0375
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "Ví dụ",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_19"
+   },
+   {
+    "description": "\"The artist was molding clay into a beautiful sculpture.\"",
+    "bounds": {
+     "width": 299.145,
+     "height": 14.629999999999995,
+     "y": 857.6850000000001,
+     "x": 1256.6675
+    },
+    "is_selected": false,
+    "role": "other",
+    "label": "\"The artist was molding clay into a beautiful sculpture.\"",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_20"
+   },
+   {
+    "bounds": {
+     "height": 24,
+     "y": 145,
+     "width": 144,
+     "x": 1650
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Tự động phát",
+    "label": "Tự động phát",
+    "is_enabled": true,
+    "identifier": "tự_động_phát",
+    "is_actionable": true,
+    "role_description": "menu item",
+    "ax_role": "AXMenuItem",
+    "id": "elem_26"
+   },
+   {
+    "bounds": {
+     "height": 24,
+     "y": 169,
+     "width": 144,
+     "x": 1650
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Màu thẻ",
+    "label": "Màu thẻ",
+    "is_enabled": true,
+    "identifier": "ID(id: 380241)",
+    "is_actionable": true,
+    "role_description": "menu item",
+    "ax_role": "AXMenuItem",
+    "id": "elem_27"
+   },
+   {
+    "bounds": {
+     "height": 24,
+     "y": 193,
+     "width": 144,
+     "x": 1650
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Hướng dẫn",
+    "label": "Hướng dẫn",
+    "is_enabled": true,
+    "identifier": "hướng_dẫn",
+    "is_actionable": true,
+    "role_description": "menu item",
+    "ax_role": "AXMenuItem",
+    "id": "elem_28"
+   },
+   {
+    "bounds": {
+     "width": 56,
+     "height": 17.310546875,
+     "y": 69.689453125,
+     "x": 1094
+    },
+    "value": "Gramify",
+    "role": "other",
+    "label": "Gramify",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "text",
+    "ax_role": "AXStaticText",
+    "id": "elem_34"
+   },
+   {
+    "bounds": {
+     "width": 34,
+     "height": 39,
+     "y": 0,
+     "x": 10
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Apple",
+    "label": "Apple",
+    "is_enabled": true,
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_36"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 72,
+     "x": 43
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Gramify",
+    "label": "Gramify",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.application",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_37"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 42,
+     "x": 114
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "File",
+    "label": "File",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.file",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_38"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 45,
+     "x": 155
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Edit",
+    "label": "Edit",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.edit",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_39"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 50,
+     "x": 199
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "View",
+    "label": "View",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.view",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_40"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 69,
+     "x": 248
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Window",
+    "label": "Window",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.window",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_41"
+   },
+   {
+    "bounds": {
+     "height": 39,
+     "y": 0,
+     "width": 49,
+     "x": 316
+    },
+    "is_selected": false,
+    "role": "other",
+    "title": "Help",
+    "label": "Help",
+    "is_enabled": true,
+    "identifier": "com.apple.menu.help",
+    "is_actionable": false,
+    "role_description": "menu bar item",
+    "ax_role": "AXMenuBarItem",
+    "id": "menuitem_42"
+   },
+   {
+    "description": "search result",
+    "bounds": {
+     "height": 7,
+     "y": 1163,
+     "width": 362,
+     "x": -1
+    },
+    "role": "other",
+    "label": "search result",
+    "is_enabled": true,
+    "identifier": "_SC_RESULTS_TABLE",
+    "is_actionable": false,
+    "role_description": "table",
+    "ax_role": "AXTable",
+    "id": "menuitem_44"
+   }
+  ],
+  "execution_time": 0.1819770336151123,
+  "used_cache": false,
+  "mutation_targeting_available": true,
+  "focused_element": {
+   "role": "AXGroup",
+   "processIdentifier": 98192,
+   "windowID": 3957,
+   "frame": [
+    [
+     1012,
+     95
+    ],
+    [
+     788,
+     1051
+    ]
+   ]
+  },
+  "is_dialog": false,
+  "truncation": {
+   "warning": "Warning: AX tree incomplete at incomplete accessibility read. Retry once to obtain a fresh observation. If the exact target is a transient sheet without an independent AX-window identity, inspect its owning process or app tree for read-only dialog elements. Partial app-tree evidence does not provide a reusable snapshot or mutation authority. Use screenshot/OCR evidence for other persistent failures; increase the timeout only when the app is slow to respond.",
+   "max_element_count_reached": false,
+   "max_depth_reached": false,
+   "deadline_reached": false,
+   "incomplete_accessibility_read": true,
+   "max_children_per_node_reached": false
+  }
+ }
+}
