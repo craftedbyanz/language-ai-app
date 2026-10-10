@@ -73,6 +73,10 @@ loading and correct-feedback states, and advance exactly one sentence.
 11. **Given** an unknown `exerciseId` is encountered while initializing or grading the selected
     lesson, **When** the workflow validates the exercise, **Then** it shows the canonical localized
     unavailable state with a safe Back action, performs no grading, and does not mutate progress.
+12. **Given** catalog retrieval or grading fails unexpectedly at the repository boundary, **When**
+    the failure is received, **Then** the affected region shows the canonical localized error state,
+    preserves the learner's response and progress, and offers only explicit Retry, Cancel, or safe
+    Back recovery as applicable without automatically retrying or advancing.
 
 ---
 
@@ -150,6 +154,10 @@ classes correspond to the requested product terms compact, medium, and expanded 
 - Unknown topic, lesson, or exercise identities never crash, never substitute fabricated or unrelated
   learning content, and never initialize grading or mutate progress; they show the canonical localized
   unavailable state with a safe Back action.
+- An unexpected catalog failure uses `EmptyState/Error` in the affected browse region with Retry and
+  safe Back where applicable. An unexpected grading failure replaces the loading sheet body with
+  `InlineError`, retains the exact answer and current progress, and offers explicit Retry and Cancel;
+  neither failure retries automatically or advances the exercise.
 - Long localized labels, large text, short windows, and on-screen keyboards do not hide the current
   prompt, answer field, feedback actions, or Next action.
 - Choosing Next after feedback on the final sentence returns to the Grammar Lesson List without a
@@ -179,7 +187,8 @@ classes correspond to the requested product terms compact, medium, and expanded 
   `PagerDots/Lesson`, `ProgressStepper/Grammar`, `SourceTextCard/Sentence`, `AnswerInput`,
   `SubmitButton`, `HintChipBar`, `ExerciseTemplate`, `FeedbackSheet/Loading`,
   `FeedbackSheet/GrammarCorrect`, and `FeedbackSheet/GrammarIncorrect` definitions without creating
-  Grammar-specific duplicates.
+  Grammar-specific duplicates, visual copies, behavior-reproducing feature wrappers, or forks of
+  shared components.
 - **FR-007**: The Grammar answer surface MUST use the canonical Grammar blue answer-palette
   background and its paired foreground treatment.
 - **FR-008**: Submit MUST remain visible and disabled until the response contains a non-whitespace
@@ -192,12 +201,16 @@ classes correspond to the requested product terms compact, medium, and expanded 
   AI service.
 - **FR-011**: A response MUST be correct when its normalized value exactly matches any authored
   accepted answer for the current sentence. Normalization MUST ignore letter case and insignificant
-  leading, trailing, and repeated whitespace, and MUST preserve punctuation and word order.
+  leading, trailing, and repeated whitespace, and MUST preserve punctuation and word order. It MUST
+  NOT perform any additional Unicode normalization: canonically distinct code-point sequences match
+  only when the resulting value is explicitly authored as an accepted alternative.
 - **FR-012**: The same exercise and response MUST always produce the same verdict, independent of the
   active product language, supported platform, and viewport size.
 - **FR-013**: Correct grading MUST show the canonical compact Grammar Correct feedback with an answer
   recap and a single Next action. Its AI-analysis link MUST remain visible but disabled, MUST have a
-  localized unavailable explanation, and MUST NOT initiate network or AI activity.
+  localized unavailable explanation, and MUST NOT initiate network or AI activity. The disabled
+  action MUST remain discoverable in semantic reading order with its disabled state and explanation,
+  but MUST be excluded from action focus/activation order.
 - **FR-014**: Incorrect grading MUST show the canonical Grammar Incorrect feedback with the learner's
   response, expected correction, authored explanation, authored tips, Fix, and Next actions.
 - **FR-015**: Fix MUST close incorrect feedback, retain the learner's exact response, and return the
@@ -219,8 +232,10 @@ classes correspond to the requested product terms compact, medium, and expanded 
   classes map the requested product terms as compact → compact, medium → regular, and expanded →
   wide.
 - **FR-020**: Grammar screens and feedback MUST expose meaningful labels, progress, verdicts, focus
-  order, keyboard activation, and non-color indicators so the journey is operable without relying on
-  a single input method or color alone.
+  order, component roles, loading and verdict announcements, keyboard activation, visible focus, and
+  non-color indicators so the journey is operable without relying on a single input method or color
+  alone. Contrast, target size, reading order, gesture alternatives, and focus presentation MUST meet
+  the objective criteria in the canonical accessibility contract at every supported size class.
 - **FR-021**: Topic and lesson browsing MUST provide understandable empty states when their respective
   collections contain no selectable content. Unknown `topicId`, `lessonId`, or internal `exerciseId`
   values MUST produce a canonical localized unavailable/error state with a safe Back action, MUST NOT
@@ -231,6 +246,12 @@ classes correspond to the requested product terms compact, medium, and expanded 
   authentication, paywall, purchase behavior, or changes to Writing.
 - **FR-023**: Next from feedback on the final sentence MUST return the learner to the Grammar Lesson
   List without showing a completion screen, awarding a reward, or recording lesson completion.
+- **FR-024**: Unexpected repository failures MUST use the canonical localized regional error
+  treatment rather than an unavailable-identity state or full-screen error. Catalog failures MUST
+  preserve navigation context and expose explicit Retry plus safe Back where applicable. Grading
+  failures MUST preserve the exact learner response and current progress and expose explicit Retry
+  and Cancel. Retry MUST occur only through learner intent, and a failure MUST NOT record a verdict,
+  advance progress, or trigger an automatic retry.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -269,11 +290,12 @@ classes correspond to the requested product terms compact, medium, and expanded 
   outside the automated implementation gate.
 - **SC-005**: All defined screens and states pass visual and interaction review at representative
   canonical compact, regular, and wide widths with zero clipped text, overlap, unreachable primary
-  action, or reading-order defect.
+  action, reading-order defect, canonical contrast failure, undersized target, or invisible focus.
 - **SC-006**: All primary Grammar actions can be reached and activated by touch, pointer, and keyboard,
   and all progress and verdict information is understandable without color alone.
 - **SC-007**: Regression review finds zero observable changes to the existing Writing experience,
-  including its Home entry, navigation, content, controls, state, grading, and feedback.
+  including its Home entry and order, callback and route semantics, copy, visual appearance, controls,
+  state transitions, grading, feedback, localization, accessibility semantics, and adaptive behavior.
 - **SC-008**: From either a correct or incorrect verdict on a non-final sentence, Next advances exactly
   one sentence in 100% of progression tests and never carries the prior answer into the next input.
 - **SC-009**: From either verdict on the final sentence, Next returns to the Grammar Lesson List in
@@ -282,13 +304,15 @@ classes correspond to the requested product terms compact, medium, and expanded 
 
 ## Assumptions
 
-- The Grammar catalog is curated product content available to the client and contains at least two
-  sentence exercises for the end-to-end progression demonstration.
+- The Grammar catalog is curated product content available to the client and contains at least one
+  topic, at least one selectable lesson in that topic, and at least two sentence exercises in each
+  demonstration lesson so both non-final and final progression can be validated.
 - Accepted answers, corrections, explanations, hints, and tips are authored with each exercise; this
   feature does not generate feedback.
 - Grading normalization ignores case and insignificant whitespace only. Broader linguistic
   equivalence, alternate punctuation, spelling tolerance, and semantic interpretation are excluded
-  unless represented explicitly as accepted answers.
+  unless represented explicitly as accepted answers. No Unicode canonical-equivalence transform is
+  applied beyond the stated case and whitespace normalization.
 - Product chrome follows the learner's existing application locale; selecting or persisting a locale
   is not part of this feature.
 - Authored topic titles, lesson titles/descriptions, exercise content, feedback explanations/tips,
@@ -303,6 +327,10 @@ classes correspond to the requested product terms compact, medium, and expanded 
   automated implementation gate for this slice.
 - The loading state communicates grading progress even though grading is local; it does not imply a
   remote call or AI processing.
+- The immutable in-memory adapter has no expected external failure mode. Nevertheless, repository
+  failures remain representable and testable with fakes so the canonical explicit recovery behavior
+  in FR-024 is preserved for replacement adapters; unexpected programming defects are not silently
+  converted into fabricated content or successful verdicts.
 
 ### Dependencies
 

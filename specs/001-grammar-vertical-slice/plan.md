@@ -180,9 +180,16 @@ Reuse `ModeCard`, `TopicCard`, `LessonCard/Grammar`, `ProgressStepper/Grammar`,
 7. Apply canonical sheet width/height constraints without changing normal Writing rendering. Shared
    changes must keep current constructor defaults and existing Writing goldens stable.
 
+These are mandatory shared capabilities, not optional feature conveniences. Their APIs remain
+visual/interaction contracts driven by supplied data and callbacks; they must not accept Grammar
+entities, repository types, grading rules, or other feature-owned semantics. Grammar must compose
+them directly rather than introduce visual copies, behavior-reproducing wrappers, or forks.
+
 Before visual/API changes, reconcile `COMPONENTS.md`, `COMPONENT_VARIANTS.md`, and the applicable
 design-decision entries. Add the approved 300 ms minimum feedback-loading duration to `TOKENS.json`
-and regenerate typed tokens rather than hard-coding it in feature code.
+as the named `motion.feedbackMinimumDwell` token and regenerate typed tokens rather than hard-coding
+it in feature code. T001 reconciles every component/interaction contract gap listed above before the
+dependent Flutter API changes; T002 establishes the token before any feature consumes it.
 
 ### Grammar-specific code
 
@@ -201,6 +208,16 @@ content in the repository and are not duplicated into ARB files.
 whitespace, compares against authored accepted full-sentence corrections, and returns authored
 correction/explanation/tips. Its documentation and contract must state that production grading is
 replaced by a backend adapter and that the client must not promote these rules into server policy.
+It performs no Unicode canonical-equivalence transform; canonically distinct code-point sequences
+match only when the authored alternatives make them equivalent after the stated case/whitespace
+rules.
+
+The immutable in-memory adapter has no expected external failure source, but the repository boundary
+must remain failure-testable through fakes. Unexpected catalog failures render canonical
+`EmptyState/Error` in the failed browse region with explicit Retry and safe Back where applicable.
+Unexpected grading failures transition from Loading to a canonical in-sheet `InlineError` with
+explicit Retry and Cancel, retaining the exact response and current progress. There is no automatic
+mutation retry, fabricated fallback content, verdict, or progression.
 
 ### State machine
 
@@ -212,7 +229,12 @@ GrammarAnswering(answer, optional last verdict)
 GrammarSubmitting
   ├─ Cancel ───────────────────────────────────────> GrammarAnswering(same answer)
   ├─ valid correct result + minimum dwell ─────────> GrammarFeedbackCorrect
-  └─ valid incorrect result + minimum dwell ───────> GrammarFeedbackIncorrect
+  ├─ valid incorrect result + minimum dwell ───────> GrammarFeedbackIncorrect
+  └─ repository failure ───────────────────────────> GrammarFailure(same answer/progress)
+
+GrammarFailure
+  ├─ Retry(explicit) ───────────────────────────────> GrammarSubmitting(new request id)
+  └─ Cancel ────────────────────────────────────────> GrammarAnswering(same answer)
 
 GrammarFeedbackIncorrect
   ├─ Fix ──────────────────────────────────────────> GrammarAnswering(same answer)
@@ -242,6 +264,14 @@ navigation and renders no completion UI.
 identity. Repository lookups never substitute fallback content; route screens own the canonical
 localized unavailable UI and safe Back action, while the ViewModel refuses to initialize or grade an
 unknown exercise and leaves progress untouched.
+
+Focus follows the canonical accessibility contract. Opening Loading or verdict feedback moves focus
+into the sheet and announces its title/state; replacing Loading with a verdict announces the result.
+Cancel and ordinary feedback dismissal return focus to the action that opened the sheet, Fix returns
+focus to `AnswerInput`, reopening feedback returns focus into that sheet and subsequent dismissal to
+the `HintChipBar` trigger, non-final Next focuses the cleared next `AnswerInput`, and final Next moves
+focus to the Grammar Lesson List heading. A disabled AI-analysis action remains in semantic reading
+order with its localized reason but is omitted from action focus/activation order.
 
 ### Routing
 
@@ -279,22 +309,40 @@ Use `AdaptiveLayout`, `ContentConstraints`, and canonical tokens: one topic colu
 centered columns otherwise; canonical lesson-card ratios; centered capped content and sheets;
 scrollable short-height content; no platform/device-type layout checks.
 
+Surface responsibilities are explicit: the topic picker owns column reflow and scrollable category
+and card content; the lesson list owns the horizontal card viewport, pager position, and
+keyboard/pointer navigation; the exercise owns capped readable content, on-screen-keyboard and
+short-height scrolling, stable primary-action reachability, and logical reading order; feedback owns
+canonical capped width/height, internal scrolling, and reachable actions. Long EN/VI chrome and large
+text must not change semantic order or obscure actions. All applicable controls expose canonical
+touch targets, pointer/trackpad activation, hover/focus states, Enter/Space activation, Escape
+dismissal, and non-gesture alternatives; no information or action may be available only on hover.
+
+Accessibility validation uses the objective canonical contract: named roles and labels, polite
+announcements for grading, verdict, and progress, disabled-state descriptions, visible token-backed
+focus, minimum `control.minTouchTarget`, canonical target separation, production-profile contrast,
+and icon/text/shape cues for verdicts and progress at compact, regular, and wide sizes.
+
 ### Test strategy and Writing regression
 
 - Repository tests cover catalog relations, invalid topic/lesson/exercise lookups, accepted
-  alternatives, exact normalization boundaries, exactly 100 consecutive executions of the same
-  grading case with an identical verdict, authored feedback, and absence of external activity.
+  alternatives, exact case/whitespace and Unicode non-normalization boundaries, exactly 100
+  consecutive executions of the same grading case with an identical verdict, authored feedback, and
+  absence of external activity.
 - ViewModel/provider tests exhaust every state transition, 300 ms dwell, duplicate suppression,
   cancellation race invalidation, exact response retention, minimize/reopen without regrading,
-  invalid exercise rejection without grading/progress mutation, one-step progression, and the final
-  terminal outcome. The same sentence/response progression scenario runs exactly 100 times from fresh
-  fixtures and must end each run at the deterministic next index with an empty answer in
-  `GrammarAnswering` after exactly one increment.
+  invalid exercise rejection without grading/progress mutation, throwing-fake repository recovery
+  with explicit Retry/Cancel and no automatic retry, one-step progression, and the final terminal
+  outcome. The same sentence/response progression scenario runs exactly 100 times from fresh fixtures
+  and must end each run at the deterministic next index with an empty answer in `GrammarAnswering`
+  after exactly one increment.
 - Widget-flow tests cover Home through both verdicts, Fix, Cancel, disabled AI link/reason, feedback
   reopen, non-final Next, final return, provider-overridden empty catalogs, and canonical unavailable
   states with safe Back for invalid topic/lesson/exercise identities.
 - Localization/adaptive tests cover EN and VI chrome with identical English content at compact,
-  regular, and wide widths, plus short-height/large-text and keyboard/focus semantics.
+  regular, and wide widths, plus short-height/large-text, mouse/trackpad/hover parity, keyboard/focus
+  semantics, exact transition focus policy, roles, state announcements, target sizes, production
+  contrast, and non-color cues.
 - Localization checks require non-empty EN/VI values, zero fallback keys, and zero mixed-locale
   labels. Human linguistic-quality approval is recorded as outside the automated implementation gate.
 - Focused visually reviewed goldens are limited to three representative baselines:
@@ -303,8 +351,20 @@ scrollable short-height content; no platform/device-type layout checks.
   `grammar_exercise_compact.png` for one representative compact exercise state. Regular/wide layout
   behavior remains covered by widget tests; no wide golden is added unless implementation reveals a
   material canonical visual difference and the plan is amended first.
-- Writing verification requires no changes under `lib/features/writing/**`, runs all existing Writing
-  tests, preserves its Home route and feedback behavior, and keeps existing Writing goldens stable.
+- Writing verification requires no changes under `lib/features/writing/**`; runs all existing Writing
+  provider/ViewModel and widget tests; preserves Home card content/order/callback, typed route
+  locations, localization, accessibility semantics, adaptive behavior, grading, feedback, and
+  architecture boundaries; and keeps every existing Writing golden byte-stable. Any Writing golden
+  diff is a regression for this slice and must not be accepted or rebased. If a required canonical
+  correction would intentionally change Writing, implementation stops and that change is handled as
+  a separately approved design decision rather than folded into this feature.
+- Permitted shared/generated edits are limited to the canonical documents and token named in T001–T002,
+  additive default-preserving `lib/design_system/**` APIs, Grammar ARB keys and regenerated
+  localization outputs, app-owned typed routes/generated route output, the Home Grammar callback/card
+  activation, Grammar-owned files, and their tests. These file changes are permitted only when the
+  Writing regression matrix remains unchanged; edits under `lib/features/writing/**`, changed Writing
+  snapshots, or observable Writing copy/visual/state/navigation/accessibility/adaptive differences are
+  prohibited and require explicit separate review.
 - Final validation runs token verification, generated-file drift checks, formatting, analysis,
   architecture checks, all tests, and `sh tool/ci.sh` through the pinned toolchain.
 
