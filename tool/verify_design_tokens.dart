@@ -7,7 +7,8 @@ Future<void> main() async {
   final actual = File(tokenOutput);
   if (!actual.existsSync() || actual.readAsStringSync() != expected) {
     stderr.writeln(
-      'Design tokens are stale. Run dart run tool/generate_design_tokens.dart',
+      'Design tokens are stale. Run '
+      'fvm dart run tool/generate_design_tokens.dart',
     );
     exitCode = 1;
     return;

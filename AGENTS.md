@@ -54,6 +54,11 @@ Use:
 - OpenAPI-generated client for backend contracts
 - custom Flutter implementation of our canonical design system
 
+Flutter stable 3.47.3 is pinned by the tracked `.fvmrc`. FVM is the canonical
+SDK entry point: prefer `fvm flutter ...` and `fvm dart ...`, and configure IDEs
+through `.fvm/flutter_sdk`. Do not assume a global Flutter or Dart binary is
+installed. Do not change the pinned SDK version without explicit approval.
+
 Do not introduce another state-management, routing, or DI framework
 without an ADR and explicit approval.
 

@@ -70,6 +70,7 @@ class WritingLessonListScreen extends StatelessWidget {
                                 return SizedBox(
                                   width: constraints.maxWidth * ratio,
                                   child: LessonCard(
+                                    variant: LessonCardVariant.writing,
                                     indexLabel: (index + 1).toString().padLeft(
                                       2,
                                       '0',

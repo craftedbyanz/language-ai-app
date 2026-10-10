@@ -133,6 +133,7 @@ class _TopicGrid extends StatelessWidget {
     itemBuilder: (context, index) {
       final topic = topics[index];
       return TopicCard(
+        icon: Icons.edit_note_rounded,
         title: topic.title,
         countLabel: '${topic.setCount} $countLabel',
         onPressed: () => onPressed(topic.id),

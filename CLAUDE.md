@@ -56,9 +56,13 @@ stop and report the conflict rather than silently choosing one.
 
 ## Flutter Development
 
-Use the repository's pinned Flutter/Dart versions and existing dependencies.
+Use the repository's `.fvmrc`-pinned Flutter/Dart versions and existing
+dependencies. Prefer `fvm flutter ...` and `fvm dart ...`; do not assume global
+Flutter or Dart is installed. IDEs should resolve the SDK through
+`.fvm/flutter_sdk`.
 
-Do not upgrade Flutter or packages as a side effect of unrelated work.
+Do not change the pinned Flutter version or upgrade packages without explicit
+approval.
 
 Prefer modern Dart language features:
 - sealed classes

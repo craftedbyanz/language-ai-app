@@ -62,17 +62,33 @@ class AppHeader extends StatelessWidget {
   );
 }
 
+enum ProgressStepperVariant { writing, grammar, scenario }
+
 class ProgressStepper extends StatelessWidget {
   const ProgressStepper({
+    required this.variant,
     required this.step,
     required this.count,
     required this.semanticLabel,
     super.key,
   });
 
+  final ProgressStepperVariant variant;
   final int step;
   final int count;
   final String semanticLabel;
+
+  Color get _progressColor => switch (variant) {
+    ProgressStepperVariant.writing => FeatureTokens.writingProgress,
+    ProgressStepperVariant.grammar => FeatureTokens.grammarProgress,
+    ProgressStepperVariant.scenario => FeatureTokens.scenarioProgress,
+  };
+
+  Color get _currentColor => switch (variant) {
+    ProgressStepperVariant.writing => FeatureTokens.writingProgressCurrent,
+    ProgressStepperVariant.grammar => FeatureTokens.grammarProgressCurrent,
+    ProgressStepperVariant.scenario => FeatureTokens.scenarioProgressCurrent,
+  };
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -85,20 +101,21 @@ class ProgressStepper extends StatelessWidget {
           final isCurrent = index == step - 1;
           return Expanded(
             child: Container(
+              key: ValueKey('progress-segment-$index'),
               height: LayoutTokens.stepperHeight,
               margin: EdgeInsets.only(
                 right: index == count - 1 ? 0 : SpaceTokens.xs,
               ),
               decoration: BoxDecoration(
                 color: isDone
-                    ? FeatureTokens.writingProgress
+                    ? _progressColor
                     : isCurrent
-                    ? FeatureTokens.writingProgressCurrent
+                    ? _currentColor
                     : ColorTokens.border,
                 borderRadius: BorderRadius.circular(RadiusTokens.full),
                 border: isCurrent
                     ? Border.all(
-                        color: FeatureTokens.writingProgress,
+                        color: _progressColor,
                         width: FocusTokens.ringWidth,
                       )
                     : null,

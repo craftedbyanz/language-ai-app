@@ -25,6 +25,7 @@ void main() {
                     width: LayoutTokens.topicCardHeight * 2,
                     height: LayoutTokens.topicCardHeight,
                     child: TopicCard(
+                      icon: Icons.edit_note_rounded,
                       title: 'Daily life',
                       countLabel: '2 sets',
                       onPressed: _noop,
@@ -32,8 +33,7 @@ void main() {
                   ),
                   const SizedBox(width: SpaceTokens.xl),
                   Expanded(
-                    child: FeedbackSheet(
-                      variant: FeedbackSheetVariant.writingIncorrect,
+                    child: FeedbackSheet.writingIncorrect(
                       title: 'Not correct yet',
                       correctedAnswer: 'I practice English every morning.',
                       originalAnswer: 'I practicing English.',
@@ -44,7 +44,7 @@ void main() {
                         'Keep the time phrase together',
                       ],
                       correctionLabel: 'Correction',
-                      improvementsLabel: 'Key improvements',
+                      sectionLabel: 'Key improvements',
                       editLabel: 'Edit',
                       nextLabel: 'Next',
                       closeLabel: 'Close',

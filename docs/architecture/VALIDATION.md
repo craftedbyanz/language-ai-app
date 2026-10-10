@@ -4,11 +4,11 @@ Validation date: 2026-10-10.
 
 ## Toolchain and identity
 
-- Flutter 3.47.3 stable, Dart 3.13.3; installed FVM SDK used without upgrade/channel change.
+- Flutter 3.47.3 stable, Dart 3.13.3; the `.fvmrc`-pinned FVM SDK was used without upgrade/channel change.
 - Dart package: `lingua`; organization and production app ID: `com.anznguyen` / `com.anznguyen.lingua`.
 - Android, iOS/iPadOS and macOS hosts generated; no web/Windows/Linux hosts.
 - Android SDK 36.0.0 and licenses available; Xcode 27.0 and CocoaPods 1.17.0 available.
-- `flutter doctor -v` reported SDK binaries absent from PATH, missing iOS 27 simulator runtime and a GitHub network-check timeout. Commands used the installed SDK explicitly or added its bin directory to the command-local PATH.
+- `fvm flutter doctor -v` reported missing iOS 27 simulator runtime and a GitHub network-check timeout. Commands used the project-pinned SDK through FVM; no global Flutter PATH was required.
 
 ## Delivered foundation
 
@@ -37,28 +37,28 @@ Nine architecture guides and six accepted ADRs document implemented decisions. G
 
 ## Commands and results
 
-Commands were run with the installed SDK on PATH:
+Commands were run through the project FVM pin:
 
 ```sh
-flutter --version
-dart --version
-flutter doctor -v
-flutter create --project-name lingua --org com.anznguyen --platforms android,ios,macos --no-pub .
-flutter pub add flutter_riverpod go_router
-flutter pub add --dev go_router_builder build_runner
-dart run tool/generate_design_tokens.dart
-flutter gen-l10n
-dart run build_runner build
-dart format lib tool test integration_test
-flutter analyze
-dart run tool/check_architecture.dart
-dart run tool/verify_design_tokens.dart
-flutter test --update-goldens test/design_system/surface_golden_test.dart
+fvm flutter --version
+fvm dart --version
+fvm flutter doctor -v
+fvm flutter create --project-name lingua --org com.anznguyen --platforms android,ios,macos --no-pub .
+fvm flutter pub add flutter_riverpod go_router
+fvm flutter pub add --dev go_router_builder build_runner
+fvm dart run tool/generate_design_tokens.dart
+fvm flutter gen-l10n
+fvm dart run build_runner build
+fvm dart format lib tool test integration_test
+fvm flutter analyze
+fvm dart run tool/check_architecture.dart
+fvm dart run tool/verify_design_tokens.dart
+fvm flutter test --update-goldens test/design_system/surface_golden_test.dart
 sh tool/ci.sh
-flutter build macos --debug -t lib/main_prod.dart
-flutter test integration_test/bootstrap_test.dart -d macos --no-pub
-flutter build ios --debug --no-codesign --no-pub -t lib/main_prod.dart
-flutter build apk --debug --no-pub --target-platform android-arm64 -t lib/main_prod.dart
+fvm flutter build macos --debug -t lib/main_prod.dart
+fvm flutter test integration_test/bootstrap_test.dart -d macos --no-pub
+fvm flutter build ios --debug --no-codesign --no-pub -t lib/main_prod.dart
+fvm flutter build apk --debug --no-pub --target-platform android-arm64 -t lib/main_prod.dart
 git diff --check
 ```
 

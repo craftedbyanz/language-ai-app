@@ -11,13 +11,17 @@ client foundations and a localized boot placeholder.
 - Setup: [environments and toolchain](docs/architecture/ENVIRONMENTS.md)
 - Validation: [testing strategy](docs/architecture/TESTING_STRATEGY.md)
 
-Use Flutter stable 3.47.3 / Dart 3.13.3 (`.fvmrc`). With the SDK on PATH:
+Flutter stable 3.47.3 / Dart 3.13.3 is pinned by `.fvmrc`. Install FVM,
+then initialize the project SDK link with `fvm install`:
 
 ```sh
-flutter pub get
-flutter run -t lib/main_dev.dart -d macos
+fvm flutter pub get
+fvm flutter run -t lib/main_dev.dart -d macos
 sh tool/ci.sh
 ```
+
+Do not depend on a globally installed Flutter SDK. IDEs should resolve Flutter
+through `.fvm/flutter_sdk`; the tracked VS Code setting already does so.
 
 `lib/` owns application code; `android/`, `ios/`, and `macos/` own native hosts.
 `design-system/` is canonical; `lib/design_system/` implements its generated tokens.

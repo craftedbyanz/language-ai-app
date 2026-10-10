@@ -97,11 +97,13 @@ class CategoryChip extends StatelessWidget {
 
 class TopicCard extends StatelessWidget {
   const TopicCard({
+    required this.icon,
     required this.title,
     required this.countLabel,
     required this.onPressed,
     super.key,
   });
+  final IconData icon;
   final String title;
   final String countLabel;
   final VoidCallback onPressed;
@@ -128,12 +130,9 @@ class TopicCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 backgroundColor: ColorTokens.surfaceMuted,
-                child: Icon(
-                  Icons.edit_note_rounded,
-                  color: ColorTokens.textPrimary,
-                ),
+                child: Icon(icon, color: ColorTokens.textPrimary),
               ),
               const Spacer(),
               Text(title, style: TypographyTokens.heading),
@@ -152,8 +151,11 @@ class TopicCard extends StatelessWidget {
   );
 }
 
+enum LessonCardVariant { writing, grammar, conversation }
+
 class LessonCard extends StatelessWidget {
   const LessonCard({
+    required this.variant,
     required this.indexLabel,
     required this.level,
     required this.title,
@@ -162,6 +164,7 @@ class LessonCard extends StatelessWidget {
     required this.onPressed,
     super.key,
   });
+  final LessonCardVariant variant;
   final String indexLabel;
   final String level;
   final String title;
@@ -222,7 +225,16 @@ class LessonCard extends StatelessWidget {
           const SizedBox(height: SpaceTokens.xl),
           Align(
             alignment: Alignment.centerRight,
-            child: AppButton(label: actionLabel, onPressed: onPressed),
+            child: AppButton(
+              label: actionLabel,
+              onPressed: onPressed,
+              variant: AppButtonVariant.accent,
+              accent: switch (variant) {
+                LessonCardVariant.writing => AppButtonAccent.writing,
+                LessonCardVariant.grammar => AppButtonAccent.grammar,
+                LessonCardVariant.conversation => AppButtonAccent.conversation,
+              },
+            ),
           ),
         ],
       ),

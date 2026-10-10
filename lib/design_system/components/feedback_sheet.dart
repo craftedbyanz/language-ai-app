@@ -4,26 +4,153 @@ import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
 import 'app_button.dart';
 
-enum FeedbackSheetVariant { writingCorrect, writingIncorrect }
+enum FeedbackSheetVariant {
+  writingCorrect,
+  writingIncorrect,
+  grammarCorrect,
+  grammarIncorrect,
+}
 
-class FeedbackSheet extends StatelessWidget {
-  const FeedbackSheet({
-    required this.variant,
-    required this.title,
-    required this.correctedAnswer,
-    required this.originalAnswer,
-    required this.explanation,
-    required this.bullets,
-    required this.correctionLabel,
-    required this.improvementsLabel,
+sealed class FeedbackSheetActions {
+  const FeedbackSheetActions();
+}
+
+final class EditNextFeedbackActions extends FeedbackSheetActions {
+  const EditNextFeedbackActions({
     required this.editLabel,
     required this.nextLabel,
-    required this.closeLabel,
     required this.onEdit,
     required this.onNext,
+  });
+
+  final String editLabel;
+  final String nextLabel;
+  final VoidCallback onEdit;
+  final VoidCallback onNext;
+}
+
+final class FixNextFeedbackActions extends FeedbackSheetActions {
+  const FixNextFeedbackActions({
+    required this.fixLabel,
+    required this.nextLabel,
+    required this.onFix,
+    required this.onNext,
+  });
+
+  final String fixLabel;
+  final String nextLabel;
+  final VoidCallback onFix;
+  final VoidCallback onNext;
+}
+
+final class NextFullFeedbackActions extends FeedbackSheetActions {
+  const NextFullFeedbackActions({
+    required this.nextLabel,
+    required this.onNext,
+  });
+
+  final String nextLabel;
+  final VoidCallback onNext;
+}
+
+class FeedbackSheet extends StatelessWidget {
+  FeedbackSheet.writingCorrect({
+    required this.title,
+    required this.originalAnswer,
+    required this.correctedAnswer,
+    required this.explanation,
+    required this.bullets,
+    required this.sectionLabel,
+    required this.correctionLabel,
+    required String editLabel,
+    required String nextLabel,
+    required this.closeLabel,
+    required VoidCallback onEdit,
+    required VoidCallback onNext,
     required this.onClose,
     super.key,
-  });
+  }) : variant = FeedbackSheetVariant.writingCorrect,
+       recapLabel = null,
+       analysisLabel = null,
+       onAnalysis = null,
+       actions = EditNextFeedbackActions(
+         editLabel: editLabel,
+         nextLabel: nextLabel,
+         onEdit: onEdit,
+         onNext: onNext,
+       );
+
+  FeedbackSheet.writingIncorrect({
+    required this.title,
+    required this.originalAnswer,
+    required this.correctedAnswer,
+    required this.explanation,
+    required this.bullets,
+    required this.sectionLabel,
+    required this.correctionLabel,
+    required String editLabel,
+    required String nextLabel,
+    required this.closeLabel,
+    required VoidCallback onEdit,
+    required VoidCallback onNext,
+    required this.onClose,
+    super.key,
+  }) : variant = FeedbackSheetVariant.writingIncorrect,
+       recapLabel = null,
+       analysisLabel = null,
+       onAnalysis = null,
+       actions = EditNextFeedbackActions(
+         editLabel: editLabel,
+         nextLabel: nextLabel,
+         onEdit: onEdit,
+         onNext: onNext,
+       );
+
+  FeedbackSheet.grammarCorrect({
+    required this.title,
+    required String answer,
+    required this.recapLabel,
+    required this.analysisLabel,
+    required String nextLabel,
+    required this.closeLabel,
+    required this.onAnalysis,
+    required VoidCallback onNext,
+    required this.onClose,
+    super.key,
+  }) : variant = FeedbackSheetVariant.grammarCorrect,
+       originalAnswer = answer,
+       correctedAnswer = null,
+       explanation = null,
+       bullets = const [],
+       sectionLabel = null,
+       correctionLabel = null,
+       actions = NextFullFeedbackActions(nextLabel: nextLabel, onNext: onNext);
+
+  FeedbackSheet.grammarIncorrect({
+    required this.title,
+    required this.originalAnswer,
+    required this.correctedAnswer,
+    required this.explanation,
+    required this.bullets,
+    required this.sectionLabel,
+    required this.correctionLabel,
+    required String fixLabel,
+    required String nextLabel,
+    required this.closeLabel,
+    required VoidCallback onFix,
+    required VoidCallback onNext,
+    required this.onClose,
+    super.key,
+  }) : variant = FeedbackSheetVariant.grammarIncorrect,
+       recapLabel = null,
+       analysisLabel = null,
+       onAnalysis = null,
+       actions = FixNextFeedbackActions(
+         fixLabel: fixLabel,
+         nextLabel: nextLabel,
+         onFix: onFix,
+         onNext: onNext,
+       );
 
   static Widget loading({
     required String gradingLabel,
@@ -37,22 +164,28 @@ class FeedbackSheet extends StatelessWidget {
 
   final FeedbackSheetVariant variant;
   final String title;
-  final String correctedAnswer;
-  final String originalAnswer;
-  final String explanation;
+  final String? originalAnswer;
+  final String? correctedAnswer;
+  final String? explanation;
   final List<String> bullets;
-  final String correctionLabel;
-  final String improvementsLabel;
-  final String editLabel;
-  final String nextLabel;
+  final String? sectionLabel;
+  final String? correctionLabel;
+  final String? recapLabel;
+  final String? analysisLabel;
   final String closeLabel;
-  final VoidCallback onEdit;
-  final VoidCallback onNext;
+  final VoidCallback? onAnalysis;
   final VoidCallback onClose;
+  final FeedbackSheetActions actions;
+
+  bool get _correct => switch (variant) {
+    FeedbackSheetVariant.writingCorrect ||
+    FeedbackSheetVariant.grammarCorrect => true,
+    FeedbackSheetVariant.writingIncorrect ||
+    FeedbackSheetVariant.grammarIncorrect => false,
+  };
 
   @override
   Widget build(BuildContext context) {
-    final correct = variant == FeedbackSheetVariant.writingCorrect;
     final accessible = Theme.of(context)
         .extension<DesignTokensTheme>()!
         .accessible;
@@ -60,7 +193,7 @@ class FeedbackSheet extends StatelessWidget {
       liveRegion: true,
       label: title,
       child: Container(
-        key: Key(correct ? 'feedback-correct' : 'feedback-incorrect'),
+        key: Key(_correct ? 'feedback-correct' : 'feedback-incorrect'),
         padding: const EdgeInsets.all(SpaceTokens.lg),
         decoration: BoxDecoration(
           color: ColorTokens.surfaceElevated,
@@ -71,21 +204,12 @@ class FeedbackSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Container(
-                width: SpaceTokens.xxl,
-                height: SpaceTokens.xs,
-                decoration: BoxDecoration(
-                  color: ColorTokens.border,
-                  borderRadius: BorderRadius.circular(RadiusTokens.full),
-                ),
-              ),
-            ),
+            const _SheetGrabber(),
             Row(
               children: [
                 Icon(
-                  correct ? Icons.check_circle_rounded : Icons.cancel_rounded,
-                  color: correct
+                  _correct ? Icons.check_circle_rounded : Icons.cancel_rounded,
+                  color: _correct
                       ? FeedbackTokens.correct
                       : FeedbackTokens.incorrect,
                 ),
@@ -94,7 +218,7 @@ class FeedbackSheet extends StatelessWidget {
                   child: Text(
                     title,
                     style: TypographyTokens.heading.copyWith(
-                      color: correct
+                      color: _correct
                           ? accessible.successText
                           : accessible.errorText,
                     ),
@@ -108,110 +232,268 @@ class FeedbackSheet extends StatelessWidget {
               ],
             ),
             const SizedBox(height: SpaceTokens.md),
-            Text(
-              correctionLabel.toUpperCase(),
-              style: TypographyTokens.microLabel.copyWith(
-                color: ColorTokens.textSecondary,
+            switch (variant) {
+              FeedbackSheetVariant.grammarCorrect => _AnswerRecapBox(
+                label: recapLabel!,
+                answer: originalAnswer!,
+                analysisLabel: analysisLabel!,
+                onAnalysis: onAnalysis!,
               ),
-            ),
-            const SizedBox(height: SpaceTokens.xs),
-            Text.rich(
-              TextSpan(
-                style: TypographyTokens.body,
-                children: [
-                  TextSpan(
-                    text: originalAnswer,
-                    style: TextStyle(
-                      color: correct
-                          ? ColorTokens.textPrimary
-                          : ColorTokens.errorText,
-                      decoration: correct ? null : TextDecoration.lineThrough,
-                    ),
-                  ),
-                  const TextSpan(text: '\n'),
-                  TextSpan(
-                    text: correctedAnswer,
-                    style: TypographyTokens.bodyStrong.copyWith(
-                      color: ColorTokens.successText,
-                    ),
-                  ),
-                ],
+              FeedbackSheetVariant.writingCorrect ||
+              FeedbackSheetVariant.writingIncorrect ||
+              FeedbackSheetVariant.grammarIncorrect => _CorrectionBody(
+                correct: _correct,
+                originalAnswer: originalAnswer!,
+                correctedAnswer: correctedAnswer!,
+                explanation: explanation!,
+                correctionLabel: correctionLabel!,
+                sectionLabel: sectionLabel!,
+                bullets: bullets,
+                bulletColor: variant == FeedbackSheetVariant.grammarIncorrect
+                    ? FeedbackTokens.bulletTip
+                    : FeedbackTokens.bulletImprovement,
               ),
-            ),
+            },
             const SizedBox(height: SpaceTokens.md),
-            Text(explanation, style: TypographyTokens.body),
-            const SizedBox(height: SpaceTokens.md),
-            Text(
-              improvementsLabel.toUpperCase(),
-              style: TypographyTokens.microLabel.copyWith(
-                color: ColorTokens.textSecondary,
-              ),
-            ),
-            const SizedBox(height: SpaceTokens.xs),
-            ...bullets.map(
-              (bullet) => Padding(
-                padding: const EdgeInsets.only(bottom: SpaceTokens.xs),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(
-                      Icons.circle,
-                      color: FeedbackTokens.bulletImprovement,
-                      size: SpaceTokens.sm,
-                    ),
-                    const SizedBox(width: SpaceTokens.sm),
-                    Expanded(child: Text(bullet, style: TypographyTokens.body)),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: SpaceTokens.md),
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final stack =
-                    constraints.maxWidth < LayoutTokens.stackActionsBelow;
-                final buttons = [
-                  Expanded(
-                    child: AppButton(
-                      label: editLabel,
-                      onPressed: onEdit,
-                      variant: AppButtonVariant.secondary,
-                      fullWidth: true,
-                    ),
-                  ),
-                  const SizedBox(width: SpaceTokens.sm, height: SpaceTokens.sm),
-                  Expanded(
-                    child: AppButton(
-                      label: nextLabel,
-                      onPressed: onNext,
-                      fullWidth: true,
-                    ),
-                  ),
-                ];
-                if (!stack) return Row(children: buttons);
-                return Column(
-                  children: [
-                    AppButton(
-                      label: nextLabel,
-                      onPressed: onNext,
-                      fullWidth: true,
-                    ),
-                    const SizedBox(height: SpaceTokens.sm),
-                    AppButton(
-                      label: editLabel,
-                      onPressed: onEdit,
-                      variant: AppButtonVariant.secondary,
-                      fullWidth: true,
-                    ),
-                  ],
-                );
-              },
-            ),
+            FeedbackActionRow(actions: actions),
           ],
         ),
       ),
     );
   }
+}
+
+class FeedbackActionRow extends StatelessWidget {
+  const FeedbackActionRow({required this.actions, super.key});
+
+  final FeedbackSheetActions actions;
+
+  @override
+  Widget build(BuildContext context) {
+    final paired = switch (actions) {
+      EditNextFeedbackActions(
+        :final editLabel,
+        :final nextLabel,
+        :final onEdit,
+        :final onNext,
+      ) =>
+        (
+          secondaryLabel: editLabel,
+          primaryLabel: nextLabel,
+          onSecondary: onEdit,
+          onPrimary: onNext,
+        ),
+      FixNextFeedbackActions(
+        :final fixLabel,
+        :final nextLabel,
+        :final onFix,
+        :final onNext,
+      ) =>
+        (
+          secondaryLabel: fixLabel,
+          primaryLabel: nextLabel,
+          onSecondary: onFix,
+          onPrimary: onNext,
+        ),
+      NextFullFeedbackActions() => null,
+    };
+    if (actions case NextFullFeedbackActions(:final nextLabel, :final onNext)) {
+      return AppButton(label: nextLabel, onPressed: onNext, fullWidth: true);
+    }
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final stack = constraints.maxWidth < LayoutTokens.stackActionsBelow;
+        if (stack) {
+          return Column(
+            children: [
+              AppButton(
+                label: paired!.primaryLabel,
+                onPressed: paired.onPrimary,
+                fullWidth: true,
+              ),
+              const SizedBox(height: SpaceTokens.sm),
+              AppButton(
+                label: paired.secondaryLabel,
+                onPressed: paired.onSecondary,
+                variant: AppButtonVariant.secondary,
+                fullWidth: true,
+              ),
+            ],
+          );
+        }
+        return Row(
+          children: [
+            Expanded(
+              child: AppButton(
+                label: paired!.secondaryLabel,
+                onPressed: paired.onSecondary,
+                variant: AppButtonVariant.secondary,
+                fullWidth: true,
+              ),
+            ),
+            const SizedBox(width: SpaceTokens.sm),
+            Expanded(
+              child: AppButton(
+                label: paired.primaryLabel,
+                onPressed: paired.onPrimary,
+                fullWidth: true,
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _CorrectionBody extends StatelessWidget {
+  const _CorrectionBody({
+    required this.correct,
+    required this.originalAnswer,
+    required this.correctedAnswer,
+    required this.explanation,
+    required this.correctionLabel,
+    required this.sectionLabel,
+    required this.bullets,
+    required this.bulletColor,
+  });
+
+  final bool correct;
+  final String originalAnswer;
+  final String correctedAnswer;
+  final String explanation;
+  final String correctionLabel;
+  final String sectionLabel;
+  final List<String> bullets;
+  final Color bulletColor;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        correctionLabel.toUpperCase(),
+        style: TypographyTokens.microLabel.copyWith(
+          color: ColorTokens.textSecondary,
+        ),
+      ),
+      const SizedBox(height: SpaceTokens.xs),
+      Text.rich(
+        TextSpan(
+          style: TypographyTokens.body,
+          children: [
+            TextSpan(
+              text: originalAnswer,
+              style: TextStyle(
+                color: correct
+                    ? ColorTokens.textPrimary
+                    : ColorTokens.errorText,
+                decoration: correct ? null : TextDecoration.lineThrough,
+              ),
+            ),
+            const TextSpan(text: '\n'),
+            TextSpan(
+              text: correctedAnswer,
+              style: TypographyTokens.bodyStrong.copyWith(
+                color: ColorTokens.successText,
+              ),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(height: SpaceTokens.md),
+      Text(explanation, style: TypographyTokens.body),
+      const SizedBox(height: SpaceTokens.md),
+      Text(
+        sectionLabel.toUpperCase(),
+        style: TypographyTokens.microLabel.copyWith(
+          color: ColorTokens.textSecondary,
+        ),
+      ),
+      const SizedBox(height: SpaceTokens.xs),
+      ...bullets.map(
+        (bullet) => Padding(
+          padding: const EdgeInsets.only(bottom: SpaceTokens.xs),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.circle, color: bulletColor, size: SpaceTokens.sm),
+              const SizedBox(width: SpaceTokens.sm),
+              Expanded(child: Text(bullet, style: TypographyTokens.body)),
+            ],
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+class _AnswerRecapBox extends StatelessWidget {
+  const _AnswerRecapBox({
+    required this.label,
+    required this.answer,
+    required this.analysisLabel,
+    required this.onAnalysis,
+  });
+
+  final String label;
+  final String answer;
+  final String analysisLabel;
+  final VoidCallback onAnalysis;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          const Icon(
+            Icons.check_circle_rounded,
+            color: FeedbackTokens.correct,
+            size: IconTokens.inline,
+          ),
+          const SizedBox(width: SpaceTokens.xs),
+          Text(
+            label.toUpperCase(),
+            style: TypographyTokens.microLabel.copyWith(
+              color: ColorTokens.textSecondary,
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: SpaceTokens.sm),
+      Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(SpaceTokens.md),
+        decoration: BoxDecoration(
+          color: ColorTokens.surfaceMuted,
+          borderRadius: BorderRadius.circular(RadiusTokens.control),
+        ),
+        child: Text(answer, style: TypographyTokens.body),
+      ),
+      AppButton(
+        label: analysisLabel,
+        onPressed: onAnalysis,
+        variant: AppButtonVariant.link,
+      ),
+    ],
+  );
+}
+
+class _SheetGrabber extends StatelessWidget {
+  const _SheetGrabber();
+
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Container(
+      width: SpaceTokens.xxl,
+      height: SpaceTokens.xs,
+      decoration: BoxDecoration(
+        color: ColorTokens.border,
+        borderRadius: BorderRadius.circular(RadiusTokens.full),
+      ),
+    ),
+  );
 }
 
 class _FeedbackSheetLoading extends StatelessWidget {
@@ -258,7 +540,11 @@ class _FeedbackSheetLoading extends StatelessWidget {
           const _SkeletonBar(),
           Align(
             alignment: Alignment.centerRight,
-            child: TextButton(onPressed: onCancel, child: Text(cancelLabel)),
+            child: AppButton(
+              label: cancelLabel,
+              onPressed: onCancel,
+              variant: AppButtonVariant.secondary,
+            ),
           ),
         ],
       ),

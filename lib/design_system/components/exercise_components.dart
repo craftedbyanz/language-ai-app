@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 
 import '../tokens/generated/design_tokens.dart';
 
+enum SourceTextCardVariant { paragraph, sentence }
+
 class SourceTextCard extends StatelessWidget {
   const SourceTextCard({
+    required this.variant,
     required this.text,
     required this.semanticLabel,
     super.key,
   });
+  final SourceTextCardVariant variant;
   final String text;
   final String semanticLabel;
 
@@ -25,13 +29,34 @@ class SourceTextCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
         boxShadow: ShadowTokens.hairline,
       ),
-      child: Text(text, style: TypographyTokens.heading),
+      child: Text(
+        text,
+        style: switch (variant) {
+          SourceTextCardVariant.paragraph => TypographyTokens.body,
+          SourceTextCardVariant.sentence => TypographyTokens.heading,
+        },
+      ),
     ),
   );
 }
 
+enum AnswerPaletteKey { purple, blue, indigo, green, lime, ink, white }
+
+extension AnswerPaletteKeyTokens on AnswerPaletteKey {
+  AnswerColors get colors => switch (this) {
+    AnswerPaletteKey.purple => AnswerPaletteTokens.purple,
+    AnswerPaletteKey.blue => AnswerPaletteTokens.blue,
+    AnswerPaletteKey.indigo => AnswerPaletteTokens.indigo,
+    AnswerPaletteKey.green => AnswerPaletteTokens.green,
+    AnswerPaletteKey.lime => AnswerPaletteTokens.lime,
+    AnswerPaletteKey.ink => AnswerPaletteTokens.ink,
+    AnswerPaletteKey.white => AnswerPaletteTokens.white,
+  };
+}
+
 class AnswerInput extends StatelessWidget {
   const AnswerInput({
+    required this.paletteKey,
     required this.controller,
     required this.label,
     required this.placeholder,
@@ -40,6 +65,7 @@ class AnswerInput extends StatelessWidget {
     this.autofocus = true,
     super.key,
   });
+  final AnswerPaletteKey paletteKey;
   final TextEditingController controller;
   final String label;
   final String placeholder;
@@ -48,39 +74,44 @@ class AnswerInput extends StatelessWidget {
   final bool autofocus;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    label: label,
-    textField: true,
-    child: Container(
-      constraints: const BoxConstraints(
-        minHeight: LayoutTokens.answerCardMinHeight,
-      ),
-      padding: const EdgeInsets.all(SpaceTokens.lg),
-      decoration: BoxDecoration(
-        color: AnswerPaletteTokens.purple.background,
-        borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-      ),
-      child: TextField(
-        key: const Key('writing-answer-input'),
-        controller: controller,
-        autofocus: autofocus,
-        enabled: enabled,
-        maxLines: null,
-        onChanged: onChanged,
-        style: TypographyTokens.body.copyWith(
-          color: AnswerPaletteTokens.purple.foreground,
+  Widget build(BuildContext context) {
+    final palette = paletteKey.colors;
+    return Semantics(
+      label: label,
+      textField: true,
+      child: Container(
+        key: const Key('answer-input-surface'),
+        constraints: const BoxConstraints(
+          minHeight: LayoutTokens.answerCardMinHeight,
         ),
-        cursorColor: AnswerPaletteTokens.purple.foreground,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: placeholder,
-          hintStyle: TypographyTokens.body.copyWith(
-            color: AnswerPaletteTokens.purple.foreground,
+        padding: const EdgeInsets.all(SpaceTokens.lg),
+        decoration: BoxDecoration(
+          color: palette.background,
+          borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+          boxShadow: paletteKey == AnswerPaletteKey.white
+              ? ShadowTokens.hairline
+              : ShadowTokens.none,
+        ),
+        child: TextField(
+          key: const Key('answer-input'),
+          controller: controller,
+          autofocus: autofocus,
+          enabled: enabled,
+          maxLines: null,
+          onChanged: onChanged,
+          style: TypographyTokens.body.copyWith(color: palette.foreground),
+          cursorColor: palette.foreground,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: placeholder,
+            hintStyle: TypographyTokens.body.copyWith(
+              color: palette.foreground,
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class HintChipBar extends StatefulWidget {
@@ -154,7 +185,7 @@ class SubmitButton extends StatelessWidget {
     child: SizedBox.square(
       dimension: ControlTokens.minTouchTarget,
       child: IconButton.filled(
-        key: const Key('writing-submit'),
+        key: const Key('submit-button'),
         tooltip: label,
         onPressed: loading ? null : onPressed,
         style: IconButton.styleFrom(

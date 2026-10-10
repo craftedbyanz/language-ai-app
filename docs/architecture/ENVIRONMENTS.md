@@ -1,11 +1,13 @@
 # Environments and toolchain
 
-Baseline: installed Flutter stable 3.47.3 / Dart 3.13.3. CI pins that Flutter version; pubspec.lock pins resolved packages. SDK was not upgraded or switched. This machine uses `~/fvm/default/bin`; add it to PATH before the commands below.
+Baseline: Flutter stable 3.47.3 / Dart 3.13.3 is pinned by `.fvmrc`;
+`pubspec.lock` pins resolved packages. Install FVM and run `fvm install` once to
+create `.fvm/flutter_sdk`. Do not depend on a global Flutter/Dart installation.
 
 ```sh
-flutter run -t lib/main_dev.dart -d macos
-flutter run -t lib/main_staging.dart -d macos
-flutter run -t lib/main_prod.dart -d macos
+fvm flutter run -t lib/main_dev.dart -d macos
+fvm flutter run -t lib/main_staging.dart -d macos
+fvm flutter run -t lib/main_prod.dart -d macos
 ```
 
 Each entrypoint selects AppEnvironment and shares bootstrap. `main.dart` defaults to production. AppConfig is immutable and injected. FeatureFlags exposes only paywallEnabled=false and srsSwipeEnabled=false; no environment bypasses those approved v1 decisions. There are no secrets, invented API URLs or environment business checks.

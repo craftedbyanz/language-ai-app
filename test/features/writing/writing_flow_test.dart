@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingua/app/bootstrap/bootstrap.dart';
 import 'package:lingua/core/config/app_config.dart';
 import 'package:lingua/core/config/app_environment.dart';
+import 'package:lingua/design_system/patterns/exercise_template.dart';
 
 void main() {
   Future<void> openExercise(WidgetTester tester) async {
@@ -22,18 +23,19 @@ void main() {
     expect(find.text('Small steps'), findsOneWidget);
     await tester.tap(find.text('Start').first);
     await tester.pumpAndSettle();
-    expect(find.byKey(const Key('writing-answer-input')), findsOneWidget);
+    expect(find.byKey(const Key('answer-input')), findsOneWidget);
+    expect(find.byType(ExerciseTemplate), findsOneWidget);
   }
 
   testWidgets('Home to Writing flow, correct feedback, and Next progression', (
     tester,
   ) async {
     await openExercise(tester);
-    final submit = find.byKey(const Key('writing-submit'));
+    final submit = find.byKey(const Key('submit-button'));
     expect(find.bySemanticsLabel('Submit'), findsWidgets);
     expect(tester.widget<IconButton>(submit).onPressed, isNull);
     await tester.enterText(
-      find.byKey(const Key('writing-answer-input')),
+      find.byKey(const Key('answer-input')),
       'I practice English every morning.',
     );
     await tester.pump();
@@ -63,11 +65,11 @@ void main() {
   ) async {
     await openExercise(tester);
     await tester.enterText(
-      find.byKey(const Key('writing-answer-input')),
+      find.byKey(const Key('answer-input')),
       'Definitely wrong',
     );
     await tester.pump();
-    await tester.tap(find.byKey(const Key('writing-submit')));
+    await tester.tap(find.byKey(const Key('submit-button')));
     await tester.pump(const Duration(milliseconds: 250));
     expect(find.byKey(const Key('feedback-incorrect')), findsOneWidget);
     expect(find.text('Not correct yet'), findsOneWidget);
