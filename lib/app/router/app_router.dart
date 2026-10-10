@@ -7,7 +7,7 @@ import 'app_routes.dart';
 final appRouterProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
     routes: $appRoutes,
-    initialLocation: const FoundationRoute().location,
+    initialLocation: const HomeRoute().location,
     errorBuilder: (context, state) => const FoundationPage(unavailable: true),
   );
   ref.onDispose(router.dispose);

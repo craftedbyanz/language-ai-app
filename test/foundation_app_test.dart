@@ -25,7 +25,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Sẵn sàng học hỏi.'), findsOneWidget);
+      expect(find.text('Chào buổi sáng'), findsOneWidget);
       expect(tester.takeException(), isNull);
     }
   });

@@ -17,4 +17,152 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pageUnavailable => 'This page is unavailable.';
+
+  @override
+  String get homeGreeting => 'Good morning';
+
+  @override
+  String get homeCaption => 'A few focused minutes can move you forward.';
+
+  @override
+  String get homePrompt => 'Ask AI to create a lesson';
+
+  @override
+  String get homePromptLabel => 'Ask AI to create a lesson, coming soon';
+
+  @override
+  String get learningModes => 'Learning modes';
+
+  @override
+  String get writing => 'Writing';
+
+  @override
+  String get writingDescription =>
+      'Build natural sentences through guided translation.';
+
+  @override
+  String get grammar => 'Grammar';
+
+  @override
+  String get grammarDescription => 'Sharpen patterns with quick corrections.';
+
+  @override
+  String get conversation => 'Conversation';
+
+  @override
+  String get conversationDescription =>
+      'Practice everyday exchanges at your pace.';
+
+  @override
+  String get explore => 'Explore';
+
+  @override
+  String get comingSoon => 'Coming soon';
+
+  @override
+  String streakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Streak: $count days',
+      one: 'Streak: 1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get menu => 'Menu';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get more => 'More';
+
+  @override
+  String get topicsEyebrow => 'Writing practice';
+
+  @override
+  String get topicsFirstLine => 'Choose a topic';
+
+  @override
+  String get topicsSecondLine => 'Write with purpose';
+
+  @override
+  String get setCount => 'sets';
+
+  @override
+  String get lessonsEyebrow => 'Writing lessons';
+
+  @override
+  String get lessonsFirstLine => 'Small steps';
+
+  @override
+  String get lessonsSecondLine => 'Clearer sentences';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get sourceText => 'Source text';
+
+  @override
+  String get answerLabel => 'Your answer';
+
+  @override
+  String get answerPlaceholder => 'Type your translation…';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get grading => 'Grading…';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get correctTitle => 'Excellent';
+
+  @override
+  String get incorrectTitle => 'Not correct yet';
+
+  @override
+  String get correction => 'Correction';
+
+  @override
+  String get improvements => 'Key improvements';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get stepOf => 'Writing progress';
+
+  @override
+  String get hint => 'Hint';
+
+  @override
+  String get leaveExercise => 'Leave exercise?';
+
+  @override
+  String get leaveBody => 'Your current answer will not be saved.';
+
+  @override
+  String get stay => 'Stay';
+
+  @override
+  String get leave => 'Leave';
 }

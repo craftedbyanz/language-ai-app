@@ -27,21 +27,21 @@ void main() {
         createAppRoot(config: AppConfig(environment: environment)),
       );
       await tester.pumpAndSettle();
-      final context = tester.element(find.text('Ready to learn.'));
+      final context = tester.element(find.text('Good morning'));
       final container = ProviderScope.containerOf(context);
       final config = container.read(appConfigProvider);
       expect(config.environment, environment);
       expect(config.flags.paywallEnabled, isFalse);
       expect(config.flags.srsSwipeEnabled, isFalse);
-      expect(const FoundationRoute().location, '/');
+      expect(const HomeRoute().location, '/');
       container.read(appRouterProvider).go('/unknown');
       await tester.pumpAndSettle();
       expect(find.text('This page is unavailable.'), findsOneWidget);
-      const FoundationRoute().go(
+      const HomeRoute().go(
         tester.element(find.text('This page is unavailable.')),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Ready to learn.'), findsOneWidget);
+      expect(find.text('Good morning'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
     }
   });
