@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../primitives/canonical_focus_indicator.dart';
 import '../tokens/generated/design_tokens.dart';
 
 class GreetingBlock extends StatelessWidget {
@@ -92,6 +93,8 @@ class ModeCard extends StatelessWidget {
     required this.fill,
     required this.foreground,
     this.onPressed,
+    this.focusNode,
+    this.statesController,
     super.key,
   });
   final String index;
@@ -102,83 +105,91 @@ class ModeCard extends StatelessWidget {
   final Color fill;
   final Color foreground;
   final VoidCallback? onPressed;
+  final FocusNode? focusNode;
+  final WidgetStatesController? statesController;
 
   @override
   Widget build(BuildContext context) => Semantics(
     button: true,
     enabled: onPressed != null,
     label: '$index, $title, $category, $description, $actionLabel',
-    child: Material(
-      color: fill,
+    child: CanonicalFocusIndicator(
       borderRadius: BorderRadius.circular(RadiusTokens.heroCard),
-      child: InkWell(
-        onTap: onPressed,
+      child: Material(
+        color: fill,
         borderRadius: BorderRadius.circular(RadiusTokens.heroCard),
-        child: Container(
-          constraints: const BoxConstraints(
-            minHeight: LayoutTokens.modeCardMinHeight,
-          ),
-          padding: const EdgeInsets.all(SpaceTokens.xl),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: SpaceTokens.md,
-                      vertical: SpaceTokens.xs,
-                    ),
-                    decoration: BoxDecoration(
-                      color: ColorTokens.surfaceMuted,
-                      borderRadius: BorderRadius.circular(RadiusTokens.full),
-                    ),
-                    child: Text(
-                      category,
-                      style: TypographyTokens.microLabel.copyWith(
-                        color: ColorTokens.textPrimary,
+        child: InkWell(
+          key: ValueKey('mode-card-$index'),
+          focusNode: focusNode,
+          statesController: statesController,
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.heroCard),
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: LayoutTokens.modeCardMinHeight,
+            ),
+            padding: const EdgeInsets.all(SpaceTokens.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: SpaceTokens.md,
+                        vertical: SpaceTokens.xs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorTokens.surfaceMuted,
+                        borderRadius: BorderRadius.circular(RadiusTokens.full),
+                      ),
+                      child: Text(
+                        category,
+                        style: TypographyTokens.microLabel.copyWith(
+                          color: ColorTokens.textPrimary,
+                        ),
                       ),
                     ),
-                  ),
-                  ExcludeSemantics(
-                    child: Text(
-                      index,
-                      style: TypographyTokens.display.copyWith(
-                        color: ColorTokens.textFaint,
+                    ExcludeSemantics(
+                      child: Text(
+                        index,
+                        style: TypographyTokens.display.copyWith(
+                          color: ColorTokens.textFaint,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Text(
-                title,
-                style: TypographyTokens.display.copyWith(color: foreground),
-              ),
-              const SizedBox(height: SpaceTokens.sm),
-              Text(
-                description,
-                style: TypographyTokens.body.copyWith(color: foreground),
-              ),
-              const SizedBox(height: SpaceTokens.xl),
-              Row(
-                children: [
-                  Text(
-                    actionLabel,
-                    style: TypographyTokens.bodyStrong.copyWith(
+                  ],
+                ),
+                const Spacer(),
+                Text(
+                  title,
+                  style: TypographyTokens.display.copyWith(color: foreground),
+                ),
+                const SizedBox(height: SpaceTokens.sm),
+                Text(
+                  description,
+                  style: TypographyTokens.body.copyWith(color: foreground),
+                ),
+                const SizedBox(height: SpaceTokens.xl),
+                Row(
+                  children: [
+                    Text(
+                      actionLabel,
+                      style: TypographyTokens.bodyStrong.copyWith(
+                        color: foreground,
+                      ),
+                    ),
+                    const SizedBox(width: SpaceTokens.xs),
+                    Icon(
+                      Icons.arrow_forward_rounded,
                       color: foreground,
+                      size: IconTokens.inline,
                     ),
-                  ),
-                  const SizedBox(width: SpaceTokens.xs),
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    color: foreground,
-                    size: IconTokens.inline,
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

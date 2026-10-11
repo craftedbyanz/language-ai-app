@@ -1,5 +1,8 @@
+import 'dart:ui' show SemanticsRole;
+
 import 'package:flutter/material.dart';
 
+import '../primitives/canonical_focus_indicator.dart';
 import '../tokens/generated/design_tokens.dart';
 
 enum AppHeaderVariant { pushed, progress }
@@ -12,6 +15,7 @@ class AppHeader extends StatelessWidget {
     this.title,
     this.centre,
     this.trailing,
+    this.leadingFocusNode,
     super.key,
   });
 
@@ -21,20 +25,26 @@ class AppHeader extends StatelessWidget {
   final String? title;
   final Widget? centre;
   final Widget? trailing;
+  final FocusNode? leadingFocusNode;
 
   @override
   Widget build(BuildContext context) => SizedBox(
     height: LayoutTokens.navBarHeight + ControlTokens.minTouchTarget,
     child: Row(
       children: [
-        IconButton(
-          tooltip: leadingLabel,
-          onPressed: onLeadingPressed,
-          icon: Icon(
-            variant == AppHeaderVariant.pushed
-                ? Icons.chevron_left_rounded
-                : Icons.close_rounded,
-            size: IconTokens.control,
+        CanonicalFocusIndicator(
+          borderRadius: BorderRadius.circular(RadiusTokens.full),
+          child: IconButton(
+            key: const Key('app-header-leading'),
+            focusNode: leadingFocusNode,
+            tooltip: leadingLabel,
+            onPressed: onLeadingPressed,
+            icon: Icon(
+              variant == AppHeaderVariant.pushed
+                  ? Icons.chevron_left_rounded
+                  : Icons.close_rounded,
+              size: IconTokens.control,
+            ),
           ),
         ),
         const SizedBox(width: SpaceTokens.sm),
@@ -93,7 +103,11 @@ class ProgressStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Semantics(
     label: semanticLabel,
-    value: '$step/$count',
+    value: '$step',
+    minValue: '0',
+    maxValue: '$count',
+    role: SemanticsRole.progressBar,
+    liveRegion: true,
     child: ExcludeSemantics(
       child: Row(
         children: List.generate(count, (index) {

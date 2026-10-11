@@ -50,10 +50,12 @@ class HomeDashboardScreen extends StatelessWidget {
   const HomeDashboardScreen({
     required this.copy,
     required this.onWritingPressed,
+    required this.onGrammarPressed,
     super.key,
   });
   final HomeDashboardCopy copy;
   final VoidCallback onWritingPressed;
+  final VoidCallback onGrammarPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -131,12 +133,13 @@ class HomeDashboardScreen extends StatelessWidget {
                                         LayoutTokens.modeCardWidthRatioCompact,
                                     child: ModeCard(
                                       index: '02',
-                                      category: copy.comingSoon,
+                                      category: copy.learningModes,
                                       title: copy.grammar,
                                       description: copy.grammarDescription,
-                                      actionLabel: copy.comingSoon,
+                                      actionLabel: copy.explore,
                                       fill: FeatureTokens.grammarHomeCardFill,
                                       foreground: accessible.onFeatureFill,
+                                      onPressed: onGrammarPressed,
                                     ),
                                   ),
                                   const SizedBox(

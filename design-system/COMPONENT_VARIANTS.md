@@ -155,6 +155,19 @@ Plus a `LessonCard/AiCreate` entry card at the end of the conversation list ("cr
 2-segment only observed; allow 2–3.
 
 ## PagerDots
+
+`PagerDots/Lesson` is required below the horizontal Grammar lesson carousel. It exposes the current
+one-based position and total count semantically and supports direct selection when a callback is
+provided.
+
+## Grammar vertical-slice additive states
+
+- `SourceTextCard/Sentence`: optional localized instruction; absent by default.
+- `AnswerInput`: optional external focus node; internal/default focus behavior remains unchanged.
+- `HintChipBar`: optional show-last-feedback action; absent by default.
+- `FeedbackSheet/GrammarCorrect`: analysis action may be disabled with a localized reason.
+- `FeedbackSheet/*`: optional minimize callback; absent by default.
+- `FeedbackSheet/Loading`: Cancel retains input and invalidates the active request.
 `Dashboard` (lime active) · `Lesson` (dark pill active).
 
 ## PopupMenu

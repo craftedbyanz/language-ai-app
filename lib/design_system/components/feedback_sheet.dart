@@ -1,5 +1,8 @@
+import 'dart:ui' show SemanticsRole;
+
 import 'package:flutter/material.dart';
 
+import '../primitives/canonical_focus_indicator.dart';
 import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
 import 'app_button.dart';
@@ -68,10 +71,17 @@ class FeedbackSheet extends StatelessWidget {
     required VoidCallback onEdit,
     required VoidCallback onNext,
     required this.onClose,
+    this.onMinimize,
+    this.minimizeLabel,
+    this.minimizeFocusNode,
+    this.closeFocusNode,
+    this.titleFocusNode,
     super.key,
-  }) : variant = FeedbackSheetVariant.writingCorrect,
+  }) : assert(onMinimize == null || minimizeLabel != null),
+       variant = FeedbackSheetVariant.writingCorrect,
        recapLabel = null,
        analysisLabel = null,
+       analysisUnavailableReason = null,
        onAnalysis = null,
        actions = EditNextFeedbackActions(
          editLabel: editLabel,
@@ -94,10 +104,17 @@ class FeedbackSheet extends StatelessWidget {
     required VoidCallback onEdit,
     required VoidCallback onNext,
     required this.onClose,
+    this.onMinimize,
+    this.minimizeLabel,
+    this.minimizeFocusNode,
+    this.closeFocusNode,
+    this.titleFocusNode,
     super.key,
-  }) : variant = FeedbackSheetVariant.writingIncorrect,
+  }) : assert(onMinimize == null || minimizeLabel != null),
+       variant = FeedbackSheetVariant.writingIncorrect,
        recapLabel = null,
        analysisLabel = null,
+       analysisUnavailableReason = null,
        onAnalysis = null,
        actions = EditNextFeedbackActions(
          editLabel: editLabel,
@@ -111,13 +128,20 @@ class FeedbackSheet extends StatelessWidget {
     required String answer,
     required this.recapLabel,
     required this.analysisLabel,
+    this.analysisUnavailableReason,
     required String nextLabel,
     required this.closeLabel,
     required this.onAnalysis,
     required VoidCallback onNext,
     required this.onClose,
+    this.onMinimize,
+    this.minimizeLabel,
+    this.minimizeFocusNode,
+    this.closeFocusNode,
+    this.titleFocusNode,
     super.key,
-  }) : variant = FeedbackSheetVariant.grammarCorrect,
+  }) : assert(onMinimize == null || minimizeLabel != null),
+       variant = FeedbackSheetVariant.grammarCorrect,
        originalAnswer = answer,
        correctedAnswer = null,
        explanation = null,
@@ -140,10 +164,17 @@ class FeedbackSheet extends StatelessWidget {
     required VoidCallback onFix,
     required VoidCallback onNext,
     required this.onClose,
+    this.onMinimize,
+    this.minimizeLabel,
+    this.minimizeFocusNode,
+    this.closeFocusNode,
+    this.titleFocusNode,
     super.key,
-  }) : variant = FeedbackSheetVariant.grammarIncorrect,
+  }) : assert(onMinimize == null || minimizeLabel != null),
+       variant = FeedbackSheetVariant.grammarIncorrect,
        recapLabel = null,
        analysisLabel = null,
+       analysisUnavailableReason = null,
        onAnalysis = null,
        actions = FixNextFeedbackActions(
          fixLabel: fixLabel,
@@ -156,10 +187,12 @@ class FeedbackSheet extends StatelessWidget {
     required String gradingLabel,
     required String cancelLabel,
     required VoidCallback onCancel,
+    FocusNode? titleFocusNode,
   }) => _FeedbackSheetLoading(
     gradingLabel: gradingLabel,
     cancelLabel: cancelLabel,
     onCancel: onCancel,
+    titleFocusNode: titleFocusNode,
   );
 
   final FeedbackSheetVariant variant;
@@ -172,9 +205,15 @@ class FeedbackSheet extends StatelessWidget {
   final String? correctionLabel;
   final String? recapLabel;
   final String? analysisLabel;
+  final String? analysisUnavailableReason;
   final String closeLabel;
   final VoidCallback? onAnalysis;
   final VoidCallback onClose;
+  final VoidCallback? onMinimize;
+  final String? minimizeLabel;
+  final FocusNode? minimizeFocusNode;
+  final FocusNode? closeFocusNode;
+  final FocusNode? titleFocusNode;
   final FeedbackSheetActions actions;
 
   bool get _correct => switch (variant) {
@@ -190,8 +229,12 @@ class FeedbackSheet extends StatelessWidget {
         .extension<DesignTokensTheme>()!
         .accessible;
     return Semantics(
+      key: const Key('feedback-live-region'),
+      role: SemanticsRole.dialog,
       liveRegion: true,
       label: title,
+      container: true,
+      explicitChildNodes: true,
       child: Container(
         key: Key(_correct ? 'feedback-correct' : 'feedback-incorrect'),
         padding: const EdgeInsets.all(SpaceTokens.lg),
@@ -215,19 +258,59 @@ class FeedbackSheet extends StatelessWidget {
                 ),
                 const SizedBox(width: SpaceTokens.sm),
                 Expanded(
-                  child: Text(
-                    title,
-                    style: TypographyTokens.heading.copyWith(
-                      color: _correct
-                          ? accessible.successText
-                          : accessible.errorText,
+                  child: Semantics(
+                    header: true,
+                    child: Focus(
+                      key: const Key('feedback-title-focus'),
+                      focusNode: titleFocusNode,
+                      canRequestFocus: titleFocusNode != null,
+                      child: ExcludeSemantics(
+                        child: Text(
+                          title,
+                          style: TypographyTokens.heading.copyWith(
+                            color: _correct
+                                ? accessible.successText
+                                : accessible.errorText,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                IconButton(
-                  tooltip: closeLabel,
-                  onPressed: onClose,
-                  icon: const Icon(Icons.close_rounded),
+                if (onMinimize != null)
+                  Semantics(
+                    button: true,
+                    label: minimizeLabel,
+                    onTap: onMinimize,
+                    child: ExcludeSemantics(
+                      child: CanonicalFocusIndicator(
+                        borderRadius: BorderRadius.circular(RadiusTokens.full),
+                        child: IconButton(
+                          key: const Key('feedback-minimize'),
+                          focusNode: minimizeFocusNode,
+                          tooltip: minimizeLabel,
+                          onPressed: onMinimize,
+                          icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                        ),
+                      ),
+                    ),
+                  ),
+                Semantics(
+                  button: true,
+                  label: closeLabel,
+                  onTap: onClose,
+                  child: ExcludeSemantics(
+                    child: CanonicalFocusIndicator(
+                      borderRadius: BorderRadius.circular(RadiusTokens.full),
+                      child: IconButton(
+                        key: const Key('feedback-close'),
+                        focusNode: closeFocusNode,
+                        tooltip: closeLabel,
+                        onPressed: onClose,
+                        icon: const Icon(Icons.close_rounded),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -237,7 +320,8 @@ class FeedbackSheet extends StatelessWidget {
                 label: recapLabel!,
                 answer: originalAnswer!,
                 analysisLabel: analysisLabel!,
-                onAnalysis: onAnalysis!,
+                onAnalysis: onAnalysis,
+                unavailableReason: analysisUnavailableReason,
               ),
               FeedbackSheetVariant.writingCorrect ||
               FeedbackSheetVariant.writingIncorrect ||
@@ -434,12 +518,14 @@ class _AnswerRecapBox extends StatelessWidget {
     required this.answer,
     required this.analysisLabel,
     required this.onAnalysis,
+    this.unavailableReason,
   });
 
   final String label;
   final String answer;
   final String analysisLabel;
-  final VoidCallback onAnalysis;
+  final VoidCallback? onAnalysis;
+  final String? unavailableReason;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -471,11 +557,26 @@ class _AnswerRecapBox extends StatelessWidget {
         ),
         child: Text(answer, style: TypographyTokens.body),
       ),
-      AppButton(
-        label: analysisLabel,
-        onPressed: onAnalysis,
-        variant: AppButtonVariant.link,
+      Semantics(
+        enabled: onAnalysis != null,
+        label: unavailableReason == null
+            ? analysisLabel
+            : '$analysisLabel. $unavailableReason',
+        child: ExcludeSemantics(
+          child: AppButton(
+            label: analysisLabel,
+            onPressed: onAnalysis,
+            variant: AppButtonVariant.link,
+          ),
+        ),
       ),
+      if (unavailableReason case final reason?)
+        Text(
+          reason,
+          style: TypographyTokens.caption.copyWith(
+            color: ColorTokens.textSecondary,
+          ),
+        ),
     ],
   );
 }
@@ -501,16 +602,22 @@ class _FeedbackSheetLoading extends StatelessWidget {
     required this.gradingLabel,
     required this.cancelLabel,
     required this.onCancel,
+    this.titleFocusNode,
   });
 
   final String gradingLabel;
   final String cancelLabel;
   final VoidCallback onCancel;
+  final FocusNode? titleFocusNode;
 
   @override
   Widget build(BuildContext context) => Semantics(
+    key: const Key('feedback-loading-live-region'),
+    role: SemanticsRole.dialog,
     liveRegion: true,
     label: gradingLabel,
+    container: true,
+    explicitChildNodes: true,
     child: Container(
       padding: const EdgeInsets.all(SpaceTokens.lg),
       decoration: BoxDecoration(
@@ -531,7 +638,17 @@ class _FeedbackSheetLoading extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: SpaceTokens.sm),
-              Text(gradingLabel, style: TypographyTokens.heading),
+              Semantics(
+                header: true,
+                child: Focus(
+                  key: const Key('feedback-loading-title-focus'),
+                  focusNode: titleFocusNode,
+                  canRequestFocus: titleFocusNode != null,
+                  child: ExcludeSemantics(
+                    child: Text(gradingLabel, style: TypographyTokens.heading),
+                  ),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: SpaceTokens.lg),
@@ -563,4 +680,99 @@ class _SkeletonBar extends StatelessWidget {
       borderRadius: BorderRadius.circular(RadiusTokens.xs),
     ),
   );
+}
+
+class InlineError extends StatelessWidget {
+  const InlineError({
+    required this.message,
+    required this.retryLabel,
+    required this.onRetry,
+    this.cancelLabel,
+    this.onCancel,
+    this.retryFocusNode,
+    super.key,
+  }) : assert((cancelLabel == null) == (onCancel == null));
+
+  final String message;
+  final String retryLabel;
+  final VoidCallback onRetry;
+  final String? cancelLabel;
+  final VoidCallback? onCancel;
+  final FocusNode? retryFocusNode;
+
+  @override
+  Widget build(BuildContext context) {
+    final accessible =
+        Theme.of(context).extension<DesignTokensTheme>()?.accessible ??
+        const AccessibleTokens();
+    return Semantics(
+      key: const Key('inline-error-alert'),
+      role: SemanticsRole.alert,
+      label: message,
+      container: true,
+      explicitChildNodes: true,
+      child: Container(
+        key: const Key('inline-error'),
+        padding: const EdgeInsets.all(SpaceTokens.lg),
+        decoration: BoxDecoration(
+          color: ColorTokens.surfaceElevated,
+          borderRadius: BorderRadius.circular(RadiusTokens.sheet),
+          boxShadow: ShadowTokens.floating,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(SpaceTokens.md),
+              decoration: BoxDecoration(
+                color: ColorTokens.surfaceMuted,
+                borderRadius: BorderRadius.circular(RadiusTokens.control),
+              ),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.error_outline_rounded,
+                    color: ColorTokens.error,
+                  ),
+                  const SizedBox(width: SpaceTokens.sm),
+                  Expanded(
+                    child: ExcludeSemantics(
+                      child: Text(
+                        message,
+                        style: TypographyTokens.body.copyWith(
+                          color: accessible.errorText,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: SpaceTokens.sm),
+                  AppButton(
+                    key: const Key('inline-error-retry'),
+                    label: retryLabel,
+                    onPressed: onRetry,
+                    focusNode: retryFocusNode,
+                    autofocus: true,
+                    variant: AppButtonVariant.link,
+                  ),
+                ],
+              ),
+            ),
+            if (cancelLabel case final label?) ...[
+              const SizedBox(height: SpaceTokens.sm),
+              Align(
+                alignment: Alignment.centerRight,
+                child: AppButton(
+                  label: label,
+                  onPressed: onCancel,
+                  variant: AppButtonVariant.secondary,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }

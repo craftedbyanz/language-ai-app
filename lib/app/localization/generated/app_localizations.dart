@@ -391,6 +391,258 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Leave'**
   String get leave;
+
+  /// No description provided for @grammarTopicsEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar practice'**
+  String get grammarTopicsEyebrow;
+
+  /// No description provided for @grammarTopicsFirstLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a topic'**
+  String get grammarTopicsFirstLine;
+
+  /// No description provided for @grammarTopicsSecondLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Strengthen your patterns'**
+  String get grammarTopicsSecondLine;
+
+  /// No description provided for @grammarCategoryAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get grammarCategoryAll;
+
+  /// No description provided for @grammarCategoryFoundations.
+  ///
+  /// In en, this message translates to:
+  /// **'Foundations'**
+  String get grammarCategoryFoundations;
+
+  /// No description provided for @grammarCategoryVerbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Verbs'**
+  String get grammarCategoryVerbs;
+
+  /// No description provided for @grammarLessonCount.
+  ///
+  /// In en, this message translates to:
+  /// **'lessons'**
+  String get grammarLessonCount;
+
+  /// No description provided for @grammarLessonsEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar lessons'**
+  String get grammarLessonsEyebrow;
+
+  /// No description provided for @grammarLessonsFirstLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a lesson'**
+  String get grammarLessonsFirstLine;
+
+  /// No description provided for @grammarLessonsSecondLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice one pattern'**
+  String get grammarLessonsSecondLine;
+
+  /// No description provided for @grammarStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get grammarStart;
+
+  /// No description provided for @grammarInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewrite the entire sentence so it is grammatically correct.'**
+  String get grammarInstruction;
+
+  /// No description provided for @grammarSourceSentence.
+  ///
+  /// In en, this message translates to:
+  /// **'Sentence to correct'**
+  String get grammarSourceSentence;
+
+  /// No description provided for @grammarAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your correction'**
+  String get grammarAnswerLabel;
+
+  /// No description provided for @grammarAnswerPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the corrected sentence…'**
+  String get grammarAnswerPlaceholder;
+
+  /// No description provided for @grammarSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get grammarSubmit;
+
+  /// No description provided for @grammarGrading.
+  ///
+  /// In en, this message translates to:
+  /// **'Grading…'**
+  String get grammarGrading;
+
+  /// No description provided for @grammarCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get grammarCancel;
+
+  /// No description provided for @grammarRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get grammarRetry;
+
+  /// No description provided for @grammarCorrectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get grammarCorrectTitle;
+
+  /// No description provided for @grammarIncorrectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not correct yet'**
+  String get grammarIncorrectTitle;
+
+  /// No description provided for @grammarCorrection.
+  ///
+  /// In en, this message translates to:
+  /// **'Correction'**
+  String get grammarCorrection;
+
+  /// No description provided for @grammarTips.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips'**
+  String get grammarTips;
+
+  /// No description provided for @grammarFix.
+  ///
+  /// In en, this message translates to:
+  /// **'Fix'**
+  String get grammarFix;
+
+  /// No description provided for @grammarNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get grammarNext;
+
+  /// No description provided for @grammarStepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar progress'**
+  String get grammarStepOf;
+
+  /// No description provided for @grammarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hint'**
+  String get grammarHint;
+
+  /// No description provided for @grammarShowFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Show last feedback'**
+  String get grammarShowFeedback;
+
+  /// No description provided for @grammarYourAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get grammarYourAnswer;
+
+  /// No description provided for @grammarViewAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'View AI analysis'**
+  String get grammarViewAnalysis;
+
+  /// No description provided for @grammarAnalysisUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'AI analysis is unavailable in this local practice.'**
+  String get grammarAnalysisUnavailable;
+
+  /// No description provided for @grammarEmptyTopicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No grammar topics'**
+  String get grammarEmptyTopicsTitle;
+
+  /// No description provided for @grammarEmptyTopicsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no topics available for this selection.'**
+  String get grammarEmptyTopicsBody;
+
+  /// No description provided for @grammarEmptyLessonsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No grammar lessons'**
+  String get grammarEmptyLessonsTitle;
+
+  /// No description provided for @grammarEmptyLessonsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no lessons available for this topic.'**
+  String get grammarEmptyLessonsBody;
+
+  /// No description provided for @grammarUnavailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar content unavailable'**
+  String get grammarUnavailableTitle;
+
+  /// No description provided for @grammarUnavailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This grammar content could not be found.'**
+  String get grammarUnavailableBody;
+
+  /// No description provided for @grammarErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load grammar practice'**
+  String get grammarErrorTitle;
+
+  /// No description provided for @grammarErrorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again. Your place and answer will be kept.'**
+  String get grammarErrorBody;
+
+  /// No description provided for @grammarPager.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson carousel'**
+  String get grammarPager;
+
+  /// No description provided for @grammarPagerPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {current} of {total}'**
+  String grammarPagerPosition(int current, int total);
+
+  /// No description provided for @grammarMinimizeFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimize feedback'**
+  String get grammarMinimizeFeedback;
 }
 
 class _AppLocalizationsDelegate

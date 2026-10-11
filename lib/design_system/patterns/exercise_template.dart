@@ -83,7 +83,14 @@ class ExerciseTemplate extends StatelessWidget {
                   constraints: const BoxConstraints(
                     maxWidth: LayoutTokens.sheetWidth,
                   ),
-                  child: feedback,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight:
+                          MediaQuery.sizeOf(context).height *
+                          LayoutTokens.sheetMaxHeightRatioShort,
+                    ),
+                    child: SingleChildScrollView(child: feedback),
+                  ),
                 ),
               ),
             ),

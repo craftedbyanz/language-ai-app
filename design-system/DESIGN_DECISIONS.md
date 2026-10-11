@@ -131,6 +131,18 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Default**: tokens in `feature.*.homeCardFill` with text by `accessible.onFeatureFill` (writing, grammar) and `accessible.onBrand` (conversation); all pass 4.5:1.
 - **Free to choose?** Yes; recommended to keep the three cards distinguishable and to avoid a fourth hue.
 
+### DD-27 Grammar vertical-slice feedback reconciliation — **APPROVED_V1**
+
+- **Decision**: Grammar sentence exercises show the canonical Loading feedback for at least
+  `motion.feedbackMinimumDwell` (300 ms), with Cancel retaining exact input and invalidating late
+  results. `GrammarCorrect` keeps the analysis action visible but disabled with a localized reason.
+  Feedback may minimize and reopen through `HintChipBar`. Final Next returns to Grammar Lesson List
+  without completion UI because completion and persistence are outside this scoped slice.
+- **Ownership**: these are additive states of the existing canonical components. Defaults remain
+  backward compatible for Writing; no feature-local visual copies are permitted.
+- **Accessibility**: the disabled analysis action remains discoverable in semantic reading order but
+  is excluded from action activation order; feedback focus and announcements follow ACCESSIBILITY.
+
 ### DD-14 Menu overlay dismissal
 - **Evidence**: open state only.
 - **Default**: tap the backdrop or press Escape or an explicit close control.

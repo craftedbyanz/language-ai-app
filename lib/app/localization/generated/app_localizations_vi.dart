@@ -159,4 +159,136 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get leave => 'Rời';
+
+  @override
+  String get grammarTopicsEyebrow => 'Luyện ngữ pháp';
+
+  @override
+  String get grammarTopicsFirstLine => 'Chọn chủ đề';
+
+  @override
+  String get grammarTopicsSecondLine => 'Củng cố cấu trúc';
+
+  @override
+  String get grammarCategoryAll => 'Tất cả';
+
+  @override
+  String get grammarCategoryFoundations => 'Nền tảng';
+
+  @override
+  String get grammarCategoryVerbs => 'Động từ';
+
+  @override
+  String get grammarLessonCount => 'bài học';
+
+  @override
+  String get grammarLessonsEyebrow => 'Bài học ngữ pháp';
+
+  @override
+  String get grammarLessonsFirstLine => 'Chọn bài học';
+
+  @override
+  String get grammarLessonsSecondLine => 'Luyện từng cấu trúc';
+
+  @override
+  String get grammarStart => 'Bắt đầu';
+
+  @override
+  String get grammarInstruction =>
+      'Viết lại toàn bộ câu sao cho đúng ngữ pháp.';
+
+  @override
+  String get grammarSourceSentence => 'Câu cần sửa';
+
+  @override
+  String get grammarAnswerLabel => 'Câu sửa của bạn';
+
+  @override
+  String get grammarAnswerPlaceholder => 'Nhập câu đã sửa…';
+
+  @override
+  String get grammarSubmit => 'Gửi';
+
+  @override
+  String get grammarGrading => 'Đang chấm…';
+
+  @override
+  String get grammarCancel => 'Hủy';
+
+  @override
+  String get grammarRetry => 'Thử lại';
+
+  @override
+  String get grammarCorrectTitle => 'Chính xác';
+
+  @override
+  String get grammarIncorrectTitle => 'Chưa chính xác';
+
+  @override
+  String get grammarCorrection => 'Câu sửa';
+
+  @override
+  String get grammarTips => 'Mẹo';
+
+  @override
+  String get grammarFix => 'Sửa lại';
+
+  @override
+  String get grammarNext => 'Tiếp theo';
+
+  @override
+  String get grammarStepOf => 'Tiến độ ngữ pháp';
+
+  @override
+  String get grammarHint => 'Gợi ý';
+
+  @override
+  String get grammarShowFeedback => 'Xem lại phản hồi';
+
+  @override
+  String get grammarYourAnswer => 'Câu trả lời của bạn';
+
+  @override
+  String get grammarViewAnalysis => 'Xem phân tích AI';
+
+  @override
+  String get grammarAnalysisUnavailable =>
+      'Phân tích AI chưa khả dụng trong bài luyện cục bộ này.';
+
+  @override
+  String get grammarEmptyTopicsTitle => 'Không có chủ đề ngữ pháp';
+
+  @override
+  String get grammarEmptyTopicsBody =>
+      'Không có chủ đề phù hợp với lựa chọn này.';
+
+  @override
+  String get grammarEmptyLessonsTitle => 'Không có bài học ngữ pháp';
+
+  @override
+  String get grammarEmptyLessonsBody => 'Chủ đề này hiện chưa có bài học.';
+
+  @override
+  String get grammarUnavailableTitle => 'Nội dung ngữ pháp không khả dụng';
+
+  @override
+  String get grammarUnavailableBody => 'Không tìm thấy nội dung ngữ pháp này.';
+
+  @override
+  String get grammarErrorTitle => 'Không thể tải bài luyện ngữ pháp';
+
+  @override
+  String get grammarErrorBody =>
+      'Hãy thử lại. Vị trí và câu trả lời của bạn sẽ được giữ nguyên.';
+
+  @override
+  String get grammarPager => 'Danh sách bài học';
+
+  @override
+  String grammarPagerPosition(int current, int total) {
+    return 'Trang $current trên $total';
+  }
+
+  @override
+  String get grammarMinimizeFeedback => 'Thu nhỏ phản hồi';
 }

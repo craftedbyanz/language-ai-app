@@ -647,6 +647,9 @@ abstract final class MotionTokens {
   /// motion.fast
   static const Duration fast = Duration(milliseconds: 150);
 
+  /// motion.feedbackMinimumDwell
+  static const Duration feedbackMinimumDwell = Duration(milliseconds: 300);
+
   /// motion.sheet
   static const Duration sheet = Duration(milliseconds: 220);
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../adaptive/window_size_class.dart';
 import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
+import '../primitives/canonical_focus_indicator.dart';
 import 'app_button.dart';
+
+enum SectionHeaderAccent { writing, grammar, conversation }
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
@@ -11,12 +15,18 @@ class SectionHeader extends StatelessWidget {
     required this.firstLine,
     required this.secondLine,
     required this.sizeClass,
+    this.accent = SectionHeaderAccent.writing,
+    this.focusNode,
+    this.autofocus = false,
     super.key,
   });
   final String eyebrow;
   final String firstLine;
   final String secondLine;
   final WindowSizeClass sizeClass;
+  final SectionHeaderAccent accent;
+  final FocusNode? focusNode;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -28,30 +38,45 @@ class SectionHeader extends StatelessWidget {
         : TypographyTokens.display;
     return Semantics(
       header: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            eyebrow.toUpperCase(),
-            style: TypographyTokens.microLabel.copyWith(
-              color: ColorTokens.textSecondary,
+      child: Focus(
+        key: const Key('section-heading-focus'),
+        focusNode: focusNode,
+        canRequestFocus: focusNode != null,
+        autofocus: autofocus,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              eyebrow.toUpperCase(),
+              style: TypographyTokens.microLabel.copyWith(
+                color: ColorTokens.textSecondary,
+              ),
             ),
-          ),
-          const SizedBox(height: SpaceTokens.xs),
-          Text(firstLine, style: style),
-          Text.rich(
-            TextSpan(
-              style: style.copyWith(color: accessible.heroSecondLine),
-              children: [
-                TextSpan(text: secondLine),
-                const TextSpan(
-                  text: '.',
-                  style: TextStyle(color: FeatureTokens.writingAccent),
-                ),
-              ],
+            const SizedBox(height: SpaceTokens.xs),
+            Text(firstLine, style: style),
+            Text.rich(
+              TextSpan(
+                style: style.copyWith(color: accessible.heroSecondLine),
+                children: [
+                  TextSpan(text: secondLine),
+                  TextSpan(
+                    text: '.',
+                    style: TextStyle(
+                      color: switch (accent) {
+                        SectionHeaderAccent.writing =>
+                          FeatureTokens.writingAccent,
+                        SectionHeaderAccent.grammar =>
+                          FeatureTokens.grammarAccent,
+                        SectionHeaderAccent.conversation =>
+                          FeatureTokens.conversationAccent,
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -76,20 +101,23 @@ class CategoryChip extends StatelessWidget {
     return Semantics(
       checked: selected,
       inMutuallyExclusiveGroup: true,
-      child: ChoiceChip(
-        label: Text(label),
-        selected: selected,
-        onSelected: (_) => onSelected(),
-        backgroundColor: ColorTokens.surface,
-        selectedColor: ColorTokens.surface,
-        side: selected
-            ? BorderSide(
-                color: accessible.warningText,
-                width: FocusTokens.ringWidth,
-              )
-            : BorderSide.none,
-        labelStyle: TypographyTokens.bodyStrong,
-        shape: const StadiumBorder(),
+      child: CanonicalFocusIndicator(
+        borderRadius: BorderRadius.circular(RadiusTokens.full),
+        child: ChoiceChip(
+          label: Text(label),
+          selected: selected,
+          onSelected: (_) => onSelected(),
+          backgroundColor: ColorTokens.surface,
+          selectedColor: ColorTokens.surface,
+          side: selected
+              ? BorderSide(
+                  color: accessible.warningText,
+                  width: FocusTokens.ringWidth,
+                )
+              : BorderSide.none,
+          labelStyle: TypographyTokens.bodyStrong,
+          shape: const StadiumBorder(),
+        ),
       ),
     );
   }
@@ -112,38 +140,41 @@ class TopicCard extends StatelessWidget {
   Widget build(BuildContext context) => Semantics(
     button: true,
     label: '$title, $countLabel',
-    child: Material(
-      color: ColorTokens.surface,
+    child: CanonicalFocusIndicator(
       borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-      child: InkWell(
-        onTap: onPressed,
+      child: Material(
+        color: ColorTokens.surface,
         borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-        child: Container(
-          constraints: const BoxConstraints(
-            minHeight: LayoutTokens.topicCardHeight,
-          ),
-          padding: const EdgeInsets.all(SpaceTokens.lg),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-            boxShadow: ShadowTokens.hairline,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                backgroundColor: ColorTokens.surfaceMuted,
-                child: Icon(icon, color: ColorTokens.textPrimary),
-              ),
-              const Spacer(),
-              Text(title, style: TypographyTokens.heading),
-              const SizedBox(height: SpaceTokens.xs),
-              Text(
-                countLabel,
-                style: TypographyTokens.caption.copyWith(
-                  color: ColorTokens.textSecondary,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: LayoutTokens.topicCardHeight,
+            ),
+            padding: const EdgeInsets.all(SpaceTokens.lg),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+              boxShadow: ShadowTokens.hairline,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  backgroundColor: ColorTokens.surfaceMuted,
+                  child: Icon(icon, color: ColorTokens.textPrimary),
                 ),
-              ),
-            ],
+                const Spacer(),
+                Text(title, style: TypographyTokens.heading),
+                const SizedBox(height: SpaceTokens.xs),
+                Text(
+                  countLabel,
+                  style: TypographyTokens.caption.copyWith(
+                    color: ColorTokens.textSecondary,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -237,6 +268,130 @@ class LessonCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    ),
+  );
+}
+
+class EmptyState extends StatelessWidget {
+  const EmptyState({
+    required this.title,
+    required this.body,
+    this.actionLabel,
+    this.onAction,
+    this.error = false,
+    super.key,
+  });
+
+  final String title;
+  final String body;
+  final String? actionLabel;
+  final VoidCallback? onAction;
+  final bool error;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    container: true,
+    liveRegion: error,
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(SpaceTokens.xl),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              error ? Icons.error_outline_rounded : Icons.inbox_outlined,
+              color: error ? ColorTokens.errorText : ColorTokens.textSecondary,
+            ),
+            const SizedBox(height: SpaceTokens.sm),
+            Text(title, style: TypographyTokens.heading),
+            const SizedBox(height: SpaceTokens.xs),
+            Text(body, textAlign: TextAlign.center),
+            if (actionLabel case final label?) ...[
+              const SizedBox(height: SpaceTokens.md),
+              AppButton(
+                label: label,
+                onPressed: onAction,
+                variant: AppButtonVariant.secondary,
+              ),
+            ],
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+class PagerDots extends StatelessWidget {
+  const PagerDots({
+    required this.count,
+    required this.index,
+    required this.semanticLabel,
+    required this.positionLabel,
+    this.onSelected,
+    super.key,
+  }) : assert(count > 0),
+       assert(index >= 0 && index < count);
+
+  final int count;
+  final int index;
+  final String semanticLabel;
+  final String Function(int current, int total) positionLabel;
+  final ValueChanged<int>? onSelected;
+
+  @override
+  Widget build(BuildContext context) => CallbackShortcuts(
+    bindings: {
+      const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
+        if (onSelected != null && index > 0) onSelected!(index - 1);
+      },
+      const SingleActivator(LogicalKeyboardKey.arrowRight): () {
+        if (onSelected != null && index < count - 1) onSelected!(index + 1);
+      },
+    },
+    child: Semantics(
+      key: const Key('lesson-pager-semantics'),
+      container: true,
+      label: semanticLabel,
+      value: positionLabel(index + 1, count),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          count,
+          (dot) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.xs),
+            child: Semantics(
+              button: true,
+              selected: dot == index,
+              label: positionLabel(dot + 1, count),
+              child: ExcludeSemantics(
+                child: CanonicalFocusIndicator(
+                  borderRadius: BorderRadius.circular(RadiusTokens.full),
+                  child: InkWell(
+                    key: ValueKey('lesson-pager-$dot'),
+                    onTap: onSelected == null ? null : () => onSelected!(dot),
+                    borderRadius: BorderRadius.circular(RadiusTokens.full),
+                    child: SizedBox.square(
+                      dimension: ControlTokens.minTouchTarget,
+                      child: Center(
+                        child: Container(
+                          width: SpaceTokens.sm,
+                          height: SpaceTokens.sm,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: dot == index
+                                ? ColorTokens.textPrimary
+                                : ColorTokens.border,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     ),
   );

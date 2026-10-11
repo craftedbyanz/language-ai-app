@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingua/design_system/components/browse_components.dart';
+import 'package:lingua/design_system/components/exercise_components.dart';
 import 'package:lingua/design_system/components/feedback_sheet.dart';
+import 'package:lingua/design_system/components/app_header.dart';
+import 'package:lingua/design_system/patterns/exercise_template.dart';
 import 'package:lingua/design_system/theme/app_theme.dart';
 import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
 
@@ -63,6 +66,187 @@ void main() {
     await expectLater(
       find.byKey(const ValueKey('golden')),
       matchesGoldenFile('goldens/vertical_slice_components.png'),
+    );
+  });
+
+  testWidgets('Grammar reusable components at regular width', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(788, 720));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    final controller = TextEditingController(text: 'She works here.');
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light().copyWith(platform: TargetPlatform.android),
+        home: Scaffold(
+          body: RepaintBoundary(
+            key: const ValueKey('grammar-components'),
+            child: Padding(
+              padding: const EdgeInsets.all(SpaceTokens.xl),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: LayoutTokens.lessonCardMinHeight,
+                      child: LessonCard(
+                        variant: LessonCardVariant.grammar,
+                        indexLabel: '01',
+                        level: 'A1',
+                        title: 'Verb agreement',
+                        description: 'Correct agreement mistakes.',
+                        actionLabel: 'Start',
+                        onPressed: _noop,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: SpaceTokens.xl),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const SourceTextCard(
+                          variant: SourceTextCardVariant.sentence,
+                          text: 'She work here.',
+                          semanticLabel: 'Sentence',
+                          instruction: 'Correct the sentence.',
+                        ),
+                        const SizedBox(height: SpaceTokens.lg),
+                        AnswerInput(
+                          paletteKey: AnswerPaletteKey.blue,
+                          controller: controller,
+                          label: 'Your correction',
+                          placeholder: 'Type the corrected sentence…',
+                          enabled: true,
+                          autofocus: false,
+                          onChanged: (_) {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await expectLater(
+      find.byKey(const ValueKey('grammar-components')),
+      matchesGoldenFile('goldens/grammar_components_regular.png'),
+    );
+  });
+
+  testWidgets('Grammar feedback variants at regular width', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(788, 720));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light().copyWith(platform: TargetPlatform.android),
+        home: Scaffold(
+          body: RepaintBoundary(
+            key: const ValueKey('grammar-feedback'),
+            child: Padding(
+              padding: const EdgeInsets.all(SpaceTokens.xl),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: FeedbackSheet.grammarCorrect(
+                      title: 'Correct',
+                      answer: 'She works here.',
+                      recapLabel: 'Your answer',
+                      analysisLabel: 'View AI analysis',
+                      analysisUnavailableReason: 'Unavailable locally.',
+                      nextLabel: 'Next',
+                      closeLabel: 'Close',
+                      onAnalysis: null,
+                      onNext: _noop,
+                      onClose: _noop,
+                    ),
+                  ),
+                  const SizedBox(width: SpaceTokens.lg),
+                  Expanded(
+                    child: FeedbackSheet.grammarIncorrect(
+                      title: 'Not correct yet',
+                      originalAnswer: 'She work here.',
+                      correctedAnswer: 'She works here.',
+                      explanation: 'Use third-person singular.',
+                      bullets: const ['Add -s to the verb.'],
+                      sectionLabel: 'Tips',
+                      correctionLabel: 'Correction',
+                      fixLabel: 'Fix',
+                      nextLabel: 'Next',
+                      closeLabel: 'Close',
+                      onFix: _noop,
+                      onNext: _noop,
+                      onClose: _noop,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await expectLater(
+      find.byKey(const ValueKey('grammar-feedback')),
+      matchesGoldenFile('goldens/grammar_feedback_regular.png'),
+    );
+  });
+
+  testWidgets('Grammar exercise at compact width', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    final controller = TextEditingController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light().copyWith(platform: TargetPlatform.android),
+        home: RepaintBoundary(
+          key: const ValueKey('grammar-exercise'),
+          child: ExerciseTemplate(
+            leadingLabel: 'Close',
+            onClose: _noop,
+            progress: const ProgressStepper(
+              variant: ProgressStepperVariant.grammar,
+              step: 1,
+              count: 2,
+              semanticLabel: 'Grammar progress',
+            ),
+            source: const SourceTextCard(
+              variant: SourceTextCardVariant.sentence,
+              text: 'She work at the library every day.',
+              semanticLabel: 'Sentence to correct',
+              instruction: 'Rewrite the sentence so it is correct.',
+            ),
+            answer: AnswerInput(
+              paletteKey: AnswerPaletteKey.blue,
+              controller: controller,
+              label: 'Your correction',
+              placeholder: 'Type the corrected sentence…',
+              enabled: true,
+              autofocus: false,
+              onChanged: (_) {},
+            ),
+            hints: HintChipBar(
+              hints: const ['Look at the subject.'],
+              hintLabel: (index) => 'Hint ${index + 1}',
+            ),
+            submit: const SubmitButton(
+              label: 'Submit',
+              onPressed: null,
+              loading: false,
+            ),
+          ),
+        ),
+      ),
+    );
+    await expectLater(
+      find.byKey(const ValueKey('grammar-exercise')),
+      matchesGoldenFile('goldens/grammar_exercise_compact.png'),
     );
   });
 }

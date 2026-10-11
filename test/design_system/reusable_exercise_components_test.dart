@@ -1,10 +1,15 @@
+import 'dart:ui' show PointerDeviceKind, SemanticsRole, Tristate;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lingua/design_system/adaptive/window_size_class.dart';
 import 'package:lingua/design_system/components/app_button.dart';
 import 'package:lingua/design_system/components/app_header.dart';
 import 'package:lingua/design_system/components/browse_components.dart';
 import 'package:lingua/design_system/components/exercise_components.dart';
 import 'package:lingua/design_system/components/feedback_sheet.dart';
+import 'package:lingua/design_system/components/home_components.dart';
 import 'package:lingua/design_system/patterns/exercise_template.dart';
 import 'package:lingua/design_system/theme/app_theme.dart';
 import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
@@ -83,6 +88,7 @@ void main() {
   testWidgets(
     'ProgressStepper maps Writing and Grammar variants to canonical tokens',
     (tester) async {
+      final semantics = tester.ensureSemantics();
       Future<BoxDecoration> decorationFor(
         ProgressStepperVariant variant,
       ) async {
@@ -114,6 +120,10 @@ void main() {
         (await decorationFor(ProgressStepperVariant.grammar)).color,
         FeatureTokens.grammarProgress,
       );
+      final progress = tester.getSemantics(find.bySemanticsLabel('Step'));
+      expect(progress.role, SemanticsRole.progressBar);
+      expect(progress.flagsCollection.isLiveRegion, isTrue);
+      semantics.dispose();
     },
   );
 
@@ -185,6 +195,167 @@ void main() {
     );
   });
 
+  testWidgets('Grammar additions preserve defaults and expose shared slots', (
+    tester,
+  ) async {
+    final focusNode = FocusNode();
+    final controller = TextEditingController();
+    addTearDown(focusNode.dispose);
+    addTearDown(controller.dispose);
+    var feedbackRequested = false;
+    await pumpComponent(
+      tester,
+      Column(
+        children: [
+          SectionHeader(
+            eyebrow: 'Practice',
+            firstLine: 'Choose',
+            secondLine: 'Grammar',
+            sizeClass: WindowSizeClass.compact,
+            accent: SectionHeaderAccent.grammar,
+          ),
+          const SourceTextCard(
+            variant: SourceTextCardVariant.sentence,
+            text: 'She work here.',
+            semanticLabel: 'Sentence',
+            instruction: 'Correct the sentence.',
+          ),
+          AnswerInput(
+            paletteKey: AnswerPaletteKey.blue,
+            controller: controller,
+            focusNode: focusNode,
+            label: 'Answer',
+            placeholder: 'Type',
+            onChanged: (_) {},
+            enabled: true,
+            autofocus: false,
+          ),
+          HintChipBar(
+            hints: const ['Look at the subject.'],
+            hintLabel: (index) => 'Hint ${index + 1}',
+            showFeedbackLabel: 'Show last feedback',
+            onShowFeedback: () => feedbackRequested = true,
+          ),
+        ],
+      ),
+    );
+    expect(find.text('Correct the sentence.'), findsOneWidget);
+    expect(
+      tester.widget<TextField>(find.byType(TextField)).focusNode,
+      focusNode,
+    );
+    focusNode.requestFocus();
+    await tester.pump();
+    expect(focusNode.hasFocus, isTrue);
+    await tester.tap(find.text('Show last feedback'));
+    expect(feedbackRequested, isTrue);
+  });
+
+  testWidgets('Empty state, pager and error recovery are reusable', (
+    tester,
+  ) async {
+    var selected = -1;
+    var retried = false;
+    await pumpComponent(
+      tester,
+      Column(
+        children: [
+          PagerDots(
+            count: 2,
+            index: 0,
+            semanticLabel: 'Lesson carousel',
+            positionLabel: (current, total) => 'Page $current of $total',
+            onSelected: (index) => selected = index,
+          ),
+          EmptyState(
+            title: 'Could not load',
+            body: 'Try again.',
+            actionLabel: 'Retry',
+            onAction: () => retried = true,
+            error: true,
+          ),
+        ],
+      ),
+    );
+    await tester.tap(find.byKey(const ValueKey('lesson-pager-1')));
+    await tester.tap(find.text('Retry'));
+    expect(selected, 1);
+    expect(retried, isTrue);
+    expect(find.bySemanticsLabel('Page 1 of 2'), findsOneWidget);
+    final pagerTarget = tester.getSize(
+      find.byKey(const ValueKey('lesson-pager-1')),
+    );
+    expect(
+      pagerTarget.width,
+      greaterThanOrEqualTo(ControlTokens.minTouchTarget),
+    );
+    expect(
+      pagerTarget.height,
+      greaterThanOrEqualTo(ControlTokens.minTouchTarget),
+    );
+    final pager = tester.getSemantics(
+      find.byKey(const Key('lesson-pager-semantics')),
+    );
+    expect(pager.label, 'Lesson carousel');
+    expect(pager.value, 'Page 1 of 2');
+    expect(
+      tester
+          .getSemantics(find.bySemanticsLabel('Page 1 of 2'))
+          .flagsCollection
+          .isSelected,
+      Tristate.isTrue,
+    );
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+    expect(selected, 1);
+    selected = -1;
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    expect(selected, isNot(-1));
+  });
+
+  testWidgets('InlineError is canonical, announced, and focuses Retry', (
+    tester,
+  ) async {
+    final retryFocus = FocusNode(debugLabel: 'inline-error-retry');
+    addTearDown(retryFocus.dispose);
+    var retried = false;
+    var cancelled = false;
+    await pumpComponent(
+      tester,
+      InlineError(
+        message: 'Could not grade the answer.',
+        retryLabel: 'Retry',
+        cancelLabel: 'Cancel',
+        retryFocusNode: retryFocus,
+        onRetry: () => retried = true,
+        onCancel: () => cancelled = true,
+      ),
+    );
+
+    expect(find.byKey(const Key('inline-error')), findsOneWidget);
+    expect(
+      find.bySemanticsLabel('Could not grade the answer.'),
+      findsOneWidget,
+    );
+    await tester.pump();
+    expect(retryFocus.hasFocus, isTrue);
+    expect(
+      tester.getSemantics(find.byKey(const Key('inline-error-alert'))).role,
+      SemanticsRole.alert,
+    );
+    final message = tester.widget<Text>(
+      find.text('Could not grade the answer.'),
+    );
+    final accessible = AppTheme.light()
+        .extension<DesignTokensTheme>()!
+        .accessible;
+    expect(message.style!.color, accessible.errorText);
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    expect(retried, isTrue);
+    await tester.tap(find.text('Cancel'));
+    expect(cancelled, isTrue);
+  });
+
   testWidgets('FeedbackSheet renders all exercise variants and loading', (
     tester,
   ) async {
@@ -200,6 +371,7 @@ void main() {
         editLabel: 'Edit',
         nextLabel: 'Next',
         closeLabel: 'Close',
+        minimizeLabel: 'Minimize feedback',
         onEdit: _noop,
         onNext: _noop,
         onClose: _noop,
@@ -262,6 +434,300 @@ void main() {
     );
     expect(find.text('Grading'), findsOneWidget);
     expect(find.text('Cancel'), findsOneWidget);
+  });
+
+  testWidgets('Grammar feedback supports minimize and disabled analysis', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    var minimized = false;
+    await pumpComponent(
+      tester,
+      FeedbackSheet.grammarCorrect(
+        title: 'Correct',
+        answer: 'She works here.',
+        recapLabel: 'Your answer',
+        analysisLabel: 'View AI analysis',
+        analysisUnavailableReason: 'Unavailable offline',
+        nextLabel: 'Next',
+        closeLabel: 'Close',
+        minimizeLabel: 'Minimize feedback',
+        onAnalysis: null,
+        onNext: _noop,
+        onClose: _noop,
+        onMinimize: () => minimized = true,
+      ),
+    );
+    expect(find.text('Unavailable offline'), findsOneWidget);
+    expect(
+      find.bySemanticsLabel(RegExp('View AI analysis.*Unavailable offline')),
+      findsOneWidget,
+    );
+    expect(
+      tester
+          .widget<AppButton>(find.widgetWithText(AppButton, 'View AI analysis'))
+          .onPressed,
+      isNull,
+    );
+    expect(find.bySemanticsLabel('Close'), findsOneWidget);
+    expect(find.bySemanticsLabel('Minimize feedback'), findsOneWidget);
+    expect(find.bySemanticsLabel('keyboard arrow down'), findsNothing);
+    await tester.tap(find.byKey(const Key('feedback-minimize')));
+    expect(minimized, isTrue);
+    semantics.dispose();
+  });
+
+  testWidgets('loading and verdict feedback are polite live regions', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpComponent(
+      tester,
+      FeedbackSheet.loading(
+        gradingLabel: 'Grading',
+        cancelLabel: 'Cancel',
+        onCancel: _noop,
+      ),
+    );
+    expect(
+      tester
+          .getSemantics(find.byKey(const Key('feedback-loading-live-region')))
+          .flagsCollection
+          .isLiveRegion,
+      isTrue,
+    );
+    expect(
+      tester
+          .getSemantics(find.byKey(const Key('feedback-loading-live-region')))
+          .role,
+      SemanticsRole.dialog,
+    );
+    expect(
+      tester
+          .getSemantics(find.byKey(const Key('feedback-loading-live-region')))
+          .label,
+      'Grading',
+    );
+    await pumpComponent(
+      tester,
+      FeedbackSheet.grammarCorrect(
+        title: 'Correct',
+        answer: 'She works.',
+        recapLabel: 'Your answer',
+        analysisLabel: 'View analysis',
+        analysisUnavailableReason: 'Unavailable',
+        nextLabel: 'Next',
+        closeLabel: 'Close',
+        onAnalysis: null,
+        onNext: _noop,
+        onClose: _noop,
+      ),
+    );
+    expect(
+      tester
+          .getSemantics(find.byKey(const Key('feedback-live-region')))
+          .flagsCollection
+          .isLiveRegion,
+      isTrue,
+    );
+    expect(
+      tester.getSemantics(find.byKey(const Key('feedback-live-region'))).role,
+      SemanticsRole.dialog,
+    );
+    expect(
+      tester.getSemantics(find.byKey(const Key('feedback-live-region'))).label,
+      'Correct',
+    );
+    semantics.dispose();
+  });
+
+  testWidgets('keyboard focus uses the canonical token-backed ring', (
+    tester,
+  ) async {
+    final previousStrategy = FocusManager.instance.highlightStrategy;
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+    addTearDown(() {
+      FocusManager.instance.highlightStrategy = previousStrategy;
+    });
+    final focusNode = FocusNode();
+    addTearDown(focusNode.dispose);
+    await pumpComponent(
+      tester,
+      AppButton(label: 'Continue', onPressed: _noop, focusNode: focusNode),
+    );
+    focusNode.requestFocus();
+    await tester.pump();
+    final decoration =
+        tester
+                .widget<DecoratedBox>(
+                  find.byKey(const Key('canonical-focus-ring')),
+                )
+                .decoration
+            as BoxDecoration;
+    final accessible = AppTheme.light()
+        .extension<DesignTokensTheme>()!
+        .accessible;
+    expect(decoration.border!.top.color, accessible.focusRing);
+    expect(decoration.border!.top.width, FocusTokens.ringWidth);
+
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTouch;
+    await tester.pump();
+    expect(find.byKey(const Key('canonical-focus-ring')), findsNothing);
+
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+    await tester.pump();
+    expect(find.byKey(const Key('canonical-focus-ring')), findsOneWidget);
+  });
+
+  testWidgets('shared card, header, and feedback controls use focus rings', (
+    tester,
+  ) async {
+    final previousStrategy = FocusManager.instance.highlightStrategy;
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+    addTearDown(() {
+      FocusManager.instance.highlightStrategy = previousStrategy;
+    });
+    final modeFocus = FocusNode(debugLabel: 'mode-card');
+    final headerFocus = FocusNode(debugLabel: 'app-header');
+    final minimizeFocus = FocusNode(debugLabel: 'feedback-minimize');
+    final closeFocus = FocusNode(debugLabel: 'feedback-close');
+    addTearDown(modeFocus.dispose);
+    addTearDown(headerFocus.dispose);
+    addTearDown(minimizeFocus.dispose);
+    addTearDown(closeFocus.dispose);
+
+    await pumpComponent(
+      tester,
+      SizedBox(
+        width: LayoutTokens.contentMaxWidth,
+        height: 700,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: LayoutTokens.modeCardMinHeight,
+                child: ModeCard(
+                  index: '02',
+                  category: 'Learning modes',
+                  title: 'Grammar',
+                  description: 'Practice grammar.',
+                  actionLabel: 'Explore',
+                  fill: FeatureTokens.grammarHomeCardFill,
+                  foreground: ColorTokens.textPrimary,
+                  focusNode: modeFocus,
+                  onPressed: _noop,
+                ),
+              ),
+              AppHeader(
+                variant: AppHeaderVariant.pushed,
+                title: 'Grammar',
+                leadingLabel: 'Back',
+                leadingFocusNode: headerFocus,
+                onLeadingPressed: _noop,
+              ),
+              FeedbackSheet.grammarCorrect(
+                title: 'Correct',
+                answer: 'She works.',
+                recapLabel: 'Your answer',
+                analysisLabel: 'View analysis',
+                analysisUnavailableReason: 'Unavailable',
+                nextLabel: 'Next',
+                closeLabel: 'Close',
+                minimizeLabel: 'Minimize feedback',
+                minimizeFocusNode: minimizeFocus,
+                closeFocusNode: closeFocus,
+                onAnalysis: null,
+                onNext: _noop,
+                onClose: _noop,
+                onMinimize: _noop,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    for (final node in [modeFocus, headerFocus, minimizeFocus, closeFocus]) {
+      node.requestFocus();
+      await tester.pump();
+      expect(node.hasFocus, isTrue);
+      expect(find.byKey(const Key('canonical-focus-ring')), findsOneWidget);
+    }
+  });
+
+  testWidgets('ModeCard exposes hover state and remains pointer actionable', (
+    tester,
+  ) async {
+    final states = WidgetStatesController();
+    addTearDown(states.dispose);
+    var activations = 0;
+    await pumpComponent(
+      tester,
+      SizedBox(
+        width: LayoutTokens.contentMaxWidth,
+        height: LayoutTokens.modeCardMinHeight,
+        child: ModeCard(
+          index: '02',
+          category: 'Learning modes',
+          title: 'Grammar',
+          description: 'Practice grammar.',
+          actionLabel: 'Explore',
+          fill: FeatureTokens.grammarHomeCardFill,
+          foreground: ColorTokens.textPrimary,
+          statesController: states,
+          onPressed: () => activations++,
+        ),
+      ),
+    );
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer();
+    await mouse.moveTo(
+      tester.getCenter(find.byKey(const ValueKey('mode-card-02'))),
+    );
+    await tester.pump();
+    expect(states.value, contains(WidgetState.hovered));
+    expect(activations, 0);
+    await mouse.down(
+      tester.getCenter(find.byKey(const ValueKey('mode-card-02'))),
+    );
+    await mouse.up();
+    await tester.pump();
+    expect(activations, 1);
+  });
+
+  testWidgets('disabled actions are skipped by keyboard traversal', (
+    tester,
+  ) async {
+    final closeFocus = FocusNode(debugLabel: 'feedback-close');
+    addTearDown(closeFocus.dispose);
+    var nextCalls = 0;
+    await pumpComponent(
+      tester,
+      FeedbackSheet.grammarCorrect(
+        title: 'Correct',
+        answer: 'She works.',
+        recapLabel: 'Your answer',
+        analysisLabel: 'View analysis',
+        analysisUnavailableReason: 'Unavailable',
+        nextLabel: 'Next',
+        closeLabel: 'Close',
+        closeFocusNode: closeFocus,
+        onAnalysis: null,
+        onNext: () => nextCalls++,
+        onClose: _noop,
+      ),
+    );
+    closeFocus.requestFocus();
+    await tester.pump();
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pump();
+    expect(nextCalls, 1);
   });
 
   testWidgets('ExerciseTemplate renders independently of feature providers', (

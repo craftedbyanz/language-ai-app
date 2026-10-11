@@ -174,7 +174,9 @@ class AnswerColors {
 
   (String, String) _render(String path, Object? value) {
     if (value is num) {
-      if (path == 'motion.fast' || path == 'motion.sheet') {
+      if (path == 'motion.fast' ||
+          path == 'motion.sheet' ||
+          path == 'motion.feedbackMinimumDwell') {
         return ('Duration', 'Duration(milliseconds: $value)');
       }
       return ('double', value.toDouble().toString());

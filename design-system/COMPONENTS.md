@@ -342,6 +342,16 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Composition**: exactly one `FeedbackSheet` is mounted at a time; `loading` → verdict replaces content in place (no second sheet). Scenario uses the Writing variants (DD-06).
 - **Interaction**: grabber minimises to the HintChipBar sparkle chip; actions route per variant. Rating thumbs: `Writing*` only.
 - **Accessibility**: role dialog (non-modal), label = verdict; announces loading and result (`aria-live=polite`); focus moves to the sheet on ready, returns to the editor on dismiss.
+
+#### Grammar vertical-slice reconciliation
+
+- `SourceTextCard/Sentence` accepts an optional localized instruction slot above the authored sentence.
+- `AnswerInput` accepts an optional externally owned focus node; the default behavior and every existing call site remain unchanged.
+- `HintChipBar` accepts an optional leading “show last feedback” action after a sheet is minimized.
+- `FeedbackSheet/GrammarCorrect` keeps “view AI analysis” visible but may expose it disabled with a localized unavailable reason. The disabled action remains in semantics but cannot activate.
+- Every feedback variant may expose an optional minimize callback. Loading Cancel returns to the same editor state with exact input retained and invalidates any late result.
+- The Grammar vertical slice may return directly to its Lesson List after final Next because completion UI and persistence are explicitly out of scope for that slice.
+- Feedback content is width-capped and height-capped by canonical layout tokens; the body scrolls while actions remain reachable.
 - **Responsive**: as Sheet.
 - **Evidence**: S006, S055, S056, S028, S060, S061.
 

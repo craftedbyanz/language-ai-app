@@ -165,4 +165,138 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get leave => 'Leave';
+
+  @override
+  String get grammarTopicsEyebrow => 'Grammar practice';
+
+  @override
+  String get grammarTopicsFirstLine => 'Choose a topic';
+
+  @override
+  String get grammarTopicsSecondLine => 'Strengthen your patterns';
+
+  @override
+  String get grammarCategoryAll => 'All';
+
+  @override
+  String get grammarCategoryFoundations => 'Foundations';
+
+  @override
+  String get grammarCategoryVerbs => 'Verbs';
+
+  @override
+  String get grammarLessonCount => 'lessons';
+
+  @override
+  String get grammarLessonsEyebrow => 'Grammar lessons';
+
+  @override
+  String get grammarLessonsFirstLine => 'Choose a lesson';
+
+  @override
+  String get grammarLessonsSecondLine => 'Practice one pattern';
+
+  @override
+  String get grammarStart => 'Start';
+
+  @override
+  String get grammarInstruction =>
+      'Rewrite the entire sentence so it is grammatically correct.';
+
+  @override
+  String get grammarSourceSentence => 'Sentence to correct';
+
+  @override
+  String get grammarAnswerLabel => 'Your correction';
+
+  @override
+  String get grammarAnswerPlaceholder => 'Type the corrected sentence…';
+
+  @override
+  String get grammarSubmit => 'Submit';
+
+  @override
+  String get grammarGrading => 'Grading…';
+
+  @override
+  String get grammarCancel => 'Cancel';
+
+  @override
+  String get grammarRetry => 'Retry';
+
+  @override
+  String get grammarCorrectTitle => 'Correct';
+
+  @override
+  String get grammarIncorrectTitle => 'Not correct yet';
+
+  @override
+  String get grammarCorrection => 'Correction';
+
+  @override
+  String get grammarTips => 'Tips';
+
+  @override
+  String get grammarFix => 'Fix';
+
+  @override
+  String get grammarNext => 'Next';
+
+  @override
+  String get grammarStepOf => 'Grammar progress';
+
+  @override
+  String get grammarHint => 'Hint';
+
+  @override
+  String get grammarShowFeedback => 'Show last feedback';
+
+  @override
+  String get grammarYourAnswer => 'Your answer';
+
+  @override
+  String get grammarViewAnalysis => 'View AI analysis';
+
+  @override
+  String get grammarAnalysisUnavailable =>
+      'AI analysis is unavailable in this local practice.';
+
+  @override
+  String get grammarEmptyTopicsTitle => 'No grammar topics';
+
+  @override
+  String get grammarEmptyTopicsBody =>
+      'There are no topics available for this selection.';
+
+  @override
+  String get grammarEmptyLessonsTitle => 'No grammar lessons';
+
+  @override
+  String get grammarEmptyLessonsBody =>
+      'There are no lessons available for this topic.';
+
+  @override
+  String get grammarUnavailableTitle => 'Grammar content unavailable';
+
+  @override
+  String get grammarUnavailableBody =>
+      'This grammar content could not be found.';
+
+  @override
+  String get grammarErrorTitle => 'Could not load grammar practice';
+
+  @override
+  String get grammarErrorBody =>
+      'Try again. Your place and answer will be kept.';
+
+  @override
+  String get grammarPager => 'Lesson carousel';
+
+  @override
+  String grammarPagerPosition(int current, int total) {
+    return 'Page $current of $total';
+  }
+
+  @override
+  String get grammarMinimizeFeedback => 'Minimize feedback';
 }
