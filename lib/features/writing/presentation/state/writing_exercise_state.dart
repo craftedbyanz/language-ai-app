@@ -60,3 +60,13 @@ final class WritingFeedbackIncorrect extends WritingFeedback {
     required super.grade,
   });
 }
+
+final class WritingFinished extends WritingExerciseState {
+  const WritingFinished({
+    required super.lesson,
+    required super.exerciseIndex,
+    required this.corrections,
+  });
+
+  final int corrections;
+}

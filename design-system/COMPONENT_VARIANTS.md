@@ -156,9 +156,10 @@ Plus a `LessonCard/AiCreate` entry card at the end of the conversation list ("cr
 
 ## PagerDots
 
-`PagerDots/Lesson` is required below the horizontal Grammar lesson carousel. It exposes the current
-one-based position and total count semantically and supports direct selection when a callback is
-provided.
+`PagerDots/Dashboard` sits below the learning-mode carousel and uses the lime active dot.
+`PagerDots/Lesson` sits below both Writing and Grammar lesson carousels and uses a dark
+active pill. Both expose the current one-based position and total count semantically and
+support direct selection when a callback is provided.
 
 ## Grammar vertical-slice additive states
 

@@ -146,6 +146,18 @@ abstract class AppLocalizations {
   /// **'Learning modes'**
   String get learningModes;
 
+  /// No description provided for @modePager.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning modes carousel'**
+  String get modePager;
+
+  /// No description provided for @modePagerPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Mode {current} of {total}'**
+  String modePagerPosition(int current, int total);
+
   /// No description provided for @writing.
   ///
   /// In en, this message translates to:
@@ -218,6 +230,324 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
+  /// No description provided for @insightTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Insights'**
+  String get insightTitle;
+
+  /// No description provided for @insightStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak'**
+  String get insightStreak;
+
+  /// No description provided for @insightWordGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Word game'**
+  String get insightWordGame;
+
+  /// No description provided for @menuClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close menu'**
+  String get menuClose;
+
+  /// No description provided for @insightLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons'**
+  String get insightLessons;
+
+  /// No description provided for @insightWords.
+  ///
+  /// In en, this message translates to:
+  /// **'Words'**
+  String get insightWords;
+
+  /// No description provided for @insightReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get insightReviews;
+
+  /// No description provided for @insightCurrentStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Current streak'**
+  String get insightCurrentStreak;
+
+  /// No description provided for @insightLongestStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak'**
+  String get insightLongestStreak;
+
+  /// No description provided for @insightMonthYear.
+  ///
+  /// In en, this message translates to:
+  /// **'{month}/{year}'**
+  String insightMonthYear(int month, int year);
+
+  /// No description provided for @insightWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get insightWeekTitle;
+
+  /// No description provided for @insightWeekEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No activity this week'**
+  String get insightWeekEmpty;
+
+  /// No description provided for @weekdayMon.
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get weekdayMon;
+
+  /// No description provided for @weekdayTue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get weekdayTue;
+
+  /// No description provided for @weekdayWed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get weekdayWed;
+
+  /// No description provided for @weekdayThu.
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get weekdayThu;
+
+  /// No description provided for @weekdayFri.
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get weekdayFri;
+
+  /// No description provided for @weekdaySat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get weekdaySat;
+
+  /// No description provided for @weekdaySun.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun'**
+  String get weekdaySun;
+
+  /// No description provided for @insightSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search history'**
+  String get insightSearch;
+
+  /// No description provided for @insightSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search lessons'**
+  String get insightSearchHint;
+
+  /// No description provided for @insightHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No history yet'**
+  String get insightHistoryEmptyTitle;
+
+  /// No description provided for @insightHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed local lessons will appear here when progress tracking is connected.'**
+  String get insightHistoryEmptyBody;
+
+  /// No description provided for @insightHistoryNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching lessons'**
+  String get insightHistoryNoResults;
+
+  /// No description provided for @settingsGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest'**
+  String get settingsGuest;
+
+  /// No description provided for @settingsGuestCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Local practice'**
+  String get settingsGuestCaption;
+
+  /// No description provided for @settingsGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get settingsGeneral;
+
+  /// No description provided for @settingsLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning'**
+  String get settingsLearning;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get settingsLevel;
+
+  /// No description provided for @settingsLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson settings'**
+  String get settingsLesson;
+
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearance;
+
+  /// No description provided for @settingsVoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice'**
+  String get settingsVoice;
+
+  /// No description provided for @settingsLanguageCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the language used for app controls and navigation.'**
+  String get settingsLanguageCaption;
+
+  /// No description provided for @settingsEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get settingsEnglish;
+
+  /// No description provided for @settingsVietnamese.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiếng Việt'**
+  String get settingsVietnamese;
+
+  /// No description provided for @settingsApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get settingsApply;
+
+  /// No description provided for @settingsSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save your language. Try again.'**
+  String get settingsSaveFailed;
+
+  /// No description provided for @flashcards.
+  ///
+  /// In en, this message translates to:
+  /// **'Flashcards'**
+  String get flashcards;
+
+  /// No description provided for @flashcardHomeCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep useful words close and ready to review.'**
+  String get flashcardHomeCaption;
+
+  /// No description provided for @flashcardExplore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore decks'**
+  String get flashcardExplore;
+
+  /// No description provided for @flashcardDeckCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 deck} other{{count} decks}}'**
+  String flashcardDeckCount(int count);
+
+  /// No description provided for @flashcardNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get flashcardNew;
+
+  /// No description provided for @flashcardLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning'**
+  String get flashcardLearning;
+
+  /// No description provided for @flashcardDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Due'**
+  String get flashcardDue;
+
+  /// No description provided for @flashcardDeckSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{newCount} new · {learningCount} learning · {dueCount} due'**
+  String flashcardDeckSummary(int newCount, int learningCount, int dueCount);
+
+  /// No description provided for @flashcardReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review ({count})'**
+  String flashcardReview(int count);
+
+  /// No description provided for @flashcardWords.
+  ///
+  /// In en, this message translates to:
+  /// **'Words'**
+  String get flashcardWords;
+
+  /// No description provided for @flashcardGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Game'**
+  String get flashcardGame;
+
+  /// No description provided for @flashcardEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No decks yet'**
+  String get flashcardEmptyTitle;
+
+  /// No description provided for @flashcardEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your flashcard decks will appear here.'**
+  String get flashcardEmptyBody;
+
+  /// No description provided for @flashcardUnavailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Deck unavailable'**
+  String get flashcardUnavailableTitle;
+
+  /// No description provided for @flashcardUnavailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This flashcard deck could not be found.'**
+  String get flashcardUnavailableBody;
+
   /// No description provided for @back.
   ///
   /// In en, this message translates to:
@@ -277,6 +607,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clearer sentences'**
   String get lessonsSecondLine;
+
+  /// No description provided for @writingEmptyLessonsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No lessons yet'**
+  String get writingEmptyLessonsTitle;
+
+  /// No description provided for @writingEmptyLessonsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons for this topic will appear here when they are available.'**
+  String get writingEmptyLessonsBody;
+
+  /// No description provided for @lessonPager.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson carousel'**
+  String get lessonPager;
+
+  /// No description provided for @lessonPagerPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {current} of {total}'**
+  String lessonPagerPosition(int current, int total);
 
   /// No description provided for @start.
   ///
@@ -355,6 +709,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next'**
   String get next;
+
+  /// No description provided for @completionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson complete'**
+  String get completionTitle;
+
+  /// No description provided for @completionSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'Steps completed'**
+  String get completionSteps;
+
+  /// No description provided for @completionCorrections.
+  ///
+  /// In en, this message translates to:
+  /// **'Corrections'**
+  String get completionCorrections;
+
+  /// No description provided for @completionNextLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Next lesson'**
+  String get completionNextLesson;
+
+  /// No description provided for @completionDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get completionDone;
 
   /// No description provided for @stepOf.
   ///

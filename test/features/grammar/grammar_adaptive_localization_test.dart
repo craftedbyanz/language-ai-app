@@ -96,7 +96,13 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text(strings.grammar));
+      await tester.ensureVisible(
+        find.byKey(const ValueKey('dashboard-pager-1')),
+      );
+      await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+      await tester.pumpAndSettle();
       await tester.tap(find.text(strings.grammar));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Verb agreement'));
@@ -138,7 +144,13 @@ void main() {
         ProviderScope(key: UniqueKey(), child: const LinguaApp()),
       );
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('Ngữ pháp'));
+      await tester.ensureVisible(
+        find.byKey(const ValueKey('dashboard-pager-1')),
+      );
+      await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Ngữ pháp'));
       await tester.pumpAndSettle();
       expect(find.text('LUYỆN NGỮ PHÁP'), findsOneWidget);
@@ -158,7 +170,11 @@ void main() {
     );
     await tester.pumpWidget(const ProviderScope(child: LinguaApp()));
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     expect(find.byType(Scrollable), findsWidgets);
@@ -189,7 +205,13 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        await tester.ensureVisible(find.text(strings.grammar));
+        await tester.ensureVisible(
+          find.byKey(const ValueKey('dashboard-pager-1')),
+        );
+        await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+        await tester.pumpAndSettle();
+        await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+        await tester.pumpAndSettle();
         await tester.tap(find.text(strings.grammar));
         await tester.pumpAndSettle();
         await tester.tap(find.text('Verb agreement'));
@@ -306,7 +328,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Verb agreement'));
@@ -340,7 +366,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.pumpAndSettle();
     final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
     addTearDown(mouse.removePointer);
@@ -399,7 +429,13 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        await tester.ensureVisible(find.text('Grammar'));
+        await tester.ensureVisible(
+          find.byKey(const ValueKey('dashboard-pager-1')),
+        );
+        await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+        await tester.pumpAndSettle();
+        await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+        await tester.pumpAndSettle();
         await tester.tap(find.text('Grammar'));
         await tester.pumpAndSettle();
         await tester.tap(find.text('Verb agreement'));
@@ -442,7 +478,11 @@ void main() {
   ) async {
     await tester.pumpWidget(const ProviderScope(child: LinguaApp()));
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));

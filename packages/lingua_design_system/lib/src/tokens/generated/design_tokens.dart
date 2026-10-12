@@ -759,6 +759,12 @@ abstract final class StateTokens {
   /// state.disabledOpacity
   static const double disabledOpacity = 0.4;
 
+  /// state.modeCardDividerOpacity
+  static const double modeCardDividerOpacity = 0.25;
+
+  /// state.modeCardIndexOpacity
+  static const double modeCardIndexOpacity = 0.24;
+
   /// state.pressedOverlay
   static const Color pressedOverlay = Color.fromRGBO(11, 15, 33, 0.08);
 }

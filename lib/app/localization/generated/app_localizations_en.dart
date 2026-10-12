@@ -34,6 +34,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get learningModes => 'Learning modes';
 
   @override
+  String get modePager => 'Learning modes carousel';
+
+  @override
+  String modePagerPosition(int current, int total) {
+    return 'Mode $current of $total';
+  }
+
+  @override
   String get writing => 'Writing';
 
   @override
@@ -80,6 +88,183 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String get insightTitle => 'Insights';
+
+  @override
+  String get insightStreak => 'Streak';
+
+  @override
+  String get insightWordGame => 'Word game';
+
+  @override
+  String get menuClose => 'Close menu';
+
+  @override
+  String get insightLessons => 'Lessons';
+
+  @override
+  String get insightWords => 'Words';
+
+  @override
+  String get insightReviews => 'Reviews';
+
+  @override
+  String get insightCurrentStreak => 'Current streak';
+
+  @override
+  String get insightLongestStreak => 'Longest streak';
+
+  @override
+  String insightMonthYear(int month, int year) {
+    return '$month/$year';
+  }
+
+  @override
+  String get insightWeekTitle => 'This week';
+
+  @override
+  String get insightWeekEmpty => 'No activity this week';
+
+  @override
+  String get weekdayMon => 'Mon';
+
+  @override
+  String get weekdayTue => 'Tue';
+
+  @override
+  String get weekdayWed => 'Wed';
+
+  @override
+  String get weekdayThu => 'Thu';
+
+  @override
+  String get weekdayFri => 'Fri';
+
+  @override
+  String get weekdaySat => 'Sat';
+
+  @override
+  String get weekdaySun => 'Sun';
+
+  @override
+  String get insightSearch => 'Search history';
+
+  @override
+  String get insightSearchHint => 'Search lessons';
+
+  @override
+  String get insightHistoryEmptyTitle => 'No history yet';
+
+  @override
+  String get insightHistoryEmptyBody =>
+      'Completed local lessons will appear here when progress tracking is connected.';
+
+  @override
+  String get insightHistoryNoResults => 'No matching lessons';
+
+  @override
+  String get settingsGuest => 'Guest';
+
+  @override
+  String get settingsGuestCaption => 'Local practice';
+
+  @override
+  String get settingsGeneral => 'General';
+
+  @override
+  String get settingsLearning => 'Learning';
+
+  @override
+  String get settingsLanguage => 'Language';
+
+  @override
+  String get settingsLevel => 'Level';
+
+  @override
+  String get settingsLesson => 'Lesson settings';
+
+  @override
+  String get settingsAppearance => 'Appearance';
+
+  @override
+  String get settingsVoice => 'Voice';
+
+  @override
+  String get settingsLanguageCaption =>
+      'Choose the language used for app controls and navigation.';
+
+  @override
+  String get settingsEnglish => 'English';
+
+  @override
+  String get settingsVietnamese => 'Tiếng Việt';
+
+  @override
+  String get settingsApply => 'Apply';
+
+  @override
+  String get settingsSaveFailed => 'Could not save your language. Try again.';
+
+  @override
+  String get flashcards => 'Flashcards';
+
+  @override
+  String get flashcardHomeCaption =>
+      'Keep useful words close and ready to review.';
+
+  @override
+  String get flashcardExplore => 'Explore decks';
+
+  @override
+  String flashcardDeckCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count decks',
+      one: '1 deck',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get flashcardNew => 'New';
+
+  @override
+  String get flashcardLearning => 'Learning';
+
+  @override
+  String get flashcardDue => 'Due';
+
+  @override
+  String flashcardDeckSummary(int newCount, int learningCount, int dueCount) {
+    return '$newCount new · $learningCount learning · $dueCount due';
+  }
+
+  @override
+  String flashcardReview(int count) {
+    return 'Review ($count)';
+  }
+
+  @override
+  String get flashcardWords => 'Words';
+
+  @override
+  String get flashcardGame => 'Game';
+
+  @override
+  String get flashcardEmptyTitle => 'No decks yet';
+
+  @override
+  String get flashcardEmptyBody => 'Your flashcard decks will appear here.';
+
+  @override
+  String get flashcardUnavailableTitle => 'Deck unavailable';
+
+  @override
+  String get flashcardUnavailableBody =>
+      'This flashcard deck could not be found.';
+
+  @override
   String get back => 'Back';
 
   @override
@@ -108,6 +293,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lessonsSecondLine => 'Clearer sentences';
+
+  @override
+  String get writingEmptyLessonsTitle => 'No lessons yet';
+
+  @override
+  String get writingEmptyLessonsBody =>
+      'Lessons for this topic will appear here when they are available.';
+
+  @override
+  String get lessonPager => 'Lesson carousel';
+
+  @override
+  String lessonPagerPosition(int current, int total) {
+    return 'Page $current of $total';
+  }
 
   @override
   String get start => 'Start';
@@ -147,6 +347,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get next => 'Next';
+
+  @override
+  String get completionTitle => 'Lesson complete';
+
+  @override
+  String get completionSteps => 'Steps completed';
+
+  @override
+  String get completionCorrections => 'Corrections';
+
+  @override
+  String get completionNextLesson => 'Next lesson';
+
+  @override
+  String get completionDone => 'Done';
 
   @override
   String get stepOf => 'Writing progress';

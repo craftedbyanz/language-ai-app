@@ -168,7 +168,7 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Dimensions**: width = `layout.modeCardWidthRatio` × effective viewport (`modeCardWidthRatioCompact` on compact; next card peeks); min height `layout.modeCardMinHeight`, content-driven above; `radius.heroCard`.
 - **Active scale**: `motion.carouselActiveScale`; none under reduced motion.
 - **Spacing**: card gap `layout.carouselGap`; inner padding `space.lg`+.
-- **Colours**: fill from `feature.<mode>.homeCardFill` (writing CANDIDATE; others ESTIMATED); text colour by fill: `ModeCard/Writing` (`primary`) and `ModeCard/Grammar` (lavender) use `accessible.onFeatureFill`; `ModeCard/Conversation` (`primaryStrong`) uses `accessible.onBrand`. Not a profile-switch surface: these home fills stay as tokened. Index numeral = same text colour at 24% opacity (decorative).
+- **Colours**: fill from `feature.<mode>.homeCardFill` (writing CANDIDATE; others ESTIMATED); text colour by fill: `ModeCard/Writing` (`primary`) and `ModeCard/Grammar` (lavender) use `accessible.onFeatureFill`; `ModeCard/Conversation` (`primaryStrong`) uses `accessible.onBrand`. Not a profile-switch surface: these home fills stay as tokened. Index numeral = same text colour at `state.modeCardIndexOpacity` (decorative); divider uses `state.modeCardDividerOpacity`.
 - **Interaction**: tap opens the mode's TopicPicker; swipe pages the carousel with PagerDots.
 - **Accessibility**: one button; name = "index, MODE, kind, description, explore" (concatenated).
 - **Responsive**: ratio-based width; one full card plus a peek at any width ≥ compact.

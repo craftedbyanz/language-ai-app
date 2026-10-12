@@ -87,9 +87,16 @@ final class GrammarFailure extends GrammarActiveState {
 }
 
 final class GrammarFinished extends GrammarExerciseState {
-  const GrammarFinished({required this.topicId, required this.lessonId});
+  const GrammarFinished({
+    required this.topicId,
+    required this.lessonId,
+    required this.stepsCompleted,
+    required this.corrections,
+  });
   final String topicId;
   final String lessonId;
+  final int stepsCompleted;
+  final int corrections;
 }
 
 final class GrammarUnavailable extends GrammarExerciseState {

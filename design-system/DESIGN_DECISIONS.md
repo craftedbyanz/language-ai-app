@@ -7,6 +7,16 @@ Two parts:
 
 A default is a placeholder that keeps the build moving. It is **never** evidence. When a default is used, the code must reference the DD id in a comment. An `APPROVED_V1` decision is not a default and needs no `DD-XX default` comment.
 
+## Implementation reconciliation — 2026-10-12
+
+The Flutter Home and lesson-list carousels now use the existing `PagerDots/Dashboard`
+and `PagerDots/Lesson` treatments. The lesson variant applies to both Writing and
+Grammar. `state.modeCardIndexOpacity` and `state.modeCardDividerOpacity` centralise
+the decorative opacity values already described in `COMPONENTS.md`; they introduce
+no new visual decision. Lesson cards use one whole-card action with a right-aligned
+CTA, and topic counts use the specified `StatusBadge/Count` treatment. These changes
+reconcile implementation with the existing component and template rules.
+
 ---
 
 ## Classification (final QA, 2026-10-09)

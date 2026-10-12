@@ -10,8 +10,100 @@ import 'package:lingua/features/grammar/data/repositories/in_memory_grammar_repo
 import 'package:lingua/features/grammar/domain/entities/grammar_content.dart';
 import 'package:lingua/features/grammar/domain/repositories/grammar_repository.dart';
 import 'package:lingua/features/grammar/presentation/providers/grammar_providers.dart';
+import 'package:lingua/features/grammar/presentation/state/grammar_exercise_state.dart';
 
 void main() {
+  testWidgets('grammar completion floats over lesson list at compact width', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          grammarRepositoryProvider.overrideWithValue(
+            _OneStepGrammarRepository(),
+          ),
+          grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
+        ],
+        child: const LinguaApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final context = tester.element(find.byType(LinguaApp));
+    final router = ProviderScope.containerOf(context).read(appRouterProvider);
+    router.go(
+      const GrammarExerciseRoute(
+        topicId: 'verb-agreement',
+        lessonId: 'third-person-present',
+      ).location,
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('answer-input')),
+      'She works at the library every day.',
+    );
+    await tester.pump();
+    await tester.ensureVisible(find.byKey(const Key('submit-button')));
+    await tester.tap(find.byKey(const Key('submit-button')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    expect(find.byType(CompletionTemplate), findsOneWidget);
+    expect(find.text('Lesson complete'), findsOneWidget);
+    expect(find.text('Steps completed'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.tap(find.text('Done'));
+    await tester.pumpAndSettle();
+    expect(find.byType(CompletionTemplate), findsNothing);
+    expect(find.text('Third-person present'), findsOneWidget);
+  });
+
+  test('final grammar step retains completion totals', () async {
+    final container = ProviderContainer(
+      overrides: [grammarMinimumDwellProvider.overrideWithValue(Duration.zero)],
+    );
+    addTearDown(container.dispose);
+    const args = GrammarWorkflowArgs(
+      topicId: 'verb-agreement',
+      lessonId: 'third-person-present',
+    );
+    final subscription = container.listen(
+      grammarExerciseViewModelProvider(args),
+      (_, _) {},
+    );
+    addTearDown(subscription.close);
+    final notifier = container.read(
+      grammarExerciseViewModelProvider(args).notifier,
+    );
+    final lesson = container
+        .read(grammarRepositoryProvider)
+        .lessonById(args.lessonId)!;
+    notifier.answerChanged('wrong');
+    await notifier.submit();
+    expect(
+      container.read(grammarExerciseViewModelProvider(args)),
+      isA<GrammarFeedbackIncorrect>(),
+    );
+    notifier.fix();
+    for (final exercise in lesson.exercises) {
+      notifier.answerChanged(exercise.acceptedAnswers.first);
+      await notifier.submit();
+      expect(
+        container.read(grammarExerciseViewModelProvider(args)),
+        isA<GrammarFeedbackCorrect>(),
+      );
+      notifier.next();
+    }
+    final finished = container.read(grammarExerciseViewModelProvider(args));
+    expect(finished, isA<GrammarFinished>());
+    expect(
+      (finished as GrammarFinished).stepsCompleted,
+      lesson.exercises.length,
+    );
+    expect(finished.corrections, 1);
+  });
+
   testWidgets('Home to Grammar correct feedback and next sentence', (
     tester,
   ) async {
@@ -27,7 +119,11 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     expect(find.text('Verb agreement'), findsOneWidget);
@@ -116,7 +212,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -212,7 +312,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     expect(find.text('No grammar topics'), findsOneWidget);
@@ -230,7 +334,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -274,7 +382,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     expect(find.text('Grammar'), findsOneWidget);
@@ -298,7 +410,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -325,7 +441,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -359,7 +479,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -384,7 +508,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -498,7 +626,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Grammar'));
+    await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('mode-card-02')));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Grammar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Verb agreement'));
@@ -625,4 +757,44 @@ class _ThrowingCatalogRepository implements GrammarRepository {
     gradeCalls++;
     return _delegate.grade(exercise: exercise, response: response);
   }
+}
+
+class _OneStepGrammarRepository implements GrammarRepository {
+  final _delegate = const InMemoryGrammarRepository();
+
+  late final GrammarLesson _lesson = () {
+    final original = _delegate.lessonById('third-person-present')!;
+    return GrammarLesson(
+      id: original.id,
+      topicId: original.topicId,
+      level: original.level,
+      title: original.title,
+      description: original.description,
+      illustrationKey: original.illustrationKey,
+      exercises: [original.exercises.first],
+    );
+  }();
+
+  @override
+  List<String> get categoryIds => _delegate.categoryIds;
+  @override
+  List<GrammarTopic> get topics => _delegate.topics;
+  @override
+  List<GrammarLesson> lessonsForTopic(String topicId) =>
+      topicId == _lesson.topicId
+      ? [_lesson]
+      : _delegate.lessonsForTopic(topicId);
+  @override
+  GrammarTopic? topicById(String topicId) => _delegate.topicById(topicId);
+  @override
+  GrammarLesson? lessonById(String lessonId) =>
+      lessonId == _lesson.id ? _lesson : _delegate.lessonById(lessonId);
+  @override
+  GrammarSentenceExercise? exerciseById(String lessonId, String exerciseId) =>
+      _delegate.exerciseById(lessonId, exerciseId);
+  @override
+  Future<GrammarVerdict> grade({
+    required GrammarSentenceExercise exercise,
+    required String response,
+  }) => _delegate.grade(exercise: exercise, response: response);
 }

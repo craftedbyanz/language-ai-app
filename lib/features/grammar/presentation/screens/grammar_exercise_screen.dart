@@ -4,10 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lingua_design_system/lingua_design_system.dart';
 
+import '../../../../core/result/result.dart';
+import '../../domain/entities/grammar_content.dart';
+import '../../domain/repositories/grammar_repository.dart';
 import '../grammar_copy.dart';
 import '../providers/grammar_providers.dart';
 import '../state/grammar_exercise_state.dart';
 import '../state/grammar_correction_diff.dart';
+import 'grammar_lesson_list_screen.dart';
 
 class GrammarExerciseScreen extends ConsumerStatefulWidget {
   const GrammarExerciseScreen({
@@ -15,7 +19,9 @@ class GrammarExerciseScreen extends ConsumerStatefulWidget {
     required this.lessonId,
     required this.copy,
     required this.onBack,
-    required this.onFinished,
+    required this.completionCopy,
+    required this.onDone,
+    required this.onNextLesson,
     super.key,
   });
 
@@ -23,7 +29,9 @@ class GrammarExerciseScreen extends ConsumerStatefulWidget {
   final String lessonId;
   final GrammarCopy copy;
   final VoidCallback onBack;
-  final VoidCallback onFinished;
+  final CompletionCopy completionCopy;
+  final VoidCallback onDone;
+  final ValueChanged<String> onNextLesson;
 
   @override
   ConsumerState<GrammarExerciseScreen> createState() =>
@@ -63,9 +71,7 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(grammarExerciseViewModelProvider(_args), (previous, next) {
-      if (next is GrammarFinished) {
-        widget.onFinished();
-      } else if (next is GrammarFailure) {
+      if (next is GrammarFailure) {
         _focus(_retryFocus);
       } else if (next is GrammarFeedback || next is GrammarSubmitting) {
         _focus(_feedbackTitleFocus);
@@ -93,7 +99,38 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
         onBack: widget.onBack,
       );
     }
-    if (state is GrammarFinished) return const SizedBox.shrink();
+    if (state is GrammarFinished) {
+      final lessonsResult = ref
+          .watch(grammarRepositoryProvider)
+          .loadLessonsForTopic(state.topicId);
+      String? nextLessonId;
+      if (lessonsResult case Success<List<GrammarLesson>>(
+        value: final lessons,
+      )) {
+        final currentIndex = lessons.indexWhere(
+          (lesson) => lesson.id == state.lessonId,
+        );
+        if (currentIndex >= 0 && currentIndex + 1 < lessons.length) {
+          nextLessonId = lessons[currentIndex + 1].id;
+        }
+      }
+      // DD-01 default: completion floats over the lesson list.
+      return CompletionTemplate(
+        background: GrammarLessonListScreen(
+          topicId: state.topicId,
+          copy: widget.copy,
+          onBack: widget.onDone,
+          onLessonPressed: widget.onNextLesson,
+        ),
+        copy: widget.completionCopy,
+        stepsCompleted: state.stepsCompleted,
+        corrections: state.corrections,
+        onDone: widget.onDone,
+        onNextLesson: nextLessonId == null
+            ? null
+            : () => widget.onNextLesson(nextLessonId!),
+      );
+    }
     final active = state as GrammarActiveState;
     if (_controller.text != active.answer) {
       _controller.value = TextEditingValue(

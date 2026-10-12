@@ -18,6 +18,8 @@ final writingExerciseViewModelProvider =
 
 final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
   late WritingRepository _repository;
+  var _corrections = 0;
+  var _nextRequestId = 0;
 
   @override
   WritingExerciseState build() {
@@ -29,6 +31,8 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
   }
 
   void selectLesson(String lessonId) {
+    _nextRequestId++;
+    _corrections = 0;
     state = WritingAnswering(
       lesson: _repository.lessonById(lessonId),
       exerciseIndex: 0,
@@ -49,6 +53,7 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
   Future<void> submit() async {
     final current = state;
     if (current is! WritingAnswering || !current.canSubmit) return;
+    final requestId = ++_nextRequestId;
     state = WritingSubmitting(
       lesson: current.lesson,
       exerciseIndex: current.exerciseIndex,
@@ -58,6 +63,12 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
       exercise: current.exercise,
       answer: current.answer,
     );
+    if (!ref.mounted ||
+        state is! WritingSubmitting ||
+        requestId != _nextRequestId) {
+      return;
+    }
+    if (!grade.isCorrect) _corrections++;
     final feedback = grade.isCorrect
         ? WritingFeedbackCorrect(
             lesson: current.lesson,
@@ -88,6 +99,7 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
   void cancelSubmission() {
     final current = state;
     if (current case WritingSubmitting()) {
+      _nextRequestId++;
       state = WritingAnswering(
         lesson: current.lesson,
         exerciseIndex: current.exerciseIndex,
@@ -100,11 +112,14 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
     final current = state;
     if (current is! WritingFeedback) return;
     final nextIndex = current.exerciseIndex + 1;
-    state = WritingAnswering(
-      lesson: current.lesson,
-      exerciseIndex: nextIndex < current.lesson.exercises.length
-          ? nextIndex
-          : 0,
-    );
+    if (nextIndex == current.lesson.exercises.length) {
+      state = WritingFinished(
+        lesson: current.lesson,
+        exerciseIndex: current.exerciseIndex,
+        corrections: _corrections,
+      );
+      return;
+    }
+    state = WritingAnswering(lesson: current.lesson, exerciseIndex: nextIndex);
   }
 }

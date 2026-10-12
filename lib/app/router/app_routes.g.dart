@@ -8,6 +8,13 @@ part of 'app_routes.dart';
 
 List<RouteBase> get $appRoutes => [
   $homeRoute,
+  $insightRoute,
+  $historyRoute,
+  $streakRoute,
+  $settingsRoute,
+  $settingsLanguageRoute,
+  $flashcardDecksRoute,
+  $flashcardDeckRoute,
   $grammarTopicRoute,
   $grammarLessonRoute,
   $grammarExerciseRoute,
@@ -27,6 +34,194 @@ mixin $HomeRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $insightRoute => GoRouteData.$route(
+  path: '/insights',
+  hasOverriddenOnExit: false,
+  factory: $InsightRoute._fromState,
+);
+
+mixin $InsightRoute on GoRouteData {
+  static InsightRoute _fromState(GoRouterState state) => const InsightRoute();
+
+  @override
+  String get location => GoRouteData.$location('/insights');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $historyRoute => GoRouteData.$route(
+  path: '/history',
+  hasOverriddenOnExit: false,
+  factory: $HistoryRoute._fromState,
+);
+
+mixin $HistoryRoute on GoRouteData {
+  static HistoryRoute _fromState(GoRouterState state) => const HistoryRoute();
+
+  @override
+  String get location => GoRouteData.$location('/history');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $streakRoute => GoRouteData.$route(
+  path: '/streak',
+  hasOverriddenOnExit: false,
+  factory: $StreakRoute._fromState,
+);
+
+mixin $StreakRoute on GoRouteData {
+  static StreakRoute _fromState(GoRouterState state) => const StreakRoute();
+
+  @override
+  String get location => GoRouteData.$location('/streak');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $settingsRoute => GoRouteData.$route(
+  path: '/settings',
+  hasOverriddenOnExit: false,
+  factory: $SettingsRoute._fromState,
+);
+
+mixin $SettingsRoute on GoRouteData {
+  static SettingsRoute _fromState(GoRouterState state) => const SettingsRoute();
+
+  @override
+  String get location => GoRouteData.$location('/settings');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $settingsLanguageRoute => GoRouteData.$route(
+  path: '/settings/language',
+  hasOverriddenOnExit: false,
+  factory: $SettingsLanguageRoute._fromState,
+);
+
+mixin $SettingsLanguageRoute on GoRouteData {
+  static SettingsLanguageRoute _fromState(GoRouterState state) =>
+      const SettingsLanguageRoute();
+
+  @override
+  String get location => GoRouteData.$location('/settings/language');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $flashcardDecksRoute => GoRouteData.$route(
+  path: '/flashcards',
+  hasOverriddenOnExit: false,
+  factory: $FlashcardDecksRoute._fromState,
+);
+
+mixin $FlashcardDecksRoute on GoRouteData {
+  static FlashcardDecksRoute _fromState(GoRouterState state) =>
+      const FlashcardDecksRoute();
+
+  @override
+  String get location => GoRouteData.$location('/flashcards');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $flashcardDeckRoute => GoRouteData.$route(
+  path: '/flashcards/:deckId',
+  hasOverriddenOnExit: false,
+  factory: $FlashcardDeckRoute._fromState,
+);
+
+mixin $FlashcardDeckRoute on GoRouteData {
+  static FlashcardDeckRoute _fromState(GoRouterState state) =>
+      FlashcardDeckRoute(deckId: state.pathParameters['deckId']!);
+
+  FlashcardDeckRoute get _self => this as FlashcardDeckRoute;
+
+  @override
+  String get location =>
+      GoRouteData.$location('/flashcards/${Uri.encodeComponent(_self.deckId)}');
 
   @override
   void go(BuildContext context) => context.go(location);

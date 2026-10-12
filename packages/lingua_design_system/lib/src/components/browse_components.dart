@@ -167,10 +167,20 @@ class TopicCard extends StatelessWidget {
                 const Spacer(),
                 Text(title, style: TypographyTokens.heading),
                 const SizedBox(height: SpaceTokens.xs),
-                Text(
-                  countLabel,
-                  style: TypographyTokens.caption.copyWith(
-                    color: ColorTokens.textSecondary,
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpaceTokens.sm,
+                    vertical: SpaceTokens.xs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ColorTokens.surfaceMuted,
+                    borderRadius: BorderRadius.circular(RadiusTokens.chip),
+                  ),
+                  child: Text(
+                    countLabel,
+                    style: TypographyTokens.microLabel.copyWith(
+                      color: ColorTokens.textSecondary,
+                    ),
                   ),
                 ),
               ],
@@ -281,77 +291,144 @@ class LessonCard extends StatelessWidget {
   final Widget? illustration;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    container: true,
-    label: '$indexLabel, $level, $title, $description',
-    child: Container(
-      constraints: const BoxConstraints(
-        minHeight: LayoutTokens.lessonCardMinHeight,
-      ),
-      padding: const EdgeInsets.all(SpaceTokens.xl),
-      decoration: BoxDecoration(
-        color: ColorTokens.surface,
+  Widget build(BuildContext context) {
+    final accessible =
+        Theme.of(context).extension<DesignTokensTheme>()?.accessible ??
+        const AccessibleTokens();
+    final ctaFill = switch (variant) {
+      LessonCardVariant.writing => FeatureTokens.writingCta,
+      LessonCardVariant.grammar => FeatureTokens.grammarCta,
+      LessonCardVariant.conversation => FeatureTokens.conversationCta,
+    };
+    final ctaText = variant == LessonCardVariant.grammar
+        ? ColorTokens.textPrimary
+        : accessible.onBrand;
+    return Semantics(
+      button: true,
+      label: '$indexLabel, $level, $title, $description, $actionLabel',
+      child: CanonicalFocusIndicator(
         borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-        boxShadow: ShadowTokens.hairline,
+        child: Material(
+          color: ColorTokens.surface,
+          borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+            child: _LessonCardContent(
+              indexLabel: indexLabel,
+              level: level,
+              title: title,
+              description: description,
+              actionLabel: actionLabel,
+              illustration: illustration,
+              ctaFill: ctaFill,
+              ctaText: ctaText,
+            ),
+          ),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpaceTokens.md,
-                  vertical: SpaceTokens.xs,
-                ),
-                decoration: BoxDecoration(
-                  color: ColorTokens.surfaceMuted,
-                  borderRadius: BorderRadius.circular(RadiusTokens.full),
-                ),
-                child: Text(level, style: TypographyTokens.caption),
+    );
+  }
+}
+
+class _LessonCardContent extends StatelessWidget {
+  const _LessonCardContent({
+    required this.indexLabel,
+    required this.level,
+    required this.title,
+    required this.description,
+    required this.actionLabel,
+    required this.illustration,
+    required this.ctaFill,
+    required this.ctaText,
+  });
+
+  final String indexLabel;
+  final String level;
+  final String title;
+  final String description;
+  final String actionLabel;
+  final Widget? illustration;
+  final Color ctaFill;
+  final Color ctaText;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    constraints: const BoxConstraints(
+      minHeight: LayoutTokens.lessonCardMinHeight,
+    ),
+    padding: const EdgeInsets.all(SpaceTokens.xl),
+    decoration: BoxDecoration(
+      color: ColorTokens.surface,
+      borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+      boxShadow: ShadowTokens.hairline,
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SpaceTokens.md,
+                vertical: SpaceTokens.xs,
               ),
-              ExcludeSemantics(
+              decoration: BoxDecoration(
+                color: ColorTokens.surfaceMuted,
+                borderRadius: BorderRadius.circular(RadiusTokens.full),
+              ),
+              child: Text(level, style: TypographyTokens.caption),
+            ),
+            ExcludeSemantics(
+              child: Text(
+                indexLabel,
+                style: TypographyTokens.title.copyWith(
+                  color: ColorTokens.textFaint,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: SpaceTokens.md),
+        Text(title, style: TypographyTokens.title),
+        if (illustration case final illustration?)
+          Expanded(
+            child: Center(child: ExcludeSemantics(child: illustration)),
+          )
+        else
+          const Spacer(),
+        const SizedBox(height: SpaceTokens.sm),
+        Text(
+          description,
+          style: TypographyTokens.body.copyWith(
+            color: ColorTokens.textSecondary,
+          ),
+        ),
+        const SizedBox(height: SpaceTokens.xl),
+        Align(
+          alignment: Alignment.centerRight,
+          child: ExcludeSemantics(
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: ControlTokens.minTouchTarget,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.lg),
+              decoration: BoxDecoration(
+                color: ctaFill,
+                borderRadius: BorderRadius.circular(RadiusTokens.full),
+              ),
+              child: Center(
+                widthFactor: 1,
                 child: Text(
-                  indexLabel,
-                  style: TypographyTokens.title.copyWith(
-                    color: ColorTokens.textFaint,
-                  ),
+                  actionLabel,
+                  style: TypographyTokens.bodyStrong.copyWith(color: ctaText),
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: SpaceTokens.md),
-          Text(title, style: TypographyTokens.title),
-          if (illustration case final illustration?)
-            Expanded(
-              child: Center(child: ExcludeSemantics(child: illustration)),
-            )
-          else
-            const Spacer(),
-          const SizedBox(height: SpaceTokens.sm),
-          Text(
-            description,
-            style: TypographyTokens.body.copyWith(
-              color: ColorTokens.textSecondary,
             ),
           ),
-          const SizedBox(height: SpaceTokens.xl),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: AppButton(
-              label: actionLabel,
-              onPressed: onPressed,
-              variant: AppButtonVariant.accent,
-              accent: switch (variant) {
-                LessonCardVariant.writing => AppButtonAccent.writing,
-                LessonCardVariant.grammar => AppButtonAccent.grammar,
-                LessonCardVariant.conversation => AppButtonAccent.conversation,
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     ),
   );
 }
@@ -382,14 +459,35 @@ class EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              error ? Icons.error_outline_rounded : Icons.inbox_outlined,
-              color: error ? ColorTokens.errorText : ColorTokens.textSecondary,
+            Container(
+              width: IconTokens.container + SpaceTokens.lg,
+              height: IconTokens.container + SpaceTokens.lg,
+              decoration: BoxDecoration(
+                color: error ? ColorTokens.errorTint : ColorTokens.surfaceMuted,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                error ? Icons.error_outline_rounded : Icons.inbox_outlined,
+                size: IconTokens.container,
+                color: error
+                    ? ColorTokens.errorText
+                    : ColorTokens.textSecondary,
+              ),
             ),
             const SizedBox(height: SpaceTokens.sm),
-            Text(title, style: TypographyTokens.heading),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TypographyTokens.heading,
+            ),
             const SizedBox(height: SpaceTokens.xs),
-            Text(body, textAlign: TextAlign.center),
+            Text(
+              body,
+              textAlign: TextAlign.center,
+              style: TypographyTokens.body.copyWith(
+                color: ColorTokens.textSecondary,
+              ),
+            ),
             if (actionLabel case final label?) ...[
               const SizedBox(height: SpaceTokens.md),
               AppButton(
@@ -405,12 +503,15 @@ class EmptyState extends StatelessWidget {
   );
 }
 
+enum PagerDotsVariant { dashboard, lesson }
+
 class PagerDots extends StatefulWidget {
   const PagerDots({
     required this.count,
     required this.index,
     required this.semanticLabel,
     required this.positionLabel,
+    this.variant = PagerDotsVariant.lesson,
     this.onSelected,
     super.key,
   }) : assert(count > 0),
@@ -420,6 +521,7 @@ class PagerDots extends StatefulWidget {
   final int index;
   final String semanticLabel;
   final String Function(int current, int total) positionLabel;
+  final PagerDotsVariant variant;
   final ValueChanged<int>? onSelected;
 
   @override
@@ -428,6 +530,9 @@ class PagerDots extends StatefulWidget {
 
 class _PagerDotsState extends State<PagerDots> {
   final _focusNode = FocusNode();
+  String get _keyPrefix => widget.variant == PagerDotsVariant.dashboard
+      ? 'dashboard-pager'
+      : 'lesson-pager';
 
   @override
   void dispose() {
@@ -452,7 +557,7 @@ class _PagerDotsState extends State<PagerDots> {
     child: Focus(
       focusNode: _focusNode,
       child: Semantics(
-        key: const Key('lesson-pager-semantics'),
+        key: Key('$_keyPrefix-semantics'),
         container: true,
         label: widget.semanticLabel,
         value: widget.positionLabel(widget.index + 1, widget.count),
@@ -470,7 +575,7 @@ class _PagerDotsState extends State<PagerDots> {
                   child: CanonicalFocusIndicator(
                     borderRadius: BorderRadius.circular(RadiusTokens.full),
                     child: InkWell(
-                      key: ValueKey('lesson-pager-$dot'),
+                      key: ValueKey('$_keyPrefix-$dot'),
                       onTap: widget.onSelected == null
                           ? null
                           : () {
@@ -482,12 +587,20 @@ class _PagerDotsState extends State<PagerDots> {
                         dimension: ControlTokens.minTouchTarget,
                         child: Center(
                           child: Container(
-                            width: SpaceTokens.sm,
+                            width:
+                                widget.variant == PagerDotsVariant.lesson &&
+                                    dot == widget.index
+                                ? SpaceTokens.lg
+                                : SpaceTokens.sm,
                             height: SpaceTokens.sm,
                             decoration: BoxDecoration(
-                              shape: BoxShape.circle,
+                              borderRadius: BorderRadius.circular(
+                                RadiusTokens.full,
+                              ),
                               color: dot == widget.index
-                                  ? ColorTokens.textPrimary
+                                  ? widget.variant == PagerDotsVariant.dashboard
+                                        ? FeatureTokens.grammarAccent
+                                        : ColorTokens.textPrimary
                                   : ColorTokens.border,
                             ),
                           ),

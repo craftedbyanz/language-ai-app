@@ -11,6 +11,10 @@ final class WritingCopy {
     required this.lessonsEyebrow,
     required this.lessonsFirstLine,
     required this.lessonsSecondLine,
+    required this.emptyLessonsTitle,
+    required this.emptyLessonsBody,
+    required this.lessonPager,
+    required this.lessonPagerPosition,
     required this.start,
     required this.sourceText,
     required this.answerLabel,
@@ -43,6 +47,10 @@ final class WritingCopy {
   final String lessonsEyebrow;
   final String lessonsFirstLine;
   final String lessonsSecondLine;
+  final String emptyLessonsTitle;
+  final String emptyLessonsBody;
+  final String lessonPager;
+  final String Function(int current, int total) lessonPagerPosition;
   final String start;
   final String sourceText;
   final String answerLabel;

@@ -9,6 +9,8 @@ final class HomeDashboardCopy {
     required this.prompt,
     required this.promptLabel,
     required this.learningModes,
+    required this.modePager,
+    required this.modePagerPosition,
     required this.writing,
     required this.writingDescription,
     required this.grammar,
@@ -21,12 +23,19 @@ final class HomeDashboardCopy {
     required this.history,
     required this.menu,
     required this.settings,
+    required this.flashcardTitle,
+    required this.flashcardCaption,
+    required this.flashcardAction,
+    required this.flowLetterTitle,
+    required this.flowLetterCaption,
   });
   final String greeting;
   final String caption;
   final String prompt;
   final String promptLabel;
   final String learningModes;
+  final String modePager;
+  final String Function(int current, int total) modePagerPosition;
   final String writing;
   final String writingDescription;
   final String grammar;
@@ -39,18 +48,58 @@ final class HomeDashboardCopy {
   final String history;
   final String menu;
   final String settings;
+  final String flashcardTitle;
+  final String flashcardCaption;
+  final String flashcardAction;
+  final String flowLetterTitle;
+  final String flowLetterCaption;
 }
 
-class HomeDashboardScreen extends StatelessWidget {
+class HomeDashboardScreen extends StatefulWidget {
   const HomeDashboardScreen({
     required this.copy,
     required this.onWritingPressed,
     required this.onGrammarPressed,
+    required this.onFlashcardsPressed,
+    required this.onSettingsPressed,
+    required this.onHistoryPressed,
+    required this.onStreakPressed,
+    required this.onMenuPressed,
+    required this.streakCount,
     super.key,
   });
   final HomeDashboardCopy copy;
   final VoidCallback onWritingPressed;
   final VoidCallback onGrammarPressed;
+  final VoidCallback onFlashcardsPressed;
+  final VoidCallback onSettingsPressed;
+  final VoidCallback onHistoryPressed;
+  final VoidCallback onStreakPressed;
+  final VoidCallback onMenuPressed;
+  final int streakCount;
+
+  @override
+  State<HomeDashboardScreen> createState() => _HomeDashboardScreenState();
+}
+
+class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
+  final _modeController = ScrollController();
+  var _modePage = 0;
+
+  @override
+  void dispose() {
+    _modeController.dispose();
+    super.dispose();
+  }
+
+  void _selectMode(int page, double width, double ratio) {
+    _modeController.animateTo(
+      page * (width * ratio + LayoutTokens.carouselGap),
+      duration: MotionTokens.sheet,
+      curve: Curves.easeOut,
+    );
+    setState(() => _modePage = page);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,83 +130,173 @@ class HomeDashboardScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           GreetingBlock(
-                            greeting: copy.greeting,
-                            caption: copy.caption,
+                            greeting: widget.copy.greeting,
+                            caption: widget.copy.caption,
                           ),
                           const SizedBox(height: SpaceTokens.xl),
                           PromptEntry(
-                            label: copy.prompt,
-                            semanticLabel: copy.promptLabel,
+                            label: widget.copy.prompt,
+                            semanticLabel: widget.copy.promptLabel,
                           ),
                           const SizedBox(height: SpaceTokens.xl),
                           Text(
-                            copy.learningModes,
+                            widget.copy.learningModes,
                             style: TypographyTokens.heading,
                           ),
                           const SizedBox(height: SpaceTokens.lg),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: IntrinsicHeight(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.sizeOf(context).width *
-                                        (sizeClass == WindowSizeClass.compact
-                                            ? LayoutTokens
-                                                  .modeCardWidthRatioCompact
-                                            : LayoutTokens.modeCardWidthRatio),
-                                    child: ModeCard(
-                                      index: '01',
-                                      category: copy.learningModes,
-                                      title: copy.writing,
-                                      description: copy.writingDescription,
-                                      actionLabel: copy.explore,
-                                      fill: FeatureTokens.writingHomeCardFill,
-                                      foreground: accessible.onFeatureFill,
-                                      onPressed: onWritingPressed,
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              final ratio = sizeClass == WindowSizeClass.compact
+                                  ? LayoutTokens.modeCardWidthRatioCompact
+                                  : LayoutTokens.modeCardWidthRatio;
+                              final pageExtent =
+                                  constraints.maxWidth * ratio +
+                                  LayoutTokens.carouselGap;
+                              return SizedBox(
+                                height:
+                                    LayoutTokens.modeCardMinHeight *
+                                        MediaQuery.textScalerOf(context)
+                                            .scale(1) +
+                                    SpaceTokens.xl,
+                                child:
+                                    NotificationListener<
+                                      ScrollUpdateNotification
+                                    >(
+                                      onNotification: (notification) {
+                                        final page =
+                                            (notification.metrics.pixels /
+                                                    pageExtent)
+                                                .round()
+                                                .clamp(0, 2);
+                                        if (page != _modePage) {
+                                          setState(() => _modePage = page);
+                                        }
+                                        return false;
+                                      },
+                                      child: ListView.separated(
+                                        controller: _modeController,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: 3,
+                                        separatorBuilder: (_, _) =>
+                                            const SizedBox(
+                                              width: LayoutTokens.carouselGap,
+                                            ),
+                                        itemBuilder: (context, index) {
+                                          final active = index == _modePage;
+                                          final reducedMotion =
+                                              MediaQuery.disableAnimationsOf(
+                                                context,
+                                              );
+                                          return SizedBox(
+                                            width: constraints.maxWidth * ratio,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: SpaceTokens.sm,
+                                                  ),
+                                              child: AnimatedScale(
+                                                scale: reducedMotion || !active
+                                                    ? 1
+                                                    : MotionTokens
+                                                          .carouselActiveScale,
+                                                duration: reducedMotion
+                                                    ? Duration.zero
+                                                    : MotionTokens.fast,
+                                                child: switch (index) {
+                                                  0 => ModeCard(
+                                                    index: '01',
+                                                    category: widget
+                                                        .copy
+                                                        .learningModes,
+                                                    title: widget.copy.writing,
+                                                    description: widget
+                                                        .copy
+                                                        .writingDescription,
+                                                    actionLabel:
+                                                        widget.copy.explore,
+                                                    fill: FeatureTokens
+                                                        .writingHomeCardFill,
+                                                    foreground: accessible
+                                                        .onFeatureFill,
+                                                    onPressed:
+                                                        widget.onWritingPressed,
+                                                  ),
+                                                  1 => ModeCard(
+                                                    index: '02',
+                                                    category: widget
+                                                        .copy
+                                                        .learningModes,
+                                                    title: widget.copy.grammar,
+                                                    description: widget
+                                                        .copy
+                                                        .grammarDescription,
+                                                    actionLabel:
+                                                        widget.copy.explore,
+                                                    fill: FeatureTokens
+                                                        .grammarHomeCardFill,
+                                                    foreground: accessible
+                                                        .onFeatureFill,
+                                                    onPressed:
+                                                        widget.onGrammarPressed,
+                                                  ),
+                                                  _ => ModeCard(
+                                                    index: '03',
+                                                    category:
+                                                        widget.copy.comingSoon,
+                                                    title: widget
+                                                        .copy
+                                                        .conversation,
+                                                    description: widget
+                                                        .copy
+                                                        .conversationDescription,
+                                                    actionLabel:
+                                                        widget.copy.comingSoon,
+                                                    fill: FeatureTokens
+                                                        .conversationHomeCardFill,
+                                                    foreground:
+                                                        accessible.onBrand,
+                                                  ),
+                                                },
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: LayoutTokens.carouselGap,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.sizeOf(context).width *
-                                        LayoutTokens.modeCardWidthRatioCompact,
-                                    child: ModeCard(
-                                      index: '02',
-                                      category: copy.learningModes,
-                                      title: copy.grammar,
-                                      description: copy.grammarDescription,
-                                      actionLabel: copy.explore,
-                                      fill: FeatureTokens.grammarHomeCardFill,
-                                      foreground: accessible.onFeatureFill,
-                                      onPressed: onGrammarPressed,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: LayoutTokens.carouselGap,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.sizeOf(context).width *
-                                        LayoutTokens.modeCardWidthRatioCompact,
-                                    child: ModeCard(
-                                      index: '03',
-                                      category: copy.comingSoon,
-                                      title: copy.conversation,
-                                      description: copy.conversationDescription,
-                                      actionLabel: copy.comingSoon,
-                                      fill: FeatureTokens
-                                          .conversationHomeCardFill,
-                                      foreground: accessible.onBrand,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                              );
+                            },
+                          ),
+                          const SizedBox(height: SpaceTokens.sm),
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              final ratio = sizeClass == WindowSizeClass.compact
+                                  ? LayoutTokens.modeCardWidthRatioCompact
+                                  : LayoutTokens.modeCardWidthRatio;
+                              return PagerDots(
+                                count: 3,
+                                index: _modePage,
+                                semanticLabel: widget.copy.modePager,
+                                positionLabel: widget.copy.modePagerPosition,
+                                variant: PagerDotsVariant.dashboard,
+                                onSelected: (page) => _selectMode(
+                                  page,
+                                  constraints.maxWidth,
+                                  ratio,
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(height: SpaceTokens.xxl),
+                          FeatureBanner(
+                            title: widget.copy.flashcardTitle,
+                            caption: widget.copy.flashcardCaption,
+                            actionLabel: widget.copy.flashcardAction,
+                            onPressed: widget.onFlashcardsPressed,
+                          ),
+                          const SizedBox(height: SpaceTokens.xl),
+                          FlowLetterTile(
+                            title: widget.copy.flowLetterTitle,
+                            caption: widget.copy.flowLetterCaption,
                           ),
                           const SizedBox(height: SpaceTokens.xxl),
                         ],
@@ -174,11 +313,15 @@ class HomeDashboardScreen extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: FloatingBottomBar(
-                  streakCount: 3,
-                  streakLabel: copy.streakLabel,
-                  historyLabel: copy.history,
-                  menuLabel: copy.menu,
-                  settingsLabel: copy.settings,
+                  streakCount: widget.streakCount,
+                  streakLabel: widget.copy.streakLabel,
+                  historyLabel: widget.copy.history,
+                  menuLabel: widget.copy.menu,
+                  settingsLabel: widget.copy.settings,
+                  onSettings: widget.onSettingsPressed,
+                  onHistory: widget.onHistoryPressed,
+                  onStreak: widget.onStreakPressed,
+                  onMenu: widget.onMenuPressed,
                 ),
               ),
             ),

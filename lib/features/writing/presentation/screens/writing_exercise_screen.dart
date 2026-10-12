@@ -8,17 +8,24 @@ import 'package:lingua_design_system/lingua_design_system.dart';
 import '../state/writing_exercise_state.dart';
 import '../view_models/writing_exercise_view_model.dart';
 import '../writing_copy.dart';
+import 'writing_lesson_list_screen.dart';
 
 class WritingExerciseScreen extends ConsumerStatefulWidget {
   const WritingExerciseScreen({
     required this.lessonId,
     required this.copy,
     required this.onClose,
+    required this.completionCopy,
+    required this.onDone,
+    required this.onNextLesson,
     super.key,
   });
   final String lessonId;
   final WritingCopy copy;
   final VoidCallback onClose;
+  final CompletionCopy completionCopy;
+  final VoidCallback onDone;
+  final ValueChanged<String> onNextLesson;
 
   @override
   ConsumerState<WritingExerciseScreen> createState() =>
@@ -41,6 +48,17 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
   }
 
   @override
+  void didUpdateWidget(covariant WritingExerciseScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.lessonId != widget.lessonId) {
+      _controller.clear();
+      ref
+          .read(writingExerciseViewModelProvider.notifier)
+          .selectLesson(widget.lessonId);
+    }
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -50,6 +68,7 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
     final hasInput = switch (state) {
       WritingAnswering(:final answer) => answer.trim().isNotEmpty,
       WritingSubmitting() || WritingFeedback() => true,
+      WritingFinished() => false,
     };
     if (!hasInput) {
       widget.onClose();
@@ -81,10 +100,39 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(writingExerciseViewModelProvider);
     final notifier = ref.read(writingExerciseViewModelProvider.notifier);
+    if (state is WritingFinished) {
+      final lessons = ref
+          .watch(writingRepositoryProvider)
+          .lessonsForTopic(state.lesson.topicId);
+      final currentIndex = lessons.indexWhere(
+        (lesson) => lesson.id == state.lesson.id,
+      );
+      final nextLessonId =
+          currentIndex >= 0 && currentIndex + 1 < lessons.length
+          ? lessons[currentIndex + 1].id
+          : null;
+      // DD-01 default: completion floats over the lesson list.
+      return CompletionTemplate(
+        background: WritingLessonListScreen(
+          topicId: state.lesson.topicId,
+          copy: widget.copy,
+          onBack: widget.onDone,
+          onLessonPressed: widget.onNextLesson,
+        ),
+        copy: widget.completionCopy,
+        stepsCompleted: state.stepCount,
+        corrections: state.corrections,
+        onDone: widget.onDone,
+        onNextLesson: nextLessonId == null
+            ? null
+            : () => widget.onNextLesson(nextLessonId),
+      );
+    }
     final expectedText = switch (state) {
       WritingAnswering(:final answer) => answer,
       WritingSubmitting(:final answer) => answer,
       WritingFeedback(:final answer) => answer,
+      WritingFinished() => '',
     };
     if (_controller.text != expectedText) {
       _controller.value = TextEditingValue(
@@ -146,6 +194,7 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
           },
         ),
         WritingAnswering() => null,
+        WritingFinished() => null,
       },
     );
   }

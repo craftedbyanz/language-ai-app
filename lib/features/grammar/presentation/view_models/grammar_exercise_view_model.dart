@@ -15,11 +15,13 @@ final class GrammarExerciseViewModel extends Notifier<GrammarExerciseState> {
   late Duration _minimumDwell;
   final GrammarWorkflowArgs _args;
   var _nextRequestId = 0;
+  var _corrections = 0;
 
   @override
   GrammarExerciseState build() {
     _repository = ref.watch(grammarRepositoryProvider);
     _minimumDwell = ref.watch(grammarMinimumDwellProvider);
+    _corrections = 0;
     return _initialize();
   }
 
@@ -121,6 +123,7 @@ final class GrammarExerciseViewModel extends Notifier<GrammarExerciseState> {
         return;
       }
       final verdict = results.first as GrammarVerdict;
+      if (verdict.kind == GrammarVerdictKind.incorrect) _corrections++;
       state = verdict.kind == GrammarVerdictKind.correct
           ? GrammarFeedbackCorrect(
               lesson: lesson,
@@ -227,7 +230,12 @@ final class GrammarExerciseViewModel extends Notifier<GrammarExerciseState> {
     final current = state;
     if (current is! GrammarFeedback) return;
     if (current.isFinal) {
-      state = GrammarFinished(topicId: _args.topicId, lessonId: _args.lessonId);
+      state = GrammarFinished(
+        topicId: _args.topicId,
+        lessonId: _args.lessonId,
+        stepsCompleted: current.stepCount,
+        corrections: _corrections,
+      );
       return;
     }
     state = GrammarAnswering(

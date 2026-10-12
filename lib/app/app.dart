@@ -5,6 +5,7 @@ import 'package:lingua_design_system/lingua_design_system.dart';
 
 import 'localization/generated/app_localizations.dart';
 import 'router/app_router.dart';
+import '../core/preferences/locale_preference.dart';
 
 class LinguaApp extends ConsumerWidget {
   const LinguaApp({super.key});
@@ -14,6 +15,7 @@ class LinguaApp extends ConsumerWidget {
     onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
+    locale: ref.watch(localePreferenceProvider),
     theme: AppTheme.light(),
     themeMode: ThemeMode.light,
     routerConfig: ref.watch(appRouterProvider),
