@@ -3,9 +3,9 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
-import '../../tool/generate_design_tokens.dart';
+import '../../../tool/generate_design_tokens.dart';
 
 void main() {
   test(

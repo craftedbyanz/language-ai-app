@@ -56,9 +56,21 @@ String withoutComments(String source) {
 }
 
 String? localPath(String from, String uri) {
-  if (uri.startsWith('package:lingua/')) {
-    return Uri(path: 'lib/')
-        .resolve(uri.substring('package:lingua/'.length))
+  const packageRoots = <String, String>{
+    'lingua': 'lib/',
+    'lingua_auth': 'packages/lingua_auth/lib/',
+    'lingua_design_system': 'packages/lingua_design_system/lib/',
+    'lingua_networking': 'packages/lingua_networking/lib/',
+  };
+  if (uri.startsWith('package:')) {
+    final packagePath = uri.substring('package:'.length);
+    final separator = packagePath.indexOf('/');
+    if (separator < 0) return null;
+    final package = packagePath.substring(0, separator);
+    final root = packageRoots[package];
+    if (root == null) return null;
+    return Uri(path: root)
+        .resolve(packagePath.substring(separator + 1))
         .normalizePath()
         .path;
   }
@@ -107,15 +119,35 @@ List<String> checkSource(String path, String source) {
           target != null &&
           (target.startsWith('lib/features/') ||
               target.startsWith('lib/app/') ||
-              target.startsWith('lib/design_system/'))) {
+              target.startsWith('packages/lingua_design_system/lib/'))) {
         reject('core cannot depend on app, features or design_system');
       }
-      if (path.startsWith('lib/design_system/') &&
+      if (path.startsWith('packages/lingua_design_system/lib/') &&
           target != null &&
           (target.startsWith('lib/features/') ||
               target.startsWith('lib/app/') ||
-              target.startsWith('lib/generated/'))) {
-        reject('design_system cannot depend on app, features or API');
+              target.startsWith('lib/generated/') ||
+              target.startsWith('packages/lingua_auth/') ||
+              target.startsWith('packages/lingua_networking/'))) {
+        reject('design_system cannot depend on app, features, auth or network');
+      }
+      if (path.startsWith('packages/lingua_networking/lib/') &&
+          target != null &&
+          (target.startsWith('lib/') ||
+              target.startsWith('packages/lingua_auth/') ||
+              target.startsWith('packages/lingua_design_system/'))) {
+        reject('networking cannot depend on app, auth or design_system');
+      }
+      if (path.startsWith('packages/lingua_auth/lib/') &&
+          !const {
+            'dart:async',
+            'dart:collection',
+            'dart:core',
+            'dart:math',
+            'dart:typed_data',
+          }.contains(uri) &&
+          !(target?.startsWith('packages/lingua_auth/lib/') ?? false)) {
+        reject('auth must remain pure Dart and transport independent');
       }
       if (owner != null && target != null) {
         if (target.startsWith('lib/app/')) {
@@ -146,7 +178,9 @@ List<String> checkSource(String path, String source) {
       .hasMatch(clean)) {
     errors.add('$path: premature generic base abstraction');
   }
-  if (path.startsWith('lib/design_system/tokens/generated/') &&
+  if (path.startsWith(
+        'packages/lingua_design_system/lib/src/tokens/generated/',
+      ) &&
       (!source.contains('GENERATED CODE - DO NOT EDIT') ||
           !source.contains('Source: design-system/TOKENS.json'))) {
     errors.add('$path: missing token provenance header');
@@ -166,17 +200,28 @@ List<String> checkArchitecture({String root = '.'}) {
       errors.add('$name: forbidden architectural dumping ground');
     }
   }
-  final lib = Directory('$root/lib');
-  final files =
-      lib
-          .listSync(recursive: true, followLinks: false)
-          .whereType<File>()
-          .where((file) => file.path.endsWith('.dart'))
-          .toList()
-        ..sort((a, b) => a.path.compareTo(b.path));
-  for (final file in files) {
-    final path = 'lib/${file.path.substring(lib.path.length + 1)}';
-    errors.addAll(checkSource(path, file.readAsStringSync()));
+  final libraryRoots = <String>['lib'];
+  final packages = Directory('$root/packages');
+  if (packages.existsSync()) {
+    for (final package in packages.listSync().whereType<Directory>()) {
+      final packageName = package.path.split(Platform.pathSeparator).last;
+      libraryRoots.add('packages/$packageName/lib');
+    }
+  }
+  for (final libraryRoot in libraryRoots) {
+    final lib = Directory('$root/$libraryRoot');
+    if (!lib.existsSync()) continue;
+    final files =
+        lib
+            .listSync(recursive: true, followLinks: false)
+            .whereType<File>()
+            .where((file) => file.path.endsWith('.dart'))
+            .toList()
+          ..sort((a, b) => a.path.compareTo(b.path));
+    for (final file in files) {
+      final path = '$libraryRoot/${file.path.substring(lib.path.length + 1)}';
+      errors.addAll(checkSource(path, file.readAsStringSync()));
+    }
   }
   return errors;
 }

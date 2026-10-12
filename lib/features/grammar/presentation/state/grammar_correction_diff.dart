@@ -1,4 +1,4 @@
-import '../../../../design_system/components/feedback_sheet.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
 final RegExp _correctionTokenPattern = RegExp(
   r"[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)?|[^\s\p{L}\p{N}]",

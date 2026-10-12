@@ -3,11 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../design_system/components/app_button.dart';
-import '../../../../design_system/components/app_header.dart';
-import '../../../../design_system/components/exercise_components.dart';
-import '../../../../design_system/components/feedback_sheet.dart';
-import '../../../../design_system/patterns/exercise_template.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../state/writing_exercise_state.dart';
 import '../view_models/writing_exercise_view_model.dart';
 import '../writing_copy.dart';

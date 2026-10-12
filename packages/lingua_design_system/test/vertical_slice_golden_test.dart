@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/design_system/components/browse_components.dart';
-import 'package:lingua/design_system/components/exercise_components.dart';
-import 'package:lingua/design_system/components/feedback_sheet.dart';
-import 'package:lingua/design_system/components/app_header.dart';
-import 'package:lingua/design_system/patterns/exercise_template.dart';
-import 'package:lingua/design_system/theme/app_theme.dart';
-import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
 void main() {
   testWidgets('topic card and writing feedback variants', (tester) async {

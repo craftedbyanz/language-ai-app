@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../../data/repositories/in_memory_grammar_repository.dart';
 import '../../domain/entities/grammar_content.dart';
 import '../../domain/repositories/grammar_repository.dart';

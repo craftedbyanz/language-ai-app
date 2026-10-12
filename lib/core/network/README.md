@@ -1,3 +1,3 @@
 # Network boundary
 
-Reserved for shared transport infrastructure when a real API contract exists. Feature-specific adapters belong in feature data. See [API contract](../../../docs/architecture/API_CONTRACT.md). No HTTP client yet.
+Shared transport infrastructure lives in `packages/lingua_networking`. Keep feature-specific service adapters in feature data. See [API contract](../../../docs/architecture/API_CONTRACT.md).

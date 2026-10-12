@@ -6,6 +6,11 @@ version: 0.1.0+1
 environment:
   sdk: ^3.13.0
 
+workspace:
+  - packages/lingua_auth
+  - packages/lingua_design_system
+  - packages/lingua_networking
+
 dependencies:
   flutter:
     sdk: flutter
@@ -14,6 +19,9 @@ dependencies:
   flutter_riverpod: ^3.4.3
   go_router: ^18.0.2
   intl: ^0.20.3
+  lingua_auth: ^0.1.0
+  lingua_design_system: ^0.1.0
+  lingua_networking: ^0.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

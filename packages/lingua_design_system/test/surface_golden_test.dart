@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/design_system/adaptive/content_constraints.dart';
-import 'package:lingua/design_system/primitives/app_scaffold.dart';
-import 'package:lingua/design_system/primitives/app_surface.dart';
-import 'package:lingua/design_system/theme/app_theme.dart';
-import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
 void main() {
   for (final (name, width) in [

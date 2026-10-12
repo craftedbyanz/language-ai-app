@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/design_system/components/feedback_sheet.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 import 'package:lingua/features/grammar/presentation/state/grammar_correction_diff.dart';
 
 void main() {

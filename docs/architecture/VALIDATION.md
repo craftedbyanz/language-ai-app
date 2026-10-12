@@ -6,7 +6,7 @@ Validation date: 2026-10-10.
 
 - Flutter 3.47.3 stable, Dart 3.13.3; the `.fvmrc`-pinned FVM SDK was used without upgrade/channel change.
 - Dart package: `lingua`; organization and production app ID: `com.anznguyen` / `com.anznguyen.lingua`.
-- Android, iOS/iPadOS and macOS hosts generated; no web/Windows/Linux hosts.
+- Android, iOS/iPadOS, macOS and web hosts generated; no Windows/Linux hosts.
 - Android SDK 36.0.0 and licenses available; Xcode 27.0 and CocoaPods 1.17.0 available.
 - `fvm flutter doctor -v` reported missing iOS 27 simulator runtime and a GitHub network-check timeout. Commands used the project-pinned SDK through FVM; no global Flutter PATH was required.
 

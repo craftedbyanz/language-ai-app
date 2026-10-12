@@ -1,6 +1,6 @@
 # Lingua
 
-Flutter language-learning client for Android, iPhone, iPad and native macOS.
+Flutter language-learning client for Android, iPhone, iPad, web and native macOS.
 The Go backend lives in a separate repository. Architecture v1 contains only
 client foundations and a localized boot placeholder.
 
@@ -23,7 +23,10 @@ sh tool/ci.sh
 Do not depend on a globally installed Flutter SDK. IDEs should resolve Flutter
 through `.fvm/flutter_sdk`; the tracked VS Code setting already does so.
 
-`lib/` owns application code; `android/`, `ios/`, and `macos/` own native hosts.
-`design-system/` is canonical; `lib/design_system/` implements its generated tokens.
+`lib/` owns application code; `android/`, `ios/`, `macos/`, and `web/` own
+platform hosts. `design-system/` is canonical; `packages/lingua_design_system/`
+implements its generated tokens. Internal packages use the root Pub Workspace.
 The forensic archive is frozen and is not input to normal implementation.
-No product feature, backend, API integration, auth or database is implemented yet.
+Grammar and writing vertical slices are local-only. Auth and Dio transport
+contracts exist, but no backend endpoint, credential adapter or database is
+implemented yet.

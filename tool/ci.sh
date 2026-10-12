@@ -39,8 +39,10 @@ run_flutter pub get --enforce-lockfile
 run_dart run tool/verify_design_tokens.dart
 run_flutter gen-l10n
 run_dart run build_runner build
-git diff --exit-code -- lib/app/localization/generated lib/app/router/app_routes.g.dart
-run_dart format --output=none --set-exit-if-changed lib test integration_test tool
+git diff --exit-code -- lib/app/localization/generated lib/app/router/app_routes.g.dart packages/lingua_design_system/lib/src/tokens/generated
+run_dart format --output=none --set-exit-if-changed lib test integration_test tool packages
 run_flutter analyze
 run_dart run tool/check_architecture.dart
 run_flutter test
+run_flutter test packages/lingua_auth packages/lingua_networking packages/lingua_design_system
+run_flutter build web --release

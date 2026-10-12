@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 const tokenSource = 'design-system/TOKENS.json';
-const tokenOutput = 'lib/design_system/tokens/generated/design_tokens.dart';
+const tokenOutput =
+    'packages/lingua_design_system/lib/src/tokens/generated/design_tokens.dart';
 const generatedHeader =
     '// GENERATED CODE - DO NOT EDIT.\n// Source: $tokenSource';
 

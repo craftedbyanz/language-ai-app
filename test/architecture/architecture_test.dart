@@ -26,7 +26,10 @@ void main() {
         'lib/features/demo/domain/entity.dart',
         "import '../data/adapter.dart';",
       ),
-      ('lib/design_system/a.dart', "export '../features/demo/demo.dart';"),
+      (
+        'packages/lingua_design_system/lib/a.dart',
+        "export '../../../lib/features/demo/demo.dart';",
+      ),
       ('lib/core/config/a.dart', "import '../../features/demo/demo.dart';"),
       (
         'lib/features/demo/presentation/a.dart',
@@ -41,7 +44,22 @@ void main() {
         "import 'package:lingua/features/other/presentation/view.dart';",
       ),
       ('lib/features/demo/domain/a.dart', "class BaseRepository {}"),
-      ('lib/design_system/tokens/generated/a.dart', 'class Tokens {}'),
+      (
+        'packages/lingua_design_system/lib/src/tokens/generated/a.dart',
+        'class Tokens {}',
+      ),
+      (
+        'packages/lingua_networking/lib/client.dart',
+        "import 'package:lingua_auth/lingua_auth.dart';",
+      ),
+      (
+        'packages/lingua_auth/lib/session.dart',
+        "import 'package:lingua_networking/lingua_networking.dart';",
+      ),
+      (
+        'packages/lingua_auth/lib/session.dart',
+        "import 'package:flutter/widgets.dart';",
+      ),
     ];
     for (final (path, source) in cases) {
       expect(checkSource(path, source), isNotEmpty, reason: '$path: $source');

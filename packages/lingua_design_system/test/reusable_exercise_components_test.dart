@@ -3,16 +3,7 @@ import 'dart:ui' show PointerDeviceKind, SemanticsRole, Tristate;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/design_system/adaptive/window_size_class.dart';
-import 'package:lingua/design_system/components/app_button.dart';
-import 'package:lingua/design_system/components/app_header.dart';
-import 'package:lingua/design_system/components/browse_components.dart';
-import 'package:lingua/design_system/components/exercise_components.dart';
-import 'package:lingua/design_system/components/feedback_sheet.dart';
-import 'package:lingua/design_system/components/home_components.dart';
-import 'package:lingua/design_system/patterns/exercise_template.dart';
-import 'package:lingua/design_system/theme/app_theme.dart';
-import 'package:lingua/design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
 void main() {
   Future<void> pumpComponent(WidgetTester tester, Widget child) async {

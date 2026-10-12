@@ -1,0 +1,17 @@
+name: lingua_networking
+description: Dio-based HTTP transport infrastructure for Lingua applications.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+resolution: workspace
+
+dependencies:
+  dio: ^5.11.1
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter

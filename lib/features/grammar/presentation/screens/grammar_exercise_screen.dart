@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../design_system/components/app_header.dart';
-import '../../../../design_system/components/browse_components.dart';
-import '../../../../design_system/components/exercise_components.dart';
-import '../../../../design_system/components/feedback_sheet.dart';
-import '../../../../design_system/patterns/exercise_template.dart';
-import '../../../../design_system/primitives/app_scaffold.dart';
-import '../../../../design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../grammar_copy.dart';
 import '../providers/grammar_providers.dart';
 import '../state/grammar_exercise_state.dart';

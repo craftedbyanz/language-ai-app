@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../../data/repositories/in_memory_writing_repository.dart';
 import '../../domain/repositories/writing_repository.dart';
 import '../state/writing_exercise_state.dart';

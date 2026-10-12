@@ -1,3 +1,3 @@
 # Platform boundary
 
-Reserve adapters for actual native capabilities or policy. Ordinary layout belongs to design_system/adaptive and depends on window width. No platform plugin yet.
+Reserve adapters for actual native capabilities or policy. Ordinary layout lives in `lingua_design_system` and depends on available width. Fold and hinge plugins must be translated here into plugin-neutral display geometry before UI consumption.

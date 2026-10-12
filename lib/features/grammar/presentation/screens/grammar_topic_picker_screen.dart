@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/result/result.dart';
-import '../../../../design_system/adaptive/adaptive_layout.dart';
-import '../../../../design_system/adaptive/content_constraints.dart';
-import '../../../../design_system/adaptive/window_size_class.dart';
-import '../../../../design_system/components/app_header.dart';
-import '../../../../design_system/components/browse_components.dart';
-import '../../../../design_system/primitives/app_scaffold.dart';
-import '../../../../design_system/tokens/generated/design_tokens.dart';
+
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../../domain/entities/grammar_content.dart';
 import '../../domain/repositories/grammar_repository.dart';
 import '../grammar_copy.dart';

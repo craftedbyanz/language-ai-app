@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lingua/app/bootstrap/bootstrap.dart';
 import 'package:lingua/core/config/app_config.dart';
 import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/design_system/patterns/exercise_template.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
 
 void main() {
   Future<void> openExercise(WidgetTester tester) async {

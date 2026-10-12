@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../design_system/adaptive/adaptive_layout.dart';
-import '../../design_system/adaptive/adaptive_navigation.dart';
-import '../../design_system/adaptive/content_constraints.dart';
-import '../../design_system/primitives/app_scaffold.dart';
-import '../../design_system/primitives/app_surface.dart';
-import '../../design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../localization/generated/app_localizations.dart';
 
 /// Boot placeholder only; product destinations are added by future slices.

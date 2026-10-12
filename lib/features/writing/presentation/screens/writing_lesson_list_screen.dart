@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../design_system/adaptive/adaptive_layout.dart';
-import '../../../../design_system/adaptive/content_constraints.dart';
-import '../../../../design_system/adaptive/window_size_class.dart';
-import '../../../../design_system/components/app_header.dart';
-import '../../../../design_system/components/browse_components.dart';
-import '../../../../design_system/primitives/app_scaffold.dart';
-import '../../../../design_system/tokens/generated/design_tokens.dart';
+import 'package:lingua_design_system/lingua_design_system.dart';
+
 import '../../data/repositories/in_memory_writing_repository.dart';
 import '../writing_copy.dart';
 
