@@ -112,6 +112,23 @@ class _GrammarTopicPickerScreenState
               ),
             ),
             const SizedBox(height: SpaceTokens.lg),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.copy.topicsSection,
+                    style: TypographyTokens.heading,
+                  ),
+                ),
+                Text(
+                  widget.copy.visibleTopics(visibleTopics.length),
+                  style: TypographyTokens.caption.copyWith(
+                    color: ColorTokens.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: SpaceTokens.md),
             if (visibleTopics.isEmpty)
               EmptyState(
                 title: widget.copy.emptyTopicsTitle,
@@ -167,7 +184,11 @@ class _TopicGrid extends StatelessWidget {
     itemBuilder: (context, index) {
       final topic = topics[index];
       return TopicCard(
-        icon: Icons.rule_rounded,
+        icon: switch (topic.id) {
+          'verb-agreement' => Icons.balance_rounded,
+          'verb-tenses' => Icons.schedule_rounded,
+          _ => Icons.rule_rounded,
+        },
         title: topic.title,
         countLabel: '${topic.lessonCount} $countLabel',
         onPressed: () => onPressed(topic.id),

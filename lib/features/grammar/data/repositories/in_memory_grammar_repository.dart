@@ -10,12 +10,16 @@ final class InMemoryGrammarRepository implements GrammarRepository {
       id: 'verb-agreement',
       categoryId: 'foundations',
       title: 'Verb agreement',
+      description: 'Build dependable sentences by matching subjects and verbs.',
+      level: 'A1',
       lessonCount: 1,
     ),
     GrammarTopic(
       id: 'verb-tenses',
       categoryId: 'verbs',
       title: 'Verb tenses',
+      description: 'Place everyday actions clearly in the past and present.',
+      level: 'A2',
       lessonCount: 1,
     ),
   ]);
@@ -27,6 +31,7 @@ final class InMemoryGrammarRepository implements GrammarRepository {
       level: 'A1',
       title: 'Third-person present',
       description: 'Correct common agreement mistakes in everyday sentences.',
+      illustrationKey: 'agreement-orbit',
       exercises: [
         GrammarSentenceExercise(
           id: 'agreement-1',
@@ -47,6 +52,132 @@ final class InMemoryGrammarRepository implements GrammarRepository {
           explanation: 'A singular third-person subject takes plays.',
           tips: ['Use the base verb with I, you, we, and they.'],
         ),
+        _exercise(
+          'agreement-3',
+          'The dog chase birds in the park.',
+          'The dog chases birds in the park.',
+          'A singular subject takes chases.',
+          'The dog is singular.',
+        ),
+        _exercise(
+          'agreement-4',
+          'He wash his bike on Saturdays.',
+          'He washes his bike on Saturdays.',
+          'Add -es to wash after he.',
+          'Verbs ending in -sh take -es.',
+        ),
+        _exercise(
+          'agreement-5',
+          'Mina study English after dinner.',
+          'Mina studies English after dinner.',
+          'Change study to studies after a singular name.',
+          'A consonant before y changes the ending.',
+        ),
+        _exercise(
+          'agreement-6',
+          'Our teacher explain the rule clearly.',
+          'Our teacher explains the rule clearly.',
+          'Teacher is singular, so use explains.',
+          'Identify the head noun of the subject.',
+        ),
+        _exercise(
+          'agreement-7',
+          'This train stop at every station.',
+          'This train stops at every station.',
+          'This train takes the singular verb stops.',
+          'This points to one train.',
+        ),
+        _exercise(
+          'agreement-8',
+          'Her friend carry a small notebook.',
+          'Her friend carries a small notebook.',
+          'Carry becomes carries with a singular subject.',
+          'Check the -y ending.',
+        ),
+        _exercise(
+          'agreement-9',
+          'The baby cry before bedtime.',
+          'The baby cries before bedtime.',
+          'Baby is singular, so cry becomes cries.',
+          'Replace consonant-y with -ies.',
+        ),
+        _exercise(
+          'agreement-10',
+          'My phone need a new battery.',
+          'My phone needs a new battery.',
+          'Phone is singular, so use needs.',
+          'Add -s to the present-tense verb.',
+        ),
+        _exercise(
+          'agreement-11',
+          'Sam enjoy quiet mornings.',
+          'Sam enjoys quiet mornings.',
+          'A singular name takes enjoys.',
+          'Match the verb to Sam.',
+        ),
+        _exercise(
+          'agreement-12',
+          'The café close at nine.',
+          'The café closes at nine.',
+          'The singular subject café takes closes.',
+          'Verbs ending in -se add -s.',
+        ),
+        _exercise(
+          'agreement-13',
+          'My sister teach music online.',
+          'My sister teaches music online.',
+          'Teach becomes teaches after a singular subject.',
+          'Verbs ending in -ch take -es.',
+        ),
+        _exercise(
+          'agreement-14',
+          'A good map help travelers.',
+          'A good map helps travelers.',
+          'Map is singular, so use helps.',
+          'The subject is map, not travelers.',
+        ),
+        _exercise(
+          'agreement-15',
+          'His jacket look very warm.',
+          'His jacket looks very warm.',
+          'Jacket takes the singular verb looks.',
+          'Add -s after it.',
+        ),
+        _exercise(
+          'agreement-16',
+          'Every student bring a pencil.',
+          'Every student brings a pencil.',
+          'Every student is grammatically singular.',
+          'Every takes a singular verb.',
+        ),
+        _exercise(
+          'agreement-17',
+          'The river flow through the city.',
+          'The river flows through the city.',
+          'River is singular, so use flows.',
+          'Match flow to one river.',
+        ),
+        _exercise(
+          'agreement-18',
+          'Nora go to work by bus.',
+          'Nora goes to work by bus.',
+          'Go becomes goes after a singular name.',
+          'Go takes -es in third-person singular.',
+        ),
+        _exercise(
+          'agreement-19',
+          'That machine make a soft sound.',
+          'That machine makes a soft sound.',
+          'That machine takes makes.',
+          'That refers to one machine.',
+        ),
+        _exercise(
+          'agreement-20',
+          'The final lesson finish at noon.',
+          'The final lesson finishes at noon.',
+          'Finish becomes finishes after a singular subject.',
+          'Verbs ending in -sh take -es.',
+        ),
       ],
     ),
     GrammarLesson(
@@ -55,6 +186,7 @@ final class InMemoryGrammarRepository implements GrammarRepository {
       level: 'A2',
       title: 'Simple past',
       description: 'Repair past-tense sentences with clear time markers.',
+      illustrationKey: 'past-path',
       exercises: [
         GrammarSentenceExercise(
           id: 'past-1',
@@ -128,3 +260,20 @@ final class InMemoryGrammarRepository implements GrammarRepository {
     return iterator.moveNext() ? iterator.current : null;
   }
 }
+
+GrammarSentenceExercise _exercise(
+  String id,
+  String incorrectSentence,
+  String acceptedAnswer,
+  String explanation,
+  String hint,
+) => GrammarSentenceExercise(
+  id: id,
+  incorrectSentence: incorrectSentence,
+  acceptedAnswers: [acceptedAnswer],
+  hints: [hint],
+  explanation: explanation,
+  tips: const [
+    'Match a singular third-person subject with its present-tense verb.',
+  ],
+);

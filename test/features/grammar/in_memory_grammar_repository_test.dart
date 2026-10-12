@@ -14,6 +14,8 @@ void main() {
         'verb-tenses',
       ]);
       for (final topic in repository.topics) {
+        expect(topic.description, isNotEmpty);
+        expect(topic.level, isNotEmpty);
         final lessons = repository.lessonsForTopic(topic.id);
         expect(lessons, hasLength(topic.lessonCount));
         expect(
@@ -208,7 +210,11 @@ void main() {
     expect(() => verdict.tips.add('mutated'), throwsUnsupportedError);
 
     final later = repository.lessonById('third-person-present')!;
-    expect(later.exercises, hasLength(2));
+    expect(later.exercises, hasLength(20));
+    expect(
+      later.exercises.map((exercise) => exercise.id).toSet(),
+      hasLength(20),
+    );
     expect(
       later.exercises.first.acceptedAnswers.first,
       'She works at the library every day.',

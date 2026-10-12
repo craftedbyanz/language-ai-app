@@ -96,11 +96,7 @@ void main() {
     await tester.pump();
     await tester.tap(find.text('Next'));
     await tester.pumpAndSettle();
-    expect(find.text('Third-person present'), findsOneWidget);
-    await tester.ensureVisible(find.text('Start'));
-    await tester.tap(find.text('Start'));
-    await tester.pumpAndSettle();
-    expect(find.text('She work at the library every day.'), findsOneWidget);
+    expect(find.text('The dog chase birds in the park.'), findsOneWidget);
     expect(
       tester
           .widget<TextField>(find.byKey(const Key('answer-input')))
@@ -485,14 +481,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       tester
-          .widget<Focus>(find.byKey(const Key('section-heading-focus')))
+          .widget<TextField>(find.byKey(const Key('answer-input')))
           .focusNode!
           .hasFocus,
       isTrue,
     );
   });
 
-  testWidgets('incorrect verdict on final sentence returns to lesson list', (
+  testWidgets('incorrect verdict advances to the next authored sentence', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -529,14 +525,8 @@ void main() {
     await tester.tap(find.text('Next'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Third-person present'), findsOneWidget);
-    expect(
-      tester
-          .widget<Focus>(find.byKey(const Key('section-heading-focus')))
-          .focusNode!
-          .hasFocus,
-      isTrue,
-    );
+    expect(find.text('The dog chase birds in the park.'), findsOneWidget);
+    expect(find.byType(FeedbackSheet), findsNothing);
   });
 }
 

@@ -116,6 +116,12 @@ GrammarCopy _grammarCopy(BuildContext context) {
     pager: strings.grammarPager,
     pagerPosition: strings.grammarPagerPosition,
     minimizeFeedback: strings.grammarMinimizeFeedback,
+    topicsSection: strings.grammarTopicsSection,
+    visibleTopics: strings.grammarVisibleTopics,
+    collectionLabel: strings.grammarCollectionLabel,
+    correctionRetained: strings.grammarCorrectionRetained,
+    correctionRemoved: strings.grammarCorrectionRemoved,
+    correctionInserted: strings.grammarCorrectionInserted,
   );
 }
 

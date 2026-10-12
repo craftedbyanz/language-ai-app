@@ -291,4 +291,24 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get grammarMinimizeFeedback => 'Thu nhỏ phản hồi';
+
+  @override
+  String get grammarTopicsSection => 'Chủ đề';
+
+  @override
+  String grammarVisibleTopics(int count) {
+    return '$count chủ đề';
+  }
+
+  @override
+  String get grammarCollectionLabel => 'Bộ bài ngữ pháp';
+
+  @override
+  String get grammarCorrectionRetained => 'giữ lại';
+
+  @override
+  String get grammarCorrectionRemoved => 'bỏ đi';
+
+  @override
+  String get grammarCorrectionInserted => 'thêm vào';
 }

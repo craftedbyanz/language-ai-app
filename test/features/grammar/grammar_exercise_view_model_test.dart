@@ -251,11 +251,11 @@ void main() {
     final notifier = container.read(
       grammarExerciseViewModelProvider(args).notifier,
     );
-    for (final answer in [
-      'She works at the library every day.',
-      'My brother plays football on Sundays.',
-    ]) {
-      notifier.answerChanged(answer);
+    final lesson = const InMemoryGrammarRepository().lessonById(
+      'third-person-present',
+    )!;
+    for (final exercise in lesson.exercises) {
+      notifier.answerChanged(exercise.acceptedAnswers.first);
       await notifier.submit();
       notifier.next();
     }

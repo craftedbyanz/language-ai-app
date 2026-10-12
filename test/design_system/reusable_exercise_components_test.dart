@@ -440,7 +440,9 @@ void main() {
     tester,
   ) async {
     final semantics = tester.ensureSemantics();
-    var minimized = false;
+    final minimizeFocus = FocusNode(debugLabel: 'feedback-minimize');
+    addTearDown(minimizeFocus.dispose);
+    var minimizeCalls = 0;
     await pumpComponent(
       tester,
       FeedbackSheet.grammarCorrect(
@@ -452,10 +454,11 @@ void main() {
         nextLabel: 'Next',
         closeLabel: 'Close',
         minimizeLabel: 'Minimize feedback',
+        minimizeFocusNode: minimizeFocus,
         onAnalysis: null,
         onNext: _noop,
         onClose: _noop,
-        onMinimize: () => minimized = true,
+        onMinimize: () => minimizeCalls++,
       ),
     );
     expect(find.text('Unavailable offline'), findsOneWidget);
@@ -473,7 +476,59 @@ void main() {
     expect(find.bySemanticsLabel('Minimize feedback'), findsOneWidget);
     expect(find.bySemanticsLabel('keyboard arrow down'), findsNothing);
     await tester.tap(find.byKey(const Key('feedback-minimize')));
-    expect(minimized, isTrue);
+    expect(minimizeCalls, 1);
+    minimizeFocus.requestFocus();
+    await tester.pump();
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    expect(minimizeCalls, 3);
+    semantics.dispose();
+  });
+
+  testWidgets('Grammar correction segments expose non-color cues and labels', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpComponent(
+      tester,
+      FeedbackSheet.grammarIncorrect(
+        title: 'Not correct',
+        originalAnswer: 'She work.',
+        correctedAnswer: 'She works.',
+        correctionSegments: const [
+          CorrectionSegment(text: 'She', kind: CorrectionSegmentKind.retained),
+          CorrectionSegment(text: 'work', kind: CorrectionSegmentKind.removed),
+          CorrectionSegment(
+            text: 'works',
+            kind: CorrectionSegmentKind.inserted,
+          ),
+        ],
+        retainedLabel: 'kept',
+        removedLabel: 'remove',
+        insertedLabel: 'add',
+        explanation: 'Match subject and verb.',
+        bullets: const ['Add s'],
+        sectionLabel: 'Tips',
+        correctionLabel: 'Correction',
+        fixLabel: 'Fix',
+        nextLabel: 'Next',
+        closeLabel: 'Close',
+        onFix: _noop,
+        onNext: _noop,
+        onClose: _noop,
+      ),
+    );
+
+    expect(find.bySemanticsLabel('work, remove'), findsOneWidget);
+    expect(find.bySemanticsLabel('works, add'), findsOneWidget);
+    expect(
+      tester.widget<Text>(find.text('work')).style!.decoration,
+      TextDecoration.lineThrough,
+    );
+    expect(
+      tester.widget<Text>(find.text('works')).style!.decoration,
+      TextDecoration.underline,
+    );
     semantics.dispose();
   });
 
@@ -728,6 +783,36 @@ void main() {
     await tester.sendKeyEvent(LogicalKeyboardKey.enter);
     await tester.pump();
     expect(nextCalls, 1);
+  });
+
+  testWidgets('disabled Submit is excluded from Tab traversal', (tester) async {
+    final beforeFocus = FocusNode(debugLabel: 'before-submit');
+    final submitFocus = FocusNode(debugLabel: 'disabled-submit');
+    final afterFocus = FocusNode(debugLabel: 'after-submit');
+    addTearDown(beforeFocus.dispose);
+    addTearDown(submitFocus.dispose);
+    addTearDown(afterFocus.dispose);
+    await pumpComponent(
+      tester,
+      Row(
+        children: [
+          AppButton(label: 'Before', onPressed: _noop, focusNode: beforeFocus),
+          SubmitButton(
+            label: 'Submit',
+            onPressed: null,
+            loading: false,
+            focusNode: submitFocus,
+          ),
+          AppButton(label: 'After', onPressed: _noop, focusNode: afterFocus),
+        ],
+      ),
+    );
+    beforeFocus.requestFocus();
+    await tester.pump();
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pump();
+    expect(submitFocus.hasFocus, isFalse);
+    expect(afterFocus.hasFocus, isTrue);
   });
 
   testWidgets('ExerciseTemplate renders independently of feature providers', (

@@ -100,5 +100,14 @@
       "total": {"type": "int"}
     }
   },
-  "grammarMinimizeFeedback": "Minimize feedback"
+  "grammarMinimizeFeedback": "Minimize feedback",
+  "grammarTopicsSection": "Topics",
+  "grammarVisibleTopics": "{count} topics",
+  "@grammarVisibleTopics": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "grammarCollectionLabel": "Grammar collection",
+  "grammarCorrectionRetained": "kept",
+  "grammarCorrectionRemoved": "remove",
+  "grammarCorrectionInserted": "add"
 }

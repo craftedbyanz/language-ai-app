@@ -13,12 +13,14 @@ class SourceTextCard extends StatelessWidget {
     required this.text,
     required this.semanticLabel,
     this.instruction,
+    this.centerContent = false,
     super.key,
   });
   final SourceTextCardVariant variant;
   final String text;
   final String semanticLabel;
   final String? instruction;
+  final bool centerContent;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -34,6 +36,9 @@ class SourceTextCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: centerContent
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
         children: [
           if (instruction case final instruction?) ...[
             Text(
@@ -46,6 +51,7 @@ class SourceTextCard extends StatelessWidget {
           ],
           Text(
             text,
+            textAlign: centerContent ? TextAlign.center : TextAlign.start,
             style: switch (variant) {
               SourceTextCardVariant.paragraph => TypographyTokens.body,
               SourceTextCardVariant.sentence => TypographyTokens.heading,
@@ -81,6 +87,7 @@ class AnswerInput extends StatelessWidget {
     required this.enabled,
     this.autofocus = true,
     this.focusNode,
+    this.centerContent = false,
     super.key,
   });
   final AnswerPaletteKey paletteKey;
@@ -91,48 +98,62 @@ class AnswerInput extends StatelessWidget {
   final bool enabled;
   final bool autofocus;
   final FocusNode? focusNode;
+  final bool centerContent;
 
   @override
   Widget build(BuildContext context) {
     final palette = paletteKey.colors;
-    return Semantics(
-      label: label,
-      textField: true,
-      child: CanonicalFocusIndicator(
-        borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-        child: Container(
-          key: const Key('answer-input-surface'),
-          constraints: const BoxConstraints(
-            minHeight: LayoutTokens.answerCardMinHeight,
-          ),
-          padding: const EdgeInsets.all(SpaceTokens.lg),
-          decoration: BoxDecoration(
-            color: palette.background,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final expands = centerContent && constraints.hasBoundedHeight;
+        return Semantics(
+          label: label,
+          textField: true,
+          child: CanonicalFocusIndicator(
             borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
-            boxShadow: paletteKey == AnswerPaletteKey.white
-                ? ShadowTokens.hairline
-                : ShadowTokens.none,
-          ),
-          child: TextField(
-            key: const Key('answer-input'),
-            controller: controller,
-            focusNode: focusNode,
-            autofocus: autofocus,
-            enabled: enabled,
-            maxLines: null,
-            onChanged: onChanged,
-            style: TypographyTokens.body.copyWith(color: palette.foreground),
-            cursorColor: palette.foreground,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: placeholder,
-              hintStyle: TypographyTokens.body.copyWith(
-                color: palette.foreground,
+            child: Container(
+              key: const Key('answer-input-surface'),
+              constraints: const BoxConstraints(
+                minHeight: LayoutTokens.answerCardMinHeight,
+              ),
+              padding: const EdgeInsets.all(SpaceTokens.lg),
+              decoration: BoxDecoration(
+                color: palette.background,
+                borderRadius: BorderRadius.circular(RadiusTokens.largeCard),
+                boxShadow: paletteKey == AnswerPaletteKey.white
+                    ? ShadowTokens.hairline
+                    : ShadowTokens.none,
+              ),
+              child: TextField(
+                key: const Key('answer-input'),
+                controller: controller,
+                focusNode: focusNode,
+                autofocus: autofocus,
+                enabled: enabled,
+                expands: expands,
+                minLines: expands ? null : 1,
+                maxLines: null,
+                textAlign: centerContent ? TextAlign.center : TextAlign.start,
+                textAlignVertical: expands
+                    ? TextAlignVertical.center
+                    : TextAlignVertical.top,
+                onChanged: onChanged,
+                style: TypographyTokens.body.copyWith(
+                  color: palette.foreground,
+                ),
+                cursorColor: palette.foreground,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: placeholder,
+                  hintStyle: TypographyTokens.body.copyWith(
+                    color: palette.foreground,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -132,26 +132,30 @@ class ModeCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: SpaceTokens.md,
-                        vertical: SpaceTokens.xs,
-                      ),
-                      decoration: BoxDecoration(
-                        color: ColorTokens.surfaceMuted,
-                        borderRadius: BorderRadius.circular(RadiusTokens.full),
-                      ),
-                      child: Text(
-                        category,
-                        style: TypographyTokens.microLabel.copyWith(
-                          color: ColorTokens.textPrimary,
-                        ),
-                      ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpaceTokens.md,
+                    vertical: SpaceTokens.xs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ColorTokens.surfaceMuted,
+                    borderRadius: BorderRadius.circular(RadiusTokens.full),
+                  ),
+                  child: Text(
+                    category,
+                    style: TypographyTokens.microLabel.copyWith(
+                      color: ColorTokens.textPrimary,
                     ),
-                    ExcludeSemantics(
+                  ),
+                ),
+                const SizedBox(height: SpaceTokens.lg),
+                Text(
+                  title,
+                  style: TypographyTokens.display.copyWith(color: foreground),
+                ),
+                Expanded(
+                  child: Center(
+                    child: ExcludeSemantics(
                       child: Text(
                         index,
                         style: TypographyTokens.display.copyWith(
@@ -159,19 +163,16 @@ class ModeCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ],
-                ),
-                const Spacer(),
-                Text(
-                  title,
-                  style: TypographyTokens.display.copyWith(color: foreground),
+                  ),
                 ),
                 const SizedBox(height: SpaceTokens.sm),
                 Text(
                   description,
                   style: TypographyTokens.body.copyWith(color: foreground),
                 ),
-                const SizedBox(height: SpaceTokens.xl),
+                const SizedBox(height: SpaceTokens.lg),
+                Divider(color: foreground.withValues(alpha: 0.25)),
+                const SizedBox(height: SpaceTokens.sm),
                 Row(
                   children: [
                     Text(

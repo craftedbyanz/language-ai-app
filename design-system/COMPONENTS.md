@@ -270,6 +270,11 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 
 ## 3. Exercise
 
+Grammar's balanced workspace gives the prompt and answer equal dominant vertical
+weight at regular/tall sizes, centers sentence content, and collapses to one
+scrollable reading order when height or text scale is constrained. The hint rail
+and trailing submit action remain reachable after both surfaces.
+
 ### ProgressStepper
 - **Purpose**: position within a finite set.
 - **Anatomy**: N equal segments in a row.
@@ -356,6 +361,11 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Evidence**: S006, S055, S056, S028, S060, S061.
 
 ### CorrectionDiff
+
+Grammar incorrect feedback may render retained, removed, and inserted
+word/punctuation segments. Removed content uses strike-through and inserted
+content uses underline or emphasis; semantic labels express the same state
+without relying on color.
 - **Purpose**: show the corrected text with word-level change marks.
 - **Anatomy**: wrapped inline spans: kept words, removed words (strike-through, `accessible.diffRemovedText`), added words (chip: `feedback.diff.addedBg` fill, `accessible.diffAddedText` text, `radius.xs`); a "tap a word to look up" hint.
 - **States**: default; word pressed (lookup; behaviour not observed, DD-15).

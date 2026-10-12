@@ -97,5 +97,14 @@
       "total": {"type": "int"}
     }
   },
-  "grammarMinimizeFeedback": "Thu nhỏ phản hồi"
+  "grammarMinimizeFeedback": "Thu nhỏ phản hồi",
+  "grammarTopicsSection": "Chủ đề",
+  "grammarVisibleTopics": "{count} chủ đề",
+  "@grammarVisibleTopics": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "grammarCollectionLabel": "Bộ bài ngữ pháp",
+  "grammarCorrectionRetained": "giữ lại",
+  "grammarCorrectionRemoved": "bỏ đi",
+  "grammarCorrectionInserted": "thêm vào"
 }

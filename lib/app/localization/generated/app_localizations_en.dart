@@ -299,4 +299,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get grammarMinimizeFeedback => 'Minimize feedback';
+
+  @override
+  String get grammarTopicsSection => 'Topics';
+
+  @override
+  String grammarVisibleTopics(int count) {
+    return '$count topics';
+  }
+
+  @override
+  String get grammarCollectionLabel => 'Grammar collection';
+
+  @override
+  String get grammarCorrectionRetained => 'kept';
+
+  @override
+  String get grammarCorrectionRemoved => 'remove';
+
+  @override
+  String get grammarCorrectionInserted => 'add';
 }

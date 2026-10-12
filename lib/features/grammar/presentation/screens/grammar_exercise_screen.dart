@@ -12,6 +12,7 @@ import '../../../../design_system/tokens/generated/design_tokens.dart';
 import '../grammar_copy.dart';
 import '../providers/grammar_providers.dart';
 import '../state/grammar_exercise_state.dart';
+import '../state/grammar_correction_diff.dart';
 
 class GrammarExerciseScreen extends ConsumerStatefulWidget {
   const GrammarExerciseScreen({
@@ -136,6 +137,7 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
           text: active.exercise.incorrectSentence,
           semanticLabel: widget.copy.sourceSentence,
           instruction: widget.copy.instruction,
+          centerContent: true,
         ),
         answer: AnswerInput(
           paletteKey: AnswerPaletteKey.blue,
@@ -144,6 +146,7 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
           label: widget.copy.answerLabel,
           placeholder: widget.copy.answerPlaceholder,
           enabled: answering,
+          centerContent: true,
           onChanged: notifier.answerChanged,
         ),
         hints: HintChipBar(
@@ -229,6 +232,13 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
           ),
           GrammarAnswering() || GrammarFeedbackMinimized() => null,
         },
+        balancedWorkspace: true,
+        feedbackAnchor: switch (state) {
+          GrammarFeedbackCorrect() => ExerciseFeedbackAnchor.compact,
+          GrammarFeedbackIncorrect() ||
+          GrammarFailure() => ExerciseFeedbackAnchor.detailed,
+          _ => ExerciseFeedbackAnchor.bottom,
+        },
       ),
     );
   }
@@ -262,6 +272,13 @@ class _IncorrectFeedback extends StatelessWidget {
     bullets: state.verdict.tips,
     sectionLabel: copy.tips,
     correctionLabel: copy.correction,
+    correctionSegments: buildGrammarCorrectionDiff(
+      original: state.verdict.originalResponse,
+      corrected: state.verdict.correctedAnswer,
+    ),
+    retainedLabel: copy.correctionRetained,
+    removedLabel: copy.correctionRemoved,
+    insertedLabel: copy.correctionInserted,
     fixLabel: copy.fix,
     nextLabel: copy.next,
     closeLabel: copy.close,

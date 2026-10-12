@@ -83,25 +83,25 @@ class _GrammarLessonListScreenState
   Widget _buildContent(BuildContext context, WindowSizeClass sizeClass) {
     final repository = ref.watch(grammarRepositoryProvider);
     final topicResult = repository.loadTopicById(widget.topicId);
-    if (topicResult case Success<GrammarTopic?>(:final value)) {
-      if (value == null) {
+    if (topicResult case Success<GrammarTopic?>(value: final topic)) {
+      if (topic == null) {
         return EmptyState(
           title: widget.copy.unavailableTitle,
           body: widget.copy.unavailableBody,
         );
       }
       final lessonsResult = repository.loadLessonsForTopic(widget.topicId);
-      if (lessonsResult case Success<List<GrammarLesson>>(:final value)) {
-        final lessons = value;
+      if (lessonsResult case Success<List<GrammarLesson>>(
+        value: final lessons,
+      )) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SectionHeader(
-              eyebrow: widget.copy.lessonsEyebrow,
-              firstLine: widget.copy.lessonsFirstLine,
-              secondLine: widget.copy.lessonsSecondLine,
-              sizeClass: sizeClass,
-              accent: SectionHeaderAccent.grammar,
+            CollectionHeader(
+              label: widget.copy.collectionLabel,
+              title: topic.title,
+              description: topic.description,
+              level: topic.level,
               focusNode: _headingFocus,
               autofocus: true,
             ),
@@ -155,6 +155,9 @@ class _GrammarLessonListScreenState
                               title: lesson.title,
                               description: lesson.description,
                               actionLabel: widget.copy.start,
+                              illustration: _LessonIllustration(
+                                keyName: lesson.illustrationKey,
+                              ),
                               onPressed: () =>
                                   widget.onLessonPressed(lesson.id),
                             ),
@@ -196,4 +199,28 @@ class _GrammarLessonListScreenState
       error: true,
     );
   }
+}
+
+class _LessonIllustration extends StatelessWidget {
+  const _LessonIllustration({required this.keyName});
+
+  final String? keyName;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(SpaceTokens.xl),
+    decoration: const BoxDecoration(
+      color: ColorTokens.surfaceMuted,
+      shape: BoxShape.circle,
+    ),
+    child: Icon(
+      switch (keyName) {
+        'past-path' => Icons.timeline_rounded,
+        'agreement-pairs' => Icons.people_alt_rounded,
+        _ => Icons.hub_rounded,
+      },
+      size: IconTokens.tile,
+      color: FeatureTokens.grammarAccent,
+    ),
+  );
 }

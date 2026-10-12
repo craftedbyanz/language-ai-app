@@ -214,7 +214,9 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.text(strings.grammarIncorrectTitle), findsOneWidget);
         expect(
-          find.textContaining('She works at the library every day.'),
+          find.bySemanticsLabel(
+            'works, ${locale.languageCode == 'en' ? 'add' : 'thêm vào'}',
+          ),
           findsOneWidget,
         );
         expect(find.byIcon(Icons.cancel_rounded), findsWidgets);
@@ -281,7 +283,7 @@ void main() {
         expect(find.text(strings.grammarCorrectTitle), findsOneWidget);
         await tester.tap(find.text(strings.grammarNext));
         await tester.pumpAndSettle();
-        expect(find.text('Third-person present'), findsOneWidget);
+        expect(find.text('The dog chase birds in the park.'), findsOneWidget);
         expect(tester.takeException(), isNull);
       }
     }

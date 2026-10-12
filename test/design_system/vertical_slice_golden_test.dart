@@ -175,6 +175,31 @@ void main() {
                       bullets: const ['Add -s to the verb.'],
                       sectionLabel: 'Tips',
                       correctionLabel: 'Correction',
+                      correctionSegments: const [
+                        CorrectionSegment(
+                          text: 'She',
+                          kind: CorrectionSegmentKind.retained,
+                        ),
+                        CorrectionSegment(
+                          text: 'work',
+                          kind: CorrectionSegmentKind.removed,
+                        ),
+                        CorrectionSegment(
+                          text: 'works',
+                          kind: CorrectionSegmentKind.inserted,
+                        ),
+                        CorrectionSegment(
+                          text: 'here',
+                          kind: CorrectionSegmentKind.retained,
+                        ),
+                        CorrectionSegment(
+                          text: '.',
+                          kind: CorrectionSegmentKind.retained,
+                        ),
+                      ],
+                      retainedLabel: 'kept',
+                      removedLabel: 'remove',
+                      insertedLabel: 'add',
                       fixLabel: 'Fix',
                       nextLabel: 'Next',
                       closeLabel: 'Close',
@@ -213,7 +238,7 @@ void main() {
             progress: const ProgressStepper(
               variant: ProgressStepperVariant.grammar,
               step: 1,
-              count: 2,
+              count: 20,
               semanticLabel: 'Grammar progress',
             ),
             source: const SourceTextCard(
@@ -221,6 +246,7 @@ void main() {
               text: 'She work at the library every day.',
               semanticLabel: 'Sentence to correct',
               instruction: 'Rewrite the sentence so it is correct.',
+              centerContent: true,
             ),
             answer: AnswerInput(
               paletteKey: AnswerPaletteKey.blue,
@@ -229,6 +255,7 @@ void main() {
               placeholder: 'Type the corrected sentence…',
               enabled: true,
               autofocus: false,
+              centerContent: true,
               onChanged: (_) {},
             ),
             hints: HintChipBar(
@@ -240,6 +267,7 @@ void main() {
               onPressed: null,
               loading: false,
             ),
+            balancedWorkspace: true,
           ),
         ),
       ),

@@ -643,6 +643,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Minimize feedback'**
   String get grammarMinimizeFeedback;
+
+  /// No description provided for @grammarTopicsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get grammarTopicsSection;
+
+  /// No description provided for @grammarVisibleTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} topics'**
+  String grammarVisibleTopics(int count);
+
+  /// No description provided for @grammarCollectionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar collection'**
+  String get grammarCollectionLabel;
+
+  /// No description provided for @grammarCorrectionRetained.
+  ///
+  /// In en, this message translates to:
+  /// **'kept'**
+  String get grammarCorrectionRetained;
+
+  /// No description provided for @grammarCorrectionRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'remove'**
+  String get grammarCorrectionRemoved;
+
+  /// No description provided for @grammarCorrectionInserted.
+  ///
+  /// In en, this message translates to:
+  /// **'add'**
+  String get grammarCorrectionInserted;
 }
 
 class _AppLocalizationsDelegate

@@ -184,6 +184,81 @@ class TopicCard extends StatelessWidget {
 
 enum LessonCardVariant { writing, grammar, conversation }
 
+class CollectionHeader extends StatelessWidget {
+  const CollectionHeader({
+    required this.label,
+    required this.title,
+    required this.description,
+    this.level,
+    this.focusNode,
+    this.autofocus = false,
+    super.key,
+  });
+
+  final String label;
+  final String title;
+  final String description;
+  final String? level;
+  final FocusNode? focusNode;
+  final bool autofocus;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    header: true,
+    child: Focus(
+      key: const Key('collection-heading-focus'),
+      focusNode: focusNode,
+      autofocus: autofocus,
+      canRequestFocus: focusNode != null,
+      child: Column(
+        children: [
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: SpaceTokens.sm,
+            runSpacing: SpaceTokens.xs,
+            children: [
+              Text(
+                label.toUpperCase(),
+                style: TypographyTokens.microLabel.copyWith(
+                  color: ColorTokens.textSecondary,
+                ),
+              ),
+              if (level case final value?) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpaceTokens.md,
+                    vertical: SpaceTokens.xs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ColorTokens.surfaceMuted,
+                    borderRadius: BorderRadius.circular(RadiusTokens.full),
+                  ),
+                  child: Text(value, style: TypographyTokens.caption),
+                ),
+              ],
+            ],
+          ),
+          const SizedBox(height: SpaceTokens.sm),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TypographyTokens.display,
+          ),
+          const SizedBox(height: SpaceTokens.sm),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: TypographyTokens.body.copyWith(
+              color: ColorTokens.textSecondary,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 class LessonCard extends StatelessWidget {
   const LessonCard({
     required this.variant,
@@ -193,6 +268,7 @@ class LessonCard extends StatelessWidget {
     required this.description,
     required this.actionLabel,
     required this.onPressed,
+    this.illustration,
     super.key,
   });
   final LessonCardVariant variant;
@@ -202,6 +278,7 @@ class LessonCard extends StatelessWidget {
   final String description;
   final String actionLabel;
   final VoidCallback onPressed;
+  final Widget? illustration;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -244,8 +321,14 @@ class LessonCard extends StatelessWidget {
               ),
             ],
           ),
-          const Spacer(),
+          const SizedBox(height: SpaceTokens.md),
           Text(title, style: TypographyTokens.title),
+          if (illustration case final illustration?)
+            Expanded(
+              child: Center(child: ExcludeSemantics(child: illustration)),
+            )
+          else
+            const Spacer(),
           const SizedBox(height: SpaceTokens.sm),
           Text(
             description,
@@ -255,7 +338,7 @@ class LessonCard extends StatelessWidget {
           ),
           const SizedBox(height: SpaceTokens.xl),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.centerLeft,
             child: AppButton(
               label: actionLabel,
               onPressed: onPressed,
@@ -322,7 +405,7 @@ class EmptyState extends StatelessWidget {
   );
 }
 
-class PagerDots extends StatelessWidget {
+class PagerDots extends StatefulWidget {
   const PagerDots({
     required this.count,
     required this.index,
@@ -340,48 +423,73 @@ class PagerDots extends StatelessWidget {
   final ValueChanged<int>? onSelected;
 
   @override
+  State<PagerDots> createState() => _PagerDotsState();
+}
+
+class _PagerDotsState extends State<PagerDots> {
+  final _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => CallbackShortcuts(
     bindings: {
       const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
-        if (onSelected != null && index > 0) onSelected!(index - 1);
+        if (widget.onSelected != null && widget.index > 0) {
+          widget.onSelected!(widget.index - 1);
+        }
       },
       const SingleActivator(LogicalKeyboardKey.arrowRight): () {
-        if (onSelected != null && index < count - 1) onSelected!(index + 1);
+        if (widget.onSelected != null && widget.index < widget.count - 1) {
+          widget.onSelected!(widget.index + 1);
+        }
       },
     },
-    child: Semantics(
-      key: const Key('lesson-pager-semantics'),
-      container: true,
-      label: semanticLabel,
-      value: positionLabel(index + 1, count),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(
-          count,
-          (dot) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.xs),
-            child: Semantics(
-              button: true,
-              selected: dot == index,
-              label: positionLabel(dot + 1, count),
-              child: ExcludeSemantics(
-                child: CanonicalFocusIndicator(
-                  borderRadius: BorderRadius.circular(RadiusTokens.full),
-                  child: InkWell(
-                    key: ValueKey('lesson-pager-$dot'),
-                    onTap: onSelected == null ? null : () => onSelected!(dot),
+    child: Focus(
+      focusNode: _focusNode,
+      child: Semantics(
+        key: const Key('lesson-pager-semantics'),
+        container: true,
+        label: widget.semanticLabel,
+        value: widget.positionLabel(widget.index + 1, widget.count),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            widget.count,
+            (dot) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.xs),
+              child: Semantics(
+                button: true,
+                selected: dot == widget.index,
+                label: widget.positionLabel(dot + 1, widget.count),
+                child: ExcludeSemantics(
+                  child: CanonicalFocusIndicator(
                     borderRadius: BorderRadius.circular(RadiusTokens.full),
-                    child: SizedBox.square(
-                      dimension: ControlTokens.minTouchTarget,
-                      child: Center(
-                        child: Container(
-                          width: SpaceTokens.sm,
-                          height: SpaceTokens.sm,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: dot == index
-                                ? ColorTokens.textPrimary
-                                : ColorTokens.border,
+                    child: InkWell(
+                      key: ValueKey('lesson-pager-$dot'),
+                      onTap: widget.onSelected == null
+                          ? null
+                          : () {
+                              _focusNode.requestFocus();
+                              widget.onSelected!(dot);
+                            },
+                      borderRadius: BorderRadius.circular(RadiusTokens.full),
+                      child: SizedBox.square(
+                        dimension: ControlTokens.minTouchTarget,
+                        child: Center(
+                          child: Container(
+                            width: SpaceTokens.sm,
+                            height: SpaceTokens.sm,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: dot == widget.index
+                                  ? ColorTokens.textPrimary
+                                  : ColorTokens.border,
+                            ),
                           ),
                         ),
                       ),

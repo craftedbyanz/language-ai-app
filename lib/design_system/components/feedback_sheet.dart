@@ -14,6 +14,15 @@ enum FeedbackSheetVariant {
   grammarIncorrect,
 }
 
+enum CorrectionSegmentKind { retained, removed, inserted }
+
+final class CorrectionSegment {
+  const CorrectionSegment({required this.text, required this.kind});
+
+  final String text;
+  final CorrectionSegmentKind kind;
+}
+
 sealed class FeedbackSheetActions {
   const FeedbackSheetActions();
 }
@@ -83,6 +92,10 @@ class FeedbackSheet extends StatelessWidget {
        analysisLabel = null,
        analysisUnavailableReason = null,
        onAnalysis = null,
+       correctionSegments = null,
+       retainedLabel = null,
+       removedLabel = null,
+       insertedLabel = null,
        actions = EditNextFeedbackActions(
          editLabel: editLabel,
          nextLabel: nextLabel,
@@ -116,6 +129,10 @@ class FeedbackSheet extends StatelessWidget {
        analysisLabel = null,
        analysisUnavailableReason = null,
        onAnalysis = null,
+       correctionSegments = null,
+       retainedLabel = null,
+       removedLabel = null,
+       insertedLabel = null,
        actions = EditNextFeedbackActions(
          editLabel: editLabel,
          nextLabel: nextLabel,
@@ -148,6 +165,10 @@ class FeedbackSheet extends StatelessWidget {
        bullets = const [],
        sectionLabel = null,
        correctionLabel = null,
+       correctionSegments = null,
+       retainedLabel = null,
+       removedLabel = null,
+       insertedLabel = null,
        actions = NextFullFeedbackActions(nextLabel: nextLabel, onNext: onNext);
 
   FeedbackSheet.grammarIncorrect({
@@ -158,6 +179,10 @@ class FeedbackSheet extends StatelessWidget {
     required this.bullets,
     required this.sectionLabel,
     required this.correctionLabel,
+    this.correctionSegments,
+    this.retainedLabel,
+    this.removedLabel,
+    this.insertedLabel,
     required String fixLabel,
     required String nextLabel,
     required this.closeLabel,
@@ -171,6 +196,12 @@ class FeedbackSheet extends StatelessWidget {
     this.titleFocusNode,
     super.key,
   }) : assert(onMinimize == null || minimizeLabel != null),
+       assert(
+         correctionSegments == null ||
+             (retainedLabel != null &&
+                 removedLabel != null &&
+                 insertedLabel != null),
+       ),
        variant = FeedbackSheetVariant.grammarIncorrect,
        recapLabel = null,
        analysisLabel = null,
@@ -203,6 +234,10 @@ class FeedbackSheet extends StatelessWidget {
   final List<String> bullets;
   final String? sectionLabel;
   final String? correctionLabel;
+  final List<CorrectionSegment>? correctionSegments;
+  final String? retainedLabel;
+  final String? removedLabel;
+  final String? insertedLabel;
   final String? recapLabel;
   final String? analysisLabel;
   final String? analysisUnavailableReason;
@@ -336,6 +371,10 @@ class FeedbackSheet extends StatelessWidget {
                 bulletColor: variant == FeedbackSheetVariant.grammarIncorrect
                     ? FeedbackTokens.bulletTip
                     : FeedbackTokens.bulletImprovement,
+                correctionSegments: correctionSegments,
+                retainedLabel: retainedLabel,
+                removedLabel: removedLabel,
+                insertedLabel: insertedLabel,
               ),
             },
             const SizedBox(height: SpaceTokens.md),
@@ -440,6 +479,10 @@ class _CorrectionBody extends StatelessWidget {
     required this.sectionLabel,
     required this.bullets,
     required this.bulletColor,
+    this.correctionSegments,
+    this.retainedLabel,
+    this.removedLabel,
+    this.insertedLabel,
   });
 
   final bool correct;
@@ -450,6 +493,10 @@ class _CorrectionBody extends StatelessWidget {
   final String sectionLabel;
   final List<String> bullets;
   final Color bulletColor;
+  final List<CorrectionSegment>? correctionSegments;
+  final String? retainedLabel;
+  final String? removedLabel;
+  final String? insertedLabel;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -462,29 +509,37 @@ class _CorrectionBody extends StatelessWidget {
         ),
       ),
       const SizedBox(height: SpaceTokens.xs),
-      Text.rich(
-        TextSpan(
-          style: TypographyTokens.body,
-          children: [
-            TextSpan(
-              text: originalAnswer,
-              style: TextStyle(
-                color: correct
-                    ? ColorTokens.textPrimary
-                    : ColorTokens.errorText,
-                decoration: correct ? null : TextDecoration.lineThrough,
+      if (correctionSegments case final segments?)
+        _CorrectionDiff(
+          segments: segments,
+          retainedLabel: retainedLabel!,
+          removedLabel: removedLabel!,
+          insertedLabel: insertedLabel!,
+        )
+      else
+        Text.rich(
+          TextSpan(
+            style: TypographyTokens.body,
+            children: [
+              TextSpan(
+                text: originalAnswer,
+                style: TextStyle(
+                  color: correct
+                      ? ColorTokens.textPrimary
+                      : ColorTokens.errorText,
+                  decoration: correct ? null : TextDecoration.lineThrough,
+                ),
               ),
-            ),
-            const TextSpan(text: '\n'),
-            TextSpan(
-              text: correctedAnswer,
-              style: TypographyTokens.bodyStrong.copyWith(
-                color: ColorTokens.successText,
+              const TextSpan(text: '\n'),
+              TextSpan(
+                text: correctedAnswer,
+                style: TypographyTokens.bodyStrong.copyWith(
+                  color: ColorTokens.successText,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
       const SizedBox(height: SpaceTokens.md),
       Text(explanation, style: TypographyTokens.body),
       const SizedBox(height: SpaceTokens.md),
@@ -508,6 +563,56 @@ class _CorrectionBody extends StatelessWidget {
           ),
         ),
       ),
+    ],
+  );
+}
+
+class _CorrectionDiff extends StatelessWidget {
+  const _CorrectionDiff({
+    required this.segments,
+    required this.retainedLabel,
+    required this.removedLabel,
+    required this.insertedLabel,
+  });
+
+  final List<CorrectionSegment> segments;
+  final String retainedLabel;
+  final String removedLabel;
+  final String insertedLabel;
+
+  @override
+  Widget build(BuildContext context) => Wrap(
+    spacing: SpaceTokens.xs,
+    runSpacing: SpaceTokens.xs,
+    children: [
+      for (final segment in segments)
+        Semantics(
+          label:
+              '${segment.text}, ${switch (segment.kind) {
+                CorrectionSegmentKind.retained => retainedLabel,
+                CorrectionSegmentKind.removed => removedLabel,
+                CorrectionSegmentKind.inserted => insertedLabel,
+              }}',
+          child: ExcludeSemantics(
+            child: Text(
+              segment.text,
+              style: switch (segment.kind) {
+                CorrectionSegmentKind.retained => TypographyTokens.body,
+                CorrectionSegmentKind.removed => TypographyTokens.body.copyWith(
+                  color: ColorTokens.errorText,
+                  decoration: TextDecoration.lineThrough,
+                  decorationThickness: FocusTokens.ringWidth,
+                ),
+                CorrectionSegmentKind.inserted =>
+                  TypographyTokens.bodyStrong.copyWith(
+                    color: ColorTokens.successText,
+                    decoration: TextDecoration.underline,
+                    decorationThickness: FocusTokens.ringWidth,
+                  ),
+              },
+            ),
+          ),
+        ),
     ],
   );
 }
@@ -585,13 +690,15 @@ class _SheetGrabber extends StatelessWidget {
   const _SheetGrabber();
 
   @override
-  Widget build(BuildContext context) => Center(
-    child: Container(
-      width: SpaceTokens.xxl,
-      height: SpaceTokens.xs,
-      decoration: BoxDecoration(
-        color: ColorTokens.border,
-        borderRadius: BorderRadius.circular(RadiusTokens.full),
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: Center(
+      child: Container(
+        width: SpaceTokens.xxl,
+        height: SpaceTokens.xs,
+        decoration: BoxDecoration(
+          color: ColorTokens.border,
+          borderRadius: BorderRadius.circular(RadiusTokens.full),
+        ),
       ),
     ),
   );

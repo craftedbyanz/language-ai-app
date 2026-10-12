@@ -546,6 +546,12 @@ abstract final class LayoutTokens {
   /// layout.dialogWidth
   static const double dialogWidth = 260.0;
 
+  /// layout.feedbackCompactAlignmentY
+  static const double feedbackCompactAlignmentY = 0.4;
+
+  /// layout.feedbackDetailedAlignmentY
+  static const double feedbackDetailedAlignmentY = 1.0;
+
   /// layout.gridColumns
   static const double gridColumns = 2.0;
 

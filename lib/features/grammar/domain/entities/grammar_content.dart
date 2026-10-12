@@ -5,11 +5,15 @@ final class GrammarTopic {
     required this.id,
     required this.categoryId,
     required this.title,
+    required this.description,
+    required this.level,
     required this.lessonCount,
   }) {
     _requireNonBlank(id, 'id');
     _requireNonBlank(categoryId, 'categoryId');
     _requireNonBlank(title, 'title');
+    _requireNonBlank(description, 'description');
+    _requireNonBlank(level, 'level');
     if (lessonCount < 0) {
       throw ArgumentError.value(
         lessonCount,
@@ -21,6 +25,8 @@ final class GrammarTopic {
   final String id;
   final String categoryId;
   final String title;
+  final String description;
+  final String level;
   final int lessonCount;
 }
 
@@ -58,6 +64,7 @@ final class GrammarLesson {
     required this.level,
     required this.title,
     required this.description,
+    this.illustrationKey,
     required List<GrammarSentenceExercise> exercises,
   }) : exercises = List<GrammarSentenceExercise>.unmodifiable(exercises) {
     _requireNonBlank(id, 'id');
@@ -65,6 +72,9 @@ final class GrammarLesson {
     _requireNonBlank(level, 'level');
     _requireNonBlank(title, 'title');
     _requireNonBlank(description, 'description');
+    if (illustrationKey != null) {
+      _requireNonBlank(illustrationKey!, 'illustrationKey');
+    }
     if (exercises.isEmpty) {
       throw ArgumentError.value(exercises, 'exercises', 'must not be empty');
     }
@@ -74,6 +84,7 @@ final class GrammarLesson {
   final String level;
   final String title;
   final String description;
+  final String? illustrationKey;
   final List<GrammarSentenceExercise> exercises;
 }
 

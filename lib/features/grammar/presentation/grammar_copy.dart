@@ -45,6 +45,12 @@ final class GrammarCopy {
     required this.pager,
     required this.pagerPosition,
     required this.minimizeFeedback,
+    required this.topicsSection,
+    required this.visibleTopics,
+    required this.collectionLabel,
+    required this.correctionRetained,
+    required this.correctionRemoved,
+    required this.correctionInserted,
   });
   final String grammar;
   final String back;
@@ -91,4 +97,10 @@ final class GrammarCopy {
   final String pager;
   final String Function(int current, int total) pagerPosition;
   final String minimizeFeedback;
+  final String topicsSection;
+  final String Function(int count) visibleTopics;
+  final String collectionLabel;
+  final String correctionRetained;
+  final String correctionRemoved;
+  final String correctionInserted;
 }
