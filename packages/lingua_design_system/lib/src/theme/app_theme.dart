@@ -5,8 +5,11 @@ import '../tokens/generated/design_tokens.dart';
 abstract final class AppTheme {
   static ThemeData light({ColorProfile profile = ColorProfile.production}) {
     final accessible = AccessibleTokens(profile: profile);
-    final base = ThemeData(brightness: Brightness.light, useMaterial3: true);
-    // DD-08 default: Flutter's platform system font; CSS font stacks are not font names.
+    final base = ThemeData(
+      brightness: Brightness.light,
+      useMaterial3: true,
+      fontFamily: TypographyTokens.family,
+    );
     final typography =
         TextTheme(
           displayLarge: TypographyTokens.display,

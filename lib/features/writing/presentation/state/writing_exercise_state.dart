@@ -49,8 +49,13 @@ final class WritingFeedbackCorrect extends WritingFeedback {
     required super.exerciseIndex,
     required super.answer,
     required super.grade,
+    this.stage = WritingCorrectStage.recap,
   });
+
+  final WritingCorrectStage stage;
 }
+
+enum WritingCorrectStage { recap, analysisLoading, analysis }
 
 final class WritingFeedbackIncorrect extends WritingFeedback {
   const WritingFeedbackIncorrect({

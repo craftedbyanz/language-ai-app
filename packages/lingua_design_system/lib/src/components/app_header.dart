@@ -16,6 +16,7 @@ class AppHeader extends StatelessWidget {
     this.centre,
     this.trailing,
     this.leadingFocusNode,
+    this.highlightLeading = false,
     super.key,
   });
 
@@ -26,10 +27,11 @@ class AppHeader extends StatelessWidget {
   final Widget? centre;
   final Widget? trailing;
   final FocusNode? leadingFocusNode;
+  final bool highlightLeading;
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    height: LayoutTokens.navBarHeight + ControlTokens.minTouchTarget,
+    height: LayoutTokens.navBarHeight + SpaceTokens.lg,
     child: Row(
       children: [
         CanonicalFocusIndicator(
@@ -39,6 +41,12 @@ class AppHeader extends StatelessWidget {
             focusNode: leadingFocusNode,
             tooltip: leadingLabel,
             onPressed: onLeadingPressed,
+            style: highlightLeading
+                ? IconButton.styleFrom(
+                    backgroundColor: ColorTokens.surfaceMuted,
+                    shape: const CircleBorder(),
+                  )
+                : null,
             icon: Icon(
               variant == AppHeaderVariant.pushed
                   ? Icons.chevron_left_rounded

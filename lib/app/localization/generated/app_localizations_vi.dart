@@ -69,14 +69,14 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String streakDays(int count) {
-    return 'Chuỗi ngày học: $count';
+    return 'Chuỗi: $count ngày';
   }
 
   @override
   String get history => 'Lịch sử';
 
   @override
-  String get menu => 'Trình đơn';
+  String get menu => 'Menu';
 
   @override
   String get settings => 'Cài đặt';
@@ -85,13 +85,102 @@ class AppLocalizationsVi extends AppLocalizations {
   String get insightTitle => 'Thống kê';
 
   @override
-  String get insightStreak => 'Chuỗi ngày học';
+  String get insightStreak => 'Chuỗi Streak';
 
   @override
   String get insightWordGame => 'Trò chơi từ vựng';
 
   @override
   String get menuClose => 'Đóng trình đơn';
+
+  @override
+  String get menuUpgrade => 'Nâng cấp Gramify Plus';
+
+  @override
+  String get streakOnFire => 'ON FIRE';
+
+  @override
+  String get streakConsecutiveDays => 'ngày liên tiếp';
+
+  @override
+  String get streakStartPrompt => 'Bắt đầu chuỗi học tập ngay hôm nay!';
+
+  @override
+  String streakStudiedDays(int count) {
+    return 'Đã học $count ngày';
+  }
+
+  @override
+  String get streakPreviousMonth => 'Tháng trước';
+
+  @override
+  String get streakNextMonth => 'Tháng sau';
+
+  @override
+  String get historySectionWriting => 'Đoạn văn';
+
+  @override
+  String get historyReviewTitle => 'Ôn tập';
+
+  @override
+  String get historySectionGrammar => 'Câu';
+
+  @override
+  String get historySectionConversation => 'Hội thoại';
+
+  @override
+  String get historySeeMore => 'Xem thêm';
+
+  @override
+  String get settingsProfile => 'Profile';
+
+  @override
+  String get settingsFree => 'Free';
+
+  @override
+  String get settingsUpgradeTitle => 'Dùng thử Gramify Plus';
+
+  @override
+  String get settingsUpgradeCaption => 'Nâng cấp để có giới hạn cao hơn';
+
+  @override
+  String get settingsUpgradeAction => 'Upgrade';
+
+  @override
+  String get settingsStudying => 'Đang học';
+
+  @override
+  String get settingsEditProfile => 'Chỉnh sửa hồ sơ';
+
+  @override
+  String get settingsNotifications => 'Thông báo';
+
+  @override
+  String get settingsSubscription => 'Gói đăng ký';
+
+  @override
+  String get settingsRedeem => 'Nhập mã ưu đãi';
+
+  @override
+  String get settingsInvite => 'Mời bạn bè';
+
+  @override
+  String get settingsRate => 'Đánh giá ứng dụng';
+
+  @override
+  String get settingsOther => 'Khác';
+
+  @override
+  String get settingsFeedback => 'Gửi phản hồi';
+
+  @override
+  String get settingsTerms => 'Điều khoản dịch vụ';
+
+  @override
+  String get settingsPrivacy => 'Chính sách quyền riêng tư';
+
+  @override
+  String get settingsLogout => 'Đăng xuất';
 
   @override
   String get insightLessons => 'Bài học';
@@ -110,7 +199,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String insightMonthYear(int month, int year) {
-    return 'Tháng $month/$year';
+    return 'tháng $month năm $year';
   }
 
   @override
@@ -163,13 +252,19 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsGuestCaption => 'Luyện tập cục bộ';
 
   @override
-  String get settingsGeneral => 'Chung';
+  String get settingsGeneral => 'Cài đặt chung';
 
   @override
   String get settingsLearning => 'Học tập';
 
   @override
   String get settingsLanguage => 'Ngôn ngữ';
+
+  @override
+  String get settingsAppLanguage => 'Ngôn ngữ ứng dụng';
+
+  @override
+  String get settingsLearningLanguage => 'Ngôn ngữ học';
 
   @override
   String get settingsLevel => 'Trình độ';
@@ -198,6 +293,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get settingsSaveFailed => 'Không thể lưu ngôn ngữ. Hãy thử lại.';
+
+  @override
+  String get settingsVersion => 'Lingua v0.1.0 (1)';
+
+  @override
+  String get settingsFooterCaption => 'Học một chút mỗi ngày.';
 
   @override
   String get flashcards => 'Thẻ ghi nhớ';
@@ -318,6 +419,15 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get correctTitle => 'Xuất sắc';
+
+  @override
+  String get writingRecapTitle => 'Chính xác';
+
+  @override
+  String get writingYourAnswer => 'Câu trả lời của bạn';
+
+  @override
+  String get writingViewAnalysis => 'Xem phân tích AI';
 
   @override
   String get incorrectTitle => 'Chưa chính xác';

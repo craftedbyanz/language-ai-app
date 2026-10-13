@@ -185,9 +185,15 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
           onCancel: notifier.cancelSubmission,
         ),
         WritingFeedback() => _ReadyFeedback(
+          key: ValueKey((
+            state.runtimeType,
+            state is WritingFeedbackCorrect ? state.stage : null,
+          )),
           state: state,
           copy: widget.copy,
           onEdit: notifier.edit,
+          onAnalysis: notifier.revealAnalysis,
+          onCancelAnalysis: notifier.cancelAnalysis,
           onNext: () {
             _controller.clear();
             notifier.next();
@@ -195,6 +201,13 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
         ),
         WritingAnswering() => null,
         WritingFinished() => null,
+      },
+      feedbackAnchor: switch (state) {
+        WritingFeedbackCorrect(stage: WritingCorrectStage.recap) =>
+          ExerciseFeedbackAnchor.compact,
+        WritingFeedback() ||
+        WritingSubmitting() => ExerciseFeedbackAnchor.detailed,
+        _ => ExerciseFeedbackAnchor.bottom,
       },
     );
   }
@@ -205,16 +218,43 @@ class _ReadyFeedback extends StatelessWidget {
     required this.state,
     required this.copy,
     required this.onEdit,
+    required this.onAnalysis,
+    required this.onCancelAnalysis,
     required this.onNext,
+    super.key,
   });
   final WritingFeedback state;
   final WritingCopy copy;
   final VoidCallback onEdit;
+  final VoidCallback onAnalysis;
+  final VoidCallback onCancelAnalysis;
   final VoidCallback onNext;
 
   @override
   Widget build(BuildContext context) {
     final correct = state is WritingFeedbackCorrect;
+    if (state case WritingFeedbackCorrect(stage: final stage)) {
+      if (stage == WritingCorrectStage.recap) {
+        return FeedbackSheet.writingRecap(
+          title: copy.recapTitle,
+          answer: state.answer,
+          recapLabel: copy.yourAnswer,
+          analysisLabel: copy.viewAnalysis,
+          onAnalysis: onAnalysis,
+          nextLabel: copy.next,
+          closeLabel: copy.close,
+          onNext: onNext,
+          onClose: onEdit,
+        );
+      }
+      if (stage == WritingCorrectStage.analysisLoading) {
+        return FeedbackSheet.loading(
+          gradingLabel: copy.grading,
+          cancelLabel: copy.cancel,
+          onCancel: onCancelAnalysis,
+        );
+      }
+    }
     final shared = (
       title: correct ? copy.correctTitle : copy.incorrectTitle,
       correctedAnswer: state.grade.correctedAnswer,

@@ -37,7 +37,7 @@ HomeDashboardCopy _homeCopy(BuildContext context, int streakCount) {
     streakLabel: strings.streakDays(streakCount),
     history: strings.history,
     menu: strings.menu,
-    settings: strings.settings,
+    settings: strings.settingsProfile,
     flashcardTitle: strings.flashcards,
     flashcardCaption: strings.flashcardHomeCaption,
     flashcardAction: strings.flashcardExplore,
@@ -52,6 +52,12 @@ InsightCopy _insightCopy(BuildContext context) {
     title: strings.insightTitle,
     history: strings.history,
     streak: strings.insightStreak,
+    streakOnFire: strings.streakOnFire,
+    streakConsecutiveDays: strings.streakConsecutiveDays,
+    streakStartPrompt: strings.streakStartPrompt,
+    streakStudiedDays: strings.streakStudiedDays,
+    streakPreviousMonth: strings.streakPreviousMonth,
+    streakNextMonth: strings.streakNextMonth,
     back: strings.back,
     lessons: strings.insightLessons,
     writing: strings.writing,
@@ -78,6 +84,11 @@ InsightCopy _insightCopy(BuildContext context) {
     historyEmptyTitle: strings.insightHistoryEmptyTitle,
     historyEmptyBody: strings.insightHistoryEmptyBody,
     historyNoResults: strings.insightHistoryNoResults,
+    historySectionWriting: strings.historySectionWriting,
+    historyReviewTitle: strings.historyReviewTitle,
+    historySectionGrammar: strings.historySectionGrammar,
+    historySectionConversation: strings.historySectionConversation,
+    historySeeMore: strings.historySeeMore,
   );
 }
 
@@ -102,7 +113,7 @@ void _showHomeMenu(BuildContext context) {
   unawaited(
     showDialog<void>(
       context: context,
-      barrierColor: ColorTokens.overlayScrimDefault,
+      barrierColor: Colors.transparent,
       barrierLabel: strings.menu,
       builder: (dialogContext) => MenuOverlay(
         title: strings.menu,
@@ -112,22 +123,31 @@ void _showHomeMenu(BuildContext context) {
           MenuShortcut(
             label: strings.insightTitle,
             icon: Icons.insights_outlined,
+            iconFill: ColorTokens.primary,
             onPressed: () => openRoute(dialogContext, const InsightRoute()),
           ),
           MenuShortcut(
-            label: '${strings.insightWordGame} · ${strings.comingSoon}',
-            icon: Icons.extension_outlined,
+            label: strings.menuUpgrade,
+            icon: Icons.workspace_premium_rounded,
+            iconFill: ColorTokens.warning,
           ),
           MenuShortcut(
             label: strings.flashcards,
             icon: Icons.style_outlined,
+            iconFill: FeatureTokens.writingHomeCardFill,
             onPressed: () =>
                 openRoute(dialogContext, const FlashcardDecksRoute()),
           ),
           MenuShortcut(
             label: strings.insightStreak,
             icon: Icons.local_fire_department_outlined,
+            iconFill: ColorTokens.warning,
             onPressed: () => openRoute(dialogContext, const StreakRoute()),
+          ),
+          MenuShortcut(
+            label: strings.insightWordGame,
+            icon: Icons.extension_outlined,
+            iconFill: ColorTokens.success,
           ),
         ],
       ),
@@ -159,12 +179,31 @@ SettingsCopy _settingsCopy(BuildContext context) {
   final strings = AppLocalizations.of(context)!;
   return SettingsCopy(
     title: strings.settings,
+    profile: strings.settingsProfile,
+    free: strings.settingsFree,
+    upgradeTitle: strings.settingsUpgradeTitle,
+    upgradeCaption: strings.settingsUpgradeCaption,
+    upgradeAction: strings.settingsUpgradeAction,
+    studying: strings.settingsStudying,
+    editProfile: strings.settingsEditProfile,
+    notifications: strings.settingsNotifications,
+    subscription: strings.settingsSubscription,
+    redeem: strings.settingsRedeem,
+    invite: strings.settingsInvite,
+    rate: strings.settingsRate,
+    other: strings.settingsOther,
+    feedback: strings.settingsFeedback,
+    terms: strings.settingsTerms,
+    privacy: strings.settingsPrivacy,
+    logout: strings.settingsLogout,
     back: strings.back,
     guest: strings.settingsGuest,
     guestCaption: strings.settingsGuestCaption,
     general: strings.settingsGeneral,
     learning: strings.settingsLearning,
     language: strings.settingsLanguage,
+    appLanguage: strings.settingsAppLanguage,
+    learningLanguage: strings.settingsLearningLanguage,
     level: strings.settingsLevel,
     lesson: strings.settingsLesson,
     appearance: strings.settingsAppearance,
@@ -175,6 +214,8 @@ SettingsCopy _settingsCopy(BuildContext context) {
     vietnamese: strings.settingsVietnamese,
     apply: strings.settingsApply,
     saveFailed: strings.settingsSaveFailed,
+    version: strings.settingsVersion,
+    footerCaption: strings.settingsFooterCaption,
   );
 }
 
@@ -204,6 +245,9 @@ WritingCopy _writingCopy(BuildContext context) {
     grading: strings.grading,
     cancel: strings.cancel,
     correctTitle: strings.correctTitle,
+    recapTitle: strings.writingRecapTitle,
+    yourAnswer: strings.writingYourAnswer,
+    viewAnalysis: strings.writingViewAnalysis,
     incorrectTitle: strings.incorrectTitle,
     correction: strings.correction,
     improvements: strings.improvements,

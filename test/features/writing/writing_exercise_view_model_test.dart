@@ -49,6 +49,45 @@ void main() {
         container.read(writingExerciseViewModelProvider),
         isA<WritingFeedbackCorrect>(),
       );
+      final recap = container.read(writingExerciseViewModelProvider);
+      expect(
+        (recap as WritingFeedbackCorrect).stage,
+        WritingCorrectStage.recap,
+      );
+
+      final analysis = notifier.revealAnalysis();
+      final loading = container.read(writingExerciseViewModelProvider);
+      expect(
+        (loading as WritingFeedbackCorrect).stage,
+        WritingCorrectStage.analysisLoading,
+      );
+      await analysis;
+      final detailed = container.read(writingExerciseViewModelProvider);
+      expect(
+        (detailed as WritingFeedbackCorrect).stage,
+        WritingCorrectStage.analysis,
+      );
+    },
+  );
+
+  test(
+    'canceling analysis keeps recap and ignores its late completion',
+    () async {
+      final container = createContainer();
+      final notifier = container.read(
+        writingExerciseViewModelProvider.notifier,
+      );
+      notifier.answerChanged('I practice English every morning.');
+      await notifier.submit();
+      final pending = notifier.revealAnalysis();
+      notifier.cancelAnalysis();
+      await pending;
+      final state = container.read(writingExerciseViewModelProvider);
+      expect(
+        (state as WritingFeedbackCorrect).stage,
+        WritingCorrectStage.recap,
+      );
+      expect(state.answer, 'I practice English every morning.');
     },
   );
 

@@ -275,11 +275,11 @@ void main() {
         await tester.tap(
           find.bySemanticsLabel(strings.grammarMinimizeFeedback),
         );
-        await tester.pump();
+        await tester.pumpAndSettle();
         expect(find.text(strings.grammarShowFeedback), findsOneWidget);
         expect(find.byType(FeedbackSheet), findsNothing);
         await tester.tap(find.text(strings.grammarShowFeedback));
-        await tester.pump();
+        await tester.pumpAndSettle();
         expect(find.text(strings.grammarCorrectTitle), findsOneWidget);
         expect(
           find.bySemanticsLabel(strings.grammarMinimizeFeedback),

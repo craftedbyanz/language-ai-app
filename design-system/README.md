@@ -9,6 +9,8 @@ The canonical, implementation-ready UI/UX specification for our language-learnin
 
 Freeze record: `references/gramago/UI_UX_FREEZE.md` (READY_FOR_UI_UX_FREEZE; 62 evidenced states; S001–S064, S038 unused).
 
+The live GramaGo app was interacted with on 2026-10-12 at the user's request to verify the Writing flow and loading states. The resulting decisions are recorded in `INTERACTION_PATTERNS.md` and `SCREEN_TEMPLATES.md`; implementation still takes this design system as its source of truth. The frozen archive remains unchanged.
+
 ## Files
 
 | File | Purpose |

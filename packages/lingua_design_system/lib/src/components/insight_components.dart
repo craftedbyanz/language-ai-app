@@ -43,6 +43,51 @@ class InsightStatCard extends StatelessWidget {
   );
 }
 
+class InsightStreakStatCard extends StatelessWidget {
+  const InsightStreakStatCard({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.accent,
+    super.key,
+  });
+
+  final IconData icon;
+  final String value;
+  final String label;
+  final Color accent;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    constraints: const BoxConstraints(minHeight: LayoutTokens.rowSettings),
+    decoration: BoxDecoration(
+      color: ColorTokens.background,
+      borderRadius: BorderRadius.circular(RadiusTokens.card),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: IconTokens.inline, color: accent),
+            const SizedBox(width: SpaceTokens.xs),
+            Flexible(
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TypographyTokens.microLabel.copyWith(color: accent),
+              ),
+            ),
+          ],
+        ),
+        Text(value, style: TypographyTokens.heading),
+      ],
+    ),
+  );
+}
+
 class InsightCalendarCard extends StatelessWidget {
   const InsightCalendarCard({
     required this.title,
@@ -50,6 +95,11 @@ class InsightCalendarCard extends StatelessWidget {
     required this.leadingBlankDays,
     required this.daysInMonth,
     this.activeDays = const {},
+    this.studiedDaysLabel,
+    this.previousMonthLabel,
+    this.nextMonthLabel,
+    this.onPreviousMonth,
+    this.onNextMonth,
     super.key,
   }) : assert(weekdayLabels.length == 7);
 
@@ -58,6 +108,11 @@ class InsightCalendarCard extends StatelessWidget {
   final int leadingBlankDays;
   final int daysInMonth;
   final Set<int> activeDays;
+  final String? studiedDaysLabel;
+  final String? previousMonthLabel;
+  final String? nextMonthLabel;
+  final VoidCallback? onPreviousMonth;
+  final VoidCallback? onNextMonth;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -70,7 +125,43 @@ class InsightCalendarCard extends StatelessWidget {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: TypographyTokens.heading),
+        Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: TypographyTokens.heading),
+                  if (studiedDaysLabel != null)
+                    Text(
+                      studiedDaysLabel!,
+                      style: TypographyTokens.caption.copyWith(
+                        color: ColorTokens.textMuted,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            if (previousMonthLabel != null)
+              IconButton(
+                tooltip: previousMonthLabel,
+                onPressed: onPreviousMonth,
+                icon: const Icon(
+                  Icons.chevron_left_rounded,
+                  size: IconTokens.inline,
+                ),
+              ),
+            if (nextMonthLabel != null)
+              IconButton(
+                tooltip: nextMonthLabel,
+                onPressed: onNextMonth,
+                icon: const Icon(
+                  Icons.chevron_right_rounded,
+                  size: IconTokens.inline,
+                ),
+              ),
+          ],
+        ),
         const SizedBox(height: SpaceTokens.lg),
         Row(
           children: [
@@ -107,16 +198,14 @@ class InsightCalendarCard extends StatelessWidget {
                 height: IconTokens.container,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: active
-                      ? ColorTokens.primaryTint
-                      : ColorTokens.surfaceMuted,
+                  color: active ? ColorTokens.warning : ColorTokens.surface,
                   shape: BoxShape.circle,
                 ),
                 child: Text(
                   '$day',
                   style: TypographyTokens.microLabel.copyWith(
                     color: active
-                        ? ColorTokens.primaryTextOnTint
+                        ? ColorTokens.textOnPrimary
                         : ColorTokens.textSecondary,
                   ),
                 ),

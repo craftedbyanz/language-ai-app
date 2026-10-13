@@ -64,15 +64,21 @@ void main() {
     expect(find.text('Grading…'), findsOneWidget);
     await tester.pump(const Duration(milliseconds: 250));
     expect(find.byKey(const Key('feedback-correct')), findsOneWidget);
+    expect(find.text('View AI analysis'), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (widget) =>
             widget is Semantics &&
             widget.properties.liveRegion == true &&
-            widget.properties.label == 'Excellent',
+            widget.properties.label == 'Correct',
       ),
       findsOneWidget,
     );
+    await tester.tap(find.text('View AI analysis'));
+    await tester.pump();
+    expect(find.text('Grading…'), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Excellent'), findsOneWidget);
     await tester.tap(find.text('Next'));
     await tester.pump();
     expect(find.text('Sau đó, tôi uống một tách trà.'), findsOneWidget);

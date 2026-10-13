@@ -45,23 +45,43 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       child: Column(
         children: [
           ContentConstraints(
-            child: AppHeader(
-              variant: AppHeaderVariant.pushed,
-              centre: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: LayoutTokens.dialogWidth,
-                  ),
-                  child: SearchField(
-                    label: widget.copy.historySearch,
-                    hint: widget.copy.historySearchHint,
-                    controller: _searchController,
-                    onChanged: (value) => setState(() => _query = value),
-                  ),
-                ),
-              ),
-              leadingLabel: widget.copy.back,
-              onLeadingPressed: widget.onBack,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final compact =
+                    constraints.maxWidth < LayoutTokens.breakpointCompact;
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                          key: const Key('app-header-leading'),
+                          tooltip: widget.copy.back,
+                          onPressed: widget.onBack,
+                          icon: const Icon(
+                            Icons.chevron_left_rounded,
+                            size: IconTokens.control,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            widget.copy.historyReviewTitle,
+                            textAlign: TextAlign.center,
+                            style: TypographyTokens.heading,
+                          ),
+                        ),
+                        if (!compact)
+                          SizedBox(
+                            width: LayoutTokens.dialogWidth,
+                            child: _searchField(),
+                          ),
+                        if (compact)
+                          const SizedBox(width: ControlTokens.minTouchTarget),
+                      ],
+                    ),
+                    if (compact) _searchField(),
+                  ],
+                );
+              },
             ),
           ),
           Expanded(
@@ -72,7 +92,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: SpaceTokens.xl),
+                      const SizedBox(height: SpaceTokens.lg),
                       if (visible.isEmpty)
                         EmptyState(
                           title: _query.isEmpty
@@ -80,20 +100,30 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                               : widget.copy.historyNoResults,
                           body: widget.copy.historyEmptyBody,
                         )
-                      else
-                        Wrap(
-                          spacing: SpaceTokens.sm,
-                          runSpacing: SpaceTokens.sm,
-                          children: [
-                            for (final entry in visible)
-                              InsightHistoryCard(
-                                type: entry.type,
-                                topic: entry.topic,
-                                icon: Icons.history_edu_outlined,
-                                onPressed: () => widget.onEntryPressed(entry),
-                              ),
-                          ],
+                      else ...[
+                        _historySection(
+                          widget.copy.historySectionWriting,
+                          visible
+                              .where(
+                                (entry) => entry.mode == HistoryMode.writing,
+                              )
+                              .toList(),
                         ),
+                        const SizedBox(height: SpaceTokens.xl),
+                        _historySection(
+                          widget.copy.historySectionGrammar,
+                          visible
+                              .where(
+                                (entry) => entry.mode == HistoryMode.grammar,
+                              )
+                              .toList(),
+                        ),
+                        const SizedBox(height: SpaceTokens.xl),
+                        _historySection(
+                          widget.copy.historySectionConversation,
+                          const [],
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -104,4 +134,48 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       ),
     );
   }
+
+  Widget _searchField() => SearchField(
+    label: widget.copy.historySearch,
+    hint: widget.copy.historySearchHint,
+    controller: _searchController,
+    onChanged: (value) => setState(() => _query = value),
+  );
+
+  Widget _historySection(String title, List<HistoryEntry> entries) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          Expanded(child: Text(title, style: TypographyTokens.heading)),
+          if (entries.isNotEmpty)
+            Text(
+              widget.copy.historySeeMore,
+              style: TypographyTokens.caption.copyWith(
+                color: ColorTokens.textMuted,
+              ),
+            ),
+        ],
+      ),
+      const SizedBox(height: SpaceTokens.sm),
+      SizedBox(
+        height: LayoutTokens.historyCardHeight + SpaceTokens.xxl,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: entries.length,
+          separatorBuilder: (context, index) =>
+              const SizedBox(width: SpaceTokens.md),
+          itemBuilder: (context, index) {
+            final entry = entries[index];
+            return InsightHistoryCard(
+              type: entry.type,
+              topic: entry.topic,
+              icon: Icons.history_edu_outlined,
+              onPressed: () => widget.onEntryPressed(entry),
+            );
+          },
+        ),
+      ),
+    ],
+  );
 }

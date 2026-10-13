@@ -5,7 +5,7 @@ Page archetypes. Compose screens **only** from [COMPONENTS.md](COMPONENTS.md) / 
 Common rules for all templates
 - **Page canvas**: `color.background` for browse screens (Home, pickers, lesson list, exercise, settings); `color.backgroundPlain` for data/list/chat screens (flashcards, insight, history, streak, conversation). Cards are `surface`.
 - **Scroll**: the page body scrolls; `AppHeader`, `ChatComposer`, `SubmitButton` row and `FloatingBottomBar` stay fixed. Reserve bottom padding for any fixed bar.
-- **Loading** (every template): until data arrives show `Skeleton` blocks in the shape of the first region (cards for grids/carousels, rows for lists). Never a blocking spinner page.
+- **Loading** (every template): keep the page header and controls visible while data arrives. Use `Skeleton` blocks in the shape of list and carousel content; the TopicPicker uses a small spinner in its grid region, as observed in the live app. Never replace the whole page with a blocking spinner.
 - **Error** (every template): `InlineError` / `EmptyState/Error` in the failed region, with Retry (DD-04).
 - **Empty** (every list region): `EmptyState` with a one-line explanation and, where an action exists, one `Button/Link`.
 - Margins: `layout.marginDashboard` on the dashboard; `layout.marginScreen` elsewhere.
@@ -20,8 +20,8 @@ Common rules for all templates
 **Hierarchy**: greeting (title) → modes (largest cards) → quick topics → feature banners.
 **Slots**: user name, streak count, locale flag button, per-mode copy, banner content.
 **Navigation**: mode card → TopicPickerTemplate; `PromptEntry` → `Sheet/Composer`; chip → generation with that topic (DD-17 default); `Banner/Promo` → `Sheet/Paywall` (deferred); `Banner/Feature` → FlashcardDeckTemplate; bottom bar → history / streak / MenuOverlay / settings; locale flag → SettingsDetailTemplate (language).
-**Transitions**: fixed-position bottom bar; MenuOverlay is an overlay state of this template.
-**Responsive**: modes carousel width ratio-based; chips wrap to a horizontal scroller; bottom bar floats. Only on this template is the bar shown.
+**Transitions**: full-width bottom dock fixed to the window edge; MenuOverlay is an overlay state of this template.
+**Responsive**: modes carousel width ratio-based; chips wrap to a horizontal scroller; the dock spans the available width. Only on this template is the dock shown.
 **Spacing**: regions separated by `space.xl`; section header → content `space.lg`; scroll content gets bottom padding = bar height + `space.lg`.
 **Variants**: first-visit hints (`CoachMark`). Loading: carousel `Skeleton` cards. Empty: not applicable (static content).
 **Evidence**: S001, S011.
@@ -35,7 +35,7 @@ Common rules for all templates
 **Transitions**: filter select → grid refresh (animation unspecified).
 **Responsive**: 2 columns → 1 column below the compact breakpoint; chip rail scrolls.
 **Mode variants**: `Writing`, `Grammar`, `Conversation` (conversation: few topics, extra "customise" `FAB`, one-time `CoachMark`).
-**States**: loading = 6 `Skeleton` cards; empty topics (filter yields none) = `EmptyState` with "Clear filter" link; `TopicCard/Plus` first only when `paywallEnabled`.
+**States**: loading = a grid-region spinner while the hero and filters remain visible; empty topics (filter yields none) = `EmptyState` with "Clear filter" link; `TopicCard/Plus` first only when `paywallEnabled`.
 **Evidence**: S002, S008, S019, S020, S031.
 
 ## 3. LessonListTemplate
@@ -53,7 +53,7 @@ Common rules for all templates
 **Slots**: step index/count, source text, current-sentence range, answer palette key (user pref, `answerPalette`), hint list.
 **Variants**: `ExerciseEditor/Paragraph` (writing), `ExerciseEditor/Sentence` (grammar).
 **Navigation**: close → `Dialog/Confirm` (if input exists) → LessonList; menu items alter view (show all, background colour, hints, lookup, rate).
-**Transitions**: empty → filled (submit enabled) → submitting → loading sheet → verdict sheet → Edit/Fix (back to filled, text kept) or Next (next step; fresh empty editor, stepper advances; sparkle chip present).
+**Transitions**: empty → filled (submit enabled) → submitting → loading sheet → verdict sheet → Edit/Fix (back to filled, text kept) or Next (next step; fresh empty editor, stepper advances; sparkle chip present). Correct Writing adds compact recap → optional analysis loading → detailed feedback before Edit/Next; Next is also available from the recap.
 **Completion** (after final step): `CompletionTemplate` (§14, DD-01 default).
 **Layout order (top → bottom)**: header · source card (`SourceTextCard`) · answer card (flex 1) · hint bar · submit row; gaps `space.lg`; the feedback sheet floats above the hint bar/submit row, bottom offset `margin`.
 **States**: loading/error on grading → `FeedbackSheet` loading / `InlineError` inside the sheet body, text kept (DD-04).
@@ -88,7 +88,7 @@ Common rules for all templates
 **Evidence**: S012, S013.
 
 ## 8. SRSReviewTemplate
-**Regions**: `AppHeader/Modal` (close · More) · `SRSCard/Front|Back` stack · `SRSGradeButton` row (on back).
+**Regions**: `AppHeader/Modal` (close · More) · `SRSCard/Front|Back` stack · persistent `SRSGradeButton` row below both sides. Grade activation before the flip is unverified.
 **Transitions**: front → tap/Space flips → back + 4 grades → grade → next card Front → empty queue → `EmptyState` "Review complete" + "Back to deck" (DD-07 default). Close needs no confirmation. The first-run tutorial overlay is out of v1 (DD-25).
 **Layout**: centred `SRSCard` (stack of 2 decorative cards behind, offset `space.sm`), `SRSGradeButton` row below the card with `space.lg` gaps, bottom-anchored.
 **Slots**: word, POS, IPA, translation, gloss, example, intervals.
@@ -96,7 +96,7 @@ Common rules for all templates
 **Evidence**: S014, S015, S052, S053.
 
 ## 9. SettingsListTemplate
-**Regions**: `AppHeader/Pushed` · `SettingsRow/Account` card · `Banner/Promo` (only when `paywallEnabled`) · grouped `SettingsRow/Navigate|Toggle|Info` list (cards of `radius.card`, rows `layout.rowSettings`, group gap `space.lg`).
+**Regions**: `AppHeader/Pushed` titled Profile · centred double-ring avatar/plan badge/name · Plus preview banner with a separate Upgrade pill · "Studying" language card with flag, two-line English label and A1 badge · "General settings" single grouped card with nine GramaGo rows followed by the client-only App language preference · "Other" grouped card with feedback/legal/sign-out rows · centred app version and product footer. Settings rows use circular icon backgrounds and light chevrons. The banner and Upgrade label are visual previews while the paywall route is deferred.
 **States**: static; toggles apply immediately; loading none.
 **Slots**: rows (navigate, toggle, info); some rows leave the app (external links).
 **Navigation**: row → SettingsDetailTemplate.
@@ -111,7 +111,7 @@ Common rules for all templates
 
 ## 11. InsightTemplate
 **Regions**: `AppHeader/Pushed` · `InsightCard/StatGrid` (3×2) · `InsightCard/Calendar` · `InsightCard/WeekChart`.
-**Variants**: Insight overview; Streak (`Stat` ×2 current/longest + month `Calendar/Month`); History (`SearchField` + grouped `HistoryCard` rows).
+**Variants**: Insight overview; Streak (ON FIRE summary with large flame · navigable month calendar · current/longest stat cards); History/Review (centred title · trailing search · grouped `HistoryCard` rails).
 **Empty**: zero-data (all zeros, empty chart, P21); populated = same layout with data.
 **History variant** (requires `InsightCard/History`): `AppHeader/Search` · per-type group (header + trailing "See more") · horizontal rail of `InsightCard/History`; no results → `EmptyState`.
 **Evidence**: S017, S018, S033.

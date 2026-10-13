@@ -13,6 +13,7 @@ class SettingsRow extends StatelessWidget {
     this.value,
     this.icon,
     this.onPressed,
+    this.grouped = false,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class SettingsRow extends StatelessWidget {
   final IconData? icon;
   final SettingsRowVariant variant;
   final VoidCallback? onPressed;
+  final bool grouped;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +34,26 @@ class SettingsRow extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: ColorTokens.surface,
-        borderRadius: BorderRadius.circular(RadiusTokens.card),
-        boxShadow: ShadowTokens.hairline,
+        borderRadius: grouped ? null : BorderRadius.circular(RadiusTokens.card),
+        boxShadow: grouped ? null : ShadowTokens.hairline,
       ),
       child: Row(
         children: [
           if (icon != null) ...[
-            Icon(icon, size: IconTokens.inline),
+            Container(
+              width: IconTokens.tile,
+              height: IconTokens.tile,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                color: ColorTokens.surfaceMuted,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                icon,
+                size: IconTokens.inline,
+                color: ColorTokens.textSecondary,
+              ),
+            ),
             const SizedBox(width: SpaceTokens.md),
           ],
           Expanded(
@@ -63,7 +78,11 @@ class SettingsRow extends StatelessWidget {
           ],
           if (variant == SettingsRowVariant.navigate) ...[
             const SizedBox(width: SpaceTokens.sm),
-            const Icon(Icons.chevron_right_rounded, size: IconTokens.inline),
+            const Icon(
+              Icons.chevron_right_rounded,
+              size: IconTokens.inline,
+              color: ColorTokens.textFaint,
+            ),
           ],
         ],
       ),

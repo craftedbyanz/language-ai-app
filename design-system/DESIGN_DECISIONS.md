@@ -112,9 +112,9 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Free to choose?** Yes.
 
 ### DD-08 Typeface family, absolute sizes, weights
-- **Evidence**: hierarchy ratios from frame heights (display 39, title 26, heading 19/17, body 13, caption 9–11, micro 7–9). Sizes in `TOKENS.json` are ESTIMATED; family appeared as a rounded geometric sans (low confidence).
-- **Default**: system UI font stack (`typography.family`) at the sizes in `typography.*` (body floor 14). `typography.*.ref` is informational only, never used in code.
-- **Free to choose?** Yes, provided the hierarchy ratios and the body floor stay.
+- **Evidence**: hierarchy ratios from frame heights (display 39, title 26, heading 19/17, body 13, caption 9–11, micro 7–9). Live inspection of the running GramaGo app bundle identified Plus Jakarta Sans font files. Sizes in `TOKENS.json` remain ESTIMATED.
+- **Default**: bundle the OFL release of Plus Jakarta Sans for English and Vietnamese at the sizes in `typography.*` (body floor 14). `typography.*.ref` is informational only, never used in code.
+- **Free to choose?** Family is fixed; size estimates may be refined by visual comparison while keeping the hierarchy and body floor.
 
 ### DD-09 Dark mode
 - **Evidence**: none; the "appearance" setting is a card-style picker, not a theme.
@@ -124,6 +124,7 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 ### DD-10 Motion
 - **Evidence**: presentation animations exist (sheets, dialog, carousel scale ~4%, typing dots); timings not measurable from stills.
 - **Default**: 200–250 ms ease-out for sheets and dialogs, 150 ms for state changes, honour reduced motion. Carousel active card scale 1.04 is CANDIDATE.
+- **Implementation note**: feedback sheets use the tokened `motion.sheetEnterOffset` for a short vertical entrance/exit, with a fade-only transition under reduced motion. This distance is a design default, not a measured GramaGo value.
 - **Free to choose?** Yes.
 
 ### DD-11 Score bands and thresholds
@@ -137,9 +138,9 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Free to choose?** Yes; update RESPONSIVE_RULES first.
 
 ### DD-13 Mode-card fills for grammar and conversation; Home card text colours
-- **Evidence**: writing card active blue (measured); grammar card peek lavender (translucent); conversation card never measured. Colour-per-mode on Home is uncertain.
-- **Default**: tokens in `feature.*.homeCardFill` with text by `accessible.onFeatureFill` (writing, grammar) and `accessible.onBrand` (conversation); all pass 4.5:1.
-- **Free to choose?** Yes; recommended to keep the three cards distinguishable and to avoid a fourth hue.
+- **Evidence**: writing card active blue (measured in the archive). In live GramaGo on 2026-10-12, the active Grammar card was purple and the adjacent Conversation peek was cyan. Flat screenshot samples were approximately `#8A5BF7` and `#7FD7E7` respectively; JPEG capture may vary slightly from the source assets.
+- **Default**: use `feature.*.homeCardFill` for the three distinct mode cards. The production Grammar fill is shifted a few RGB levels brighter than the screenshot sample so `accessible.onFeatureFill` passes 4.5:1. Production text uses `accessible.onFeatureFill` on all three; the live app's white lettering on purple is recorded as visual evidence, but production accessibility remains governed by DD-22.
+- **Free to choose?** Keep the sampled fills unless later evidence refines them.
 
 ### DD-27 Grammar vertical-slice feedback reconciliation — **APPROVED_V1**
 
@@ -205,13 +206,13 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Status**: APPROVED_V1.
 
 ### DD-23 Home and History small behaviours — **APPROVED_V1**
-- **Evidence**: PromptEntry opens a full-window composer sheet (S046); History cards' tap target not exercised; menu icon-tile colours unmeasured.
+- **Evidence**: PromptEntry opens a full-window composer sheet (S046); History cards' tap target not exercised; live Menu interaction on 2026-10-12 confirms five coloured round icons.
 - **Decision (approved)**: the **entire `InsightCard/History` card is the tap target** while it has a single destination (opens that item's LessonList). The group-header "See more" link lives outside the card and is a separate target. If nested actions are ever added inside a card, the interaction regions must be declared explicitly separate in COMPONENTS.md first (no implicit nested buttons; PATTERNS P1 exception list must name them).
-- **Also (defaults, same decision)**: `PromptEntry` opens `Sheet/Composer`; menu row icon tiles use `primaryTint` + `accessible.textOnPrimaryTint`; `feature.home.promptEntryFill` = `surface`.
+- **Also (defaults, same decision)**: `PromptEntry` opens `Sheet/Composer`; menu row icon tiles use semantic coloured fills with white glyphs; `feature.home.promptEntryFill` = `surface`.
 - **Status**: APPROVED_V1.
 
 ### DD-24 Paywall gating — **APPROVED_V1**
-- **Decision (approved)**: `paywallEnabled = false` for v1. The paywall is **not part of default v1 navigation**: omit `Banner/Promo`, `TopicCard/Plus`, the menu "Upgrade" row, the settings promo banner and `PaywallTemplate`. `PaywallCard`, `PlanCard` and `BenefitRow` are **OPTIONAL / DEFERRED** and are not built. Quota exhaustion shows `InlineError` with a plain message (no upsell). Brand-blue surfaces use `accessible.brandFill`.
+- **Decision (revised after live-app comparison, 2026-10-12)**: `paywallEnabled = false` for v1. The paywall route, purchase flow, `TopicCard/Plus`, Home `Banner/Promo` and quota-exhaustion upsell remain deferred. To preserve the observed Profile and Menu layouts, the settings Plus banner and Menu Upgrade row render as non-actionable previews. `PaywallCard`, `PlanCard` and `BenefitRow` remain optional/deferred. Quota exhaustion shows `InlineError` with a plain message. Brand-blue surfaces use `accessible.brandFill`.
 - **Still open for a future release**: purchase flow, pricing and copy (policy-blocked, §C). Enabling the flag requires a new decision.
 - **Status**: APPROVED_V1.
 

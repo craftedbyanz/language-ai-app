@@ -100,6 +100,95 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuClose => 'Close menu';
 
   @override
+  String get menuUpgrade => 'Upgrade Gramify Plus';
+
+  @override
+  String get streakOnFire => 'ON FIRE';
+
+  @override
+  String get streakConsecutiveDays => 'consecutive days';
+
+  @override
+  String get streakStartPrompt => 'Start your learning streak today!';
+
+  @override
+  String streakStudiedDays(int count) {
+    return 'Studied $count days';
+  }
+
+  @override
+  String get streakPreviousMonth => 'Previous month';
+
+  @override
+  String get streakNextMonth => 'Next month';
+
+  @override
+  String get historySectionWriting => 'Paragraphs';
+
+  @override
+  String get historyReviewTitle => 'Review';
+
+  @override
+  String get historySectionGrammar => 'Sentences';
+
+  @override
+  String get historySectionConversation => 'Conversations';
+
+  @override
+  String get historySeeMore => 'See more';
+
+  @override
+  String get settingsProfile => 'Profile';
+
+  @override
+  String get settingsFree => 'Free';
+
+  @override
+  String get settingsUpgradeTitle => 'Try Gramify Plus';
+
+  @override
+  String get settingsUpgradeCaption => 'Unlock higher limits with Plus';
+
+  @override
+  String get settingsUpgradeAction => 'Upgrade';
+
+  @override
+  String get settingsStudying => 'Studying';
+
+  @override
+  String get settingsEditProfile => 'Edit profile';
+
+  @override
+  String get settingsNotifications => 'Notifications';
+
+  @override
+  String get settingsSubscription => 'Subscription';
+
+  @override
+  String get settingsRedeem => 'Redeem code';
+
+  @override
+  String get settingsInvite => 'Invite friends';
+
+  @override
+  String get settingsRate => 'Rate app';
+
+  @override
+  String get settingsOther => 'Other';
+
+  @override
+  String get settingsFeedback => 'Send feedback';
+
+  @override
+  String get settingsTerms => 'Terms of service';
+
+  @override
+  String get settingsPrivacy => 'Privacy policy';
+
+  @override
+  String get settingsLogout => 'Sign out';
+
+  @override
   String get insightLessons => 'Lessons';
 
   @override
@@ -178,6 +267,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsLanguage => 'Language';
 
   @override
+  String get settingsAppLanguage => 'App language';
+
+  @override
+  String get settingsLearningLanguage => 'Learning language';
+
+  @override
   String get settingsLevel => 'Level';
 
   @override
@@ -204,6 +299,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsSaveFailed => 'Could not save your language. Try again.';
+
+  @override
+  String get settingsVersion => 'Lingua v0.1.0 (1)';
+
+  @override
+  String get settingsFooterCaption => 'Learn a little every day.';
 
   @override
   String get flashcards => 'Flashcards';
@@ -332,6 +433,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get correctTitle => 'Excellent';
+
+  @override
+  String get writingRecapTitle => 'Correct';
+
+  @override
+  String get writingYourAnswer => 'Your answer';
+
+  @override
+  String get writingViewAnalysis => 'View AI analysis';
 
   @override
   String get incorrectTitle => 'Not correct yet';

@@ -226,17 +226,44 @@ class StreakPill extends StatelessWidget {
     button: true,
     enabled: onPressed != null,
     label: semanticLabel,
-    child: TextButton.icon(
-      onPressed: onPressed,
-      icon: const Icon(
-        Icons.local_fire_department_rounded,
-        color: ColorTokens.warning,
-        size: IconTokens.inline,
-      ),
-      label: Text(
-        '$count',
-        style: TypographyTokens.bodyStrong.copyWith(
-          color: ColorTokens.warningText,
+    child: Material(
+      color: ColorTokens.surface,
+      borderRadius: BorderRadius.circular(RadiusTokens.full),
+      elevation: SpaceTokens.xs,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(RadiusTokens.full),
+        child: SizedBox(
+          height: ControlTokens.pillSmallHeight,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.md),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.bar_chart_rounded,
+                  size: IconTokens.inline,
+                  color: ColorTokens.textFaint,
+                ),
+                const SizedBox(width: SpaceTokens.sm),
+                Text(
+                  MediaQuery.sizeOf(context).width <
+                          LayoutTokens.hideBarCaptionsBelow
+                      ? '$count'
+                      : semanticLabel,
+                  style: TypographyTokens.microLabel.copyWith(
+                    color: ColorTokens.textSecondary,
+                  ),
+                ),
+                const SizedBox(width: SpaceTokens.xs),
+                const Icon(
+                  Icons.local_fire_department_rounded,
+                  color: ColorTokens.warning,
+                  size: IconTokens.inline,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     ),
@@ -268,44 +295,141 @@ class FloatingBottomBar extends StatelessWidget {
   final VoidCallback? onSettings;
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-    borderRadius: BorderRadius.circular(RadiusTokens.full),
-    child: BackdropFilter(
-      filter: ImageFilter.blur(
-        sigmaX: GlassTokens.barBlur,
-        sigmaY: GlassTokens.barBlur,
-      ),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.sm),
-        decoration: BoxDecoration(
-          color: GlassTokens.barFill,
-          borderRadius: BorderRadius.circular(RadiusTokens.full),
-          boxShadow: ShadowTokens.hairline,
+  Widget build(BuildContext context) => SizedBox(
+    height: LayoutTokens.homeDockHeight + ControlTokens.pillSmallHeight,
+    child: Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        Positioned.fill(
+          top: ControlTokens.pillSmallHeight,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(RadiusTokens.sheet),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: GlassTokens.barBlur,
+                sigmaY: GlassTokens.barBlur,
+              ),
+              child: DecoratedBox(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [GlassTokens.barFill, ColorTokens.primaryTint],
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpaceTokens.lg,
+                  ),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _DockButton(
+                          label: historyLabel,
+                          icon: Icons.history_rounded,
+                          onPressed: onHistory,
+                        ),
+                        _DockButton(
+                          label: menuLabel,
+                          icon: Icons.stars_rounded,
+                          onPressed: onMenu,
+                          showLabel:
+                              constraints.maxWidth >=
+                              LayoutTokens.hideBarCaptionsBelow,
+                        ),
+                        _DockButton(
+                          label: settingsLabel,
+                          icon: Icons.person_outline_rounded,
+                          onPressed: onSettings,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              tooltip: historyLabel,
-              onPressed: onHistory,
-              icon: const Icon(Icons.history_rounded),
+        Positioned(
+          top: SpaceTokens.md,
+          child: StreakPill(
+            count: streakCount,
+            semanticLabel: streakLabel,
+            onPressed: onStreak,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _DockButton extends StatelessWidget {
+  const _DockButton({
+    required this.label,
+    required this.icon,
+    this.onPressed,
+    this.showLabel = false,
+  });
+  final String label;
+  final IconData icon;
+  final VoidCallback? onPressed;
+  final bool showLabel;
+
+  @override
+  Widget build(BuildContext context) => Tooltip(
+    message: label,
+    child: Semantics(
+      button: true,
+      label: label,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(RadiusTokens.full),
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.full),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              minWidth: ControlTokens.minTouchTarget,
+              minHeight: ControlTokens.minTouchTarget,
             ),
-            StreakPill(
-              count: streakCount,
-              semanticLabel: streakLabel,
-              onPressed: onStreak,
+            child: Center(
+              child: Container(
+                constraints: const BoxConstraints(
+                  minWidth: ControlTokens.iconButton,
+                  minHeight: ControlTokens.iconButton,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: showLabel ? SpaceTokens.sm : SpaceTokens.xs,
+                ),
+                decoration: BoxDecoration(
+                  color: GlassTokens.barFill,
+                  borderRadius: BorderRadius.circular(RadiusTokens.full),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      icon,
+                      size: IconTokens.inline,
+                      color: ColorTokens.textPrimary,
+                    ),
+                    if (showLabel) ...[
+                      const SizedBox(width: SpaceTokens.xs),
+                      Text(
+                        label,
+                        style: TypographyTokens.bodyStrong.copyWith(
+                          color: ColorTokens.textPrimary,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
             ),
-            IconButton(
-              tooltip: menuLabel,
-              onPressed: onMenu,
-              icon: const Icon(Icons.apps_rounded),
-            ),
-            IconButton(
-              tooltip: settingsLabel,
-              onPressed: onSettings,
-              icon: const Icon(Icons.settings_outlined),
-            ),
-          ],
+          ),
         ),
       ),
     ),
@@ -313,10 +437,16 @@ class FloatingBottomBar extends StatelessWidget {
 }
 
 final class MenuShortcut {
-  const MenuShortcut({required this.label, required this.icon, this.onPressed});
+  const MenuShortcut({
+    required this.label,
+    required this.icon,
+    required this.iconFill,
+    this.onPressed,
+  });
 
   final String label;
   final IconData icon;
+  final Color iconFill;
   final VoidCallback? onPressed;
 }
 
@@ -335,53 +465,69 @@ class MenuOverlay extends StatelessWidget {
   final VoidCallback onClose;
 
   @override
-  Widget build(BuildContext context) => Center(
-    child: Padding(
-      padding: const EdgeInsets.all(SpaceTokens.xl),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: LayoutTokens.sheetWidth),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(RadiusTokens.sheet),
+  Widget build(BuildContext context) => Material(
+    color: Colors.transparent,
+    child: Stack(
+      children: [
+        Positioned.fill(
           child: BackdropFilter(
             filter: ImageFilter.blur(
-              sigmaX: GlassTokens.barBlur,
-              sigmaY: GlassTokens.barBlur,
+              sigmaX: GlassTokens.menuBlur,
+              sigmaY: GlassTokens.menuBlur,
             ),
-            child: Material(
-              color: GlassTokens.barFill,
-              child: Padding(
-                padding: const EdgeInsets.all(SpaceTokens.lg),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Semantics(
-                            header: true,
-                            child: Text(title, style: TypographyTokens.heading),
-                          ),
-                        ),
-                        IconButton(
-                          tooltip: closeLabel,
-                          onPressed: onClose,
-                          icon: const Icon(Icons.close_rounded),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: SpaceTokens.sm),
-                    for (var index = 0; index < shortcuts.length; index++)
-                      _MenuShortcutRow(
-                        shortcut: shortcuts[index],
-                        autofocus: index == 0,
-                      ),
+            child: const DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    GlassTokens.menuFill,
+                    GlassTokens.menuFill,
+                    ColorTokens.primaryTint,
                   ],
                 ),
               ),
             ),
           ),
         ),
-      ),
+        Align(
+          alignment: const Alignment(0, LayoutTokens.menuListAlignmentY),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.xl),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: LayoutTokens.sheetWidth,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (var index = 0; index < shortcuts.length; index++)
+                    _MenuShortcutRow(
+                      shortcut: shortcuts[index],
+                      autofocus: false,
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(SpaceTokens.lg),
+            child: TextButton.icon(
+              onPressed: onClose,
+              icon: const Icon(Icons.stars_rounded, size: IconTokens.inline),
+              label: Text(title),
+              style: TextButton.styleFrom(
+                backgroundColor: GlassTokens.barFill,
+                foregroundColor: ColorTokens.textSecondary,
+                shape: const StadiumBorder(),
+              ),
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -394,9 +540,6 @@ class _MenuShortcutRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accessible = Theme.of(context)
-        .extension<DesignTokensTheme>()!
-        .accessible;
     return CanonicalFocusIndicator(
       borderRadius: BorderRadius.circular(RadiusTokens.card),
       child: TextButton(
@@ -404,8 +547,9 @@ class _MenuShortcutRow extends StatelessWidget {
         onPressed: shortcut.onPressed,
         style: TextButton.styleFrom(
           foregroundColor: ColorTokens.textPrimary,
+          disabledForegroundColor: ColorTokens.textPrimary,
           minimumSize: const Size.fromHeight(LayoutTokens.rowMenu),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(RadiusTokens.card),
           ),
@@ -413,23 +557,23 @@ class _MenuShortcutRow extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(SpaceTokens.sm),
+              width: IconTokens.tile,
+              height: IconTokens.tile,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: ColorTokens.primaryTint,
+                color: shortcut.iconFill,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 shortcut.icon,
-                size: IconTokens.tile,
-                color: accessible.textOnPrimaryTint,
+                size: IconTokens.inline,
+                color: ColorTokens.textOnPrimary,
               ),
             ),
             const SizedBox(width: SpaceTokens.md),
-            Expanded(
+            Flexible(
               child: Text(shortcut.label, style: TypographyTokens.bodyStrong),
             ),
-            if (shortcut.onPressed != null)
-              const Icon(Icons.chevron_right_rounded, size: IconTokens.inline),
           ],
         ),
       ),

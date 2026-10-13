@@ -96,6 +96,53 @@ final class WritingExerciseViewModel extends Notifier<WritingExerciseState> {
     }
   }
 
+  Future<void> revealAnalysis() async {
+    final current = state;
+    if (current is! WritingFeedbackCorrect ||
+        current.stage != WritingCorrectStage.recap) {
+      return;
+    }
+    final requestId = ++_nextRequestId;
+    state = WritingFeedbackCorrect(
+      lesson: current.lesson,
+      exerciseIndex: current.exerciseIndex,
+      answer: current.answer,
+      grade: current.grade,
+      stage: WritingCorrectStage.analysisLoading,
+    );
+    // The local repository already returns the detailed analysis. A backend
+    // adapter should resolve this stage from its analysis response instead.
+    await Future<void>.delayed(MotionTokens.feedbackMinimumDwell);
+    if (!ref.mounted || requestId != _nextRequestId) return;
+    final active = state;
+    if (active is! WritingFeedbackCorrect ||
+        active.stage != WritingCorrectStage.analysisLoading) {
+      return;
+    }
+    state = WritingFeedbackCorrect(
+      lesson: current.lesson,
+      exerciseIndex: current.exerciseIndex,
+      answer: current.answer,
+      grade: current.grade,
+      stage: WritingCorrectStage.analysis,
+    );
+  }
+
+  void cancelAnalysis() {
+    final current = state;
+    if (current is! WritingFeedbackCorrect ||
+        current.stage != WritingCorrectStage.analysisLoading) {
+      return;
+    }
+    _nextRequestId++;
+    state = WritingFeedbackCorrect(
+      lesson: current.lesson,
+      exerciseIndex: current.exerciseIndex,
+      answer: current.answer,
+      grade: current.grade,
+    );
+  }
+
   void cancelSubmission() {
     final current = state;
     if (current case WritingSubmitting()) {

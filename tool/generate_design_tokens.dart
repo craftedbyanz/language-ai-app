@@ -204,7 +204,7 @@ class AnswerColors {
       }
       return (
         'TextStyle',
-        'TextStyle(fontSize: $size, height: ${height / size}, fontWeight: FontWeight.w$weight$letterSpacing)',
+        'TextStyle(fontFamily: TypographyTokens.family, fontSize: $size, height: ${height / size}, fontWeight: FontWeight.w$weight$letterSpacing)',
       );
     }
     if (value is String) {

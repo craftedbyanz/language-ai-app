@@ -3,6 +3,12 @@ final class InsightCopy {
     required this.title,
     required this.history,
     required this.streak,
+    required this.streakOnFire,
+    required this.streakConsecutiveDays,
+    required this.streakStartPrompt,
+    required this.streakStudiedDays,
+    required this.streakPreviousMonth,
+    required this.streakNextMonth,
     required this.back,
     required this.lessons,
     required this.writing,
@@ -21,11 +27,22 @@ final class InsightCopy {
     required this.historyEmptyTitle,
     required this.historyEmptyBody,
     required this.historyNoResults,
+    required this.historySectionWriting,
+    required this.historyReviewTitle,
+    required this.historySectionGrammar,
+    required this.historySectionConversation,
+    required this.historySeeMore,
   });
 
   final String title;
   final String history;
   final String streak;
+  final String streakOnFire;
+  final String streakConsecutiveDays;
+  final String streakStartPrompt;
+  final String Function(int count) streakStudiedDays;
+  final String streakPreviousMonth;
+  final String streakNextMonth;
   final String back;
   final String lessons;
   final String writing;
@@ -44,4 +61,9 @@ final class InsightCopy {
   final String historyEmptyTitle;
   final String historyEmptyBody;
   final String historyNoResults;
+  final String historySectionWriting;
+  final String historyReviewTitle;
+  final String historySectionGrammar;
+  final String historySectionConversation;
+  final String historySeeMore;
 }

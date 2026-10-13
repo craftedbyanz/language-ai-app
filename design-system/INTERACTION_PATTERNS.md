@@ -9,6 +9,7 @@ Reusable flows. Notation: `→` is a user or system transition. Tags: **OBSERVED
 ```
 TopicPicker → LessonList → Editor(empty) → [type] → Editor(filled, submit enabled)
   → Submit → FeedbackSheet(loading) → FeedbackSheet(verdict)
+      └─ Writing correct: compact recap → View AI analysis → loading skeleton → detailed verdict
       ├─ Edit / Fix  → Editor(filled, same step, text kept) → Submit …
       └─ Next        → Editor(empty, step n+1, stepper advances, next sentence highlighted)
   → … → final step → CompletionTemplate  [DD-01 default]
@@ -20,7 +21,8 @@ TopicPicker → LessonList → Editor(empty) → [type] → Editor(filled, submi
 | Empty editor | Submit disabled (ring); answer card autofocus; hints blurred | OBSERVED |
 | Filled editor | Submit enabled (dark filled circle) | OBSERVED |
 | Submit | Opens `FeedbackSheet` in `loading` with skeleton; editor stays visible and un-scrimmed | OBSERVED |
-| Verdict (writing) | `WritingCorrect` / `WritingIncorrect`; both offer Edit + Next | OBSERVED |
+| Detailed verdict (writing) | `WritingCorrect` / `WritingIncorrect`; both offer Edit + Next | OBSERVED |
+| Correct writing recap | A compact “Correct” sheet shows the learner answer and offers “View AI analysis” and Next. The analysis action replaces it with a skeleton sheet, then a detailed “Excellent” sheet with Edit + Next. The learner's answer remains visible underneath. | OBSERVED in live GramaGo app, 2026-10-12 |
 | Verdict (grammar) | `GrammarIncorrect` offers Fix + Next; `GrammarCorrect` is compact, offers Next only; no loading frame was seen on a correct grammar answer (INFERRED: local exact-match) | OBSERVED / INFERRED |
 | Next | Advances exactly one step; clears field; highlights the next source sentence (writing) or loads the next prompt (grammar). Works the same after correct and incorrect verdicts | OBSERVED |
 | Edit / Fix | Closes the sheet, keeps the learner's text, returns focus to the field | OBSERVED |
@@ -62,6 +64,7 @@ Deck detail → [Review (N)] → (first time: tutorial overlay → "Got it") →
   → Close → deck detail (no confirmation)
 ```
 - v1: the four grade buttons are the canonical interaction (keys 1–4 grade, Space flips). No swipe grading and no tutorial overlay in v1 (DD-25, APPROVED_V1); swipe may later be added as a progressive enhancement that mirrors the buttons.
+- Live GramaGo verification on 2026-10-12: the four grade controls remain visible below both the card front and back. Tapping the card reveals its translation, gloss and example in place. The controls' activation before the flip was not tested.
 - "More" offers: guide, card colour, autoplay (AX only). OBSERVED.
 
 ## 5. Exit confirmation
@@ -85,7 +88,7 @@ Active task (editor / chat) → Close
 | `Sheet/Create` | create action | none | close | trapped | S030 |
 | `Sheet/Info` | info pill | ≈ 20% black | close | trapped | S032 |
 | `Sheet/Paywall` | banner / menu | none | close | trapped | S045 |
-| `MenuOverlay` | Menu pill | frosted + dim | tap backdrop (INFERRED) | trapped | S011; DD-14 |
+| `MenuOverlay` | Menu pill | frosted + blue lower wash | Menu pill, backdrop, Escape | trapped | S011; live interaction 2026-10-12 |
 | `PopupMenu` | More button | none | outside tap / select | menu | S051 |
 | `FAB` fan | FAB tap | ≈ 20% black | close pill / outside | menu | S031 |
 | Tutorial overlay (not in v1, DD-25) | first SRS review | strong | "Got it" | trapped | S014 |
@@ -107,7 +110,8 @@ Stacking: only one modal surface at a time; a non-modal sheet may coexist with t
 | AI grading (any exercise) | `FeedbackSheet` skeleton + "Grading…" title + spinner + Cancel | OBSERVED |
 | Chat reply | `ChatBubble/Typing` (three dots) for several seconds | OBSERVED |
 | Opening AI turn | Typing indicator or skeleton, then first bubble | OBSERVED |
-| Page/list loading | none seen | DD-04 |
+| Topic loading | Spinner in the topic grid while keeping the header and filter rail visible. | OBSERVED in live GramaGo app, 2026-10-12 |
+| Lesson list loading | Skeleton lesson cards occupy the carousel before the real cards appear. | OBSERVED in live GramaGo app, 2026-10-12 |
 Rule: loading always **preserves the user's work on screen** and offers cancel for AI calls ≥ 3 s (recommended).
 
 ## 9. Disabled / enabled submit

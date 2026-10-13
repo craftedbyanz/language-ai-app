@@ -254,6 +254,180 @@ abstract class AppLocalizations {
   /// **'Close menu'**
   String get menuClose;
 
+  /// No description provided for @menuUpgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade Gramify Plus'**
+  String get menuUpgrade;
+
+  /// No description provided for @streakOnFire.
+  ///
+  /// In en, this message translates to:
+  /// **'ON FIRE'**
+  String get streakOnFire;
+
+  /// No description provided for @streakConsecutiveDays.
+  ///
+  /// In en, this message translates to:
+  /// **'consecutive days'**
+  String get streakConsecutiveDays;
+
+  /// No description provided for @streakStartPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your learning streak today!'**
+  String get streakStartPrompt;
+
+  /// No description provided for @streakStudiedDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Studied {count} days'**
+  String streakStudiedDays(int count);
+
+  /// No description provided for @streakPreviousMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous month'**
+  String get streakPreviousMonth;
+
+  /// No description provided for @streakNextMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Next month'**
+  String get streakNextMonth;
+
+  /// No description provided for @historySectionWriting.
+  ///
+  /// In en, this message translates to:
+  /// **'Paragraphs'**
+  String get historySectionWriting;
+
+  /// No description provided for @historyReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get historyReviewTitle;
+
+  /// No description provided for @historySectionGrammar.
+  ///
+  /// In en, this message translates to:
+  /// **'Sentences'**
+  String get historySectionGrammar;
+
+  /// No description provided for @historySectionConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversations'**
+  String get historySectionConversation;
+
+  /// No description provided for @historySeeMore.
+  ///
+  /// In en, this message translates to:
+  /// **'See more'**
+  String get historySeeMore;
+
+  /// No description provided for @settingsProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get settingsProfile;
+
+  /// No description provided for @settingsFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get settingsFree;
+
+  /// No description provided for @settingsUpgradeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Gramify Plus'**
+  String get settingsUpgradeTitle;
+
+  /// No description provided for @settingsUpgradeCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock higher limits with Plus'**
+  String get settingsUpgradeCaption;
+
+  /// No description provided for @settingsUpgradeAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get settingsUpgradeAction;
+
+  /// No description provided for @settingsStudying.
+  ///
+  /// In en, this message translates to:
+  /// **'Studying'**
+  String get settingsStudying;
+
+  /// No description provided for @settingsEditProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get settingsEditProfile;
+
+  /// No description provided for @settingsNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotifications;
+
+  /// No description provided for @settingsSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get settingsSubscription;
+
+  /// No description provided for @settingsRedeem.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeem code'**
+  String get settingsRedeem;
+
+  /// No description provided for @settingsInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite friends'**
+  String get settingsInvite;
+
+  /// No description provided for @settingsRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate app'**
+  String get settingsRate;
+
+  /// No description provided for @settingsOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get settingsOther;
+
+  /// No description provided for @settingsFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get settingsFeedback;
+
+  /// No description provided for @settingsTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of service'**
+  String get settingsTerms;
+
+  /// No description provided for @settingsPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get settingsPrivacy;
+
+  /// No description provided for @settingsLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get settingsLogout;
+
   /// No description provided for @insightLessons.
   ///
   /// In en, this message translates to:
@@ -404,6 +578,18 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get settingsLanguage;
 
+  /// No description provided for @settingsAppLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'App language'**
+  String get settingsAppLanguage;
+
+  /// No description provided for @settingsLearningLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning language'**
+  String get settingsLearningLanguage;
+
   /// No description provided for @settingsLevel.
   ///
   /// In en, this message translates to:
@@ -457,6 +643,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not save your language. Try again.'**
   String get settingsSaveFailed;
+
+  /// No description provided for @settingsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Lingua v0.1.0 (1)'**
+  String get settingsVersion;
+
+  /// No description provided for @settingsFooterCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn a little every day.'**
+  String get settingsFooterCaption;
 
   /// No description provided for @flashcards.
   ///
@@ -679,6 +877,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Excellent'**
   String get correctTitle;
+
+  /// No description provided for @writingRecapTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get writingRecapTitle;
+
+  /// No description provided for @writingYourAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get writingYourAnswer;
+
+  /// No description provided for @writingViewAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'View AI analysis'**
+  String get writingViewAnalysis;
 
   /// No description provided for @incorrectTitle.
   ///

@@ -323,7 +323,7 @@ abstract final class FeatureTokens {
   static const Color conversationCta = Color(0xFF2563EB);
 
   /// feature.conversation.homeCardFill
-  static const Color conversationHomeCardFill = Color(0xFF2563EB);
+  static const Color conversationHomeCardFill = Color(0xFF7FD7E7);
 
   /// feature.conversation.userBubble
   static const Color conversationUserBubble = Color(0xFF2563EB);
@@ -379,7 +379,7 @@ abstract final class FeatureTokens {
   static const Color grammarCta = Color(0xFFCDFD1A);
 
   /// feature.grammar.homeCardFill
-  static const Color grammarHomeCardFill = Color(0xFFC6A8FE);
+  static const Color grammarHomeCardFill = Color(0xFF8D5EF7);
 
   /// feature.grammar.progress
   static const Color grammarProgress = Color(0xFF10B981);
@@ -482,6 +482,12 @@ abstract final class GlassTokens {
 
   /// glass.button.fill
   static const Color buttonFill = Color.fromRGBO(255, 255, 255, 0.20);
+
+  /// glass.menu.blur
+  static const double menuBlur = 20.0;
+
+  /// glass.menu.fill
+  static const Color menuFill = Color.fromRGBO(255, 255, 255, 0.55);
 }
 
 abstract final class GradeTokens {
@@ -507,6 +513,9 @@ abstract final class IconTokens {
 
   /// icon.inline
   static const double inline = 15.0;
+
+  /// icon.streakHero
+  static const double streakHero = 96.0;
 
   /// icon.tile
   static const double tile = 30.0;
@@ -570,6 +579,9 @@ abstract final class LayoutTokens {
   /// layout.historyCardWidth
   static const double historyCardWidth = 123.0;
 
+  /// layout.homeDockHeight
+  static const double homeDockHeight = 62.0;
+
   /// layout.inlinePopoverOffset
   static const double inlinePopoverOffset = 4.0;
 
@@ -587,6 +599,9 @@ abstract final class LayoutTokens {
 
   /// layout.marginScreen
   static const double marginScreen = 18.0;
+
+  /// layout.menuListAlignmentY
+  static const double menuListAlignmentY = 0.35;
 
   /// layout.modeCardMinHeight
   static const double modeCardMinHeight = 370.0;
@@ -658,6 +673,9 @@ abstract final class MotionTokens {
 
   /// motion.sheet
   static const Duration sheet = Duration(milliseconds: 220);
+
+  /// motion.sheetEnterOffset
+  static const double sheetEnterOffset = 12.0;
 }
 
 abstract final class RadiusTokens {
@@ -772,6 +790,7 @@ abstract final class StateTokens {
 abstract final class TypographyTokens {
   /// typography.body
   static const TextStyle body = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 14,
     height: 1.4285714285714286,
     fontWeight: FontWeight.w400,
@@ -779,6 +798,7 @@ abstract final class TypographyTokens {
 
   /// typography.bodyStrong
   static const TextStyle bodyStrong = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 14,
     height: 1.4285714285714286,
     fontWeight: FontWeight.w600,
@@ -786,6 +806,7 @@ abstract final class TypographyTokens {
 
   /// typography.caption
   static const TextStyle caption = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 12,
     height: 1.3333333333333333,
     fontWeight: FontWeight.w400,
@@ -793,6 +814,7 @@ abstract final class TypographyTokens {
 
   /// typography.display
   static const TextStyle display = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 32,
     height: 1.125,
     fontWeight: FontWeight.w800,
@@ -800,17 +822,18 @@ abstract final class TypographyTokens {
 
   /// typography.displayCompact
   static const TextStyle displayCompact = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 28,
     height: 1.1428571428571428,
     fontWeight: FontWeight.w800,
   );
 
   /// typography.family
-  static const String family =
-      "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+  static const String family = "PlusJakartaSans";
 
   /// typography.heading
   static const TextStyle heading = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 17,
     height: 1.2941176470588236,
     fontWeight: FontWeight.w700,
@@ -818,6 +841,7 @@ abstract final class TypographyTokens {
 
   /// typography.microLabel
   static const TextStyle microLabel = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 10,
     height: 1.2,
     fontWeight: FontWeight.w600,
@@ -827,6 +851,7 @@ abstract final class TypographyTokens {
 
   /// typography.title
   static const TextStyle title = TextStyle(
+    fontFamily: TypographyTokens.family,
     fontSize: 24,
     height: 1.1666666666666667,
     fontWeight: FontWeight.w700,

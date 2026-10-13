@@ -35,7 +35,7 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Anatomy**: leading slot (BackButton or close) · centre slot (title **or** ProgressStepper) · trailing slot (0–1 action).
 - **Variants**: `Pushed`, `Modal`, `Progress`, `Search` (→ COMPONENT_VARIANTS).
 - **States**: default; scrolled (keep static, DD-10).
-- **Layout/dimensions**: height `layout.navBarHeight` (41); leading/trailing hit areas `control.backButton` (33) visual, `control.minTouchTarget` hit.
+- **Layout/dimensions**: header content `layout.navBarHeight` (41) with `space.lg` vertical allowance (57 total); leading/trailing hit areas `control.backButton` (33) visual, `control.minTouchTarget` hit.
 - **Spacing**: horizontal inset `layout.marginScreen`; slot gap `space.sm`.
 - **Typography**: centre title `typography.heading`, `textPrimary`, one line, ellipsis.
 - **Colours**: transparent on `background`; trailing text actions `textPrimary`.
@@ -56,27 +56,27 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 
 ### FloatingBottomBar
 - **Purpose**: shortcut hub on the dashboard only.
-- **Anatomy**: left icon button · centre cluster (StreakPill + Menu pill) · right icon button. Glass backdrop.
+- **Anatomy**: full-width frosted dock at the bottom edge · history circle left · Menu pill centred · profile circle right · StreakPill floating above the centre.
 - **States**: default; pressed per control.
 - **Dimensions**: icon buttons `control.iconButton` (36); streak pill height `control.pillSmallHeight` (24).
-- **Spacing**: stands off from screen edges by `layout.marginDashboard`; internal gaps `space.sm`.
+- **Spacing**: dock flush to the window edges; controls inset by `space.lg`; streak overlaps the dock top.
 - **Typography**: pill labels `caption`/`bodyStrong`; streak count in `warning`.
 - **Colours**: `glass.bar`; icons `textPrimary`.
-- **Interaction**: left → history, streak pill → streak, Menu → MenuOverlay, right → settings/profile.
-- **Accessibility**: a toolbar; each control labelled ("History", "Streak: N days", "Menu", "Settings"). Streak name includes the value.
-- **Responsive**: stays floating; on compact it keeps all four controls and drops pill captions first.
+- **Interaction**: left → history, streak pill → streak, Menu → MenuOverlay, right → Profile.
+- **Accessibility**: a toolbar; each control labelled ("History", "Streak: N days", "Menu", "Profile"). Streak name includes the value.
+- **Responsive**: keeps all four controls; the dock adapts to window width.
 - **Evidence**: S001, S011.
 
 ### MenuOverlay
 - **Purpose**: full-window shortcut hub.
-- **Anatomy**: frosted dimmed backdrop over the dashboard · centred stack of 5 rows (round coloured icon + label) · dismiss affordance (dismissal behaviour untested: DD-14).
+- **Anatomy**: full-window blurred backdrop over the dashboard with a blue wash near the bottom · centred stack of 5 rows (round coloured icon + label) · Menu pill at bottom to dismiss.
 - **Variants**: single.
 - **States**: closed, open.
 - **Dimensions**: row pitch `layout.rowMenu` (54); icon tile `icon.tile` (30).
-- **Colours**: `glass.bar` blur + `overlayScrim.default`; row labels `textPrimary` on glass.
-- **Rows (data-driven, default order)**: Insight · Word game · Flashcards · Streak · (Upgrade, only when the paywall is enabled, DD-24). Icon tile: `primaryTint` fill with `accessible.textOnPrimaryTint` glyph (DD-23).
-- **Interaction**: row press pushes the destination screen. Dismiss by backdrop tap, Escape, or an explicit close control (DD-14 default).
-- **Accessibility**: modal; focus trapped; Escape closes; first row focused; rows are buttons.
+- **Colours**: `glass.bar` blur + `color.primaryTint` lower wash; row labels `textPrimary` on glass; each icon tile uses its semantic colour token with white glyph.
+- **Rows (data-driven, default order)**: Insight · Upgrade Gramify Plus · Flashcards · My streak · FlowLetter. Upgrade and FlowLetter remain non-actionable until their routes are implemented.
+- **Interaction**: available rows push the destination screen. Upgrade and FlowLetter are non-actionable previews until their routes exist. Dismiss by backdrop tap, Escape, or the bottom Menu pill.
+- **Accessibility**: modal; focus trapped; Escape closes; available rows are buttons and unavailable rows expose disabled state. Keyboard focus starts on the first Tab press.
 - **Responsive**: centred column, max width `layout.sheetWidth`.
 - **Evidence**: S011 (active).
 
@@ -338,13 +338,14 @@ and trailing submit action remain reachable after both surfaces.
 
 ### FeedbackSheet
 - **Purpose**: the single container for every AI verdict.
-- **Anatomy**: grabber · header (verdict icon + coloured title + optional score + close) · body sections (CorrectionDiff, explanation, FeedbackBulletList…) · FeedbackActionRow · optional rating row.
-- **Variants**: `WritingCorrect`, `WritingIncorrect`, `GrammarCorrect`, `GrammarIncorrect`, `ConversationScoreFeedback`. State `loading` (skeleton) applies to all.
+- **Anatomy**: grabber · header (verdict icon + coloured title + optional score + close on detailed variants) · body sections (AnswerRecapBox or CorrectionDiff, explanation, FeedbackBulletList…) · FeedbackActionRow · optional rating row.
+- **Variants**: `WritingRecap`, `WritingCorrect`, `WritingIncorrect`, `GrammarCorrect`, `GrammarIncorrect`, `ConversationScoreFeedback`. State `loading` (skeleton) applies to all. `WritingRecap` is a compact correct verdict with answer recap, View AI analysis, and Next; analysis replaces it with loading and then detailed `WritingCorrect`.
 - **States**: loading, ready, minimised, dismissed.
 - **Dimensions**: inherits `Sheet`; compact content for `GrammarCorrect`.
 - **Typography**: verdict `heading`; section labels `microLabel`; body `body`.
 - **Colours**: header icon/accent from `feedback.correct | incorrect | partial`; verdict title text uses `accessible.successText` / `accessible.errorText` / `accessible.partialText`; the header icon keeps the raw `feedback.*` colour; sections per variant table.
 - **Composition**: exactly one `FeedbackSheet` is mounted at a time; `loading` → verdict replaces content in place (no second sheet). Scenario uses the Writing variants (DD-06).
+- **Motion**: the active sheet enters/exits using `motion.sheet`, `motion.easing`, and `motion.sheetEnterOffset`; the outgoing sheet is inert during replacement. Reduced motion uses a short fade only (DD-10 default).
 - **Interaction**: grabber minimises to the HintChipBar sparkle chip; actions route per variant. Rating thumbs: `Writing*` only.
 - **Accessibility**: role dialog (non-modal), label = verdict; announces loading and result (`aria-live=polite`); focus moves to the sheet on ready, returns to the editor on dismiss.
 
@@ -518,7 +519,7 @@ without relying on color.
 - **Anatomy**: `Sheet/Paywall` containing PlanCard ×2 (selected = `primaryTint` fill + `primary` border; discount badge) · BenefitRow ×N (icon, title, body) · full-width CTA · restore/terms links.
 - **PlanCard**: radio · plan name · price line (product data) · optional discount `StatusBadge`; selected = `primaryTint` fill + 2 ru `primary` border + filled radio; `radius.card`; one plan always selected; name = "plan, price, selected".
 - **BenefitRow**: `icon.tile` tinted icon · title (`bodyStrong`) · body (`body` `textSecondary`); not interactive; data-driven count.
-- **Status**: **OPTIONAL / DEFERRED for v1** (DD-24, APPROVED_V1: `paywallEnabled = false`, not in default navigation). `PaywallTemplate`, `PlusTile`, `Banner/Promo`, the Upgrade menu row and quota-exhaustion paywall are all gated by one flag `paywallEnabled` (default false).
+- **Status**: **OPTIONAL / DEFERRED for v1** (DD-24: `paywallEnabled = false`, not in default navigation). `PaywallTemplate`, `PlusTile`, Home `Banner/Promo` and quota-exhaustion paywall remain gated. The Profile Plus banner and Menu Upgrade row are visual previews without a purchase action.
 - **Evidence**: S045 (view-only).
 
 ### InsightCard
@@ -605,8 +606,8 @@ These were used by earlier entries (`FeedbackActionRow`, `Dialog`, `Sheet/Create
 
 ### StreakPill
 - **Purpose**: streak shortcut in `FloatingBottomBar`.
-- **Anatomy**: flame icon (`color.warning`) · count (`bodyStrong`, `accessible.warningText`) · optional caption (hidden below `layout.hideBarCaptionsBelow`).
-- **Dimensions**: height `control.pillSmallHeight`; `radius.full`; `glass.bar` backdrop shared with the bar.
+- **Anatomy**: small progress motif · localized streak count · flame icon (`color.warning`) inside a white pill floating over the dock.
+- **Dimensions**: height `control.pillSmallHeight`; `radius.full`; white surface and a subtle raised shadow.
 - **Accessibility**: button, name "Streak: N days".
 
 ### Composition constraints (all families)

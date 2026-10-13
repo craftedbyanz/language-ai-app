@@ -23,6 +23,9 @@ final class WritingCopy {
     required this.grading,
     required this.cancel,
     required this.correctTitle,
+    required this.recapTitle,
+    required this.yourAnswer,
+    required this.viewAnalysis,
     required this.incorrectTitle,
     required this.correction,
     required this.improvements,
@@ -59,6 +62,9 @@ final class WritingCopy {
   final String grading;
   final String cancel;
   final String correctTitle;
+  final String recapTitle;
+  final String yourAnswer;
+  final String viewAnalysis;
   final String incorrectTitle;
   final String correction;
   final String improvements;

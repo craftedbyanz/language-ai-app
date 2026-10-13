@@ -21,18 +21,27 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await tester.tap(find.byTooltip('Settings'));
+      await tester.tap(find.byTooltip('Profile'));
       await tester.pumpAndSettle();
-      expect(find.text('Language'), findsOneWidget);
-      await tester.tap(find.text('Language'));
+      expect(find.text('A1'), findsOneWidget);
+      expect(find.text('App language'), findsOneWidget);
+      await tester.ensureVisible(find.text('App language'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('App language'));
       await tester.pumpAndSettle();
       expect(find.text('Tiếng Việt'), findsOneWidget);
       await tester.tap(find.text('Tiếng Việt'));
       await tester.tap(find.text('Apply'));
       await tester.pumpAndSettle();
 
-      expect(find.text('Cài đặt'), findsWidgets);
-      expect(find.text('Ngôn ngữ'), findsOneWidget);
+      expect(find.text('Profile'), findsOneWidget);
+      expect(find.text('Cài đặt chung'), findsOneWidget);
+      expect(find.text('Ngôn ngữ ứng dụng'), findsOneWidget);
+      await tester.ensureVisible(find.text('Lingua v0.1.0 (1)'));
+      await tester.pumpAndSettle();
+      expect(find.text('Khác'), findsOneWidget);
+      expect(find.text('Đăng xuất'), findsOneWidget);
+      expect(find.text('Học một chút mỗi ngày.'), findsOneWidget);
       expect((await localeStore.load())?.languageCode, 'vi');
       expect(tester.takeException(), isNull);
 

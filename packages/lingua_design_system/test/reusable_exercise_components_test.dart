@@ -63,17 +63,18 @@ void main() {
         ],
       ),
     );
-    final buttons = tester
-        .widgetList<AppButton>(find.byType(AppButton))
+    // The whole card is actionable; its CTA is a visual part of that card.
+    expect(find.byType(LessonCard), findsNWidgets(2));
+    expect(find.text('Start'), findsOneWidget);
+    expect(find.text('Quick fix'), findsOneWidget);
+    final fills = tester
+        .widgetList<Container>(find.byType(Container))
+        .map((container) => container.decoration)
+        .whereType<BoxDecoration>()
+        .map((decoration) => decoration.color)
         .toList();
-    expect(
-      buttons.map((button) => button.variant),
-      everyElement(AppButtonVariant.accent),
-    );
-    expect(buttons.map((button) => button.accent), [
-      AppButtonAccent.writing,
-      AppButtonAccent.grammar,
-    ]);
+    expect(fills, contains(FeatureTokens.writingCta));
+    expect(fills, contains(FeatureTokens.grammarCta));
   });
 
   testWidgets(
@@ -351,6 +352,17 @@ void main() {
     tester,
   ) async {
     final variants = <FeedbackSheet>[
+      FeedbackSheet.writingRecap(
+        title: 'Correct',
+        answer: 'Answer',
+        recapLabel: 'Your answer',
+        analysisLabel: 'View AI analysis',
+        onAnalysis: _noop,
+        nextLabel: 'Next',
+        closeLabel: 'Close',
+        onNext: _noop,
+        onClose: _noop,
+      ),
       FeedbackSheet.writingCorrect(
         title: 'Excellent',
         originalAnswer: 'Answer',

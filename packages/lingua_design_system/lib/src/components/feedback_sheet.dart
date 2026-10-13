@@ -8,6 +8,7 @@ import '../tokens/generated/design_tokens.dart';
 import 'app_button.dart';
 
 enum FeedbackSheetVariant {
+  writingRecap,
   writingCorrect,
   writingIncorrect,
   grammarCorrect,
@@ -66,6 +67,36 @@ final class NextFullFeedbackActions extends FeedbackSheetActions {
 }
 
 class FeedbackSheet extends StatelessWidget {
+  FeedbackSheet.writingRecap({
+    required this.title,
+    required String answer,
+    required this.recapLabel,
+    required this.analysisLabel,
+    required this.onAnalysis,
+    required String nextLabel,
+    required this.closeLabel,
+    required VoidCallback onNext,
+    required this.onClose,
+    super.key,
+  }) : variant = FeedbackSheetVariant.writingRecap,
+       originalAnswer = answer,
+       correctedAnswer = null,
+       explanation = null,
+       bullets = const [],
+       sectionLabel = null,
+       correctionLabel = null,
+       correctionSegments = null,
+       retainedLabel = null,
+       removedLabel = null,
+       insertedLabel = null,
+       analysisUnavailableReason = null,
+       onMinimize = null,
+       minimizeLabel = null,
+       minimizeFocusNode = null,
+       closeFocusNode = null,
+       titleFocusNode = null,
+       actions = NextFullFeedbackActions(nextLabel: nextLabel, onNext: onNext);
+
   FeedbackSheet.writingCorrect({
     required this.title,
     required this.originalAnswer,
@@ -252,6 +283,7 @@ class FeedbackSheet extends StatelessWidget {
   final FeedbackSheetActions actions;
 
   bool get _correct => switch (variant) {
+    FeedbackSheetVariant.writingRecap ||
     FeedbackSheetVariant.writingCorrect ||
     FeedbackSheetVariant.grammarCorrect => true,
     FeedbackSheetVariant.writingIncorrect ||
@@ -282,7 +314,12 @@ class FeedbackSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const _SheetGrabber(),
+            _SheetGrabber(
+              onTap: variant == FeedbackSheetVariant.writingRecap
+                  ? onClose
+                  : null,
+              label: closeLabel,
+            ),
             Row(
               children: [
                 Icon(
@@ -330,27 +367,29 @@ class FeedbackSheet extends StatelessWidget {
                       ),
                     ),
                   ),
-                Semantics(
-                  button: true,
-                  label: closeLabel,
-                  onTap: onClose,
-                  child: ExcludeSemantics(
-                    child: CanonicalFocusIndicator(
-                      borderRadius: BorderRadius.circular(RadiusTokens.full),
-                      child: IconButton(
-                        key: const Key('feedback-close'),
-                        focusNode: closeFocusNode,
-                        tooltip: closeLabel,
-                        onPressed: onClose,
-                        icon: const Icon(Icons.close_rounded),
+                if (variant != FeedbackSheetVariant.writingRecap)
+                  Semantics(
+                    button: true,
+                    label: closeLabel,
+                    onTap: onClose,
+                    child: ExcludeSemantics(
+                      child: CanonicalFocusIndicator(
+                        borderRadius: BorderRadius.circular(RadiusTokens.full),
+                        child: IconButton(
+                          key: const Key('feedback-close'),
+                          focusNode: closeFocusNode,
+                          tooltip: closeLabel,
+                          onPressed: onClose,
+                          icon: const Icon(Icons.close_rounded),
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
             const SizedBox(height: SpaceTokens.md),
             switch (variant) {
+              FeedbackSheetVariant.writingRecap ||
               FeedbackSheetVariant.grammarCorrect => _AnswerRecapBox(
                 label: recapLabel!,
                 answer: originalAnswer!,
@@ -687,11 +726,14 @@ class _AnswerRecapBox extends StatelessWidget {
 }
 
 class _SheetGrabber extends StatelessWidget {
-  const _SheetGrabber();
+  const _SheetGrabber({this.onTap, this.label});
+
+  final VoidCallback? onTap;
+  final String? label;
 
   @override
-  Widget build(BuildContext context) => ExcludeSemantics(
-    child: Center(
+  Widget build(BuildContext context) {
+    final handle = Center(
       child: Container(
         width: SpaceTokens.xxl,
         height: SpaceTokens.xs,
@@ -700,8 +742,21 @@ class _SheetGrabber extends StatelessWidget {
           borderRadius: BorderRadius.circular(RadiusTokens.full),
         ),
       ),
-    ),
-  );
+    );
+    if (onTap == null) return ExcludeSemantics(child: handle);
+    return Semantics(
+      button: true,
+      label: label,
+      onTap: onTap,
+      child: ExcludeSemantics(
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onTap,
+          child: SizedBox(height: ControlTokens.minTouchTarget, child: handle),
+        ),
+      ),
+    );
+  }
 }
 
 class _FeedbackSheetLoading extends StatelessWidget {

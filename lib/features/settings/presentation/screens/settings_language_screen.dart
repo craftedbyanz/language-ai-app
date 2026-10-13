@@ -42,7 +42,7 @@ class _SettingsLanguageScreenState
         ContentConstraints(
           child: AppHeader(
             variant: AppHeaderVariant.pushed,
-            title: widget.copy.language,
+            title: widget.copy.appLanguage,
             leadingLabel: widget.copy.title,
             onLeadingPressed: widget.onBack,
           ),
@@ -56,7 +56,7 @@ class _SettingsLanguageScreenState
                   Semantics(
                     header: true,
                     child: Text(
-                      widget.copy.language,
+                      widget.copy.appLanguage,
                       style: TypographyTokens.display,
                     ),
                   ),

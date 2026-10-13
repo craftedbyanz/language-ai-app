@@ -6,12 +6,13 @@ Each variant lists only what **differs** from the base component in [COMPONENTS.
 
 ---
 
-## FeedbackSheet (one family, five verdict variants + loading)
+## FeedbackSheet (one family, six verdict variants + loading)
 
-Common frame (never varies): grabber, header row (verdict icon · coloured title · optional score · close), body, `FeedbackActionRow`. Width `layout.sheetWidth`, `radius.sheet`, `shadow.floating`, no scrim.
+Common frame: grabber, header row (verdict icon · coloured title · optional score · close except on `WritingRecap`), body, `FeedbackActionRow`. Width `layout.sheetWidth`, `radius.sheet`, `shadow.floating`, no scrim.
 
 | Variant | Header | Body sections (in order) | Actions (`FeedbackActionRow`) | Extras | Evidence |
 |---|---|---|---|---|---|
+| `FeedbackSheet/WritingRecap` | check icon, "correct" title, no close icon | AnswerRecapBox · "View AI analysis" link | `NextFull` | Compact; analysis replaces it with loading then `WritingCorrect` | Live GramaGo, 2026-10-12 |
 | `FeedbackSheet/WritingCorrect` | check icon, "excellent" title, `feedback.correct` (title text uses `accessible.successText`) | CorrectionDiff · explanation · Improvements bullets (purple) | `EditNext` | Rating thumbs | S056 |
 | `FeedbackSheet/WritingIncorrect` | cross icon, "not correct" title, `feedback.incorrect` (title text uses `accessible.errorText`) | CorrectionDiff · explanation · Improvements bullets (purple) | `EditNext` | Rating thumbs; word lookup hint | S006 |
 | `FeedbackSheet/GrammarCorrect` | check icon, "correct" title, `feedback.correct` (title text `accessible.successText`) | AnswerRecapBox only (compact) · link "view AI analysis" | `NextFull` | Compact height; no diff | S061 |
@@ -97,7 +98,7 @@ Segments are data; done/current/idle colours below; the current segment also has
 | Variant | Fill | Notes |
 |---|---|---|
 | `ModeCard/Writing` | `feature.writing.homeCardFill` | index "01" |
-| `ModeCard/Grammar` | `feature.grammar.homeCardFill` | index "02"; text colour must be re-checked once the fill is final (DD-13) |
+| `ModeCard/Grammar` | `feature.grammar.homeCardFill` | index "02"; production text uses `accessible.onFeatureFill` (DD-13) |
 | `ModeCard/Conversation` | `feature.conversation.homeCardFill` | index "03" |
 State axis: `active` (full size) and `peek`.
 
