@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lingua_design_system/lingua_design_system.dart';
 
+import '../../../../core/preferences/device_preferences.dart';
+
 import '../state/writing_exercise_state.dart';
 import '../view_models/writing_exercise_view_model.dart';
 import '../writing_copy.dart';
@@ -162,7 +164,15 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
         semanticLabel: widget.copy.sourceText,
       ),
       answer: AnswerInput(
-        paletteKey: AnswerPaletteKey.purple,
+        paletteKey: switch (ref
+            .watch(devicePreferencesProvider)
+            .answerPalette) {
+          LessonInputPalette.defaultColor => AnswerPaletteKey.purple,
+          LessonInputPalette.green => AnswerPaletteKey.green,
+          LessonInputPalette.blue => AnswerPaletteKey.blue,
+          LessonInputPalette.purple => AnswerPaletteKey.purple,
+          LessonInputPalette.indigo => AnswerPaletteKey.indigo,
+        },
         controller: _controller,
         label: widget.copy.answerLabel,
         placeholder: widget.copy.answerPlaceholder,
@@ -170,6 +180,7 @@ class _WritingExerciseScreenState extends ConsumerState<WritingExerciseScreen> {
         onChanged: notifier.answerChanged,
       ),
       hints: HintChipBar(
+        revealInitially: ref.watch(devicePreferencesProvider).alwaysShowHints,
         hints: state.exercise.hints,
         hintLabel: (index) => '${widget.copy.hint} ${index + 1}',
       ),

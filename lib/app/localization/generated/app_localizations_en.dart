@@ -307,6 +307,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsFooterCaption => 'Learn a little every day.';
 
   @override
+  String get settingsInputColor => 'Input color';
+
+  @override
+  String get settingsDefault => 'Default';
+
+  @override
+  String get settingsHintOptions => 'Hint settings';
+
+  @override
+  String get settingsAlwaysShowHints => 'Always show hints';
+
+  @override
+  String get settingsAlwaysShowHintsCaption =>
+      'Show hint words without tapping';
+
+  @override
+  String get settingsCardStyle => 'Card style';
+
+  @override
+  String get settingsRegular => 'Regular';
+
+  @override
+  String get settingsMono => 'Mono';
+
+  @override
+  String get settingsMinimal => 'Minimal';
+
+  @override
+  String get settingsGlass => 'Glass';
+
+  @override
+  String get settingsOrange => 'Orange';
+
+  @override
+  String get settingsYellow => 'Yellow';
+
+  @override
+  String get settingsGreen => 'Green';
+
+  @override
+  String get settingsBlue => 'Blue';
+
+  @override
+  String get settingsPink => 'Pink';
+
+  @override
+  String get settingsPurple => 'Purple';
+
+  @override
+  String get settingsIndigo => 'Indigo';
+
+  @override
   String get flashcards => 'Flashcards';
 
   @override
@@ -364,6 +416,35 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get flashcardUnavailableBody =>
       'This flashcard deck could not be found.';
+
+  @override
+  String get flashcardFlipHint => 'TAP TO FLIP';
+
+  @override
+  String get flashcardAgain => 'Again';
+
+  @override
+  String get flashcardHard => 'Hard';
+
+  @override
+  String get flashcardGood => 'Good';
+
+  @override
+  String get flashcardEasy => 'Easy';
+
+  @override
+  String get flashcardCompleteTitle => 'Practice complete';
+
+  @override
+  String get flashcardCompleteBody =>
+      'You have viewed every card in this deck.';
+
+  @override
+  String get flashcardDone => 'Done';
+
+  @override
+  String get flashcardPracticeNotice =>
+      'Practice session. Review scheduling will sync when your account is connected.';
 
   @override
   String get back => 'Back';

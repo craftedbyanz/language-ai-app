@@ -9,7 +9,7 @@ final class InMemoryFlashcardRepository implements FlashcardRepository {
       id: 'daily-life',
       title: 'Daily life',
       description: 'Words for everyday routines and small conversations.',
-      newCount: 0,
+      newCount: 3,
       learningCount: 0,
       dueCount: 0,
       words: [
@@ -37,7 +37,7 @@ final class InMemoryFlashcardRepository implements FlashcardRepository {
       id: 'travel',
       title: 'Travel essentials',
       description: 'Useful language for getting around.',
-      newCount: 0,
+      newCount: 2,
       learningCount: 0,
       dueCount: 0,
       words: [

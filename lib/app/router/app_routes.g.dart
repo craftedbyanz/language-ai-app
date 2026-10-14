@@ -9,10 +9,12 @@ part of 'app_routes.dart';
 List<RouteBase> get $appRoutes => [
   $homeRoute,
   $insightRoute,
+  $flashcardReviewRoute,
   $historyRoute,
   $streakRoute,
   $settingsRoute,
   $settingsLanguageRoute,
+  $settingsPreferenceRoute,
   $flashcardDecksRoute,
   $flashcardDeckRoute,
   $grammarTopicRoute,
@@ -60,6 +62,37 @@ mixin $InsightRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/insights');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $flashcardReviewRoute => GoRouteData.$route(
+  path: '/flashcards/:deckId/review',
+  hasOverriddenOnExit: false,
+  factory: $FlashcardReviewRoute._fromState,
+);
+
+mixin $FlashcardReviewRoute on GoRouteData {
+  static FlashcardReviewRoute _fromState(GoRouterState state) =>
+      FlashcardReviewRoute(deckId: state.pathParameters['deckId']!);
+
+  FlashcardReviewRoute get _self => this as FlashcardReviewRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+    '/flashcards/${Uri.encodeComponent(_self.deckId)}/review',
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -165,6 +198,36 @@ mixin $SettingsLanguageRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/settings/language');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $settingsPreferenceRoute => GoRouteData.$route(
+  path: '/settings/:section',
+  hasOverriddenOnExit: false,
+  factory: $SettingsPreferenceRoute._fromState,
+);
+
+mixin $SettingsPreferenceRoute on GoRouteData {
+  static SettingsPreferenceRoute _fromState(GoRouterState state) =>
+      SettingsPreferenceRoute(section: state.pathParameters['section']!);
+
+  SettingsPreferenceRoute get _self => this as SettingsPreferenceRoute;
+
+  @override
+  String get location =>
+      GoRouteData.$location('/settings/${Uri.encodeComponent(_self.section)}');
 
   @override
   void go(BuildContext context) => context.go(location);

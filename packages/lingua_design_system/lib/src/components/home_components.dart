@@ -329,7 +329,7 @@ class FloatingBottomBar extends StatelessWidget {
                       children: [
                         _DockButton(
                           label: historyLabel,
-                          icon: Icons.history_rounded,
+                          icon: Icons.rotate_left_rounded,
                           onPressed: onHistory,
                         ),
                         _DockButton(
@@ -342,7 +342,7 @@ class FloatingBottomBar extends StatelessWidget {
                         ),
                         _DockButton(
                           label: settingsLabel,
-                          icon: Icons.person_outline_rounded,
+                          icon: Icons.wb_sunny_outlined,
                           onPressed: onSettings,
                         ),
                       ],

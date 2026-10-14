@@ -162,6 +162,7 @@ class HintChipBar extends StatefulWidget {
   const HintChipBar({
     required this.hints,
     required this.hintLabel,
+    this.revealInitially = false,
     this.showFeedbackLabel,
     this.onShowFeedback,
     this.showFeedbackFocusNode,
@@ -169,6 +170,7 @@ class HintChipBar extends StatefulWidget {
   });
   final List<String> hints;
   final String Function(int index) hintLabel;
+  final bool revealInitially;
   final String? showFeedbackLabel;
   final VoidCallback? onShowFeedback;
   final FocusNode? showFeedbackFocusNode;
@@ -179,6 +181,22 @@ class HintChipBar extends StatefulWidget {
 
 class _HintChipBarState extends State<HintChipBar> {
   final _revealed = <int>{};
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.revealInitially) {
+      _revealed.addAll(List.generate(widget.hints.length, (index) => index));
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant HintChipBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.revealInitially && !oldWidget.revealInitially) {
+      _revealed.addAll(List.generate(widget.hints.length, (index) => index));
+    }
+  }
 
   @override
   Widget build(BuildContext context) => SizedBox(

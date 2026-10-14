@@ -301,6 +301,58 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsFooterCaption => 'Học một chút mỗi ngày.';
 
   @override
+  String get settingsInputColor => 'Màu ô nhập';
+
+  @override
+  String get settingsDefault => 'Mặc định';
+
+  @override
+  String get settingsHintOptions => 'Cài đặt gợi ý';
+
+  @override
+  String get settingsAlwaysShowHints => 'Luôn hiển thị gợi ý';
+
+  @override
+  String get settingsAlwaysShowHintsCaption =>
+      'Hiển thị từ gợi ý mà không cần chạm';
+
+  @override
+  String get settingsCardStyle => 'Kiểu thẻ';
+
+  @override
+  String get settingsRegular => 'Thường';
+
+  @override
+  String get settingsMono => 'Đơn sắc';
+
+  @override
+  String get settingsMinimal => 'Tối giản';
+
+  @override
+  String get settingsGlass => 'Kính';
+
+  @override
+  String get settingsOrange => 'Cam';
+
+  @override
+  String get settingsYellow => 'Vàng';
+
+  @override
+  String get settingsGreen => 'Xanh lá';
+
+  @override
+  String get settingsBlue => 'Xanh dương';
+
+  @override
+  String get settingsPink => 'Hồng';
+
+  @override
+  String get settingsPurple => 'Tím';
+
+  @override
+  String get settingsIndigo => 'Chàm';
+
+  @override
   String get flashcards => 'Thẻ ghi nhớ';
 
   @override
@@ -350,6 +402,34 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get flashcardUnavailableBody => 'Bộ thẻ ghi nhớ này không khả dụng.';
+
+  @override
+  String get flashcardFlipHint => 'CHẠM ĐỂ LẬT';
+
+  @override
+  String get flashcardAgain => 'Học lại';
+
+  @override
+  String get flashcardHard => 'Khó';
+
+  @override
+  String get flashcardGood => 'Tốt';
+
+  @override
+  String get flashcardEasy => 'Dễ';
+
+  @override
+  String get flashcardCompleteTitle => 'Đã luyện tập xong';
+
+  @override
+  String get flashcardCompleteBody => 'Bạn đã xem hết các thẻ trong bộ này.';
+
+  @override
+  String get flashcardDone => 'Xong';
+
+  @override
+  String get flashcardPracticeNotice =>
+      'Buổi luyện tập thử. Lịch ôn tập sẽ đồng bộ khi tài khoản được kết nối.';
 
   @override
   String get back => 'Quay lại';

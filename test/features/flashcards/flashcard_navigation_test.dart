@@ -30,7 +30,25 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('routine'), findsOneWidget);
       expect(find.text('thói quen'), findsOneWidget);
-      expect(find.text('Review (0)'), findsOneWidget);
+      expect(find.text('Review (3)'), findsOneWidget);
+      await tester.tap(find.text('Review (3)'));
+      await tester.pumpAndSettle();
+      expect(find.text('routine'), findsOneWidget);
+      await tester.tap(find.text('TAP TO FLIP'));
+      await tester.pumpAndSettle();
+      expect(find.text('thói quen'), findsOneWidget);
+      await tester.tap(find.text('Good'));
+      await tester.pumpAndSettle();
+      expect(find.text('prepare'), findsOneWidget);
+      await tester.tap(find.text('Hard'));
+      await tester.pumpAndSettle();
+      expect(find.text('nearby'), findsOneWidget);
+      await tester.tap(find.text('Easy'));
+      await tester.pumpAndSettle();
+      expect(find.text('Practice complete'), findsOneWidget);
+      await tester.tap(find.text('Done'));
+      await tester.pumpAndSettle();
+      expect(find.text('Review (3)'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
   }

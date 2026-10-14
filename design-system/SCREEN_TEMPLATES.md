@@ -88,7 +88,7 @@ Common rules for all templates
 **Evidence**: S012, S013.
 
 ## 8. SRSReviewTemplate
-**Regions**: `AppHeader/Modal` (close · More) · `SRSCard/Front|Back` stack · persistent `SRSGradeButton` row below both sides. Grade activation before the flip is unverified.
+**Regions**: `AppHeader/Modal` (close · More) · `SRSCard/Front|Back` stack · persistent `SRSGradeButton` row below both sides. Live GramaGo shows all four grade actions on the front and back.
 **Transitions**: front → tap/Space flips → back + 4 grades → grade → next card Front → empty queue → `EmptyState` "Review complete" + "Back to deck" (DD-07 default). Close needs no confirmation. The first-run tutorial overlay is out of v1 (DD-25).
 **Layout**: centred `SRSCard` (stack of 2 decorative cards behind, offset `space.sm`), `SRSGradeButton` row below the card with `space.lg` gaps, bottom-anchored.
 **Slots**: word, POS, IPA, translation, gloss, example, intervals.

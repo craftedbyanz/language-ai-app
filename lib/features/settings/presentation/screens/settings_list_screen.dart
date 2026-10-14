@@ -8,6 +8,8 @@ class SettingsListScreen extends StatelessWidget {
     required this.copy,
     required this.onBack,
     required this.onLanguagePressed,
+    required this.onLessonPressed,
+    required this.onAppearancePressed,
     required this.currentLanguage,
     super.key,
   });
@@ -15,6 +17,8 @@ class SettingsListScreen extends StatelessWidget {
   final SettingsCopy copy;
   final VoidCallback onBack;
   final VoidCallback onLanguagePressed;
+  final VoidCallback onLessonPressed;
+  final VoidCallback onAppearancePressed;
   final String currentLanguage;
 
   @override
@@ -172,9 +176,13 @@ class SettingsListScreen extends StatelessWidget {
                     _SettingsGroup(
                       rows: [
                         _row(copy.editProfile, Icons.account_circle_outlined),
-                        _row(copy.lesson, Icons.tune_rounded),
+                        _row(copy.lesson, Icons.tune_rounded, onLessonPressed),
                         _row(copy.voice, Icons.graphic_eq_rounded),
-                        _row(copy.appearance, Icons.settings_outlined),
+                        _row(
+                          copy.appearance,
+                          Icons.settings_outlined,
+                          onAppearancePressed,
+                        ),
                         _row(
                           copy.notifications,
                           Icons.notifications_none_rounded,
@@ -234,12 +242,14 @@ class SettingsListScreen extends StatelessWidget {
     ),
   );
 
-  SettingsRow _row(String label, IconData icon) => SettingsRow(
-    label: label,
-    icon: icon,
-    variant: SettingsRowVariant.navigate,
-    grouped: true,
-  );
+  SettingsRow _row(String label, IconData icon, [VoidCallback? onPressed]) =>
+      SettingsRow(
+        label: label,
+        icon: icon,
+        variant: SettingsRowVariant.navigate,
+        grouped: true,
+        onPressed: onPressed,
+      );
 }
 
 class _LearningLanguageCard extends StatelessWidget {

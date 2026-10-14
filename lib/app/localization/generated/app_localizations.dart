@@ -656,6 +656,108 @@ abstract class AppLocalizations {
   /// **'Learn a little every day.'**
   String get settingsFooterCaption;
 
+  /// No description provided for @settingsInputColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Input color'**
+  String get settingsInputColor;
+
+  /// No description provided for @settingsDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get settingsDefault;
+
+  /// No description provided for @settingsHintOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Hint settings'**
+  String get settingsHintOptions;
+
+  /// No description provided for @settingsAlwaysShowHints.
+  ///
+  /// In en, this message translates to:
+  /// **'Always show hints'**
+  String get settingsAlwaysShowHints;
+
+  /// No description provided for @settingsAlwaysShowHintsCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Show hint words without tapping'**
+  String get settingsAlwaysShowHintsCaption;
+
+  /// No description provided for @settingsCardStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card style'**
+  String get settingsCardStyle;
+
+  /// No description provided for @settingsRegular.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular'**
+  String get settingsRegular;
+
+  /// No description provided for @settingsMono.
+  ///
+  /// In en, this message translates to:
+  /// **'Mono'**
+  String get settingsMono;
+
+  /// No description provided for @settingsMinimal.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimal'**
+  String get settingsMinimal;
+
+  /// No description provided for @settingsGlass.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass'**
+  String get settingsGlass;
+
+  /// No description provided for @settingsOrange.
+  ///
+  /// In en, this message translates to:
+  /// **'Orange'**
+  String get settingsOrange;
+
+  /// No description provided for @settingsYellow.
+  ///
+  /// In en, this message translates to:
+  /// **'Yellow'**
+  String get settingsYellow;
+
+  /// No description provided for @settingsGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get settingsGreen;
+
+  /// No description provided for @settingsBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get settingsBlue;
+
+  /// No description provided for @settingsPink.
+  ///
+  /// In en, this message translates to:
+  /// **'Pink'**
+  String get settingsPink;
+
+  /// No description provided for @settingsPurple.
+  ///
+  /// In en, this message translates to:
+  /// **'Purple'**
+  String get settingsPurple;
+
+  /// No description provided for @settingsIndigo.
+  ///
+  /// In en, this message translates to:
+  /// **'Indigo'**
+  String get settingsIndigo;
+
   /// No description provided for @flashcards.
   ///
   /// In en, this message translates to:
@@ -745,6 +847,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This flashcard deck could not be found.'**
   String get flashcardUnavailableBody;
+
+  /// No description provided for @flashcardFlipHint.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP TO FLIP'**
+  String get flashcardFlipHint;
+
+  /// No description provided for @flashcardAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Again'**
+  String get flashcardAgain;
+
+  /// No description provided for @flashcardHard.
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get flashcardHard;
+
+  /// No description provided for @flashcardGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get flashcardGood;
+
+  /// No description provided for @flashcardEasy.
+  ///
+  /// In en, this message translates to:
+  /// **'Easy'**
+  String get flashcardEasy;
+
+  /// No description provided for @flashcardCompleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice complete'**
+  String get flashcardCompleteTitle;
+
+  /// No description provided for @flashcardCompleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You have viewed every card in this deck.'**
+  String get flashcardCompleteBody;
+
+  /// No description provided for @flashcardDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get flashcardDone;
+
+  /// No description provided for @flashcardPracticeNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice session. Review scheduling will sync when your account is connected.'**
+  String get flashcardPracticeNotice;
 
   /// No description provided for @back.
   ///

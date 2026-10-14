@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
 
 import '../../features/home/home.dart';
+import '../../core/preferences/device_preferences.dart';
 import '../../features/insights/insights.dart';
 import '../../features/settings/settings.dart';
 import '../../features/flashcards/flashcards.dart';
@@ -160,6 +161,7 @@ FlashcardCopy _flashcardCopy(BuildContext context) {
   return FlashcardCopy(
     title: strings.flashcards,
     back: strings.back,
+    close: strings.close,
     deckCount: strings.flashcardDeckCount,
     newLabel: strings.flashcardNew,
     learningLabel: strings.flashcardLearning,
@@ -172,6 +174,15 @@ FlashcardCopy _flashcardCopy(BuildContext context) {
     emptyBody: strings.flashcardEmptyBody,
     unavailableTitle: strings.flashcardUnavailableTitle,
     unavailableBody: strings.flashcardUnavailableBody,
+    flipHint: strings.flashcardFlipHint,
+    again: strings.flashcardAgain,
+    hard: strings.flashcardHard,
+    good: strings.flashcardGood,
+    easy: strings.flashcardEasy,
+    completeTitle: strings.flashcardCompleteTitle,
+    completeBody: strings.flashcardCompleteBody,
+    done: strings.flashcardDone,
+    practiceNotice: strings.flashcardPracticeNotice,
   );
 }
 
@@ -216,6 +227,30 @@ SettingsCopy _settingsCopy(BuildContext context) {
     saveFailed: strings.settingsSaveFailed,
     version: strings.settingsVersion,
     footerCaption: strings.settingsFooterCaption,
+  );
+}
+
+SettingsPreferenceCopy _settingsPreferenceCopy(BuildContext context) {
+  final strings = AppLocalizations.of(context)!;
+  return SettingsPreferenceCopy(
+    profile: strings.settingsProfile,
+    lesson: strings.settingsLesson,
+    appearance: strings.settingsAppearance,
+    inputColor: strings.settingsInputColor,
+    defaultColor: strings.settingsDefault,
+    green: strings.settingsGreen,
+    blue: strings.settingsBlue,
+    purple: strings.settingsPurple,
+    indigo: strings.settingsIndigo,
+    hintOptions: strings.settingsHintOptions,
+    alwaysShowHints: strings.settingsAlwaysShowHints,
+    alwaysShowHintsCaption: strings.settingsAlwaysShowHintsCaption,
+    cardStyle: strings.settingsCardStyle,
+    regular: strings.settingsRegular,
+    mono: strings.settingsMono,
+    minimal: strings.settingsMinimal,
+    glass: strings.settingsGlass,
+    saveFailed: strings.settingsSaveFailed,
   );
 }
 
@@ -327,9 +362,11 @@ class HomeRoute extends GoRouteData with $HomeRoute {
   Widget build(BuildContext context, GoRouterState state) => Consumer(
     builder: (context, ref, _) {
       final streakCount = ref.watch(insightSnapshotProvider).currentStreak;
+      final cardStyle = ref.watch(devicePreferencesProvider).cardStyle;
       return HomeDashboardScreen(
         copy: _homeCopy(context, streakCount),
         streakCount: streakCount,
+        cardStyle: cardStyle,
         onWritingPressed: () => const WritingTopicRoute().push<void>(context),
         onGrammarPressed: () => const GrammarTopicRoute().push<void>(context),
         onFlashcardsPressed: () =>
@@ -352,6 +389,21 @@ class InsightRoute extends GoRouteData with $InsightRoute {
       InsightOverviewScreen(
         copy: _insightCopy(context),
         onBack: () => context.pop(),
+      );
+}
+
+@TypedGoRoute<FlashcardReviewRoute>(path: '/flashcards/:deckId/review')
+class FlashcardReviewRoute extends GoRouteData with $FlashcardReviewRoute {
+  const FlashcardReviewRoute({required this.deckId});
+
+  final String deckId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      FlashcardReviewScreen(
+        deckId: deckId,
+        copy: _flashcardCopy(context),
+        onClose: () => context.pop(),
       );
 }
 
@@ -397,6 +449,11 @@ class SettingsRoute extends GoRouteData with $SettingsRoute {
       onBack: () => context.pop(),
       onLanguagePressed: () =>
           const SettingsLanguageRoute().push<void>(context),
+      onLessonPressed: () =>
+          const SettingsPreferenceRoute(section: 'lesson').push<void>(context),
+      onAppearancePressed: () =>
+          const SettingsPreferenceRoute(section: 'appearance')
+              .push<void>(context),
     );
   }
 }
@@ -409,6 +466,22 @@ class SettingsLanguageRoute extends GoRouteData with $SettingsLanguageRoute {
   Widget build(BuildContext context, GoRouterState state) =>
       SettingsLanguageScreen(
         copy: _settingsCopy(context),
+        onBack: () => context.pop(),
+      );
+}
+
+@TypedGoRoute<SettingsPreferenceRoute>(path: '/settings/:section')
+class SettingsPreferenceRoute extends GoRouteData
+    with $SettingsPreferenceRoute {
+  const SettingsPreferenceRoute({required this.section});
+
+  final String section;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      SettingsPreferenceScreen(
+        section: section,
+        copy: _settingsPreferenceCopy(context),
         onBack: () => context.pop(),
       );
 }
@@ -439,6 +512,8 @@ class FlashcardDeckRoute extends GoRouteData with $FlashcardDeckRoute {
         deckId: deckId,
         copy: _flashcardCopy(context),
         onBack: () => context.pop(),
+        onReview: () =>
+            FlashcardReviewRoute(deckId: deckId).push<void>(context),
       );
 }
 

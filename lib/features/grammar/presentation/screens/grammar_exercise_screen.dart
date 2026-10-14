@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
 
 import '../../../../core/result/result.dart';
+import '../../../../core/preferences/device_preferences.dart';
 import '../../domain/entities/grammar_content.dart';
 import '../../domain/repositories/grammar_repository.dart';
 import '../grammar_copy.dart';
@@ -172,7 +173,15 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
           centerContent: true,
         ),
         answer: AnswerInput(
-          paletteKey: AnswerPaletteKey.blue,
+          paletteKey: switch (ref
+              .watch(devicePreferencesProvider)
+              .answerPalette) {
+            LessonInputPalette.defaultColor => AnswerPaletteKey.blue,
+            LessonInputPalette.green => AnswerPaletteKey.green,
+            LessonInputPalette.blue => AnswerPaletteKey.blue,
+            LessonInputPalette.purple => AnswerPaletteKey.purple,
+            LessonInputPalette.indigo => AnswerPaletteKey.indigo,
+          },
           controller: _controller,
           focusNode: _answerFocus,
           label: widget.copy.answerLabel,
@@ -182,6 +191,7 @@ class _GrammarExerciseScreenState extends ConsumerState<GrammarExerciseScreen> {
           onChanged: notifier.answerChanged,
         ),
         hints: HintChipBar(
+          revealInitially: ref.watch(devicePreferencesProvider).alwaysShowHints,
           hints: active.exercise.hints,
           hintLabel: (index) => '${widget.copy.hint} ${index + 1}',
           showFeedbackLabel: canShowFeedback ? widget.copy.showFeedback : null,

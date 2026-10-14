@@ -10,12 +10,14 @@ class FlashcardDeckDetailScreen extends ConsumerWidget {
     required this.deckId,
     required this.copy,
     required this.onBack,
+    required this.onReview,
     super.key,
   });
 
   final String deckId;
   final FlashcardCopy copy;
   final VoidCallback onBack;
+  final VoidCallback onReview;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,9 +56,10 @@ class FlashcardDeckDetailScreen extends ConsumerWidget {
                               newLabel: copy.newLabel,
                               learningLabel: copy.learningLabel,
                               dueLabel: copy.dueLabel,
-                              reviewLabel: copy.reviewLabel(deck.dueCount),
-                              // No local SRS scheduling: the backend will supply due cards.
-                              onReview: null,
+                              reviewLabel: copy.reviewLabel(
+                                deck.newCount + deck.dueCount,
+                              ),
+                              onReview: deck.words.isEmpty ? null : onReview,
                             ),
                             const SizedBox(height: SpaceTokens.lg),
                             AppSegmentedControl(

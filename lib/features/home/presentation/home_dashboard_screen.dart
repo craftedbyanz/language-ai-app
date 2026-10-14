@@ -66,6 +66,7 @@ class HomeDashboardScreen extends StatefulWidget {
     required this.onStreakPressed,
     required this.onMenuPressed,
     required this.streakCount,
+    this.cardStyle = 'regular',
     super.key,
   });
   final HomeDashboardCopy copy;
@@ -77,6 +78,7 @@ class HomeDashboardScreen extends StatefulWidget {
   final VoidCallback onStreakPressed;
   final VoidCallback onMenuPressed;
   final int streakCount;
+  final String cardStyle;
 
   @override
   State<HomeDashboardScreen> createState() => _HomeDashboardScreenState();
@@ -134,6 +136,17 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     final accessible = Theme.of(context)
         .extension<DesignTokensTheme>()!
         .accessible;
+    Color modeFill(Color regular) => switch (widget.cardStyle) {
+      'mono' => ColorTokens.textPrimary,
+      'minimal' => ColorTokens.surfaceMuted,
+      'glass' => GlassTokens.barFill,
+      _ => regular,
+    };
+    final modeForeground = widget.cardStyle == 'mono'
+        ? ColorTokens.textOnPrimary
+        : widget.cardStyle == 'regular'
+        ? accessible.onFeatureFill
+        : ColorTokens.textPrimary;
     return AppScaffold(
       child: AdaptiveLayout(
         builder: (context, sizeClass) => Stack(
@@ -242,10 +255,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                                                     .writingDescription,
                                                 actionLabel:
                                                     widget.copy.explore,
-                                                fill: FeatureTokens
-                                                    .writingHomeCardFill,
-                                                foreground:
-                                                    accessible.onFeatureFill,
+                                                fill: modeFill(
+                                                  FeatureTokens
+                                                      .writingHomeCardFill,
+                                                ),
+                                                foreground: modeForeground,
                                                 onPressed:
                                                     widget.onWritingPressed,
                                               ),
@@ -259,10 +273,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                                                     .grammarDescription,
                                                 actionLabel:
                                                     widget.copy.explore,
-                                                fill: FeatureTokens
-                                                    .grammarHomeCardFill,
-                                                foreground:
-                                                    accessible.onFeatureFill,
+                                                fill: modeFill(
+                                                  FeatureTokens
+                                                      .grammarHomeCardFill,
+                                                ),
+                                                foreground: modeForeground,
                                                 onPressed:
                                                     widget.onGrammarPressed,
                                               ),
@@ -276,10 +291,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                                                     .conversationDescription,
                                                 actionLabel:
                                                     widget.copy.comingSoon,
-                                                fill: FeatureTokens
-                                                    .conversationHomeCardFill,
-                                                foreground:
-                                                    accessible.onFeatureFill,
+                                                fill: modeFill(
+                                                  FeatureTokens
+                                                      .conversationHomeCardFill,
+                                                ),
+                                                foreground: modeForeground,
                                               ),
                                             },
                                           ),

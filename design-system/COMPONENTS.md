@@ -56,7 +56,7 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 
 ### FloatingBottomBar
 - **Purpose**: shortcut hub on the dashboard only.
-- **Anatomy**: full-width frosted dock at the bottom edge · history circle left · Menu pill centred · profile circle right · StreakPill floating above the centre.
+- **Anatomy**: full-width frosted dock at the bottom edge · rotate-left history circle at the left · star-circle Menu pill centred · sun glyph in the Profile circle at the right · StreakPill floating above the centre. These icon descriptions were read from the live macOS app on 2026-10-13.
 - **States**: default; pressed per control.
 - **Dimensions**: icon buttons `control.iconButton` (36); streak pill height `control.pillSmallHeight` (24).
 - **Spacing**: dock flush to the window edges; controls inset by `space.lg`; streak overlaps the dock top.
@@ -168,7 +168,7 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Dimensions**: width = `layout.modeCardWidthRatio` × effective viewport (`modeCardWidthRatioCompact` on compact; next card peeks); min height `layout.modeCardMinHeight`, content-driven above; `radius.heroCard`.
 - **Active scale**: `motion.carouselActiveScale`; none under reduced motion.
 - **Spacing**: card gap `layout.carouselGap`; inner padding `space.lg`+.
-- **Colours**: fill from `feature.<mode>.homeCardFill` (writing CANDIDATE; others ESTIMATED); text colour by fill: `ModeCard/Writing` (`primary`) and `ModeCard/Grammar` (lavender) use `accessible.onFeatureFill`; `ModeCard/Conversation` (`primaryStrong`) uses `accessible.onBrand`. Not a profile-switch surface: these home fills stay as tokened. Index numeral = same text colour at `state.modeCardIndexOpacity` (decorative); divider uses `state.modeCardDividerOpacity`.
+- **Colours**: Regular defaults to `feature.<mode>.homeCardFill` with `accessible.onFeatureFill`. The Profile Appearance choice exposes Mono (`color.textPrimary`/`color.textOnPrimary`), Minimal (`color.surfaceMuted`/`color.textPrimary`), and Glass (`glass.barFill`/`color.textPrimary`) as client variants. These variant mappings are client decisions pending rendered comparison with GramaGo; the live app confirms the four choice labels. Index numeral = same text colour at `state.modeCardIndexOpacity` (decorative); divider uses `state.modeCardDividerOpacity`.
 - **Interaction**: tap opens the mode's TopicPicker; swipe pages the carousel with PagerDots.
 - **Accessibility**: one button; name = "index, MODE, kind, description, explore" (concatenated).
 - **Responsive**: ratio-based width; one full card plus a peek at any width ≥ compact.
@@ -472,7 +472,7 @@ without relying on color.
 ### SRSCard
 - **Purpose**: the flip card.
 - **Variants**: `Front`, `Back`.
-- **Anatomy**: Front: word, POS badge, IPA, "tap to flip" hint, stacked cards behind. Back: translation, English gloss, POS badge, speaker, example sentence, SRSGradeButton ×4.
+- **Anatomy**: Front: word, POS badge, IPA, "tap to flip" hint, stacked cards behind. Back: translation, English gloss, POS badge, speaker, example sentence. Four grade buttons remain below the card on both sides. The local sample data currently supplies word, POS, IPA and translation only.
 - **Dimensions**: width `layout.srsCardWidthRatio`, aspect `layout.srsCardAspect` (content may grow it); `radius.largeCard` (24 tolerance +/-2); `shadow.raised`.
 - **Interaction**: tap flips; swipe grading and the tutorial overlay are **not part of v1** (DD-25, APPROVED_V1; swipe may later be a progressive enhancement); the grade buttons are the canonical interaction; close without confirmation.
 - **Accessibility**: card is a button "Flip card"; back content announced on flip; swipe gestures **must** have button equivalents (the four grades).
@@ -480,11 +480,11 @@ without relying on color.
 
 ### SRSGradeButton
 - **Purpose**: self-rated recall.
-- **Anatomy**: interval caption above · round icon button · label below.
+- **Anatomy**: optional server interval caption above · round icon button · label below. Local practice omits intervals because no scheduling response exists.
 - **Variants**: `Again` (1m), `Hard` (6m), `Good` (1d), `Easy` (4d).
 - **Dimensions**: `control.gradeButton` (49); gap `space.lg`.
 - **Colours**: circle fill `grade.again/hard/good/easy`; glyph `accessible.onGradeFill`; interval caption `textSecondary`, label `textPrimary`.
-- **States**: default, pressed, focused, disabled (before flip). Keyboard shortcuts 1–4.
+- **States**: default, pressed, focused. Live GramaGo displays grade actions on the front as well as the back. Keyboard shortcuts 1–4 remain to be implemented in the client.
 - **Accessibility**: name = "label, interval" (e.g. "Good, 1 day").
 - **Evidence**: S052. Interval values are product data, not design tokens.
 

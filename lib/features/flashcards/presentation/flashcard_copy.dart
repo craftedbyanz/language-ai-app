@@ -2,6 +2,7 @@ final class FlashcardCopy {
   const FlashcardCopy({
     required this.title,
     required this.back,
+    required this.close,
     required this.deckCount,
     required this.newLabel,
     required this.learningLabel,
@@ -14,10 +15,20 @@ final class FlashcardCopy {
     required this.emptyBody,
     required this.unavailableTitle,
     required this.unavailableBody,
+    required this.flipHint,
+    required this.again,
+    required this.hard,
+    required this.good,
+    required this.easy,
+    required this.completeTitle,
+    required this.completeBody,
+    required this.done,
+    required this.practiceNotice,
   });
 
   final String title;
   final String back;
+  final String close;
   final String Function(int count) deckCount;
   final String newLabel;
   final String learningLabel;
@@ -31,4 +42,13 @@ final class FlashcardCopy {
   final String emptyBody;
   final String unavailableTitle;
   final String unavailableBody;
+  final String flipHint;
+  final String again;
+  final String hard;
+  final String good;
+  final String easy;
+  final String completeTitle;
+  final String completeBody;
+  final String done;
+  final String practiceNotice;
 }
