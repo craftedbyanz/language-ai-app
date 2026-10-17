@@ -421,6 +421,28 @@ abstract final class FeatureTokens {
   /// feature.home.writingFill
   static const Color homeWritingFill = Color(0xFF2563EB);
 
+  /// feature.homeDiscovery.flowGradient
+  static const List<Color> homeDiscoveryFlowGradient = <Color>[
+    Color(0xFF000000),
+    Color(0xFF48207E),
+    Color(0xFF000000),
+  ];
+
+  /// feature.homeDiscovery.mint
+  static const Color homeDiscoveryMint = Color(0xFF10B981);
+
+  /// feature.homeDiscovery.orange
+  static const Color homeDiscoveryOrange = Color(0xFFFB923C);
+
+  /// feature.homeDiscovery.pink
+  static const Color homeDiscoveryPink = Color(0xFFED4BA6);
+
+  /// feature.homeDiscovery.purple
+  static const Color homeDiscoveryPurple = Color(0xFF8B5CF6);
+
+  /// feature.homeDiscovery.teal
+  static const Color homeDiscoveryTeal = Color(0xFF14B8A6);
+
   /// feature.learningLanguage.cta
   static const Color learningLanguageCta = Color(0xFF19CCE5);
 
@@ -584,6 +606,9 @@ abstract final class IconTokens {
   /// icon.homeDockMenu
   static const double homeDockMenu = 16.0;
 
+  /// icon.homeFlowLetter
+  static const double homeFlowLetter = 28.0;
+
   /// icon.inline
   static const double inline = 15.0;
 
@@ -673,11 +698,32 @@ abstract final class LayoutTokens {
   /// layout.homeDockHeight
   static const double homeDockHeight = 62.0;
 
+  /// layout.homeFlashPreviewHeight
+  static const double homeFlashPreviewHeight = 128.0;
+
+  /// layout.homeFlashPreviewWidth
+  static const double homeFlashPreviewWidth = 100.0;
+
+  /// layout.homeFlowHeight
+  static const double homeFlowHeight = 92.0;
+
+  /// layout.homeGuideArtHeight
+  static const double homeGuideArtHeight = 88.0;
+
+  /// layout.homeGuideHeight
+  static const double homeGuideHeight = 146.0;
+
+  /// layout.homeGuideWidth
+  static const double homeGuideWidth = 123.0;
+
   /// layout.homeModeCardAspectRatio
   static const double homeModeCardAspectRatio = 1.75;
 
   /// layout.homeModeMotifSize
   static const double homeModeMotifSize = 160.0;
+
+  /// layout.homeRecommendationFace
+  static const double homeRecommendationFace = 30.0;
 
   /// layout.inlinePopoverOffset
   static const double inlinePopoverOffset = 4.0;
@@ -978,12 +1024,52 @@ abstract final class TypographyTokens {
     fontWeight: FontWeight.w600,
   );
 
+  /// typography.homeFeatureCaption
+  static const TextStyle homeFeatureCaption = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.5,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// typography.homeGuideTitle
+  static const TextStyle homeGuideTitle = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w600,
+  );
+
   /// typography.homeModeIndex
   static const TextStyle homeModeIndex = TextStyle(
     fontFamily: TypographyTokens.family,
     fontSize: 96,
     height: 1.1458333333333333,
     fontWeight: FontWeight.w800,
+  );
+
+  /// typography.homePreviewMeaning
+  static const TextStyle homePreviewMeaning = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 9,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w400,
+  );
+
+  /// typography.homePreviewWord
+  static const TextStyle homePreviewWord = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 10,
+    height: 1.4,
+    fontWeight: FontWeight.w700,
+  );
+
+  /// typography.homeQuickTopic
+  static const TextStyle homeQuickTopic = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w500,
   );
 
   /// typography.microLabel

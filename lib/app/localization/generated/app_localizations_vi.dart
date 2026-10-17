@@ -10,6 +10,138 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
+  String get homePromoTitle => 'Đăng ký Gramify Plus';
+
+  @override
+  String get homePromoCaption =>
+      'Mở khóa mức sử dụng cao hơn và làm chủ kỹ năng ngôn ngữ của bạn.';
+
+  @override
+  String get homeRecommendationsTitle => 'Gramify đề xuất';
+
+  @override
+  String get homeRecommendationsCaption =>
+      'Các chủ đề được chọn lọc để giúp bạn học nhanh hơn.';
+
+  @override
+  String get homeModesCaption =>
+      'Nâng cao kỹ năng viết, ngữ pháp và giao tiếp cùng AI.';
+
+  @override
+  String get homeGuideTitle => 'Gramify 101';
+
+  @override
+  String get homeGuideCaption =>
+      'Tất cả những gì bạn cần biết về Gramify và cách ứng dụng giúp bạn học tập hiệu quả.';
+
+  @override
+  String get homeRecommendationNotice =>
+      'Bắt đầu với các bài luyện có sẵn. Tạo bài học mới bằng AI sẽ có trong bản cập nhật sau.';
+
+  @override
+  String get homeRecommendationAction => 'Xem bài luyện';
+
+  @override
+  String get homeTopicSurprise => 'Làm tôi bất ngờ';
+
+  @override
+  String get homeTopicTravel => 'Du lịch';
+
+  @override
+  String get homeTopicBusiness => 'Kinh doanh';
+
+  @override
+  String get homeTopicFood => 'Ẩm thực';
+
+  @override
+  String get homeTopicShopping => 'Mua sắm';
+
+  @override
+  String get homeTopicHealth => 'Sức khỏe';
+
+  @override
+  String get homeTopicSocial => 'Xã hội';
+
+  @override
+  String get homeTopicIelts => 'IELTS';
+
+  @override
+  String get homeTopicDaily => 'Đời sống';
+
+  @override
+  String get homeTopicEntertainment => 'Giải trí';
+
+  @override
+  String get homeGuideModes => '3 Chế Độ Luyện Tập Chính';
+
+  @override
+  String get homeGuideModesBody =>
+      'Luyện viết giúp bạn dịch và xây dựng câu. Ngữ pháp giúp bạn sửa câu và hiểu cách diễn đạt. Chế độ hội thoại sẽ được bổ sung trong bản cập nhật sau.\n\nBắt đầu từ một chủ đề phù hợp với trình độ của bạn và luyện từng bài ngắn.';
+
+  @override
+  String get homeGuideAssistant => 'Trợ Lý AI & Hệ Thống Phản Hồi';
+
+  @override
+  String get homeGuideAssistantBody =>
+      'Sau khi gửi câu trả lời, bạn có thể xem phần sửa lỗi, gợi ý và giải thích trong bài luyện. Chỉnh sửa câu trả lời để thử lại hoặc tiếp tục bài học.\n\nHiện tại bạn có thể trải nghiệm các bài luyện mẫu. Phản hồi AI trực tuyến sẽ được bổ sung sau.';
+
+  @override
+  String get homeGuideGenerator => 'AI Magic Generator';
+
+  @override
+  String get homeGuideGeneratorBody =>
+      'Tạo bài học từ một chủ đề hoặc ý tưởng là tính năng sắp ra mắt. Các chip đề xuất hiện giúp bạn khám phá bài luyện có sẵn.\n\nBạn vẫn có thể chọn Luyện viết hoặc Ngữ pháp để bắt đầu học ngay.';
+
+  @override
+  String get homeGuideFlashcards => 'Hệ thống Flashcard & SRS';
+
+  @override
+  String get homeGuideFlashcardsBody =>
+      'Mở bộ thẻ, xem từ và lật thẻ để kiểm tra nghĩa. Sau mỗi thẻ, chọn mức độ ghi nhớ để tiếp tục ôn tập.\n\nBạn có thể xem số thẻ cần ôn và tiến độ trong từng bộ.';
+
+  @override
+  String get homeGuideProgress => 'Hệ Thống Theo Dõi Tiến Độ';
+
+  @override
+  String get homeGuideProgressBody =>
+      'Xem chuỗi ngày học, hoạt động và tổng quan luyện tập trong phần Tiến độ. Duy trì một buổi học ngắn mỗi ngày để xây dựng thói quen.';
+
+  @override
+  String get homeGuideReview => 'Chức Năng Ôn Tập Thông Minh';
+
+  @override
+  String get homeGuideReviewBody =>
+      'Màn Ôn tập tập hợp các bài luyện gần đây theo từng chế độ. Dùng ô tìm kiếm để tìm chủ đề và mở lại bài bạn muốn luyện thêm.';
+
+  @override
+  String get homeGuideGame => 'Mini Game: Flow Letter';
+
+  @override
+  String get homeGuideGameBody =>
+      'Flow Letter là trò chơi xếp chữ cái thành từ vựng. Mini game hiện đang được phát triển và chưa mở để chơi.\n\nTrong lúc chờ, bạn có thể ôn từ vựng bằng Flashcard.';
+
+  @override
+  String get homeFlowTitle => 'Flow Letter';
+
+  @override
+  String get homeFlowCaption => 'Xếp chữ cái thành từ vựng';
+
+  @override
+  String get homeFlashcardTitle => 'VOCABULARY FLASHCARD';
+
+  @override
+  String get homePreviewResilient => 'Resilient';
+
+  @override
+  String get homePreviewResilientMeaning => 'Kiên cường';
+
+  @override
+  String get homePreviewAcquire => 'Acquire';
+
+  @override
+  String get homePreviewAcquireMeaning => 'Tiếp thu';
+
+  @override
   String get appTitle => 'Lingua';
 
   @override
@@ -31,7 +163,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homePromptLabel => 'Nhờ AI tạo bài học, sắp ra mắt';
 
   @override
-  String get learningModes => 'Chế độ học';
+  String get learningModes => 'Chế độ học tập';
 
   @override
   String get modePager => 'Danh sách chế độ học';
@@ -362,10 +494,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get flashcards => 'Thẻ ghi nhớ';
 
   @override
-  String get flashcardHomeCaption => 'Lưu những từ hữu ích để ôn tập khi cần.';
+  String get flashcardHomeCaption =>
+      'Lưu từ mới, ôn tập theo SRS và theo dõi tiến bộ mỗi ngày.';
 
   @override
-  String get flashcardExplore => 'Xem bộ thẻ';
+  String get flashcardExplore => 'Mở Flashcard';
 
   @override
   String flashcardDeckCount(int count) {

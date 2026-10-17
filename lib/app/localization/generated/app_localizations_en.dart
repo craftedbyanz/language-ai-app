@@ -10,6 +10,138 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get homePromoTitle => 'Discover Gramify Plus';
+
+  @override
+  String get homePromoCaption =>
+      'Unlock more practice and build your language skills.';
+
+  @override
+  String get homeRecommendationsTitle => 'Gramify recommends';
+
+  @override
+  String get homeRecommendationsCaption =>
+      'Handpicked topics to help you learn faster.';
+
+  @override
+  String get homeModesCaption =>
+      'Improve your writing, grammar and communication with AI.';
+
+  @override
+  String get homeGuideTitle => 'Gramify 101';
+
+  @override
+  String get homeGuideCaption =>
+      'Get to know Gramify and discover how to make the most of your practice.';
+
+  @override
+  String get homeRecommendationNotice =>
+      'Start with the available practice lessons. Creating new lessons with AI is coming in a future update.';
+
+  @override
+  String get homeRecommendationAction => 'Browse practice';
+
+  @override
+  String get homeTopicSurprise => 'Surprise me';
+
+  @override
+  String get homeTopicTravel => 'Travel';
+
+  @override
+  String get homeTopicBusiness => 'Business';
+
+  @override
+  String get homeTopicFood => 'Food';
+
+  @override
+  String get homeTopicShopping => 'Shopping';
+
+  @override
+  String get homeTopicHealth => 'Health';
+
+  @override
+  String get homeTopicSocial => 'Society';
+
+  @override
+  String get homeTopicIelts => 'IELTS';
+
+  @override
+  String get homeTopicDaily => 'Daily life';
+
+  @override
+  String get homeTopicEntertainment => 'Entertainment';
+
+  @override
+  String get homeGuideModes => '3 Core Practice Modes';
+
+  @override
+  String get homeGuideModesBody =>
+      'Practice writing by translating and building sentences. Grammar practice helps you revise sentences and understand corrections. Conversation practice is coming in a future update.\n\nChoose a topic that suits your level and work through short lessons.';
+
+  @override
+  String get homeGuideAssistant => 'AI Assistant & Feedback';
+
+  @override
+  String get homeGuideAssistantBody =>
+      'After submitting an answer, review the corrections, hints and explanations in your lesson. Edit your answer to try again or continue.\n\nSample lessons are available now. Online AI feedback is coming later.';
+
+  @override
+  String get homeGuideGenerator => 'AI Magic Generator';
+
+  @override
+  String get homeGuideGeneratorBody =>
+      'Creating a lesson from a topic or idea is coming soon. Recommendation chips currently help you explore available practice lessons.\n\nYou can start now with Writing or Grammar practice.';
+
+  @override
+  String get homeGuideFlashcards => 'Flashcards & SRS';
+
+  @override
+  String get homeGuideFlashcardsBody =>
+      'Open a deck, read a word and flip the card to check its meaning. Rate how well you remember it after each card.\n\nView the cards due for review and your progress in each deck.';
+
+  @override
+  String get homeGuideProgress => 'Track Your Progress';
+
+  @override
+  String get homeGuideProgressBody =>
+      'View your streak, activity and practice overview in Progress. A short daily session helps you build a learning habit.';
+
+  @override
+  String get homeGuideReview => 'Smart Review';
+
+  @override
+  String get homeGuideReviewBody =>
+      'Review brings recent practice together by mode. Search for a topic and reopen a lesson you want to revisit.';
+
+  @override
+  String get homeGuideGame => 'Mini Game: Flow Letter';
+
+  @override
+  String get homeGuideGameBody =>
+      'Flow Letter is a word-building game where you arrange letters into vocabulary words. The mini game is in development and is not available to play yet.\n\nYou can review vocabulary with Flashcards while you wait.';
+
+  @override
+  String get homeFlowTitle => 'Flow Letter';
+
+  @override
+  String get homeFlowCaption => 'Arrange letters into words';
+
+  @override
+  String get homeFlashcardTitle => 'VOCABULARY FLASHCARD';
+
+  @override
+  String get homePreviewResilient => 'Resilient';
+
+  @override
+  String get homePreviewResilientMeaning => 'Able to recover';
+
+  @override
+  String get homePreviewAcquire => 'Acquire';
+
+  @override
+  String get homePreviewAcquireMeaning => 'To gain or learn';
+
+  @override
   String get appTitle => 'Lingua';
 
   @override
@@ -369,10 +501,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get flashcardHomeCaption =>
-      'Keep useful words close and ready to review.';
+      'Save new words, review with SRS and track your progress every day.';
 
   @override
-  String get flashcardExplore => 'Explore decks';
+  String get flashcardExplore => 'Open Flashcards';
 
   @override
   String flashcardDeckCount(int count) {

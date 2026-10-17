@@ -1,6 +1,10 @@
+import 'dart:ui' show PointerDeviceKind;
+
 import 'package:flutter/material.dart';
 
 import 'package:lingua_design_system/lingua_design_system.dart';
+
+import 'home_discovery.dart';
 
 final class HomeDashboardCopy {
   const HomeDashboardCopy({
@@ -28,6 +32,7 @@ final class HomeDashboardCopy {
     required this.flashcardAction,
     required this.flowLetterTitle,
     required this.flowLetterCaption,
+    required this.discovery,
   });
   final String greeting;
   final String caption;
@@ -53,6 +58,7 @@ final class HomeDashboardCopy {
   final String flashcardAction;
   final String flowLetterTitle;
   final String flowLetterCaption;
+  final HomeDiscoveryCopy discovery;
 }
 
 class HomeDashboardScreen extends StatefulWidget {
@@ -68,6 +74,8 @@ class HomeDashboardScreen extends StatefulWidget {
     required this.onLearningLanguagePressed,
     required this.learningLanguageLabel,
     required this.streakCount,
+    required this.onRecommendationPressed,
+    required this.onGuideAction,
     this.cardStyle = 'regular',
     super.key,
   });
@@ -83,6 +91,8 @@ class HomeDashboardScreen extends StatefulWidget {
   final String learningLanguageLabel;
   final int streakCount;
   final String cardStyle;
+  final ValueChanged<HomeRecommendationKind> onRecommendationPressed;
+  final ValueChanged<HomeGuideKind> onGuideAction;
 
   @override
   State<HomeDashboardScreen> createState() => _HomeDashboardScreenState();
@@ -134,6 +144,18 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       );
     }
   }
+
+  void _openGuide(HomeGuide guide) => showHomeDiscoverySheet(
+    context: context,
+    title: guide.title,
+    body: guide.body,
+    closeLabel: widget.copy.discovery.close,
+    illustration: guide.kind,
+    actionLabel: guide.actionLabel,
+    onAction: guide.actionLabel == null
+        ? null
+        : () => widget.onGuideAction(guide.kind),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -196,9 +218,16 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                         semanticLabel: widget.copy.promptLabel,
                       ),
                       const SizedBox(height: SpaceTokens.xl),
-                      Text(
-                        widget.copy.learningModes,
-                        style: TypographyTokens.heading,
+                      HomePromotionPreview(
+                        title: widget.copy.discovery.promoTitle,
+                        caption: widget.copy.discovery.promoCaption,
+                        status: widget.copy.comingSoon,
+                        artwork: const ProfileBrandMark(),
+                      ),
+                      const SizedBox(height: SpaceTokens.xl),
+                      HomeDiscoveryHeading(
+                        title: widget.copy.learningModes,
+                        caption: widget.copy.discovery.learningModesCaption,
                       ),
                       const SizedBox(height: SpaceTokens.lg),
                       LayoutBuilder(
@@ -323,18 +352,114 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                         },
                       ),
                       const SizedBox(height: SpaceTokens.xxl),
+                      HomeDiscoveryHeading(
+                        key: const Key('home-recommendations-heading'),
+                        title: widget.copy.discovery.recommendationsTitle,
+                        caption: widget.copy.discovery.recommendationsCaption,
+                      ),
+                      const SizedBox(height: SpaceTokens.sm),
+                      Column(
+                        key: const Key('home-recommendations'),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (final row in [
+                            widget.copy.discovery.recommendations.take(5),
+                            widget.copy.discovery.recommendations.skip(5),
+                          ])
+                            Wrap(
+                              spacing: SpaceTokens.sm,
+                              children: [
+                                for (final topic in row)
+                                  HomeRecommendationChip(
+                                    key: ValueKey(
+                                      'home-topic-${topic.kind.name}',
+                                    ),
+                                    kind: topic.kind,
+                                    label: topic.label,
+                                    onPressed: () => showHomeDiscoverySheet(
+                                      context: context,
+                                      title: topic.label,
+                                      body: widget
+                                          .copy
+                                          .discovery
+                                          .recommendationNotice,
+                                      closeLabel: widget.copy.discovery.close,
+                                      actionLabel: widget
+                                          .copy
+                                          .discovery
+                                          .recommendationAction,
+                                      onAction: () => widget
+                                          .onRecommendationPressed(topic.kind),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: SpaceTokens.lg),
                       FeatureBanner(
                         title: widget.copy.flashcardTitle,
                         caption: widget.copy.flashcardCaption,
                         actionLabel: widget.copy.flashcardAction,
                         onPressed: widget.onFlashcardsPressed,
+                        previewWords: widget.copy.discovery.previewWords,
                       ),
-                      const SizedBox(height: SpaceTokens.xl),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: SpaceTokens.lg),
+                        child: Divider(color: ColorTokens.border),
+                      ),
                       FlowLetterTile(
                         title: widget.copy.flowLetterTitle,
                         caption: widget.copy.flowLetterCaption,
+                        statusLabel: widget.copy.comingSoon,
+                        onPressed: () =>
+                            _openGuide(widget.copy.discovery.guides.last),
                       ),
-                      const SizedBox(height: SpaceTokens.xxl),
+                      const SizedBox(height: SpaceTokens.xl),
+                      HomeDiscoveryHeading(
+                        key: const Key('home-guide-heading'),
+                        title: widget.copy.discovery.guideTitle,
+                        caption: widget.copy.discovery.guideCaption,
+                      ),
+                      const SizedBox(height: SpaceTokens.md),
+                      SizedBox(
+                        key: const Key('home-guide-rail'),
+                        height:
+                            LayoutTokens.homeGuideHeight *
+                            MediaQuery.textScalerOf(context).scale(1),
+                        child: ScrollConfiguration(
+                          behavior: ScrollConfiguration.of(context).copyWith(
+                            dragDevices: {
+                              PointerDeviceKind.touch,
+                              PointerDeviceKind.mouse,
+                              PointerDeviceKind.trackpad,
+                              PointerDeviceKind.stylus,
+                            },
+                          ),
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: widget.copy.discovery.guides.length,
+                            separatorBuilder: (_, _) =>
+                                const SizedBox(width: SpaceTokens.md),
+                            itemBuilder: (context, index) {
+                              final guide = widget.copy.discovery.guides[index];
+                              return SizedBox(
+                                width:
+                                    LayoutTokens.homeGuideWidth *
+                                    MediaQuery.textScalerOf(context).scale(1),
+                                child: HomeGuideTile(
+                                  key: ValueKey(
+                                    'home-guide-${guide.kind.name}',
+                                  ),
+                                  kind: guide.kind,
+                                  title: guide.title,
+                                  onPressed: () => _openGuide(guide),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

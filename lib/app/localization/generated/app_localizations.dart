@@ -98,6 +98,246 @@ abstract class AppLocalizations {
     Locale('vi'),
   ];
 
+  /// No description provided for @homePromoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover Gramify Plus'**
+  String get homePromoTitle;
+
+  /// No description provided for @homePromoCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock more practice and build your language skills.'**
+  String get homePromoCaption;
+
+  /// No description provided for @homeRecommendationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gramify recommends'**
+  String get homeRecommendationsTitle;
+
+  /// No description provided for @homeRecommendationsCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Handpicked topics to help you learn faster.'**
+  String get homeRecommendationsCaption;
+
+  /// No description provided for @homeModesCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Improve your writing, grammar and communication with AI.'**
+  String get homeModesCaption;
+
+  /// No description provided for @homeGuideTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gramify 101'**
+  String get homeGuideTitle;
+
+  /// No description provided for @homeGuideCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Get to know Gramify and discover how to make the most of your practice.'**
+  String get homeGuideCaption;
+
+  /// No description provided for @homeRecommendationNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with the available practice lessons. Creating new lessons with AI is coming in a future update.'**
+  String get homeRecommendationNotice;
+
+  /// No description provided for @homeRecommendationAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse practice'**
+  String get homeRecommendationAction;
+
+  /// No description provided for @homeTopicSurprise.
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise me'**
+  String get homeTopicSurprise;
+
+  /// No description provided for @homeTopicTravel.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel'**
+  String get homeTopicTravel;
+
+  /// No description provided for @homeTopicBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get homeTopicBusiness;
+
+  /// No description provided for @homeTopicFood.
+  ///
+  /// In en, this message translates to:
+  /// **'Food'**
+  String get homeTopicFood;
+
+  /// No description provided for @homeTopicShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get homeTopicShopping;
+
+  /// No description provided for @homeTopicHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get homeTopicHealth;
+
+  /// No description provided for @homeTopicSocial.
+  ///
+  /// In en, this message translates to:
+  /// **'Society'**
+  String get homeTopicSocial;
+
+  /// No description provided for @homeTopicIelts.
+  ///
+  /// In en, this message translates to:
+  /// **'IELTS'**
+  String get homeTopicIelts;
+
+  /// No description provided for @homeTopicDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily life'**
+  String get homeTopicDaily;
+
+  /// No description provided for @homeTopicEntertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Entertainment'**
+  String get homeTopicEntertainment;
+
+  /// No description provided for @homeGuideModes.
+  ///
+  /// In en, this message translates to:
+  /// **'3 Core Practice Modes'**
+  String get homeGuideModes;
+
+  /// No description provided for @homeGuideModesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice writing by translating and building sentences. Grammar practice helps you revise sentences and understand corrections. Conversation practice is coming in a future update.\n\nChoose a topic that suits your level and work through short lessons.'**
+  String get homeGuideModesBody;
+
+  /// No description provided for @homeGuideAssistant.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Assistant & Feedback'**
+  String get homeGuideAssistant;
+
+  /// No description provided for @homeGuideAssistantBody.
+  ///
+  /// In en, this message translates to:
+  /// **'After submitting an answer, review the corrections, hints and explanations in your lesson. Edit your answer to try again or continue.\n\nSample lessons are available now. Online AI feedback is coming later.'**
+  String get homeGuideAssistantBody;
+
+  /// No description provided for @homeGuideGenerator.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Magic Generator'**
+  String get homeGuideGenerator;
+
+  /// No description provided for @homeGuideGeneratorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating a lesson from a topic or idea is coming soon. Recommendation chips currently help you explore available practice lessons.\n\nYou can start now with Writing or Grammar practice.'**
+  String get homeGuideGeneratorBody;
+
+  /// No description provided for @homeGuideFlashcards.
+  ///
+  /// In en, this message translates to:
+  /// **'Flashcards & SRS'**
+  String get homeGuideFlashcards;
+
+  /// No description provided for @homeGuideFlashcardsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a deck, read a word and flip the card to check its meaning. Rate how well you remember it after each card.\n\nView the cards due for review and your progress in each deck.'**
+  String get homeGuideFlashcardsBody;
+
+  /// No description provided for @homeGuideProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Your Progress'**
+  String get homeGuideProgress;
+
+  /// No description provided for @homeGuideProgressBody.
+  ///
+  /// In en, this message translates to:
+  /// **'View your streak, activity and practice overview in Progress. A short daily session helps you build a learning habit.'**
+  String get homeGuideProgressBody;
+
+  /// No description provided for @homeGuideReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Review'**
+  String get homeGuideReview;
+
+  /// No description provided for @homeGuideReviewBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Review brings recent practice together by mode. Search for a topic and reopen a lesson you want to revisit.'**
+  String get homeGuideReviewBody;
+
+  /// No description provided for @homeGuideGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Mini Game: Flow Letter'**
+  String get homeGuideGame;
+
+  /// No description provided for @homeGuideGameBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Flow Letter is a word-building game where you arrange letters into vocabulary words. The mini game is in development and is not available to play yet.\n\nYou can review vocabulary with Flashcards while you wait.'**
+  String get homeGuideGameBody;
+
+  /// No description provided for @homeFlowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Flow Letter'**
+  String get homeFlowTitle;
+
+  /// No description provided for @homeFlowCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange letters into words'**
+  String get homeFlowCaption;
+
+  /// No description provided for @homeFlashcardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'VOCABULARY FLASHCARD'**
+  String get homeFlashcardTitle;
+
+  /// No description provided for @homePreviewResilient.
+  ///
+  /// In en, this message translates to:
+  /// **'Resilient'**
+  String get homePreviewResilient;
+
+  /// No description provided for @homePreviewResilientMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'Able to recover'**
+  String get homePreviewResilientMeaning;
+
+  /// No description provided for @homePreviewAcquire.
+  ///
+  /// In en, this message translates to:
+  /// **'Acquire'**
+  String get homePreviewAcquire;
+
+  /// No description provided for @homePreviewAcquireMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'To gain or learn'**
+  String get homePreviewAcquireMeaning;
+
   /// Application title
   ///
   /// In en, this message translates to:
@@ -779,13 +1019,13 @@ abstract class AppLocalizations {
   /// No description provided for @flashcardHomeCaption.
   ///
   /// In en, this message translates to:
-  /// **'Keep useful words close and ready to review.'**
+  /// **'Save new words, review with SRS and track your progress every day.'**
   String get flashcardHomeCaption;
 
   /// No description provided for @flashcardExplore.
   ///
   /// In en, this message translates to:
-  /// **'Explore decks'**
+  /// **'Open Flashcards'**
   String get flashcardExplore;
 
   /// No description provided for @flashcardDeckCount.

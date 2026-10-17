@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -115,11 +116,117 @@ HomeDashboardCopy _homeCopy(BuildContext context, int streakCount) {
     history: strings.historyReviewTitle,
     menu: strings.menu,
     settings: strings.settingsProfile,
-    flashcardTitle: strings.flashcards,
+    flashcardTitle: strings.homeFlashcardTitle,
     flashcardCaption: strings.flashcardHomeCaption,
     flashcardAction: strings.flashcardExplore,
-    flowLetterTitle: strings.insightWordGame,
-    flowLetterCaption: strings.comingSoon,
+    flowLetterTitle: strings.homeFlowTitle,
+    flowLetterCaption: strings.homeFlowCaption,
+    discovery: HomeDiscoveryCopy(
+      promoTitle: strings.homePromoTitle,
+      promoCaption: strings.homePromoCaption,
+      recommendationsTitle: strings.homeRecommendationsTitle,
+      recommendationsCaption: strings.homeRecommendationsCaption,
+      guideTitle: strings.homeGuideTitle,
+      guideCaption: strings.homeGuideCaption,
+      close: strings.close,
+      learningModesCaption: strings.homeModesCaption,
+      recommendationNotice: strings.homeRecommendationNotice,
+      recommendationAction: strings.homeRecommendationAction,
+      previewWords: [
+        (
+          word: strings.homePreviewResilient,
+          meaning: strings.homePreviewResilientMeaning,
+        ),
+        (
+          word: strings.homePreviewAcquire,
+          meaning: strings.homePreviewAcquireMeaning,
+        ),
+      ],
+      recommendations: [
+        HomeRecommendation(
+          kind: HomeRecommendationKind.surprise,
+          label: strings.homeTopicSurprise,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.travel,
+          label: strings.homeTopicTravel,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.business,
+          label: strings.homeTopicBusiness,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.food,
+          label: strings.homeTopicFood,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.shopping,
+          label: strings.homeTopicShopping,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.health,
+          label: strings.homeTopicHealth,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.social,
+          label: strings.homeTopicSocial,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.ielts,
+          label: strings.homeTopicIelts,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.daily,
+          label: strings.homeTopicDaily,
+        ),
+        HomeRecommendation(
+          kind: HomeRecommendationKind.entertainment,
+          label: strings.homeTopicEntertainment,
+        ),
+      ],
+      guides: [
+        HomeGuide(
+          kind: HomeGuideKind.modes,
+          title: strings.homeGuideModes,
+          body: strings.homeGuideModesBody,
+          actionLabel: strings.writing,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.assistant,
+          title: strings.homeGuideAssistant,
+          body: strings.homeGuideAssistantBody,
+          actionLabel: strings.grammar,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.generator,
+          title: strings.homeGuideGenerator,
+          body: strings.homeGuideGeneratorBody,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.flashcards,
+          title: strings.homeGuideFlashcards,
+          body: strings.homeGuideFlashcardsBody,
+          actionLabel: strings.flashcardExplore,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.progress,
+          title: strings.homeGuideProgress,
+          body: strings.homeGuideProgressBody,
+          actionLabel: strings.insightTitle,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.review,
+          title: strings.homeGuideReview,
+          body: strings.homeGuideReviewBody,
+          actionLabel: strings.historyReviewTitle,
+        ),
+        HomeGuide(
+          kind: HomeGuideKind.game,
+          title: strings.homeGuideGame,
+          body: strings.homeGuideGameBody,
+        ),
+      ],
+    ),
   );
 }
 
@@ -457,6 +564,42 @@ class HomeRoute extends GoRouteData with $HomeRoute {
         onHistoryPressed: () => const HistoryRoute().push<void>(context),
         onStreakPressed: () => const StreakRoute().push<void>(context),
         onMenuPressed: () => _showHomeMenu(context),
+        onRecommendationPressed: (kind) async {
+          final topicId = switch (kind) {
+            HomeRecommendationKind.surprise => const [
+              'daily-life',
+              'travel',
+              'work',
+              'culture',
+            ][math.Random().nextInt(4)],
+            HomeRecommendationKind.travel => 'travel',
+            HomeRecommendationKind.business => 'work',
+            HomeRecommendationKind.food => 'culture',
+            HomeRecommendationKind.daily => 'daily-life',
+            _ => null,
+          };
+          if (topicId != null) {
+            await WritingLessonRoute(topicId: topicId).push<void>(context);
+          } else {
+            await const WritingTopicRoute().push<void>(context);
+          }
+        },
+        onGuideAction: (kind) async {
+          switch (kind) {
+            case HomeGuideKind.modes:
+              await const WritingTopicRoute().push<void>(context);
+            case HomeGuideKind.assistant:
+              await const GrammarTopicRoute().push<void>(context);
+            case HomeGuideKind.flashcards:
+              await const FlashcardDecksRoute().push<void>(context);
+            case HomeGuideKind.progress:
+              await const InsightRoute().push<void>(context);
+            case HomeGuideKind.review:
+              await const HistoryRoute().push<void>(context);
+            case HomeGuideKind.generator || HomeGuideKind.game:
+              break;
+          }
+        },
       );
     },
   );

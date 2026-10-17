@@ -112,3 +112,17 @@ available safe-area width with `layout.marginDashboard` gutters, like Home.
 They do not use the `layout.contentMaxWidth` reading-column cap. This applies
 at compact and wide sizes and on window resize. Reading/detail pages retain
 the default capped `ContentConstraints` layout.
+
+## 13. Home discovery (DD-31)
+
+Recommendations retain two source-order groups of five. Each group wraps to
+additional rows as needed; compact controls retain 44px hit targets. The
+explainer rail uses `layout.homeGuideWidth` / `layout.homeGuideHeight` multiplied
+by text scale, so labels remain readable without truncation. Flashcard and
+Flow Letter banners fill content width and grow vertically. Decorative flashcard
+preview type is fixed and excluded from semantics. The 101 rail is followed
+only by reserved dock clearance; avoid adding a second large blank footer gap.
+
+On narrow windows with enlarged text, hide the decorative trailing Flashcard
+preview to reserve the full width for its title and CTA. Decorative HELLO
+letters keep their artwork text size; real title/caption/status copy scales.

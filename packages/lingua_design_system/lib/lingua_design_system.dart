@@ -24,3 +24,4 @@ export 'src/theme/app_theme.dart';
 export 'src/tokens/generated/design_tokens.dart';
 export 'src/components/country_flag.dart';
 export 'src/components/profile_components.dart';
+export 'src/components/home_discovery_components.dart';

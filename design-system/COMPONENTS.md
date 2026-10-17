@@ -214,28 +214,28 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **States**: default, selected, pressed, focused.
 - **Dimensions**: height `control.chipHeight` (30); `radius.chip`; gap `space.sm`.
 - **Colours**: default `surface`/`surfaceMuted`; selected Filter = 2 ru `accessible.warningText` outline (the fidelity `warning` orange is 2.8:1 on white), Quick = `primaryTint` fill with `accessible.textOnPrimaryTint` label.
-- **Interaction**: single-select in a horizontally scrolling rail; selection scrolls grid to top.
+- **Interaction**: Filter is single-select in a horizontally scrolling rail and resets grid scroll. Home Quick chips wrap in two groups and open a quick-start sheet (DD-31).
 - **Accessibility**: role radio in a radiogroup (Filter) or button (Quick); `aria-pressed/checked`.
 - **Evidence**: S001, S002, S008.
 
 ### Banner
 - **Purpose**: promo or feature entry.
 - **Variants**: `Promo` (single line CTA, brand fill) and `Feature` (gradient + CTA pill + preview cards).
-- **Anatomy**: Promo = icon · one-line message · CTA pill. Feature = title · caption · CTA pill · two decorative preview cards at the trailing edge (`aria-hidden`).
+- **Anatomy**: Home Promo preview = flower icon · title · caption, without a purchase CTA. Feature = title · caption · CTA pill · two decorative preview cards at the trailing edge (`aria-hidden`).
 - **Dimensions**: Promo height `layout.bannerPromoHeight` (77), Feature `layout.bannerFeatureHeight` (160); `radius.card`; padding `space.lg`.
-- **Colours**: fill `accessible.brandFill` (Feature may run a 135° gradient `accessible.brandFill` → `color.primaryTextOnTint`); text and CTA label `accessible.onBrand`; CTA pill `surface` fill with `accessible.link` label.
+- **Colours**: Promo uses production brand fill and white text. Feature uses `feature.home.flashcardGradient`, white title/caption and a `primaryTint` CTA pill with dark text (DD-31).
 - **States**: default, pressed, focused.
-- **Availability**: `Banner/Promo` only when the paywall is enabled (DD-24); `Banner/Feature` (flashcards entry) always.
-- **Interaction**: whole banner is a button; the CTA pill is decorative (not a second target).
+- **Availability**: the interactive purchasing promo remains deferred (DD-24). Home now includes a read-only visual promo preview (DD-31), with a coming-soon accessibility status. `Banner/Feature` remains an active Flashcards entry.
+- **Interaction**: whole Feature banner is a button; its CTA pill is decorative. Home Promo preview is non-interactive (DD-31).
 - **Accessibility**: one button, name = message + CTA label.
 - **Evidence**: S001.
 
 ### FlowLetterTile
 - **Purpose**: dashboard tile advertising the word game.
-- **Anatomy**: row of LetterTile previews spelling a word · title · caption.
-- **Dimensions**: width `layout.historyCardWidth`-class small tile (123×146, CANDIDATE) in a rail; `radius.card`; fill = `feature.flowLetter.gradient.lobby`; text `feature.flowLetter.glassText` (check worst-case backdrop).
+- **Anatomy**: title/status row · caption · centred HELLO letter previews.
+- **Dimensions (DD-31)**: full content width; minimum `layout.homeFlowHeight` (92), `radius.card`; black-purple-black `feature.homeDiscovery.flowGradient`, white text; 28px HELLO letter previews. Height grows with copy/text scaling.
 - **States**: default, pressed, focused. **Accessibility**: one button, name = title + caption.
-- **Interaction**: opens the game tutorial/lobby.
+- **Interaction**: opens the Flow Letter explainer with its current coming-soon state. Game play remains unavailable.
 - **Evidence**: S001 (off-screen, AX only).
 
 ### StatusBadge
@@ -664,3 +664,11 @@ and icon tokens (DD-30). Avatar is 76px; row glyphs 14px; compact labels 12/18
 medium. Profile groups use faint inset dividers and outlines, a lavender level
 badge and packaged country artwork. The promo grows for large text and its
 trailing preview badge does not initiate a purchase.
+
+### Home discovery (DD-31)
+- `HomeDiscoveryHeading`: semantic heading plus localized caption.
+- `HomeRecommendationChip`: native template topic symbol, compact 12/16 label, 30px painted pill inside a minimum 44px hit target. First chip uses primary tint. Two source-order groups of five; each group wraps independently on narrow windows. Each chip opens a quick-start sheet, then existing writing lessons or the topic picker; it does not claim to generate content.
+- `HomeGuideTile`: 123×146 at normal text size, 12/16 semibold label and code-native illustration; both card dimensions grow with text scale. Seven tiles in a horizontal rail with mouse/touch/trackpad dragging, focus and keyboard activation. Each opens a dismissible, scrollable sheet with localized educational copy and optional real navigation.
+- `HomeGuideIllustration`: modes, feedback, generator, flashcards, progress, review, Flow Letter; vector artwork coordinates are illustration data, not layout tokens. Decorative only.
+- Flashcard preview: two tilted vocabulary cards, localized preview text excluded from semantics; `layout.homeFlashPreview*` dimensions, dark navy-to-blue background and pale-blue CTA. Meaning text is illustration, never critical content.
+- `HomePromotionPreview`: 77px minimum, brand fill and flower artwork; non-interactive. Does not open a paywall or initiate purchases.

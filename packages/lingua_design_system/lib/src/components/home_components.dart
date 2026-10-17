@@ -782,6 +782,7 @@ class FeatureBanner extends StatelessWidget {
     required this.caption,
     required this.actionLabel,
     required this.onPressed,
+    required this.previewWords,
     super.key,
   });
 
@@ -789,6 +790,7 @@ class FeatureBanner extends StatelessWidget {
   final String caption;
   final String actionLabel;
   final VoidCallback onPressed;
+  final List<({String word, String meaning})> previewWords;
 
   @override
   Widget build(BuildContext context) {
@@ -798,6 +800,8 @@ class FeatureBanner extends StatelessWidget {
     return Semantics(
       button: true,
       label: '$title, $caption, $actionLabel',
+      excludeSemantics: true,
+      onTap: onPressed,
       child: CanonicalFocusIndicator(
         borderRadius: BorderRadius.circular(RadiusTokens.card),
         child: Material(
@@ -817,55 +821,63 @@ class FeatureBanner extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(RadiusTokens.card),
               ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: TypographyTokens.heading.copyWith(
-                            color: accessible.onBrand,
-                          ),
-                        ),
-                        const SizedBox(height: SpaceTokens.xs),
-                        Text(
-                          caption,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TypographyTokens.body.copyWith(
-                            color: accessible.onBrand,
-                          ),
-                        ),
-                        const SizedBox(height: SpaceTokens.md),
-                        ExcludeSemantics(
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: SpaceTokens.lg,
-                              vertical: SpaceTokens.sm,
+              child: LayoutBuilder(
+                builder: (context, constraints) => Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            title,
+                            style: TypographyTokens.heading.copyWith(
+                              color: accessible.onBrand,
                             ),
-                            decoration: BoxDecoration(
-                              color: ColorTokens.surface,
-                              borderRadius: BorderRadius.circular(
-                                RadiusTokens.full,
+                          ),
+                          const SizedBox(height: SpaceTokens.xs),
+                          Text(
+                            caption,
+                            style: TypographyTokens.homeFeatureCaption.copyWith(
+                              color: accessible.onBrand,
+                            ),
+                          ),
+                          const SizedBox(height: SpaceTokens.md),
+                          ExcludeSemantics(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: SpaceTokens.lg,
+                                vertical: SpaceTokens.sm,
+                              ),
+                              decoration: BoxDecoration(
+                                color: ColorTokens.primaryTint,
+                                borderRadius: BorderRadius.circular(
+                                  RadiusTokens.full,
+                                ),
+                              ),
+                              child: Text(
+                                '$actionLabel →',
+                                style: TypographyTokens.homeQuickTopic.copyWith(
+                                  color: ColorTokens.textPrimary,
+                                ),
                               ),
                             ),
-                            child: Text(
-                              actionLabel,
-                              style: TypographyTokens.bodyStrong.copyWith(
-                                color: accessible.link,
-                              ),
-                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: SpaceTokens.sm),
-                  const ExcludeSemantics(child: _FlashcardPreview()),
-                ],
+                    if (constraints.maxWidth >= LayoutTokens.dialogWidth &&
+                        (constraints.maxWidth >=
+                                LayoutTokens.breakpointCompact ||
+                            MediaQuery.textScalerOf(context).scale(1) <=
+                                1)) ...[
+                      const SizedBox(width: SpaceTokens.sm),
+                      ExcludeSemantics(
+                        child: _FlashcardPreview(words: previewWords),
+                      ),
+                    ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -879,86 +891,122 @@ class FlowLetterTile extends StatelessWidget {
   const FlowLetterTile({
     required this.title,
     required this.caption,
+    required this.statusLabel,
     this.onPressed,
     super.key,
   });
-
   final String title;
   final String caption;
+  final String statusLabel;
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) => Semantics(
     button: true,
     enabled: onPressed != null,
-    label: '$title, $caption',
+    label: '$title, $caption, $statusLabel',
+    onTap: onPressed,
+    excludeSemantics: true,
     child: CanonicalFocusIndicator(
       borderRadius: BorderRadius.circular(RadiusTokens.card),
       child: Material(
-        color: FeatureTokens.flowLetterGradientLobby.first,
+        color: FeatureTokens.homeDiscoveryFlowGradient.first,
         borderRadius: BorderRadius.circular(RadiusTokens.card),
         child: InkWell(
           onTap: onPressed,
           borderRadius: BorderRadius.circular(RadiusTokens.card),
           child: Container(
-            width: LayoutTokens.historyCardWidth,
+            width: double.infinity,
             constraints: const BoxConstraints(
-              minHeight: LayoutTokens.historyCardHeight,
+              minHeight: LayoutTokens.homeFlowHeight,
             ),
-            padding: const EdgeInsets.all(SpaceTokens.sm),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpaceTokens.md,
+              vertical: SpaceTokens.sm,
+            ),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: FeatureTokens.flowLetterGradientLobby,
+                colors: FeatureTokens.homeDiscoveryFlowGradient,
               ),
               borderRadius: BorderRadius.circular(RadiusTokens.card),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ExcludeSemantics(
-                  child: Row(
-                    children: [
-                      for (final letter in const ['F', 'L', 'O', 'W']) ...[
-                        Container(
-                          width: SpaceTokens.lg,
-                          height: SpaceTokens.lg,
-                          alignment: Alignment.center,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: TypographyTokens.bodyStrong.copyWith(
+                          color: ColorTokens.textOnPrimary,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: SpaceTokens.sm),
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: DecoratedBox(
                           decoration: BoxDecoration(
                             color: GlassTokens.buttonFill,
                             borderRadius: BorderRadius.circular(
-                              RadiusTokens.xs,
+                              RadiusTokens.full,
                             ),
                           ),
-                          child: Text(
-                            letter,
-                            style: TypographyTokens.microLabel.copyWith(
-                              color: FeatureTokens.flowLetterGlassText,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: SpaceTokens.sm,
+                              vertical: SpaceTokens.xs,
+                            ),
+                            child: Text(
+                              statusLabel,
+                              style: TypographyTokens.profileBadge.copyWith(
+                                color: ColorTokens.textOnPrimary,
+                              ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: SpaceTokens.xs),
-                      ],
-                    ],
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: SpaceTokens.lg),
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TypographyTokens.bodyStrong.copyWith(
-                    color: FeatureTokens.flowLetterGlassText,
-                  ),
-                ),
-                const SizedBox(height: SpaceTokens.xs),
                 Text(
                   caption,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TypographyTokens.caption.copyWith(
-                    color: FeatureTokens.flowLetterGlassText,
+                  style: TypographyTokens.homeFeatureCaption.copyWith(
+                    color: ColorTokens.textOnPrimary,
+                  ),
+                ),
+                const SizedBox(height: SpaceTokens.sm),
+                MediaQuery.withNoTextScaling(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (final letter in const ['H', 'E', 'L', 'L', 'O'])
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: SpaceTokens.xs,
+                          ),
+                          child: Container(
+                            width: IconTokens.homeFlowLetter,
+                            height: IconTokens.homeFlowLetter,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: GlassTokens.buttonFill,
+                              borderRadius: BorderRadius.circular(
+                                RadiusTokens.xs,
+                              ),
+                            ),
+                            child: Text(
+                              letter,
+                              style: TypographyTokens.heading.copyWith(
+                                color: ColorTokens.textOnPrimary,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],
@@ -971,43 +1019,59 @@ class FlowLetterTile extends StatelessWidget {
 }
 
 class _FlashcardPreview extends StatelessWidget {
-  const _FlashcardPreview();
+  const _FlashcardPreview({required this.words});
+  final List<({String word, String meaning})> words;
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    width: LayoutTokens.historyCardWidth,
-    height: LayoutTokens.historyCardHeight,
-    child: Stack(
-      alignment: Alignment.center,
+    width: LayoutTokens.homeFlashPreviewWidth,
+    height: LayoutTokens.homeFlashPreviewHeight,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Positioned(
-          top: SpaceTokens.md,
-          right: 0,
-          bottom: SpaceTokens.md,
-          left: SpaceTokens.md,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: ColorTokens.primaryTint,
-              borderRadius: BorderRadius.circular(RadiusTokens.card),
+        for (var index = 0; index < words.length; index++)
+          Transform.rotate(
+            angle: index.isEven ? .08 : -.03,
+            child: SizedBox(
+              width: double.infinity,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: ColorTokens.surface,
+                  borderRadius: BorderRadius.circular(RadiusTokens.control),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(SpaceTokens.sm),
+                  child: MediaQuery.withNoTextScaling(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          words[index].word,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TypographyTokens.homePreviewWord,
+                        ),
+                        Text(
+                          words[index].meaning,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TypographyTokens.homePreviewMeaning.copyWith(
+                            color: ColorTokens.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: SpaceTokens.xs),
+                        const SizedBox(
+                          width: IconTokens.tile,
+                          height: SpaceTokens.xs,
+                          child: ColoredBox(color: ColorTokens.primaryTint),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
-        Positioned(
-          top: SpaceTokens.xs,
-          right: SpaceTokens.md,
-          bottom: SpaceTokens.xl,
-          left: 0,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: ColorTokens.surface,
-              borderRadius: BorderRadius.circular(RadiusTokens.card),
-              boxShadow: ShadowTokens.raised,
-            ),
-            child: const Center(
-              child: Icon(Icons.style_rounded, size: IconTokens.tile),
-            ),
-          ),
-        ),
       ],
     ),
   );
