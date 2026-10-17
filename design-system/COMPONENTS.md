@@ -623,3 +623,11 @@ These were used by earlier entries (`FeedbackActionRow`, `Dialog`, `Sheet/Create
 | `Card` families (Mode, Topic, Lesson, Deck, Banner, History) | whole-card button (P1) | contain two competing CTAs (`LessonCard` CTA + card tap are one action) |
 | `FloatingBottomBar` | 2 `Button/Icon`, `StreakPill`, Menu pill | appear off the dashboard |
 | FlowLetter (`GameHUD`, `LetterTile`, `GlassButton`) | `glass.*` + `feature.flowLetter.*` | use light-theme surfaces |
+
+
+## StreakFlame
+- **Purpose**: decorative right-hand hero for the streak summary (DD-10a).
+- **Size**: `icon.streakHero`; use contain fitting to preserve the 500×690 artwork aspect ratio and stable bounds.
+- **Appearance**: packaged reference Lottie compositions; zero streak uses the grey artwork, positive streak the colour artwork. Preserve the embedded layered gradients and rising embers.
+- **Motion**: render the original path morphs, layer transforms and particles at the composition's own 24 fps and 26-frame duration (about 1.083 seconds). Do not approximate with sine-wave tip offsets.
+- **Accessibility**: excluded from semantics; first frame only with reduced motion. Pause outside the active application or an enabled ticker subtree.

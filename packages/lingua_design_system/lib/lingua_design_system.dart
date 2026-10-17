@@ -14,6 +14,7 @@ export 'src/components/home_components.dart';
 export 'src/components/insight_components.dart';
 export 'src/components/settings_components.dart';
 export 'src/components/srs_components.dart';
+export 'src/components/streak_flame.dart';
 export 'src/patterns/exercise_template.dart';
 export 'src/patterns/completion_template.dart';
 export 'src/primitives/app_scaffold.dart';

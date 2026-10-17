@@ -127,6 +127,14 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Implementation note**: feedback sheets use the tokened `motion.sheetEnterOffset` for a short vertical entrance/exit, with a fade-only transition under reduced motion. This distance is a design default, not a measured GramaGo value.
 - **Free to choose?** Yes.
 
+### DD-10a Streak flame
+- **Request**: match the actual GramaGo streak fire animation (2026-10-17).
+- **Verified reference**: opened the running GramaGo app's streak screen and compared successive frames. The silhouette and bright core morph substantially, with detached rising embers and vertical gradients. A small sinusoidal tip sway does not reproduce this behaviour.
+- **Source**: `Fire_gray.json` and `Fire.json` from the installed GramaGo app, recorded in `packages/lingua_design_system/assets/animations/README.md`. Both compositions are 500×690, 24 fps, 26 frames (about 1.083 seconds), including a retimed nested composition.
+- **Decision**: package the exact reference compositions as `streak_flame_inactive.json` and `streak_flame_active.json`; render them at `icon.streakHero` with aspect ratio preserved. Use the composition's own timing, gradients, Bézier paths, layer transforms and particles. Artwork colours are embedded illustration data, not feature-level UI overrides. No estimated flame motion tokens remain.
+- **Dependency justification**: add `lottie` to the design-system package only. Flutter and existing dependencies cannot render Bodymovin keyframe/gradient assets; reproducing its parser/renderer would duplicate a maintained library. This is a pure Dart renderer supporting Android, iOS, macOS and web, with no native setup. Its transitive `http` dependency supports its optional network loader; this component exclusively loads packaged assets and does not introduce a backend HTTP client. See https://pub.dev/packages/lottie.
+- **Accessibility/lifecycle**: decorative only; freeze on the first frame under reduced motion and pause while its ticker is disabled or the application is inactive. Keep layout stable throughout the cycle.
+
 ### DD-11 Score bands and thresholds
 - **Evidence**: 58 → red, 84/86/88 → orange. No green seen.
 - **Default**: `score.thresholds` (low < 60, mid 60–89, high ≥ 90) with `error/warning/success`. The thresholds are product rules, not UI measurements.

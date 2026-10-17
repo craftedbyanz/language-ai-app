@@ -111,7 +111,7 @@ Common rules for all templates
 
 ## 11. InsightTemplate
 **Regions**: `AppHeader/Pushed` · `InsightCard/StatGrid` (3×2) · `InsightCard/Calendar` · `InsightCard/WeekChart`.
-**Variants**: Insight overview; Streak (ON FIRE summary with large flame · navigable month calendar · current/longest stat cards); History/Review (centred title · trailing search · grouped `HistoryCard` rails).
+**Variants**: Insight overview; Streak (ON FIRE summary with large animated layered flame (DD-10a; static under reduced motion) · navigable month calendar · current/longest stat cards); History/Review (centred title · trailing search · grouped `HistoryCard` rails).
 **Empty**: zero-data (all zeros, empty chart, P21); populated = same layout with data.
 **History variant** (requires `InsightCard/History`): `AppHeader/Search` · per-type group (header + trailing "See more") · horizontal rail of `InsightCard/History`; no results → `EmptyState`.
 **Evidence**: S017, S018, S033.

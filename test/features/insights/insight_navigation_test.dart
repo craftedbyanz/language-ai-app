@@ -35,7 +35,11 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.tap(find.byType(StreakPill));
-      await tester.pumpAndSettle();
+      // The decorative flame loops continuously; allow only route transitions
+      // to finish instead of waiting for every animation to settle.
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.byType(StreakFlame), findsOneWidget);
       expect(find.text('Current streak'), findsOneWidget);
       expect(find.text('Longest streak'), findsOneWidget);
       expect(find.byType(InsightCalendarCard), findsOneWidget);

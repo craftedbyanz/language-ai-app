@@ -83,11 +83,7 @@ class _StreakScreenState extends ConsumerState<StreakScreen> {
                               ],
                             ),
                           ),
-                          Icon(
-                            Icons.local_fire_department_rounded,
-                            size: IconTokens.streakHero,
-                            color: ColorTokens.textFaint,
-                          ),
+                          StreakFlame(isActive: snapshot.currentStreak > 0),
                         ],
                       ),
                       const SizedBox(height: SpaceTokens.xxl),
