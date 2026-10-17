@@ -104,3 +104,11 @@ Window width 788/908, 554/772 alternate sizes, absolute coordinates of any eleme
 | SRSReview | card = contentWidth | card 0.58 × viewport | card capped |
 | Completion | card = viewport − 2×margin | `layout.sheetWidth` | `layout.sheetWidth` |
 | FlowLetterGame | gradient full-bleed; tiles `layout.letterTileSize`; glass buttons full content width | same | content centred |
+
+## 12. Home destination overview widths (DD-29)
+
+Profile and Review, including their headers and scrolling content, fill the
+available safe-area width with `layout.marginDashboard` gutters, like Home.
+They do not use the `layout.contentMaxWidth` reading-column cap. This applies
+at compact and wide sizes and on window resize. Reading/detail pages retain
+the default capped `ContentConstraints` layout.

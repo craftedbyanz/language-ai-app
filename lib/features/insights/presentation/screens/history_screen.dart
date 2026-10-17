@@ -44,7 +44,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       backgroundColor: ColorTokens.backgroundPlain,
       child: Column(
         children: [
-          ContentConstraints(
+          ContentConstraints.fullWidth(
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final compact =
@@ -86,7 +86,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: ContentConstraints(
+              child: ContentConstraints.fullWidth(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: SpaceTokens.xxl),
                   child: Column(

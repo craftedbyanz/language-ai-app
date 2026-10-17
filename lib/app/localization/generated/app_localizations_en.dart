@@ -153,7 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsUpgradeTitle => 'Try Gramify Plus';
 
   @override
-  String get settingsUpgradeCaption => 'Unlock higher limits with Plus';
+  String get settingsUpgradeCaption => 'Unlock the full power of AI';
 
   @override
   String get settingsUpgradeAction => 'Upgrade';

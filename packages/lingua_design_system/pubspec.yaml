@@ -23,3 +23,5 @@ flutter:
   assets:
     - assets/animations/
     - assets/flags/
+    - assets/icons/home_dock/
+    - assets/icons/profile/

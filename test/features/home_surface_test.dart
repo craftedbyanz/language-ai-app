@@ -88,6 +88,29 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
+      // Decode template artwork before capturing pixels in the fake-async test.
+      await tester.runAsync(() async {
+        final context = tester.element(find.byType(FloatingBottomBar));
+        for (final name in ['review', 'menu', 'profile']) {
+          await precacheImage(
+            AssetImage(
+              'assets/icons/home_dock/$name.png',
+              package: 'lingua_design_system',
+            ),
+            context,
+          );
+        }
+      });
+      await tester.pump();
+      for (final action in ['history', 'menu', 'profile']) {
+        final artwork = tester.widget<RawImage>(
+          find.descendant(
+            of: find.byKey(ValueKey('home-dock-$action-glyph')),
+            matching: find.byType(RawImage),
+          ),
+        );
+        expect(artwork.image, isNotNull);
+      }
       await expectLater(
         find.byType(AppScaffold),
         matchesGoldenFile('goldens/home_materials_${width.toInt()}.png'),

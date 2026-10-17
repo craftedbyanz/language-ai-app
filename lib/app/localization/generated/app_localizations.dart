@@ -359,7 +359,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsUpgradeCaption.
   ///
   /// In en, this message translates to:
-  /// **'Unlock higher limits with Plus'**
+  /// **'Unlock the full power of AI'**
   String get settingsUpgradeCaption;
 
   /// No description provided for @settingsUpgradeAction.

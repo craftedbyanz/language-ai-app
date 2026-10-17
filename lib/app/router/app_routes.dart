@@ -112,7 +112,7 @@ HomeDashboardCopy _homeCopy(BuildContext context, int streakCount) {
     explore: strings.explore,
     comingSoon: strings.comingSoon,
     streakLabel: strings.streakDays(streakCount),
-    history: strings.history,
+    history: strings.historyReviewTitle,
     menu: strings.menu,
     settings: strings.settingsProfile,
     flashcardTitle: strings.flashcards,

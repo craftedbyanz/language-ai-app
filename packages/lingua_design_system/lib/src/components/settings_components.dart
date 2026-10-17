@@ -15,6 +15,8 @@ class SettingsRow extends StatelessWidget {
     this.icon,
     this.onPressed,
     this.grouped = false,
+    this.leading,
+    this.compact = false,
     super.key,
   });
 
@@ -24,6 +26,8 @@ class SettingsRow extends StatelessWidget {
   final SettingsRowVariant variant;
   final VoidCallback? onPressed;
   final bool grouped;
+  final Widget? leading;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +44,33 @@ class SettingsRow extends StatelessWidget {
       ),
       child: Row(
         children: [
-          if (icon != null) ...[
+          if (icon != null || leading != null) ...[
             Container(
               width: IconTokens.tile,
               height: IconTokens.tile,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color: ColorTokens.surfaceMuted,
+              decoration: BoxDecoration(
+                color: compact
+                    ? FeatureTokens.profileIconFill
+                    : ColorTokens.surfaceMuted,
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                icon,
-                size: IconTokens.inline,
-                color: ColorTokens.textSecondary,
-              ),
+              child:
+                  leading ??
+                  Icon(
+                    icon,
+                    size: IconTokens.inline,
+                    color: ColorTokens.textSecondary,
+                  ),
             ),
             const SizedBox(width: SpaceTokens.md),
           ],
           Expanded(
             child: Text(
               label,
-              style: TypographyTokens.bodyStrong,
+              style: compact
+                  ? TypographyTokens.profileRow
+                  : TypographyTokens.bodyStrong,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -68,20 +78,23 @@ class SettingsRow extends StatelessWidget {
           if (value != null) ...[
             const SizedBox(width: SpaceTokens.sm),
             Flexible(
+              fit: compact ? FlexFit.tight : FlexFit.loose,
               child: Text(
                 value!,
                 textAlign: TextAlign.end,
-                style: TypographyTokens.body.copyWith(
-                  color: ColorTokens.textSecondary,
-                ),
+                style:
+                    (compact
+                            ? TypographyTokens.profileRow
+                            : TypographyTokens.body)
+                        .copyWith(color: ColorTokens.textSecondary),
               ),
             ),
           ],
           if (variant == SettingsRowVariant.navigate) ...[
             const SizedBox(width: SpaceTokens.sm),
-            const Icon(
+            Icon(
               Icons.chevron_right_rounded,
-              size: IconTokens.inline,
+              size: compact ? IconTokens.profileSetting : IconTokens.inline,
               color: ColorTokens.textFaint,
             ),
           ],

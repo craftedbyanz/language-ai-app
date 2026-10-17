@@ -30,10 +30,18 @@ class SettingsListScreen extends StatelessWidget {
     backgroundColor: ColorTokens.backgroundPlain,
     child: Column(
       children: [
-        ContentConstraints(
+        ContentConstraints.fullWidth(
           child: AppHeader(
             variant: AppHeaderVariant.pushed,
             title: copy.profile,
+            centre: Semantics(
+              header: true,
+              child: Text(
+                copy.profile,
+                textAlign: TextAlign.center,
+                style: TypographyTokens.profileNav,
+              ),
+            ),
             leadingLabel: copy.back,
             onLeadingPressed: onBack,
             highlightLeading: true,
@@ -41,133 +49,21 @@ class SettingsListScreen extends StatelessWidget {
         ),
         Expanded(
           child: SingleChildScrollView(
-            child: ContentConstraints(
+            child: ContentConstraints.fullWidth(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: SpaceTokens.xxl),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Center(
-                      child: Column(
-                        children: [
-                          Stack(
-                            clipBehavior: Clip.none,
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(SpaceTokens.xs),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: ColorTokens.border),
-                                ),
-                                child: CircleAvatar(
-                                  radius: IconTokens.container,
-                                  backgroundColor: ColorTokens.surfaceMuted,
-                                  child: Icon(
-                                    Icons.person_rounded,
-                                    size: IconTokens.container,
-                                    color: ColorTokens.textFaint,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: -SpaceTokens.xs,
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: ColorTokens.surfaceMuted,
-                                    borderRadius: BorderRadius.circular(
-                                      RadiusTokens.full,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: SpaceTokens.sm,
-                                    ),
-                                    child: Text(
-                                      copy.free,
-                                      style: TypographyTokens.microLabel,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: SpaceTokens.lg),
-                          Text(copy.guest, style: TypographyTokens.heading),
-                        ],
-                      ),
+                    const SizedBox(height: SpaceTokens.md),
+                    ProfileIdentity(name: copy.guest, plan: copy.free),
+                    const SizedBox(height: SpaceTokens.md),
+                    ProfileUpgradePreview(
+                      title: copy.upgradeTitle,
+                      caption: copy.upgradeCaption,
+                      action: copy.upgradeAction,
                     ),
-                    const SizedBox(height: SpaceTokens.lg),
-                    Container(
-                      constraints: const BoxConstraints(
-                        minHeight: LayoutTokens.bannerPromoHeight,
-                      ),
-                      padding: const EdgeInsets.all(SpaceTokens.lg),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            ColorTokens.primary,
-                            ColorTokens.primaryStrong,
-                            FeatureTokens.conversationHomeCardFill,
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(RadiusTokens.card),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.auto_awesome_rounded,
-                            color: ColorTokens.textOnPrimary,
-                            size: IconTokens.tile,
-                          ),
-                          const SizedBox(width: SpaceTokens.md),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  copy.upgradeTitle,
-                                  style: TypographyTokens.bodyStrong.copyWith(
-                                    color: ColorTokens.textOnPrimary,
-                                  ),
-                                ),
-                                Text(
-                                  copy.upgradeCaption,
-                                  style: TypographyTokens.caption.copyWith(
-                                    color: ColorTokens.textOnPrimary,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: ColorTokens.primaryStrong,
-                              borderRadius: BorderRadius.circular(
-                                RadiusTokens.full,
-                              ),
-                              border: Border.all(
-                                color: ColorTokens.textOnPrimary,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: SpaceTokens.md,
-                                vertical: SpaceTokens.sm,
-                              ),
-                              child: Text(
-                                copy.upgradeAction,
-                                style: TypographyTokens.caption.copyWith(
-                                  color: ColorTokens.textOnPrimary,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: SpaceTokens.xxl),
+                    const SizedBox(height: LayoutTokens.profilePromoSectionGap),
                     _GroupTitle(copy.studying),
                     const SizedBox(height: SpaceTokens.sm),
                     InkWell(
@@ -184,26 +80,36 @@ class SettingsListScreen extends StatelessWidget {
                     const SizedBox(height: SpaceTokens.sm),
                     _SettingsGroup(
                       rows: [
-                        _row(copy.editProfile, Icons.account_circle_outlined),
-                        _row(copy.lesson, Icons.tune_rounded, onLessonPressed),
-                        _row(copy.voice, Icons.graphic_eq_rounded),
+                        _row(copy.editProfile, ProfileSettingSymbol.account),
+                        _row(
+                          copy.lesson,
+                          ProfileSettingSymbol.lesson,
+                          onLessonPressed,
+                        ),
+                        _row(copy.voice, ProfileSettingSymbol.voice),
                         _row(
                           copy.appearance,
-                          Icons.settings_outlined,
+                          ProfileSettingSymbol.appearance,
                           onAppearancePressed,
                         ),
                         _row(
                           copy.notifications,
-                          Icons.notifications_none_rounded,
+                          ProfileSettingSymbol.notification,
                         ),
-                        _row(copy.subscription, Icons.wallet_outlined),
-                        _row(copy.redeem, Icons.redeem_rounded),
-                        _row(copy.invite, Icons.share_outlined),
-                        _row(copy.rate, Icons.stars_outlined),
+                        _row(
+                          copy.subscription,
+                          ProfileSettingSymbol.subscription,
+                        ),
+                        _row(copy.redeem, ProfileSettingSymbol.redeem),
+                        _row(copy.invite, ProfileSettingSymbol.invite),
+                        _row(copy.rate, ProfileSettingSymbol.rate),
                         SettingsRow(
                           label: copy.appLanguage,
                           value: currentLanguage,
-                          icon: Icons.translate_rounded,
+                          leading: const ProfileSettingIcon(
+                            symbol: ProfileSettingSymbol.language,
+                          ),
+                          compact: true,
                           variant: SettingsRowVariant.navigate,
                           grouped: true,
                           onPressed: onLanguagePressed,
@@ -215,26 +121,28 @@ class SettingsListScreen extends StatelessWidget {
                     const SizedBox(height: SpaceTokens.sm),
                     _SettingsGroup(
                       rows: [
-                        _row(copy.feedback, Icons.feedback_outlined),
-                        _row(copy.terms, Icons.description_outlined),
-                        _row(copy.privacy, Icons.privacy_tip_outlined),
-                        _row(copy.logout, Icons.logout_rounded),
+                        _row(copy.feedback, ProfileSettingSymbol.feedback),
+                        _row(copy.terms, ProfileSettingSymbol.terms),
+                        _row(copy.privacy, ProfileSettingSymbol.privacy),
+                        _row(copy.logout, ProfileSettingSymbol.logout),
                       ],
                     ),
                     const SizedBox(height: SpaceTokens.xxl),
                     Center(
                       child: Column(
                         children: [
+                          const ProfileBrandMark(),
+                          const SizedBox(height: SpaceTokens.sm),
                           Text(
                             copy.version,
-                            style: TypographyTokens.caption.copyWith(
+                            style: TypographyTokens.profileSection.copyWith(
                               color: ColorTokens.textSecondary,
                             ),
                           ),
                           const SizedBox(height: SpaceTokens.xs),
                           Text(
                             copy.footerCaption,
-                            style: TypographyTokens.caption.copyWith(
+                            style: TypographyTokens.profileSection.copyWith(
                               color: ColorTokens.textSecondary,
                             ),
                           ),
@@ -251,14 +159,18 @@ class SettingsListScreen extends StatelessWidget {
     ),
   );
 
-  SettingsRow _row(String label, IconData icon, [VoidCallback? onPressed]) =>
-      SettingsRow(
-        label: label,
-        icon: icon,
-        variant: SettingsRowVariant.navigate,
-        grouped: true,
-        onPressed: onPressed,
-      );
+  SettingsRow _row(
+    String label,
+    ProfileSettingSymbol symbol, [
+    VoidCallback? onPressed,
+  ]) => SettingsRow(
+    label: label,
+    leading: ProfileSettingIcon(symbol: symbol),
+    compact: true,
+    variant: SettingsRowVariant.navigate,
+    grouped: true,
+    onPressed: onPressed,
+  );
 }
 
 class _LearningLanguageCard extends StatelessWidget {
@@ -283,23 +195,21 @@ class _LearningLanguageCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: ColorTokens.surface,
-        border: Border.all(color: ColorTokens.border),
+        border: Border.all(color: FeatureTokens.profileGroupBorder),
         borderRadius: BorderRadius.circular(RadiusTokens.card),
       ),
       child: Row(
         children: [
-          const ExcludeSemantics(
-            child: Text('🇺🇸', style: TypographyTokens.heading),
-          ),
+          const CountryFlagIcon(country: CountryFlag.unitedStates),
           const SizedBox(width: SpaceTokens.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(english, style: TypographyTokens.bodyStrong),
+                Text(english, style: TypographyTokens.profileLanguage),
                 Text(
                   english,
-                  style: TypographyTokens.caption.copyWith(
+                  style: TypographyTokens.profileSection.copyWith(
                     color: ColorTokens.textSecondary,
                   ),
                 ),
@@ -308,7 +218,7 @@ class _LearningLanguageCard extends StatelessWidget {
           ),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: ColorTokens.surfaceMuted,
+              color: FeatureTokens.profileLevelFill,
               borderRadius: BorderRadius.circular(RadiusTokens.full),
             ),
             child: Padding(
@@ -316,7 +226,12 @@ class _LearningLanguageCard extends StatelessWidget {
                 horizontal: SpaceTokens.sm,
                 vertical: SpaceTokens.xs,
               ),
-              child: Text(level, style: TypographyTokens.caption),
+              child: Text(
+                level,
+                style: TypographyTokens.profileBadge.copyWith(
+                  color: FeatureTokens.profileLevelText,
+                ),
+              ),
             ),
           ),
         ],
@@ -331,10 +246,10 @@ class _SettingsGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
+    position: DecorationPosition.foreground,
     decoration: BoxDecoration(
-      color: ColorTokens.surface,
       borderRadius: BorderRadius.circular(RadiusTokens.card),
-      border: Border.all(color: ColorTokens.border),
+      border: Border.all(color: FeatureTokens.profileGroupBorder),
     ),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(RadiusTokens.card),
@@ -343,7 +258,13 @@ class _SettingsGroup extends StatelessWidget {
           for (var i = 0; i < rows.length; i++) ...[
             rows[i],
             if (i < rows.length - 1)
-              const Divider(height: 1, color: ColorTokens.border),
+              const Padding(
+                padding: EdgeInsets.only(
+                  left: SpaceTokens.lg + IconTokens.tile + SpaceTokens.md,
+                  right: SpaceTokens.lg,
+                ),
+                child: Divider(height: 1, color: FeatureTokens.profileDivider),
+              ),
           ],
         ],
       ),
@@ -360,7 +281,7 @@ class _GroupTitle extends StatelessWidget {
     header: true,
     child: Text(
       label,
-      style: TypographyTokens.caption.copyWith(
+      style: TypographyTokens.profileSection.copyWith(
         color: ColorTokens.textSecondary,
       ),
     ),

@@ -74,8 +74,9 @@ void main() {
 
       final blue = await capture(ColorTokens.primaryStrong);
       final red = await capture(ColorTokens.error);
-      // Sample glass between controls: the same location must retain background hue.
-      const offset = (380 * 320 + 100) * 4;
+      // Sample the open gap between Review and Menu, clear of their painted rims.
+      // The same location must retain background hue.
+      const offset = (380 * 320 + 81) * 4;
       expect(
         blue.sublist(offset, offset + 3),
         isNot(orderedEquals(red.sublist(offset, offset + 3))),
@@ -84,12 +85,9 @@ void main() {
       expect(red[offset], greaterThan(red[offset + 2]));
       final stripes = await capture(ColorTokens.surface, striped: true);
       int channelAt(int x, int y) => stripes[(y * 320 + x) * 4];
+      expect((channelAt(81, 100) - channelAt(86, 100)).abs(), greaterThan(200));
       expect(
-        (channelAt(101, 100) - channelAt(106, 100)).abs(),
-        greaterThan(200),
-      );
-      expect(
-        (channelAt(101, 380) - channelAt(106, 380)).abs(),
+        (channelAt(81, 380) - channelAt(86, 380)).abs(),
         lessThan(50),
         reason: 'The dock must blur sharp content, not merely tint it.',
       );

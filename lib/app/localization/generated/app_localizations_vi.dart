@@ -147,7 +147,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsUpgradeTitle => 'Dùng thử Gramify Plus';
 
   @override
-  String get settingsUpgradeCaption => 'Nâng cấp để có giới hạn cao hơn';
+  String get settingsUpgradeCaption => 'Mở khóa toàn bộ sức mạnh AI';
 
   @override
   String get settingsUpgradeAction => 'Upgrade';

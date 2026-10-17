@@ -276,6 +276,12 @@ abstract final class ControlTokens {
   /// control.gradeButton
   static const double gradeButton = 49.0;
 
+  /// control.homeDockButton
+  static const double homeDockButton = 38.0;
+
+  /// control.homeDockMenuMinWidth
+  static const double homeDockMenuMinWidth = 94.0;
+
   /// control.iconButton
   static const double iconButton = 36.0;
 
@@ -418,6 +424,30 @@ abstract final class FeatureTokens {
   /// feature.learningLanguage.cta
   static const Color learningLanguageCta = Color(0xFF19CCE5);
 
+  /// feature.profile.avatarFill
+  static const Color profileAvatarFill = Color(0xFFEEEEF0);
+
+  /// feature.profile.avatarGlyph
+  static const Color profileAvatarGlyph = Color(0xFFBFC0C6);
+
+  /// feature.profile.divider
+  static const Color profileDivider = Color(0xFFFAFAFB);
+
+  /// feature.profile.groupBorder
+  static const Color profileGroupBorder = Color(0xFFF1F2F4);
+
+  /// feature.profile.iconFill
+  static const Color profileIconFill = Color(0xFFF8F9FA);
+
+  /// feature.profile.levelFill
+  static const Color profileLevelFill = Color(0xFFF0E8FF);
+
+  /// feature.profile.levelText
+  static const Color profileLevelText = Color(0xFF7040B5);
+
+  /// feature.profile.promoEnd
+  static const Color profilePromoEnd = Color(0xFF087BA4);
+
   /// feature.scenario.accent
   static const Color scenarioAccent = Color(0xFF3B82F6);
 
@@ -511,6 +541,12 @@ abstract final class GlassTokens {
   /// glass.button.fill
   static const Color buttonFill = Color.fromRGBO(255, 255, 255, 0.20);
 
+  /// glass.homeDockButtonBorder
+  static const Color homeDockButtonBorder = Color.fromRGBO(255, 255, 255, 0.38);
+
+  /// glass.homeDockButtonFill
+  static const Color homeDockButtonFill = Color.fromRGBO(255, 255, 255, 0.58);
+
   /// glass.homeDockTint
   static const Color homeDockTint = Color.fromRGBO(255, 255, 255, 0.42);
 
@@ -542,11 +578,26 @@ abstract final class IconTokens {
   /// icon.control
   static const double control = 27.0;
 
+  /// icon.homeDock
+  static const double homeDock = 18.0;
+
+  /// icon.homeDockMenu
+  static const double homeDockMenu = 16.0;
+
   /// icon.inline
   static const double inline = 15.0;
 
   /// icon.learningLanguageHero
   static const double learningLanguageHero = 48.0;
+
+  /// icon.profileAvatar
+  static const double profileAvatar = 40.0;
+
+  /// icon.profilePromo
+  static const double profilePromo = 44.0;
+
+  /// icon.profileSetting
+  static const double profileSetting = 14.0;
 
   /// icon.streakHero
   static const double streakHero = 96.0;
@@ -613,6 +664,9 @@ abstract final class LayoutTokens {
   /// layout.historyCardWidth
   static const double historyCardWidth = 123.0;
 
+  /// layout.homeDockControlsBottomInset
+  static const double homeDockControlsBottomInset = 2.0;
+
   /// layout.homeDockFadeHeight
   static const double homeDockFadeHeight = 32.0;
 
@@ -660,6 +714,15 @@ abstract final class LayoutTokens {
 
   /// layout.popupMenuWidth
   static const double popupMenuWidth = 144.0;
+
+  /// layout.profileAvatar
+  static const double profileAvatar = 76.0;
+
+  /// layout.profilePromoHeight
+  static const double profilePromoHeight = 68.0;
+
+  /// layout.profilePromoSectionGap
+  static const double profilePromoSectionGap = 36.0;
 
   /// layout.rowMenu
   static const double rowMenu = 54.0;
@@ -907,6 +970,14 @@ abstract final class TypographyTokens {
     fontWeight: FontWeight.w700,
   );
 
+  /// typography.homeDockLabel
+  static const TextStyle homeDockLabel = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.2857142857142858,
+    fontWeight: FontWeight.w600,
+  );
+
   /// typography.homeModeIndex
   static const TextStyle homeModeIndex = TextStyle(
     fontFamily: TypographyTokens.family,
@@ -924,6 +995,62 @@ abstract final class TypographyTokens {
     letterSpacing: 0.8,
   );
   static const String microLabelTransform = "uppercase";
+
+  /// typography.profileBadge
+  static const TextStyle profileBadge = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 10,
+    height: 1.4,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// typography.profileLanguage
+  static const TextStyle profileLanguage = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.4285714285714286,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// typography.profileName
+  static const TextStyle profileName = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 20,
+    height: 1.3,
+    fontWeight: FontWeight.w700,
+  );
+
+  /// typography.profileNav
+  static const TextStyle profileNav = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.4285714285714286,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// typography.profilePromoTitle
+  static const TextStyle profilePromoTitle = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.2857142857142858,
+    fontWeight: FontWeight.w700,
+  );
+
+  /// typography.profileRow
+  static const TextStyle profileRow = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.5,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// typography.profileSection
+  static const TextStyle profileSection = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.5,
+    fontWeight: FontWeight.w500,
+  );
 
   /// typography.streakCount
   static const TextStyle streakCount = TextStyle(

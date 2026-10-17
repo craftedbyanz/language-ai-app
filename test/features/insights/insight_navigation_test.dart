@@ -25,7 +25,7 @@ void main() {
       expect(gameTile, findsOneWidget);
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byTooltip('History'));
+      await tester.tap(find.byTooltip('Review'));
       await tester.pumpAndSettle();
       expect(find.text('No history yet'), findsOneWidget);
       await tester.enterText(find.byType(SearchField), 'missing');

@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../primitives/canonical_focus_indicator.dart';
-import 'country_flag.dart';
 import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
+import 'country_flag.dart';
+import 'home_dock_icon.dart';
 
 /// Home shortcut to the learning language, separate from the app locale.
 class LearningLanguageButton extends StatelessWidget {
@@ -500,35 +501,30 @@ class FloatingBottomBar extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          height: LayoutTokens.homeDockHeight,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.lg),
-            child: LayoutBuilder(
-              builder: (context, constraints) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _DockButton(
-                    label: historyLabel,
-                    icon: Icons.rotate_left_rounded,
-                    onPressed: onHistory,
-                  ),
-                  _DockButton(
-                    label: menuLabel,
-                    icon: Icons.stars_rounded,
-                    onPressed: onMenu,
-                    showLabel:
-                        constraints.maxWidth >=
-                        LayoutTokens.hideBarCaptionsBelow,
-                  ),
-                  _DockButton(
-                    label: settingsLabel,
-                    icon: Icons.wb_sunny_outlined,
-                    onPressed: onSettings,
-                  ),
-                ],
+        Positioned(
+          left: SpaceTokens.lg,
+          right: SpaceTokens.lg,
+          bottom: LayoutTokens.homeDockControlsBottomInset,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _DockButton(
+                label: historyLabel,
+                action: HomeDockAction.history,
+                onPressed: onHistory,
               ),
-            ),
+              _DockButton(
+                label: menuLabel,
+                action: HomeDockAction.menu,
+                onPressed: onMenu,
+              ),
+              _DockButton(
+                label: settingsLabel,
+                action: HomeDockAction.profile,
+                onPressed: onSettings,
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -549,71 +545,90 @@ class FloatingBottomBar extends StatelessWidget {
 class _DockButton extends StatelessWidget {
   const _DockButton({
     required this.label,
-    required this.icon,
+    required this.action,
     this.onPressed,
-    this.showLabel = false,
   });
   final String label;
-  final IconData icon;
+  final HomeDockAction action;
   final VoidCallback? onPressed;
-  final bool showLabel;
 
   @override
-  Widget build(BuildContext context) => Tooltip(
-    message: label,
-    child: Semantics(
-      button: true,
-      label: label,
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(RadiusTokens.full),
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(RadiusTokens.full),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              minWidth: ControlTokens.minTouchTarget,
-              minHeight: ControlTokens.minTouchTarget,
-            ),
-            child: Center(
-              child: Container(
+  Widget build(BuildContext context) {
+    final isMenu = action == HomeDockAction.menu;
+    final radius = BorderRadius.circular(RadiusTokens.full);
+    return Tooltip(
+      message: label,
+      excludeFromSemantics: true,
+      child: Semantics(
+        button: true,
+        enabled: onPressed != null,
+        label: label,
+        onTap: onPressed,
+        excludeSemantics: true,
+        child: CanonicalFocusIndicator(
+          borderRadius: radius,
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: radius,
+            child: InkWell(
+              key: ValueKey('home-dock-${action.name}-button'),
+              excludeFromSemantics: true,
+              onTap: onPressed,
+              borderRadius: radius,
+              child: ConstrainedBox(
+                key: ValueKey('home-dock-${action.name}-hit-target'),
                 constraints: const BoxConstraints(
-                  minWidth: ControlTokens.iconButton,
-                  minHeight: ControlTokens.iconButton,
+                  minWidth: ControlTokens.minTouchTarget,
+                  minHeight: ControlTokens.minTouchTarget,
                 ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: showLabel ? SpaceTokens.sm : SpaceTokens.xs,
-                ),
-                decoration: BoxDecoration(
-                  color: GlassTokens.barFill,
-                  borderRadius: BorderRadius.circular(RadiusTokens.full),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      icon,
-                      size: IconTokens.inline,
-                      color: ColorTokens.textPrimary,
-                    ),
-                    if (showLabel) ...[
-                      const SizedBox(width: SpaceTokens.xs),
-                      Text(
-                        label,
-                        style: TypographyTokens.bodyStrong.copyWith(
-                          color: ColorTokens.textPrimary,
-                        ),
+                child: Center(
+                  widthFactor: 1,
+                  heightFactor: 1,
+                  child: Ink(
+                    key: ValueKey('home-dock-${action.name}-surface'),
+                    height: ControlTokens.homeDockButton,
+                    width: isMenu ? null : ControlTokens.homeDockButton,
+                    decoration: BoxDecoration(
+                      color: GlassTokens.homeDockButtonFill,
+                      border: Border.all(
+                        color: GlassTokens.homeDockButtonBorder,
                       ),
-                    ],
-                  ],
+                      borderRadius: radius,
+                    ),
+                    child: isMenu
+                        ? ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              minWidth: ControlTokens.homeDockMenuMinWidth,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: SpaceTokens.md,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  HomeDockIcon(action: action),
+                                  const SizedBox(width: SpaceTokens.sm),
+                                  Text(
+                                    label,
+                                    key: const Key('home-dock-menu-label'),
+                                    style: TypographyTokens.homeDockLabel,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : Center(child: HomeDockIcon(action: action)),
+                  ),
                 ),
               ),
             ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 final class MenuShortcut {

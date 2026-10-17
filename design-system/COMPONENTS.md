@@ -58,13 +58,13 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **Purpose**: shortcut hub on the dashboard only.
 - **Anatomy**: full-width frosted dock at the bottom edge · rotate-left history circle at the left · star-circle Menu pill centred · sun glyph in the Profile circle at the right · StreakPill floating above the centre. These icon descriptions were read from the live macOS app on 2026-10-13.
 - **States**: default; pressed per control.
-- **Dimensions**: icon buttons `control.iconButton` (36); streak pill height `control.pillSmallHeight` (24).
+- **Dimensions**: dock faces `control.homeDockButton` (38); Menu minimum width `control.homeDockMenuMinWidth` (94); independent hit targets ≥ `control.minTouchTarget` (44). Streak pill height `control.pillSmallHeight` (24).
 - **Spacing**: dock flush to the window edges; controls inset by `space.lg`; streak overlaps the dock top.
-- **Typography**: pill labels `caption`/`bodyStrong`; streak count in `warning`.
-- **Colours**: `glass.bar`; icons `textPrimary`.
+- **Typography**: Menu uses `typography.homeDockLabel`, retained even at compact widths. Streak count uses `warning`.
+- **Colours**: dock control faces `glass.homeDockButtonFill` with `glass.homeDockButtonBorder`; vector glyphs `textSecondary`, Menu label `textPrimary`.
 - **Interaction**: left → history, streak pill → streak, Menu → MenuOverlay, right → Profile.
 - **Accessibility**: a toolbar; each control labelled ("History", "Streak: N days", "Menu", "Profile"). Streak name includes the value.
-- **Responsive**: keeps all four controls; the dock adapts to window width.
+- **Responsive**: keeps all four controls and the Menu label; the dock adapts to window width. Controls anchor at `layout.homeDockControlsBottomInset` above the safe-area bottom, independently of the blur height. Both circle glyphs are centered in their painted faces; the Menu icon/label group is centered in its pill. All three painted faces share a horizontal centerline (DD-28).
 - **Evidence**: S001, S011.
 
 ### MenuOverlay
@@ -497,7 +497,7 @@ without relying on color.
 - **Variants**: `Navigate` (chevron), `Toggle`, `Info`, `Account`.
 - **Dimensions**: height `layout.rowSettings` (62); full content width; `radius.card` on grouped cards; padding `space.lg`.
 - **States**: default, pressed, focused, disabled. `Toggle` variant embeds `Toggle`; `Account` shows avatar · name · plan `StatusBadge/Plan` and is **read-only** in v1 (profile editing is policy-blocked).
-- **Typography**: label `bodyStrong`; value `body` `textSecondary`.
+- **Typography**: default label `bodyStrong`; value `body` `textSecondary`. Profile opts into compact labels/values `typography.profileRow` and template `leading` artwork (DD-30); other consumers retain the default.
 - **Accessibility**: row is one control; toggles expose checked state.
 - **Evidence**: S016, S041, S048.
 
@@ -653,3 +653,14 @@ These were used by earlier entries (`FeedbackActionRow`, `Dialog`, `Sheet/Create
 - `Banner/Feature` uses `feature.home.flashcardGradient`. The dock has a `layout.homeDockFadeHeight` feather above `homeDockHeight`, `glass.bar.blur`, `glass.homeDockTint`, a single clipped blur with feathered translucent fill, and no opaque blue paint. Keep backdrop filters outside masking save-layers so they sample the real scene. Streak-pill shadow is `shadow.homeStreak`.
 
 - Dashboard pager keeps its keyboard/touch targets; active dash is `space.xl` wide and `space.xs` high, other marks are `space.xs` squares. Lesson pager styling is unchanged.
+
+Profile and Review overview screens use `ContentConstraints.fullWidth`: their
+headers and scroll bodies fill the safe-area width with
+`layout.marginDashboard` gutters (DD-29). The default constructor retains the
+reading-column cap for other screens.
+
+Profile identity and upgrade preview use scoped `profile*` typography, layout
+and icon tokens (DD-30). Avatar is 76px; row glyphs 14px; compact labels 12/18
+medium. Profile groups use faint inset dividers and outlines, a lavender level
+badge and packaged country artwork. The promo grows for large text and its
+trailing preview badge does not initiate a purchase.
