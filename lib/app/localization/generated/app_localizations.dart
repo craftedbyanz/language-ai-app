@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @homePromoTitle.
   ///
   /// In en, this message translates to:
-  /// **'Discover Gramify Plus'**
+  /// **'Discover HiFive Plus'**
   String get homePromoTitle;
 
   /// No description provided for @homePromoCaption.
@@ -113,7 +113,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeRecommendationsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Gramify recommends'**
+  /// **'HiFive recommends'**
   String get homeRecommendationsTitle;
 
   /// No description provided for @homeRecommendationsCaption.
@@ -131,13 +131,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeGuideTitle.
   ///
   /// In en, this message translates to:
-  /// **'Gramify 101'**
+  /// **'HiFive 101'**
   String get homeGuideTitle;
 
   /// No description provided for @homeGuideCaption.
   ///
   /// In en, this message translates to:
-  /// **'Get to know Gramify and discover how to make the most of your practice.'**
+  /// **'Get to know HiFive and discover how to make the most of your practice.'**
   String get homeGuideCaption;
 
   /// No description provided for @homeRecommendationNotice.
@@ -341,7 +341,7 @@ abstract class AppLocalizations {
   /// Application title
   ///
   /// In en, this message translates to:
-  /// **'Lingua'**
+  /// **'HiFive'**
   String get appTitle;
 
   /// Temporary foundation screen; not a product feature
@@ -497,7 +497,7 @@ abstract class AppLocalizations {
   /// No description provided for @menuUpgrade.
   ///
   /// In en, this message translates to:
-  /// **'Upgrade Gramify Plus'**
+  /// **'Upgrade HiFive Plus'**
   String get menuUpgrade;
 
   /// No description provided for @streakCurrentLabel.
@@ -593,7 +593,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsUpgradeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Try Gramify Plus'**
+  /// **'Try HiFive Plus'**
   String get settingsUpgradeTitle;
 
   /// No description provided for @settingsUpgradeCaption.
@@ -899,7 +899,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsVersion.
   ///
   /// In en, this message translates to:
-  /// **'Lingua v0.1.0 (1)'**
+  /// **'HiFive v0.1.0 (1)'**
   String get settingsVersion;
 
   /// No description provided for @settingsFooterCaption.

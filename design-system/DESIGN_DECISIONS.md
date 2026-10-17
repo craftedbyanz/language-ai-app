@@ -285,3 +285,8 @@ Purchases, trials, restore, account/profile edit, logout, language/level confirm
 - **Guides**: modes, assistant/feedback, AI generator, Flashcards/SRS, progress, review and Flow Letter. Supported guides may navigate to existing typed routes; generator/game guides explain availability without an inactive CTA. Conversation, live AI generation and game play remain coming soon.
 - **Rendering**: scoped typed tokens for compact labels and guide/preview geometry; source-order topic groups wrap on compact windows. Guide cards grow with text scale; sheets scroll; the dock remains window-fixed. Native topic symbols are decorative template PNGs; explainer art is code-native. Product strings and preview meanings use ARBs.
 - **Validation**: Home full-screen and lower-section goldens at 390/788/1200px, 200% text, all seven guide sheets, a matching recommendation route, existing Home/settings/insight navigation, architecture and token checks.
+
+### DD-32 HiFive product branding
+- **Request**: after reviewing naming options, the user selected the exact spelling **HiFive** and explicitly requested applying it throughout the app.
+- **Decision**: all product UI uses HiFive / HiFive Plus in English and Vietnamese, including Home recommendations, 101 descriptions, promo previews, Menu, Profile and version labels. Android/iOS/macOS display names, the macOS application product and web metadata use HiFive consistently. Package and bundle identifiers retain their existing technical names so identity and local preferences remain stable. Localization is regenerated from ARBs.
+- **Traceability**: research descriptions and asset provenance continue to identify the actual reference application; these are historical evidence rather than product copy.

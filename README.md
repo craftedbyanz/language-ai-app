@@ -1,4 +1,4 @@
-# Lingua
+# HiFive
 
 Flutter language-learning client for Android, iPhone, iPad, web and native macOS.
 The Go backend lives in a separate repository. Architecture v1 contains only

@@ -37,7 +37,7 @@ void main() {
       expect(find.text('Profile'), findsOneWidget);
       expect(find.text('Cài đặt chung'), findsOneWidget);
       expect(find.text('Ngôn ngữ ứng dụng'), findsOneWidget);
-      await tester.ensureVisible(find.text('Lingua v0.1.0 (1)'));
+      await tester.ensureVisible(find.text('HiFive v0.1.0 (1)'));
       await tester.pumpAndSettle();
       expect(find.text('Khác'), findsOneWidget);
       expect(find.text('Đăng xuất'), findsOneWidget);

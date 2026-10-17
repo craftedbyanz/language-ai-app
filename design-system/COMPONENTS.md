@@ -74,7 +74,7 @@ Colour roles: a component entry that names a raw `color.*` fidelity token for TE
 - **States**: closed, open.
 - **Dimensions**: row pitch `layout.rowMenu` (54); icon tile `icon.tile` (30).
 - **Colours**: `glass.bar` blur + `color.primaryTint` lower wash; row labels `textPrimary` on glass; each icon tile uses its semantic colour token with white glyph.
-- **Rows (data-driven, default order)**: Insight · Upgrade Gramify Plus · Flashcards · My streak · FlowLetter. Upgrade and FlowLetter remain non-actionable until their routes are implemented.
+- **Rows (data-driven, default order)**: Insight · Upgrade HiFive Plus · Flashcards · My streak · FlowLetter. Upgrade and FlowLetter remain non-actionable until their routes are implemented.
 - **Interaction**: available rows push the destination screen. Upgrade and FlowLetter are non-actionable previews until their routes exist. Dismiss by backdrop tap, Escape, or the bottom Menu pill.
 - **Accessibility**: modal; focus trapped; Escape closes; available rows are buttons and unavailable rows expose disabled state. Keyboard focus starts on the first Tab press.
 - **Responsive**: centred column, max width `layout.sheetWidth`.

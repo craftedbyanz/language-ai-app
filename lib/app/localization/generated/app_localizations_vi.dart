@@ -10,14 +10,14 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get homePromoTitle => 'Đăng ký Gramify Plus';
+  String get homePromoTitle => 'Đăng ký HiFive Plus';
 
   @override
   String get homePromoCaption =>
       'Mở khóa mức sử dụng cao hơn và làm chủ kỹ năng ngôn ngữ của bạn.';
 
   @override
-  String get homeRecommendationsTitle => 'Gramify đề xuất';
+  String get homeRecommendationsTitle => 'HiFive đề xuất';
 
   @override
   String get homeRecommendationsCaption =>
@@ -28,11 +28,11 @@ class AppLocalizationsVi extends AppLocalizations {
       'Nâng cao kỹ năng viết, ngữ pháp và giao tiếp cùng AI.';
 
   @override
-  String get homeGuideTitle => 'Gramify 101';
+  String get homeGuideTitle => 'HiFive 101';
 
   @override
   String get homeGuideCaption =>
-      'Tất cả những gì bạn cần biết về Gramify và cách ứng dụng giúp bạn học tập hiệu quả.';
+      'Tất cả những gì bạn cần biết về HiFive và cách ứng dụng giúp bạn học tập hiệu quả.';
 
   @override
   String get homeRecommendationNotice =>
@@ -142,7 +142,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homePreviewAcquireMeaning => 'Tiếp thu';
 
   @override
-  String get appTitle => 'Lingua';
+  String get appTitle => 'HiFive';
 
   @override
   String get foundationReady => 'Sẵn sàng học hỏi.';
@@ -226,7 +226,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get menuClose => 'Đóng trình đơn';
 
   @override
-  String get menuUpgrade => 'Nâng cấp Gramify Plus';
+  String get menuUpgrade => 'Nâng cấp HiFive Plus';
 
   @override
   String get streakCurrentLabel => 'HIỆN TẠI';
@@ -276,7 +276,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsFree => 'Free';
 
   @override
-  String get settingsUpgradeTitle => 'Dùng thử Gramify Plus';
+  String get settingsUpgradeTitle => 'Dùng thử HiFive Plus';
 
   @override
   String get settingsUpgradeCaption => 'Mở khóa toàn bộ sức mạnh AI';
@@ -433,7 +433,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get settingsSaveFailed => 'Không thể lưu ngôn ngữ. Hãy thử lại.';
 
   @override
-  String get settingsVersion => 'Lingua v0.1.0 (1)';
+  String get settingsVersion => 'HiFive v0.1.0 (1)';
 
   @override
   String get settingsFooterCaption => 'Học một chút mỗi ngày.';

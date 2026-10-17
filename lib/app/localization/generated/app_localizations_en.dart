@@ -10,14 +10,14 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get homePromoTitle => 'Discover Gramify Plus';
+  String get homePromoTitle => 'Discover HiFive Plus';
 
   @override
   String get homePromoCaption =>
       'Unlock more practice and build your language skills.';
 
   @override
-  String get homeRecommendationsTitle => 'Gramify recommends';
+  String get homeRecommendationsTitle => 'HiFive recommends';
 
   @override
   String get homeRecommendationsCaption =>
@@ -28,11 +28,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Improve your writing, grammar and communication with AI.';
 
   @override
-  String get homeGuideTitle => 'Gramify 101';
+  String get homeGuideTitle => 'HiFive 101';
 
   @override
   String get homeGuideCaption =>
-      'Get to know Gramify and discover how to make the most of your practice.';
+      'Get to know HiFive and discover how to make the most of your practice.';
 
   @override
   String get homeRecommendationNotice =>
@@ -142,7 +142,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homePreviewAcquireMeaning => 'To gain or learn';
 
   @override
-  String get appTitle => 'Lingua';
+  String get appTitle => 'HiFive';
 
   @override
   String get foundationReady => 'Ready to learn.';
@@ -232,7 +232,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuClose => 'Close menu';
 
   @override
-  String get menuUpgrade => 'Upgrade Gramify Plus';
+  String get menuUpgrade => 'Upgrade HiFive Plus';
 
   @override
   String get streakCurrentLabel => 'CURRENT';
@@ -282,7 +282,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsFree => 'Free';
 
   @override
-  String get settingsUpgradeTitle => 'Try Gramify Plus';
+  String get settingsUpgradeTitle => 'Try HiFive Plus';
 
   @override
   String get settingsUpgradeCaption => 'Unlock the full power of AI';
@@ -439,7 +439,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsSaveFailed => 'Could not save your language. Try again.';
 
   @override
-  String get settingsVersion => 'Lingua v0.1.0 (1)';
+  String get settingsVersion => 'HiFive v0.1.0 (1)';
 
   @override
   String get settingsFooterCaption => 'Learn a little every day.';

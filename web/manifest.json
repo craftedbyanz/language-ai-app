@@ -1,11 +1,11 @@
 {
-    "name": "Lingua",
-    "short_name": "Lingua",
+    "name": "HiFive",
+    "short_name": "HiFive",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F9FAFB",
     "theme_color": "#3B82F6",
-    "description": "Lingua language-learning client.",
+    "description": "HiFive language-learning client.",
     "prefer_related_applications": false,
     "icons": [
         {
