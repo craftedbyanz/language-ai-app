@@ -1,5 +1,5 @@
-name: lingua
-description: Language AI client architecture foundation.
+name: hifive
+description: HiFive language-learning client.
 publish_to: none
 version: 0.1.0+1
 
@@ -12,6 +12,8 @@ workspace:
   - packages/lingua_networking
 
 dependencies:
+  firebase_auth: ^7.0.0
+  firebase_core: ^5.0.0
   flutter:
     sdk: flutter
   flutter_localizations:

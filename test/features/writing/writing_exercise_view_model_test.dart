@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/features/writing/data/repositories/in_memory_writing_repository.dart';
-import 'package:lingua/features/writing/presentation/state/writing_exercise_state.dart';
-import 'package:lingua/features/writing/presentation/view_models/writing_exercise_view_model.dart';
+import 'package:hifive/features/writing/data/repositories/in_memory_writing_repository.dart';
+import 'package:hifive/features/writing/presentation/state/writing_exercise_state.dart';
+import 'package:hifive/features/writing/presentation/view_models/writing_exercise_view_model.dart';
 
 void main() {
   ProviderContainer createContainer() {

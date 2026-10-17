@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:lingua/main_prod.dart' as app;
-import 'package:lingua/app/localization/generated/app_localizations.dart';
-import 'package:lingua/features/home/home.dart';
-import 'package:lingua/core/preferences/locale_preference.dart';
+import 'package:hifive/main_prod.dart' as app;
+import 'package:hifive/app/localization/generated/app_localizations.dart';
+import 'package:hifive/features/home/home.dart';
+import 'package:hifive/core/preferences/locale_preference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {

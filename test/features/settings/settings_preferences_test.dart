@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/bootstrap/bootstrap.dart';
-import 'package:lingua/core/config/app_config.dart';
-import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/core/preferences/device_preferences.dart';
+import 'package:hifive/app/bootstrap/bootstrap.dart';
+import 'package:hifive/core/config/app_config.dart';
+import 'package:hifive/core/config/app_environment.dart';
+import 'package:hifive/core/preferences/device_preferences.dart';
 
 void main() {
   testWidgets('Profile lesson and appearance choices affect app surfaces', (

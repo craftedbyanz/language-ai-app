@@ -3,14 +3,14 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/bootstrap/app_providers.dart';
-import 'package:lingua/app/bootstrap/bootstrap.dart';
-import 'package:lingua/app/bootstrap/root_error_handlers.dart';
-import 'package:lingua/app/router/app_router.dart';
-import 'package:lingua/app/router/app_routes.dart';
-import 'package:lingua/core/config/app_config.dart';
-import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/core/logging/app_logger.dart';
+import 'package:hifive/app/bootstrap/app_providers.dart';
+import 'package:hifive/app/bootstrap/bootstrap.dart';
+import 'package:hifive/app/bootstrap/root_error_handlers.dart';
+import 'package:hifive/app/router/app_router.dart';
+import 'package:hifive/app/router/app_routes.dart';
+import 'package:hifive/core/config/app_config.dart';
+import 'package:hifive/core/config/app_environment.dart';
+import 'package:hifive/core/logging/app_logger.dart';
 
 final class FakeLogger implements AppLogger {
   final events = <AppLogEvent>[];

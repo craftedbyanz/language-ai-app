@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/features/grammar/data/repositories/in_memory_grammar_repository.dart';
-import 'package:lingua/features/grammar/domain/entities/grammar_content.dart';
+import 'package:hifive/features/grammar/data/repositories/in_memory_grammar_repository.dart';
+import 'package:hifive/features/grammar/domain/entities/grammar_content.dart';
 
 void main() {
   const repository = InMemoryGrammarRepository();

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/core/error/app_failure.dart';
-import 'package:lingua/core/result/result.dart';
+import 'package:hifive/core/error/app_failure.dart';
+import 'package:hifive/core/result/result.dart';
 
 void main() {
   test('result forces explicit success and failure handling', () {

@@ -1,6 +1,6 @@
 # Architecture v1
 
-The repository is the `lingua` Flutter client for Android, iOS/iPadOS, web and native macOS. The application identifier is `com.anznguyen.lingua`. AGENTS.md remains the engineering authority; `design-system/` owns UI values and behavior.
+The repository is the `hifive` Flutter client for Android, iOS/iPadOS, web and native macOS. The application identifier is `com.anznguyen.hifive`. AGENTS.md remains the engineering authority; `design-system/` owns UI values and behavior.
 
 There was no existing Flutter implementation to preserve: the platform/source directories were empty. This foundation introduces one localized boot placeholder, not a product feature. It establishes feature-first ownership, MVVM/UDF, pragmatic external adapters and selective domain modeling. See ADRs 0001–0006.
 

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
-import 'package:lingua/features/grammar/presentation/state/grammar_correction_diff.dart';
+import 'package:hifive/features/grammar/presentation/state/grammar_correction_diff.dart';
 
 void main() {
   test('maps a replacement into removed and inserted word segments', () {

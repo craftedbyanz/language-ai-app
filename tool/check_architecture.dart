@@ -57,7 +57,7 @@ String withoutComments(String source) {
 
 String? localPath(String from, String uri) {
   const packageRoots = <String, String>{
-    'lingua': 'lib/',
+    'hifive': 'lib/',
     'lingua_auth': 'packages/lingua_auth/lib/',
     'lingua_design_system': 'packages/lingua_design_system/lib/',
     'lingua_networking': 'packages/lingua_networking/lib/',

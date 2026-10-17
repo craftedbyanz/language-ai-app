@@ -1,4 +1,4 @@
-package com.anznguyen.lingua
+package com.anznguyen.hifive
 
 import io.flutter.embedding.android.FlutterActivity
 

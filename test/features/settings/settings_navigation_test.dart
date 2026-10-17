@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/bootstrap/bootstrap.dart';
-import 'package:lingua/core/config/app_config.dart';
-import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/core/preferences/locale_preference.dart';
+import 'package:hifive/app/bootstrap/bootstrap.dart';
+import 'package:hifive/core/config/app_config.dart';
+import 'package:hifive/core/config/app_environment.dart';
+import 'package:hifive/core/preferences/locale_preference.dart';
 
 void main() {
   for (final width in [390.0, 788.0, 1200.0]) {

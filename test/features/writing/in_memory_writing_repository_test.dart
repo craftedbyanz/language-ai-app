@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/features/writing/data/repositories/in_memory_writing_repository.dart';
+import 'package:hifive/features/writing/data/repositories/in_memory_writing_repository.dart';
 
 void main() {
   const repository = InMemoryWritingRepository(gradingDelay: Duration.zero);

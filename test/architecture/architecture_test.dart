@@ -41,7 +41,7 @@ void main() {
       ),
       (
         'lib/features/demo/presentation/a.dart',
-        "import 'package:lingua/features/other/presentation/view.dart';",
+        "import 'package:hifive/features/other/presentation/view.dart';",
       ),
       ('lib/features/demo/domain/a.dart', "class BaseRepository {}"),
       (
@@ -76,7 +76,7 @@ void main() {
     expect(
       checkSource(
         'lib/features/demo/presentation/a.dart',
-        "import 'package:lingua/features/other/other.dart';",
+        "import 'package:hifive/features/other/other.dart';",
       ),
       isEmpty,
     );

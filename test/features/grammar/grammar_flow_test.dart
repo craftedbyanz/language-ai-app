@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/app.dart';
-import 'package:lingua/app/router/app_router.dart';
-import 'package:lingua/app/router/app_routes.dart';
+import 'package:hifive/app/app.dart';
+import 'package:hifive/app/router/app_router.dart';
+import 'package:hifive/app/router/app_routes.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
-import 'package:lingua/features/grammar/data/repositories/in_memory_grammar_repository.dart';
-import 'package:lingua/features/grammar/domain/entities/grammar_content.dart';
-import 'package:lingua/features/grammar/domain/repositories/grammar_repository.dart';
-import 'package:lingua/features/grammar/presentation/providers/grammar_providers.dart';
-import 'package:lingua/features/grammar/presentation/state/grammar_exercise_state.dart';
+import 'package:hifive/features/grammar/data/repositories/in_memory_grammar_repository.dart';
+import 'package:hifive/features/grammar/domain/entities/grammar_content.dart';
+import 'package:hifive/features/grammar/domain/repositories/grammar_repository.dart';
+import 'package:hifive/features/grammar/presentation/providers/grammar_providers.dart';
+import 'package:hifive/features/grammar/presentation/state/grammar_exercise_state.dart';
 
 void main() {
   testWidgets('grammar completion floats over lesson list at compact width', (
@@ -26,11 +26,11 @@ void main() {
           ),
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
-    final context = tester.element(find.byType(LinguaApp));
+    final context = tester.element(find.byType(HiFiveApp));
     final router = ProviderScope.containerOf(context).read(appRouterProvider);
     router.go(
       const GrammarExerciseRoute(
@@ -114,7 +114,7 @@ void main() {
             const Duration(milliseconds: 300),
           ),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -208,7 +208,7 @@ void main() {
         overrides: [
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -264,9 +264,9 @@ void main() {
   testWidgets('unknown identities show unavailable state with safe Back', (
     tester,
   ) async {
-    await tester.pumpWidget(const ProviderScope(child: LinguaApp()));
+    await tester.pumpWidget(const ProviderScope(child: HiFiveApp()));
     await tester.pumpAndSettle();
-    final context = tester.element(find.byType(LinguaApp));
+    final context = tester.element(find.byType(HiFiveApp));
     final router = ProviderScope.containerOf(context).read(appRouterProvider);
     router.go(const GrammarLessonRoute(topicId: 'missing').location);
     await tester.pumpAndSettle();
@@ -308,7 +308,7 @@ void main() {
         overrides: [
           grammarRepositoryProvider.overrideWithValue(_EmptyRepository()),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -330,7 +330,7 @@ void main() {
           ),
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -378,7 +378,7 @@ void main() {
         overrides: [
           grammarRepositoryProvider.overrideWithValue(topicRepository),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -406,7 +406,7 @@ void main() {
         overrides: [
           grammarRepositoryProvider.overrideWithValue(lessonRepository),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -437,7 +437,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [grammarRepositoryProvider.overrideWithValue(repository)],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -475,7 +475,7 @@ void main() {
         overrides: [
           grammarRepositoryProvider.overrideWithValue(backRepository),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -504,7 +504,7 @@ void main() {
         overrides: [
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -622,7 +622,7 @@ void main() {
         overrides: [
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();

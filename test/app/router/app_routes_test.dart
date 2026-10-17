@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/router/app_routes.dart';
+import 'package:hifive/app/router/app_routes.dart';
 
 void main() {
   test('Grammar typed route locations are stable', () {

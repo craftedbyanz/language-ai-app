@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/bootstrap/bootstrap.dart';
-import 'package:lingua/core/config/app_config.dart';
-import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/features/writing/writing.dart';
-import 'package:lingua/features/flashcards/flashcards.dart';
+import 'package:hifive/app/bootstrap/bootstrap.dart';
+import 'package:hifive/core/config/app_config.dart';
+import 'package:hifive/core/config/app_environment.dart';
+import 'package:hifive/features/writing/writing.dart';
+import 'package:hifive/features/flashcards/flashcards.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
 
 Future<void> _home(WidgetTester tester, double width, double scale) async {

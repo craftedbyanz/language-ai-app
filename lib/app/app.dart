@@ -7,8 +7,8 @@ import 'localization/generated/app_localizations.dart';
 import 'router/app_router.dart';
 import '../core/preferences/locale_preference.dart';
 
-class LinguaApp extends ConsumerWidget {
-  const LinguaApp({super.key});
+class HiFiveApp extends ConsumerWidget {
+  const HiFiveApp({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) => MaterialApp.router(
     debugShowCheckedModeBanner: false,

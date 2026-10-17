@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/bootstrap/bootstrap.dart';
-import 'package:lingua/core/config/app_config.dart';
-import 'package:lingua/core/config/app_environment.dart';
-import 'package:lingua/core/preferences/device_preferences.dart';
+import 'package:hifive/app/bootstrap/bootstrap.dart';
+import 'package:hifive/core/config/app_config.dart';
+import 'package:hifive/core/config/app_environment.dart';
+import 'package:hifive/core/preferences/device_preferences.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
 
 class _FailingStore implements DevicePreferencesStore {

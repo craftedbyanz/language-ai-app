@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lingua/app/app.dart';
-import 'package:lingua/app/localization/generated/app_localizations.dart';
+import 'package:hifive/app/app.dart';
+import 'package:hifive/app/localization/generated/app_localizations.dart';
 import 'package:lingua_design_system/lingua_design_system.dart';
-import 'package:lingua/features/grammar/presentation/providers/grammar_providers.dart';
-import 'package:lingua/features/grammar/data/repositories/in_memory_grammar_repository.dart';
-import 'package:lingua/features/grammar/domain/entities/grammar_content.dart';
-import 'package:lingua/features/grammar/domain/repositories/grammar_repository.dart';
+import 'package:hifive/features/grammar/presentation/providers/grammar_providers.dart';
+import 'package:hifive/features/grammar/data/repositories/in_memory_grammar_repository.dart';
+import 'package:hifive/features/grammar/domain/entities/grammar_content.dart';
+import 'package:hifive/features/grammar/domain/repositories/grammar_repository.dart';
 
 void main() {
   test('Grammar chrome is complete in English and Vietnamese', () {
@@ -92,7 +92,7 @@ void main() {
           overrides: [
             grammarRepositoryProvider.overrideWithValue(_TwoLessonRepository()),
           ],
-          child: const LinguaApp(),
+          child: const HiFiveApp(),
         ),
       );
       await tester.pumpAndSettle();
@@ -141,7 +141,7 @@ void main() {
     for (final width in [390.0, 788.0, 1200.0]) {
       await tester.binding.setSurfaceSize(Size(width, 900));
       await tester.pumpWidget(
-        ProviderScope(key: UniqueKey(), child: const LinguaApp()),
+        ProviderScope(key: UniqueKey(), child: const HiFiveApp()),
       );
       await tester.pumpAndSettle();
       await tester.ensureVisible(
@@ -168,7 +168,7 @@ void main() {
     addTearDown(
       tester.binding.platformDispatcher.clearTextScaleFactorTestValue,
     );
-    await tester.pumpWidget(const ProviderScope(child: LinguaApp()));
+    await tester.pumpWidget(const ProviderScope(child: HiFiveApp()));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
     await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));
@@ -201,7 +201,7 @@ void main() {
             overrides: [
               grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
             ],
-            child: const LinguaApp(),
+            child: const HiFiveApp(),
           ),
         );
         await tester.pumpAndSettle();
@@ -324,7 +324,7 @@ void main() {
         overrides: [
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -362,7 +362,7 @@ void main() {
         overrides: [
           grammarMinimumDwellProvider.overrideWithValue(Duration.zero),
         ],
-        child: const LinguaApp(),
+        child: const HiFiveApp(),
       ),
     );
     await tester.pumpAndSettle();
@@ -425,7 +425,7 @@ void main() {
                 _TwoLessonRepository(),
               ),
             ],
-            child: const LinguaApp(),
+            child: const HiFiveApp(),
           ),
         );
         await tester.pumpAndSettle();
@@ -476,7 +476,7 @@ void main() {
   testWidgets('progress and submit expose semantics and target size', (
     tester,
   ) async {
-    await tester.pumpWidget(const ProviderScope(child: LinguaApp()));
+    await tester.pumpWidget(const ProviderScope(child: HiFiveApp()));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.byKey(const ValueKey('dashboard-pager-1')));
     await tester.tap(find.byKey(const ValueKey('dashboard-pager-1')));

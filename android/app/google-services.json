@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "117239258535",
+    "project_id": "hifive-dev-8189c",
+    "storage_bucket": "hifive-dev-8189c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117239258535:android:226cfe18e94b11b81d6a82",
+        "android_client_info": {
+          "package_name": "com.anznguyen.hifive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpliL4XsRO6ziUpBqbVAUAinszjvs-c1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117239258535:android:91c2f3b1449585761d6a82",
+        "android_client_info": {
+          "package_name": "com.anznguyen.lingua"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpliL4XsRO6ziUpBqbVAUAinszjvs-c1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
