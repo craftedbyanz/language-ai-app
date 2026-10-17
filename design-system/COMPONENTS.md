@@ -637,3 +637,19 @@ These were used by earlier entries (`FeedbackActionRow`, `Dialog`, `Sheet/Create
 - `InsightStreakSummary`: ON FIRE in a `streakBadgeBackground` pill with `warningText`, `microLabel`, `space.sm` horizontal / `space.xs` vertical padding; count `streakCount`; unit `streakUnit`; motivation `streakPrompt` capped at `layout.streakPromptMaxWidth`; decorative `StreakFlame` alongside.
 - Streak header title: `streakNavTitle`. Calendar variant `streak`: `streakMonth` heading and `streakDay` numerals, with elapsed days `textPrimary` and future dates `textMuted`. Overview retains its existing styles.
 - Streak stat tiles use dedicated localized uppercase short labels and `streakStatValue`. The overview's longer current/longest labels remain unchanged. See DD-08a.
+
+
+## LearningLanguageButton / LearningLanguageTile
+- Home shortcut: Packaged US flag artwork (`CountryFlagIcon`) in a `surface` frame sized by `control.learningFlagWidth` / `control.learningFlagHeight`, with `border`, `radius.control` and a surrounding `control.minTouchTarget` hit area; localized tooltip announces the learning language. Align at the trailing top edge beside the greeting. Focus ring follows the rounded outline.
+- Language tile: `surface`, `radius.card`, minimum `layout.rowSettings`, `space.lg` inset; leading flag, `bodyStrong` language name, `caption` native name. Selected English has an orange verified glyph and neutral outline. Upcoming rows are disabled, use secondary text and a pale orange Coming soon badge (`color.streakBadgeBackground` reused as the canonical pale-orange fill, `warningText` foreground). Tile semantics expose selected and disabled status.
+- Translation hero uses `icon.learningLanguageHero` and `feature.learningLanguage.cta`. The confirmation CTA uses the same cyan with `textPrimary` to preserve production contrast. Flags use attributed Twemoji artwork packaged under `assets/flags/` rather than platform emoji fonts. Names, descriptions, hints and CTAs come from localization.
+
+
+## Home material refinements (DD-27)
+- Home fills the available window width, inset only by `layout.marginDashboard`. `contentMaxWidth` remains for reading/detail screens.
+- `PromptEntry/Inline` uses bodyStrong text and a decorative cyan/blue orb; the reusable pill variant keeps its own surface fill and full radius.
+- `HomeModeDepth` keeps the active card at native bounds. Neighbour previews use `state.homeInactiveCardOpacity`, `homeInactiveCardScale` and `homeInactiveCardBlur`; disable scale animation under reduced motion. Card height follows `layout.homeModeCardAspectRatio`, floored by `modeCardMinHeight`, and grows with text scaling.
+- `ModeCard` uses scoped `feature.home.*Fill` with white text, `typography.homeModeIndex`, and a clipped motif (`layout.homeModeMotifSize`, `state.homeCardMotifOpacity`).
+- `Banner/Feature` uses `feature.home.flashcardGradient`. The dock has a `layout.homeDockFadeHeight` feather above `homeDockHeight`, `glass.bar.blur`, `glass.homeDockTint`, a single clipped blur with feathered translucent fill, and no opaque blue paint. Keep backdrop filters outside masking save-layers so they sample the real scene. Streak-pill shadow is `shadow.homeStreak`.
+
+- Dashboard pager keeps its keyboard/touch targets; active dash is `space.xl` wide and `space.xs` high, other marks are `space.xs` squares. Lesson pager styling is unchanged.

@@ -7,6 +7,8 @@ part of 'app_routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+  $learningLanguageRoute,
+  $learningLevelRoute,
   $homeRoute,
   $insightRoute,
   $flashcardReviewRoute,
@@ -24,6 +26,99 @@ List<RouteBase> get $appRoutes => [
   $writingLessonRoute,
   $writingExerciseRoute,
 ];
+
+RouteBase get $learningLanguageRoute => GoRouteData.$route(
+  path: '/learning-language',
+  hasOverriddenOnExit: false,
+  factory: $LearningLanguageRoute._fromState,
+);
+
+mixin $LearningLanguageRoute on GoRouteData {
+  static LearningLanguageRoute _fromState(GoRouterState state) =>
+      const LearningLanguageRoute();
+
+  @override
+  String get location => GoRouteData.$location('/learning-language');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $learningLevelRoute => GoRouteData.$route(
+  path: '/learning-language/level',
+  hasOverriddenOnExit: false,
+  factory: $LearningLevelRoute._fromState,
+);
+
+mixin $LearningLevelRoute on GoRouteData {
+  static LearningLevelRoute _fromState(GoRouterState state) =>
+      LearningLevelRoute(
+        level:
+            _$convertMapValue(
+              'level',
+              state.uri.queryParameters,
+              _$LearningLevelEnumMap._$fromName,
+            ) ??
+            LearningLevel.a1,
+      );
+
+  LearningLevelRoute get _self => this as LearningLevelRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+    '/learning-language/level',
+    queryParams: {
+      if (_self.level != LearningLevel.a1)
+        'level': _$LearningLevelEnumMap[_self.level],
+    },
+  );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+const _$LearningLevelEnumMap = {
+  LearningLevel.a1: 'a1',
+  LearningLevel.a2: 'a2',
+  LearningLevel.b1: 'b1',
+  LearningLevel.b2: 'b2',
+  LearningLevel.c1: 'c1',
+  LearningLevel.c2: 'c2',
+};
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T? Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T? _$fromName(String? value) =>
+      entries.where((element) => element.value == value).firstOrNull?.key;
+}
 
 RouteBase get $homeRoute => GoRouteData.$route(
   path: '/',

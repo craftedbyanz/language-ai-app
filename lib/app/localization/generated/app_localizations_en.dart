@@ -731,4 +731,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get grammarCorrectionInserted => 'add';
+
+  @override
+  String get learningEnglish => 'English';
+
+  @override
+  String get learningKorean => 'Korean';
+
+  @override
+  String get learningChinese => 'Chinese';
+
+  @override
+  String get learningJapanese => 'Japanese';
+
+  @override
+  String get learningEnglishNative => 'English';
+
+  @override
+  String get learningKoreanNative => '한국어';
+
+  @override
+  String get learningChineseNative => '中文';
+
+  @override
+  String get learningJapaneseNative => '日本語';
+
+  @override
+  String get learningLevelA1 => 'A1 - Beginner';
+
+  @override
+  String get learningLevelA2 => 'A2 - Elementary';
+
+  @override
+  String get learningLevelB1 => 'B1 - Intermediate';
+
+  @override
+  String get learningLevelB2 => 'B2 - Upper Intermediate';
+
+  @override
+  String get learningLevelC1 => 'C1 - Advanced';
+
+  @override
+  String get learningLevelC2 => 'C2 - Proficient';
+
+  @override
+  String get learningLanguageTitle => 'Learning language';
+
+  @override
+  String get learningLanguageShortcut => 'Learning language: English';
+
+  @override
+  String get learningChooseLanguage => 'Choose your learning language';
+
+  @override
+  String get learningLanguageCaption =>
+      'Choose the language you want to learn. More languages are coming soon.';
+
+  @override
+  String get learningLanguagesLabel => 'Language';
+
+  @override
+  String get learningComingSoon => 'Coming soon';
+
+  @override
+  String get learningCurrentLevel => 'Current level';
+
+  @override
+  String get learningConfirm => 'Confirm';
+
+  @override
+  String get learningLevelTitle => 'Choose your level';
+
+  @override
+  String get learningLevelIntro =>
+      'The Common European Framework of Reference (CEFR) describes six levels, from beginner to proficient.';
+
+  @override
+  String get learningLevelPrompt =>
+      'Choose the level that best matches your current language skills.';
+
+  @override
+  String get learningLevelsLabel => 'Your level';
+
+  @override
+  String get learningLevelA1Description =>
+      'Write and complete very short sentences with familiar vocabulary. Practise basic patterns and simple ideas.';
+
+  @override
+  String get learningLevelA2Description =>
+      'Write simple sentences on familiar topics. Start connecting ideas into short paragraphs.';
+
+  @override
+  String get learningLevelB1Description =>
+      'Write clear paragraphs about familiar topics, experiences, plans and opinions.';
+
+  @override
+  String get learningLevelB2Description =>
+      'Write natural, structured paragraphs and explain opinions and arguments in more detail.';
+
+  @override
+  String get learningLevelC1Description =>
+      'Write fluently and flexibly for academic, professional and personal purposes.';
+
+  @override
+  String get learningLevelC2Description =>
+      'Write precisely and naturally, express complex ideas and control subtle shades of meaning.';
 }

@@ -714,4 +714,109 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get grammarCorrectionInserted => 'thêm vào';
+
+  @override
+  String get learningEnglish => 'English';
+
+  @override
+  String get learningKorean => 'Korean';
+
+  @override
+  String get learningChinese => 'Chinese';
+
+  @override
+  String get learningJapanese => 'Japanese';
+
+  @override
+  String get learningEnglishNative => 'English';
+
+  @override
+  String get learningKoreanNative => '한국어';
+
+  @override
+  String get learningChineseNative => '中文';
+
+  @override
+  String get learningJapaneseNative => '日本語';
+
+  @override
+  String get learningLevelA1 => 'A1 - Beginner';
+
+  @override
+  String get learningLevelA2 => 'A2 - Elementary';
+
+  @override
+  String get learningLevelB1 => 'B1 - Intermediate';
+
+  @override
+  String get learningLevelB2 => 'B2 - Upper Intermediate';
+
+  @override
+  String get learningLevelC1 => 'C1 - Advanced';
+
+  @override
+  String get learningLevelC2 => 'C2 - Proficient';
+
+  @override
+  String get learningLanguageTitle => 'Ngôn ngữ học';
+
+  @override
+  String get learningLanguageShortcut => 'Ngôn ngữ học: English';
+
+  @override
+  String get learningChooseLanguage => 'Chọn ngôn ngữ học';
+
+  @override
+  String get learningLanguageCaption =>
+      'Chọn ngôn ngữ bạn muốn học. Các ngôn ngữ mới sẽ sớm được bổ sung.';
+
+  @override
+  String get learningLanguagesLabel => 'Ngôn ngữ';
+
+  @override
+  String get learningComingSoon => 'Coming soon';
+
+  @override
+  String get learningCurrentLevel => 'Trình độ hiện tại';
+
+  @override
+  String get learningConfirm => 'Xác nhận';
+
+  @override
+  String get learningLevelTitle => 'Chọn cấp độ';
+
+  @override
+  String get learningLevelIntro =>
+      'Khung tham chiếu ngôn ngữ chung châu Âu (CEFR) chia trình độ thành 6 cấp, từ người mới bắt đầu đến thành thạo.';
+
+  @override
+  String get learningLevelPrompt =>
+      'Hãy chọn mức độ phù hợp nhất với khả năng học ngôn ngữ của bạn.';
+
+  @override
+  String get learningLevelsLabel => 'Trình độ của bạn';
+
+  @override
+  String get learningLevelA1Description =>
+      'Có thể viết lại và hoàn thành các câu rất ngắn với từ vựng quen thuộc. Phù hợp để luyện mẫu câu cơ bản và diễn đạt ý đơn giản.';
+
+  @override
+  String get learningLevelA2Description =>
+      'Có thể viết và chỉnh sửa các câu đơn giản về chủ đề quen thuộc. Bắt đầu nối ý ngắn thành đoạn và giảm lỗi ngữ pháp cơ bản.';
+
+  @override
+  String get learningLevelB1Description =>
+      'Có thể viết đoạn văn rõ ý về chủ đề quen thuộc, diễn đạt trải nghiệm, kế hoạch và quan điểm ngắn.';
+
+  @override
+  String get learningLevelB2Description =>
+      'Có thể viết câu và đoạn văn khá tự nhiên, có cấu trúc rõ ràng, diễn đạt quan điểm và lập luận chi tiết hơn.';
+
+  @override
+  String get learningLevelC1Description =>
+      'Có thể viết mạch lạc, linh hoạt theo nhiều mục đích học thuật, công việc và cá nhân.';
+
+  @override
+  String get learningLevelC2Description =>
+      'Có thể viết chính xác, tinh tế và tự nhiên gần như người thành thạo. Có thể diễn đạt ý phức tạp và kiểm soát sắc thái ngôn ngữ tốt.';
 }

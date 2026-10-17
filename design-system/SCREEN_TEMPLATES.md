@@ -19,9 +19,9 @@ Common rules for all templates
 **Regions (top → bottom)**: `GreetingBlock` · `PromptEntry` · `Banner/Promo` (only when `paywallEnabled`, DD-24) · "learning modes" `SectionHeader/Section` + mode carousel (`ModeCard/Writing|Grammar|Conversation` + `PagerDots/Dashboard`) · quick-topic `CategoryChip/Quick` rail (first chip highlighted) · `Banner/Feature` (flashcards) · `FlowLetterTile` (word game) · `FloatingBottomBar` (overlay, bottom). **Explainer tiles rail is OPTIONAL / DEFERRED** (no component; omit in v1).
 **Hierarchy**: greeting (title) → modes (largest cards) → quick topics → feature banners.
 **Slots**: user name, streak count, locale flag button, per-mode copy, banner content.
-**Navigation**: mode card → TopicPickerTemplate; `PromptEntry` → `Sheet/Composer`; chip → generation with that topic (DD-17 default); `Banner/Promo` → `Sheet/Paywall` (deferred); `Banner/Feature` → FlashcardDeckTemplate; bottom bar → history / streak / MenuOverlay / settings; locale flag → SettingsDetailTemplate (language).
+**Navigation**: mode card → TopicPickerTemplate; `PromptEntry` → `Sheet/Composer`; chip → generation with that topic (DD-17 default); `Banner/Promo` → `Sheet/Paywall` (deferred); `Banner/Feature` → FlashcardDeckTemplate; bottom bar → history / streak / MenuOverlay / settings; learning-language flag → SettingsDetailTemplate/LearningLanguage (DD-26; separate from app locale).
 **Transitions**: full-width bottom dock fixed to the window edge; MenuOverlay is an overlay state of this template.
-**Responsive**: modes carousel width ratio-based; chips wrap to a horizontal scroller; the dock spans the available width. Only on this template is the dock shown.
+**Responsive**: Home fills the window minus dashboard margins (DD-27); modes carousel width ratio-based with proportional height; chips wrap to a horizontal scroller; the dock spans the available width. Only on this template is the dock shown.
 **Spacing**: regions separated by `space.xl`; section header → content `space.lg`; scroll content gets bottom padding = bar height + `space.lg`.
 **Variants**: first-visit hints (`CoachMark`). Loading: carousel `Skeleton` cards. Empty: not applicable (static content).
 **Evidence**: S001, S011.
@@ -147,3 +147,7 @@ Every component used above exists in COMPONENTS.md: AppHeader, BackButton, Float
 **Pseudo-component resolution**
 - `HistoryCard` = `InsightCard/History`. **Required** by InsightTemplate (History variant); fully specified in COMPONENTS.md §7.
 - `BenefitRow`, `PlanCard` = parts of `PaywallCard`; **OPTIONAL / DEFERRED** (DD-24). Not built in v1; specified inside the `PaywallCard` entry for when it is.
+
+
+### Learning language and level (DD-26)
+Home's trailing flag and Profile's learning-language card open the same learning-language screen. English is selected; Korean, Chinese and Japanese are disabled with Coming soon. The current-level row opens a CEFR A1–C2 list. Its confirmation updates the parent draft; parent confirmation persists the preference. Both screens use pushed headers, constrained scrolling content and a bottom CTA. App-language settings remain a separate route.

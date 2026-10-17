@@ -65,6 +65,8 @@ class HomeDashboardScreen extends StatefulWidget {
     required this.onHistoryPressed,
     required this.onStreakPressed,
     required this.onMenuPressed,
+    required this.onLearningLanguagePressed,
+    required this.learningLanguageLabel,
     required this.streakCount,
     this.cardStyle = 'regular',
     super.key,
@@ -77,6 +79,8 @@ class HomeDashboardScreen extends StatefulWidget {
   final VoidCallback onHistoryPressed;
   final VoidCallback onStreakPressed;
   final VoidCallback onMenuPressed;
+  final VoidCallback onLearningLanguagePressed;
+  final String learningLanguageLabel;
   final int streakCount;
   final String cardStyle;
 
@@ -133,20 +137,16 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final accessible = Theme.of(context)
-        .extension<DesignTokensTheme>()!
-        .accessible;
     Color modeFill(Color regular) => switch (widget.cardStyle) {
       'mono' => ColorTokens.textPrimary,
       'minimal' => ColorTokens.surfaceMuted,
       'glass' => GlassTokens.barFill,
       _ => regular,
     };
-    final modeForeground = widget.cardStyle == 'mono'
-        ? ColorTokens.textOnPrimary
-        : widget.cardStyle == 'regular'
-        ? accessible.onFeatureFill
-        : ColorTokens.textPrimary;
+    final modeForeground = switch (widget.cardStyle) {
+      'mono' || 'regular' => ColorTokens.textOnPrimary,
+      _ => ColorTokens.textPrimary,
+    };
     return AppScaffold(
       child: AdaptiveLayout(
         builder: (context, sizeClass) => Stack(
@@ -156,193 +156,186 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                 padding: const EdgeInsets.symmetric(
                   horizontal: LayoutTokens.marginDashboard,
                 ),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: LayoutTokens.contentMaxWidth,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: SpaceTokens.xl,
-                        bottom: ControlTokens.minTouchTarget + SpaceTokens.xxl,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: SpaceTokens.md,
+                    bottom:
+                        LayoutTokens.homeDockHeight +
+                        LayoutTokens.homeDockFadeHeight +
+                        SpaceTokens.lg,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RepaintBoundary(
+                        key: const Key('home-greeting-row'),
+                        child: ColoredBox(
+                          color: ColorTokens.background,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: GreetingBlock(
+                                  greeting: widget.copy.greeting,
+                                  caption: widget.copy.caption,
+                                ),
+                              ),
+                              const SizedBox(width: SpaceTokens.md),
+                              LearningLanguageButton(
+                                label: widget.learningLanguageLabel,
+                                onPressed: widget.onLearningLanguagePressed,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GreetingBlock(
-                            greeting: widget.copy.greeting,
-                            caption: widget.copy.caption,
-                          ),
-                          const SizedBox(height: SpaceTokens.xl),
-                          PromptEntry(
-                            label: widget.copy.prompt,
-                            semanticLabel: widget.copy.promptLabel,
-                          ),
-                          const SizedBox(height: SpaceTokens.xl),
-                          Text(
-                            widget.copy.learningModes,
-                            style: TypographyTokens.heading,
-                          ),
-                          const SizedBox(height: SpaceTokens.lg),
-                          LayoutBuilder(
-                            builder: (context, constraints) {
-                              final ratio = sizeClass == WindowSizeClass.compact
-                                  ? LayoutTokens.modeCardWidthRatioCompact
-                                  : LayoutTokens.modeCardWidthRatio;
-                              final pageExtent =
-                                  constraints.maxWidth * ratio +
-                                  LayoutTokens.carouselGap;
-                              return SizedBox(
-                                height:
-                                    LayoutTokens.modeCardMinHeight *
-                                        MediaQuery.textScalerOf(context)
-                                            .scale(1) +
-                                    SpaceTokens.xl,
-                                child: NotificationListener<ScrollNotification>(
-                                  onNotification: (notification) {
-                                    if (notification
-                                        is ScrollUpdateNotification) {
-                                      final page =
-                                          (notification.metrics.pixels /
-                                                  pageExtent)
-                                              .round()
-                                              .clamp(0, 2);
-                                      if (page != _modePage) {
-                                        setState(() => _modePage = page);
-                                      }
-                                    } else if (notification
-                                        is ScrollEndNotification) {
-                                      _snapMode(pageExtent);
-                                    }
-                                    return false;
-                                  },
-                                  child: ListView.separated(
-                                    controller: _modeController,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 3,
-                                    separatorBuilder: (_, _) => const SizedBox(
-                                      width: LayoutTokens.carouselGap,
+                      const SizedBox(height: SpaceTokens.xl),
+                      PromptEntry(
+                        variant: PromptEntryVariant.inline,
+                        label: widget.copy.prompt,
+                        semanticLabel: widget.copy.promptLabel,
+                      ),
+                      const SizedBox(height: SpaceTokens.xl),
+                      Text(
+                        widget.copy.learningModes,
+                        style: TypographyTokens.heading,
+                      ),
+                      const SizedBox(height: SpaceTokens.lg),
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          final ratio = sizeClass == WindowSizeClass.compact
+                              ? LayoutTokens.modeCardWidthRatioCompact
+                              : LayoutTokens.modeCardWidthRatio;
+                          final pageExtent =
+                              constraints.maxWidth * ratio +
+                              LayoutTokens.carouselGap;
+                          return SizedBox(
+                            height:
+                                (constraints.maxWidth *
+                                            ratio /
+                                            LayoutTokens
+                                                .homeModeCardAspectRatio)
+                                        .clamp(
+                                          LayoutTokens.modeCardMinHeight,
+                                          double.infinity,
+                                        ) *
+                                    MediaQuery.textScalerOf(context).scale(1) +
+                                SpaceTokens.xl,
+                            child: NotificationListener<ScrollNotification>(
+                              onNotification: (notification) {
+                                if (notification is ScrollUpdateNotification) {
+                                  final page =
+                                      (notification.metrics.pixels / pageExtent)
+                                          .round()
+                                          .clamp(0, 2);
+                                  if (page != _modePage) {
+                                    setState(() => _modePage = page);
+                                  }
+                                } else if (notification
+                                    is ScrollEndNotification) {
+                                  _snapMode(pageExtent);
+                                }
+                                return false;
+                              },
+                              child: ListView.separated(
+                                controller: _modeController,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 3,
+                                separatorBuilder: (_, _) => const SizedBox(
+                                  width: LayoutTokens.carouselGap,
+                                ),
+                                itemBuilder: (context, index) {
+                                  final active = index == _modePage;
+                                  return SizedBox(
+                                    width: constraints.maxWidth * ratio,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: SpaceTokens.sm,
+                                      ),
+                                      child: HomeModeDepth(
+                                        active: active,
+                                        child: switch (index) {
+                                          0 => ModeCard(
+                                            index: '01',
+                                            category: widget.copy.learningModes,
+                                            title: widget.copy.writing,
+                                            description:
+                                                widget.copy.writingDescription,
+                                            actionLabel: widget.copy.explore,
+                                            fill: modeFill(
+                                              FeatureTokens.homeWritingFill,
+                                            ),
+                                            foreground: modeForeground,
+                                            onPressed: widget.onWritingPressed,
+                                          ),
+                                          1 => ModeCard(
+                                            index: '02',
+                                            category: widget.copy.learningModes,
+                                            title: widget.copy.grammar,
+                                            description:
+                                                widget.copy.grammarDescription,
+                                            actionLabel: widget.copy.explore,
+                                            fill: modeFill(
+                                              FeatureTokens.homeGrammarFill,
+                                            ),
+                                            foreground: modeForeground,
+                                            onPressed: widget.onGrammarPressed,
+                                          ),
+                                          _ => ModeCard(
+                                            index: '03',
+                                            category: widget.copy.comingSoon,
+                                            title: widget.copy.conversation,
+                                            description: widget
+                                                .copy
+                                                .conversationDescription,
+                                            actionLabel: widget.copy.comingSoon,
+                                            fill: modeFill(
+                                              FeatureTokens
+                                                  .homeConversationFill,
+                                            ),
+                                            foreground: modeForeground,
+                                          ),
+                                        },
+                                      ),
                                     ),
-                                    itemBuilder: (context, index) {
-                                      final active = index == _modePage;
-                                      final reducedMotion =
-                                          MediaQuery.disableAnimationsOf(
-                                            context,
-                                          );
-                                      return SizedBox(
-                                        width: constraints.maxWidth * ratio,
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: SpaceTokens.sm,
-                                          ),
-                                          child: AnimatedScale(
-                                            scale: reducedMotion || !active
-                                                ? 1
-                                                : MotionTokens
-                                                      .carouselActiveScale,
-                                            duration: reducedMotion
-                                                ? Duration.zero
-                                                : MotionTokens.fast,
-                                            child: switch (index) {
-                                              0 => ModeCard(
-                                                index: '01',
-                                                category:
-                                                    widget.copy.learningModes,
-                                                title: widget.copy.writing,
-                                                description: widget
-                                                    .copy
-                                                    .writingDescription,
-                                                actionLabel:
-                                                    widget.copy.explore,
-                                                fill: modeFill(
-                                                  FeatureTokens
-                                                      .writingHomeCardFill,
-                                                ),
-                                                foreground: modeForeground,
-                                                onPressed:
-                                                    widget.onWritingPressed,
-                                              ),
-                                              1 => ModeCard(
-                                                index: '02',
-                                                category:
-                                                    widget.copy.learningModes,
-                                                title: widget.copy.grammar,
-                                                description: widget
-                                                    .copy
-                                                    .grammarDescription,
-                                                actionLabel:
-                                                    widget.copy.explore,
-                                                fill: modeFill(
-                                                  FeatureTokens
-                                                      .grammarHomeCardFill,
-                                                ),
-                                                foreground: modeForeground,
-                                                onPressed:
-                                                    widget.onGrammarPressed,
-                                              ),
-                                              _ => ModeCard(
-                                                index: '03',
-                                                category:
-                                                    widget.copy.comingSoon,
-                                                title: widget.copy.conversation,
-                                                description: widget
-                                                    .copy
-                                                    .conversationDescription,
-                                                actionLabel:
-                                                    widget.copy.comingSoon,
-                                                fill: modeFill(
-                                                  FeatureTokens
-                                                      .conversationHomeCardFill,
-                                                ),
-                                                foreground: modeForeground,
-                                              ),
-                                            },
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: SpaceTokens.sm),
-                          LayoutBuilder(
-                            builder: (context, constraints) {
-                              final ratio = sizeClass == WindowSizeClass.compact
-                                  ? LayoutTokens.modeCardWidthRatioCompact
-                                  : LayoutTokens.modeCardWidthRatio;
-                              return PagerDots(
-                                count: 3,
-                                index: _modePage,
-                                semanticLabel: widget.copy.modePager,
-                                positionLabel: widget.copy.modePagerPosition,
-                                variant: PagerDotsVariant.dashboard,
-                                onSelected: (page) => _selectMode(
-                                  page,
-                                  constraints.maxWidth,
-                                  ratio,
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: SpaceTokens.xxl),
-                          FeatureBanner(
-                            title: widget.copy.flashcardTitle,
-                            caption: widget.copy.flashcardCaption,
-                            actionLabel: widget.copy.flashcardAction,
-                            onPressed: widget.onFlashcardsPressed,
-                          ),
-                          const SizedBox(height: SpaceTokens.xl),
-                          FlowLetterTile(
-                            title: widget.copy.flowLetterTitle,
-                            caption: widget.copy.flowLetterCaption,
-                          ),
-                          const SizedBox(height: SpaceTokens.xxl),
-                        ],
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                    ),
+                      const SizedBox(height: SpaceTokens.sm),
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          final ratio = sizeClass == WindowSizeClass.compact
+                              ? LayoutTokens.modeCardWidthRatioCompact
+                              : LayoutTokens.modeCardWidthRatio;
+                          return PagerDots(
+                            count: 3,
+                            index: _modePage,
+                            semanticLabel: widget.copy.modePager,
+                            positionLabel: widget.copy.modePagerPosition,
+                            variant: PagerDotsVariant.dashboard,
+                            onSelected: (page) =>
+                                _selectMode(page, constraints.maxWidth, ratio),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: SpaceTokens.xxl),
+                      FeatureBanner(
+                        title: widget.copy.flashcardTitle,
+                        caption: widget.copy.flashcardCaption,
+                        actionLabel: widget.copy.flashcardAction,
+                        onPressed: widget.onFlashcardsPressed,
+                      ),
+                      const SizedBox(height: SpaceTokens.xl),
+                      FlowLetterTile(
+                        title: widget.copy.flowLetterTitle,
+                        caption: widget.copy.flowLetterCaption,
+                      ),
+                      const SizedBox(height: SpaceTokens.xxl),
+                    ],
                   ),
                 ),
               ),

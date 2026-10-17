@@ -3,8 +3,45 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../primitives/canonical_focus_indicator.dart';
+import 'country_flag.dart';
 import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
+
+/// Home shortcut to the learning language, separate from the app locale.
+class LearningLanguageButton extends StatelessWidget {
+  const LearningLanguageButton({
+    required this.label,
+    required this.onPressed,
+    super.key,
+  });
+
+  final String label;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) => CanonicalFocusIndicator(
+    borderRadius: BorderRadius.circular(RadiusTokens.control),
+    child: SizedBox.square(
+      dimension: ControlTokens.minTouchTarget,
+      child: IconButton(
+        tooltip: label,
+        onPressed: onPressed,
+        padding: EdgeInsets.zero,
+        icon: Container(
+          width: ControlTokens.learningFlagWidth,
+          height: ControlTokens.learningFlagHeight,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: ColorTokens.surface,
+            borderRadius: BorderRadius.circular(RadiusTokens.control),
+            border: Border.all(color: ColorTokens.border),
+          ),
+          child: const CountryFlagIcon(country: CountryFlag.unitedStates),
+        ),
+      ),
+    ),
+  );
+}
 
 class GreetingBlock extends StatelessWidget {
   const GreetingBlock({
@@ -26,62 +63,147 @@ class GreetingBlock extends StatelessWidget {
       const SizedBox(height: SpaceTokens.xs),
       Text(
         caption,
-        style: TypographyTokens.body.copyWith(color: ColorTokens.textSecondary),
+        style: TypographyTokens.caption.copyWith(
+          color: ColorTokens.textSecondary,
+        ),
       ),
     ],
   );
 }
+
+enum PromptEntryVariant { pill, inline }
 
 class PromptEntry extends StatelessWidget {
   const PromptEntry({
     required this.label,
     required this.semanticLabel,
     this.onPressed,
+    this.variant = PromptEntryVariant.pill,
     super.key,
   });
+  final PromptEntryVariant variant;
   final String label;
   final String semanticLabel;
   final VoidCallback? onPressed;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    button: true,
-    enabled: onPressed != null,
-    label: semanticLabel,
-    child: Material(
-      color: FeatureTokens.homePromptEntryFill,
-      shape: const StadiumBorder(),
-      child: InkWell(
-        onTap: onPressed,
-        customBorder: const StadiumBorder(),
-        child: Container(
-          constraints: const BoxConstraints(
-            minHeight: ControlTokens.minTouchTarget,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.lg),
-          decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-            boxShadow: ShadowTokens.hairline,
-          ),
-          child: Row(
-            children: [
-              const Icon(Icons.auto_awesome_rounded, size: IconTokens.inline),
-              const SizedBox(width: SpaceTokens.sm),
-              Expanded(
-                child: Text(
-                  label,
-                  style: TypographyTokens.body.copyWith(
-                    color: ColorTokens.textMuted,
+  Widget build(BuildContext context) {
+    if (variant == PromptEntryVariant.inline) {
+      return Semantics(
+        button: true,
+        enabled: onPressed != null,
+        label: semanticLabel,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.full),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              minHeight: ControlTokens.minTouchTarget,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Text(label, style: TypographyTokens.bodyStrong),
+                ),
+                const SizedBox(width: SpaceTokens.sm),
+                Container(
+                  width: IconTokens.control,
+                  height: IconTokens.control,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        FeatureTokens.learningLanguageCta,
+                        ColorTokens.primaryTint,
+                      ],
+                    ),
                   ),
                 ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    return Semantics(
+      button: true,
+      enabled: onPressed != null,
+      label: semanticLabel,
+      child: Material(
+        color: FeatureTokens.homePromptEntryFill,
+        shape: const StadiumBorder(),
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: const StadiumBorder(),
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: ControlTokens.minTouchTarget,
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.lg),
+            decoration: const BoxDecoration(
+              color: FeatureTokens.homePromptEntryFill,
+              borderRadius: BorderRadius.all(
+                Radius.circular(RadiusTokens.full),
               ),
-              const Icon(Icons.arrow_forward_rounded, size: IconTokens.inline),
-            ],
+              boxShadow: ShadowTokens.hairline,
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.auto_awesome_rounded, size: IconTokens.inline),
+                const SizedBox(width: SpaceTokens.sm),
+                Expanded(
+                  child: Text(
+                    label,
+                    style: TypographyTokens.body.copyWith(
+                      color: ColorTokens.textMuted,
+                    ),
+                  ),
+                ),
+                const Icon(
+                  Icons.arrow_forward_rounded,
+                  size: IconTokens.inline,
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
+}
+
+/// Neighbouring cards recede while the active card keeps its true bounds.
+class HomeModeDepth extends StatelessWidget {
+  const HomeModeDepth({required this.active, required this.child, super.key});
+  final bool active;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final reducedMotion = MediaQuery.disableAnimationsOf(context);
+    return TweenAnimationBuilder<double>(
+      tween: Tween(end: active ? 1 : 0),
+      duration: reducedMotion ? Duration.zero : MotionTokens.fast,
+      child: child,
+      builder: (context, value, child) => Transform.scale(
+        scale: reducedMotion
+            ? 1
+            : lerpDouble(StateTokens.homeInactiveCardScale, 1, value),
+        child: Opacity(
+          opacity: lerpDouble(StateTokens.homeInactiveCardOpacity, 1, value)!,
+          child: ImageFiltered(
+            enabled: value < 1,
+            imageFilter: ImageFilter.blur(
+              sigmaX: (1 - value) * StateTokens.homeInactiveCardBlur,
+              sigmaY: (1 - value) * StateTokens.homeInactiveCardBlur,
+            ),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class ModeCard extends StatelessWidget {
@@ -125,88 +247,127 @@ class ModeCard extends StatelessWidget {
           statesController: statesController,
           onTap: onPressed,
           borderRadius: BorderRadius.circular(RadiusTokens.heroCard),
-          child: Container(
-            constraints: const BoxConstraints(
-              minHeight: LayoutTokens.modeCardMinHeight,
-            ),
-            padding: const EdgeInsets.all(SpaceTokens.xl),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: SpaceTokens.md,
-                    vertical: SpaceTokens.xs,
-                  ),
-                  decoration: BoxDecoration(
-                    color: ColorTokens.surfaceMuted,
-                    borderRadius: BorderRadius.circular(RadiusTokens.full),
-                  ),
-                  child: Text(
-                    category,
-                    style: TypographyTokens.microLabel.copyWith(
-                      color: ColorTokens.textPrimary,
+          child: CustomPaint(
+            painter: _ModeCardMotifPainter(foreground),
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: LayoutTokens.modeCardMinHeight,
+              ),
+              padding: const EdgeInsets.all(SpaceTokens.xl),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: SpaceTokens.md,
+                      vertical: SpaceTokens.xs,
+                    ),
+                    decoration: BoxDecoration(
+                      color: foreground.withValues(
+                        alpha: StateTokens.homeCardMotifOpacity,
+                      ),
+                      border: Border.all(
+                        color: foreground.withValues(
+                          alpha: StateTokens.modeCardDividerOpacity,
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(RadiusTokens.full),
+                    ),
+                    child: Text(
+                      category,
+                      style: TypographyTokens.microLabel.copyWith(
+                        color: foreground,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: SpaceTokens.lg),
-                Text(
-                  title,
-                  style: TypographyTokens.display.copyWith(color: foreground),
-                ),
-                Expanded(
-                  child: Center(
-                    child: ExcludeSemantics(
-                      child: Text(
-                        index,
-                        style: TypographyTokens.display.copyWith(
-                          color: foreground.withValues(
-                            alpha: StateTokens.modeCardIndexOpacity,
+                  const SizedBox(height: SpaceTokens.lg),
+                  Text(
+                    title,
+                    style: TypographyTokens.display.copyWith(color: foreground),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: ExcludeSemantics(
+                        child: Text(
+                          index,
+                          style: TypographyTokens.homeModeIndex.copyWith(
+                            color: foreground.withValues(
+                              alpha: StateTokens.modeCardIndexOpacity,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: SpaceTokens.sm),
-                Text(
-                  description,
-                  style: TypographyTokens.body.copyWith(color: foreground),
-                ),
-                const SizedBox(height: SpaceTokens.lg),
-                Divider(
-                  color: foreground.withValues(
-                    alpha: StateTokens.modeCardDividerOpacity,
+                  const SizedBox(height: SpaceTokens.sm),
+                  Text(
+                    description,
+                    style: TypographyTokens.body.copyWith(color: foreground),
                   ),
-                ),
-                const SizedBox(height: SpaceTokens.sm),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        actionLabel,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TypographyTokens.bodyStrong.copyWith(
-                          color: foreground,
+                  const SizedBox(height: SpaceTokens.lg),
+                  Divider(
+                    color: foreground.withValues(
+                      alpha: StateTokens.modeCardDividerOpacity,
+                    ),
+                  ),
+                  const SizedBox(height: SpaceTokens.sm),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          actionLabel,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TypographyTokens.bodyStrong.copyWith(
+                            color: foreground,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: SpaceTokens.xs),
-                    Icon(
-                      Icons.arrow_forward_rounded,
-                      color: foreground,
-                      size: IconTokens.inline,
-                    ),
-                  ],
-                ),
-              ],
+                      const SizedBox(width: SpaceTokens.xs),
+                      Icon(
+                        Icons.arrow_forward_rounded,
+                        color: foreground,
+                        size: IconTokens.inline,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     ),
   );
+}
+
+class _ModeCardMotifPainter extends CustomPainter {
+  const _ModeCardMotifPainter(this.color);
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.clipRRect(
+      RRect.fromRectAndRadius(
+        Offset.zero & size,
+        const Radius.circular(RadiusTokens.heroCard),
+      ),
+    );
+    canvas.drawCircle(
+      Offset(size.width - SpaceTokens.lg, SpaceTokens.lg),
+      LayoutTokens.homeModeMotifSize / 2,
+      Paint()
+        ..color = color.withValues(alpha: StateTokens.homeCardMotifOpacity)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = SpaceTokens.xxl,
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(_ModeCardMotifPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class StreakPill extends StatelessWidget {
@@ -226,42 +387,48 @@ class StreakPill extends StatelessWidget {
     button: true,
     enabled: onPressed != null,
     label: semanticLabel,
-    child: Material(
-      color: ColorTokens.surface,
-      borderRadius: BorderRadius.circular(RadiusTokens.full),
-      elevation: SpaceTokens.xs,
-      child: InkWell(
-        onTap: onPressed,
+    child: DecoratedBox(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(RadiusTokens.full)),
+        boxShadow: ShadowTokens.homeStreak,
+      ),
+      child: Material(
+        color: ColorTokens.surface,
         borderRadius: BorderRadius.circular(RadiusTokens.full),
-        child: SizedBox(
-          height: ControlTokens.pillSmallHeight,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.md),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(
-                  Icons.bar_chart_rounded,
-                  size: IconTokens.inline,
-                  color: ColorTokens.textFaint,
-                ),
-                const SizedBox(width: SpaceTokens.sm),
-                Text(
-                  MediaQuery.sizeOf(context).width <
-                          LayoutTokens.hideBarCaptionsBelow
-                      ? '$count'
-                      : semanticLabel,
-                  style: TypographyTokens.microLabel.copyWith(
-                    color: ColorTokens.textSecondary,
+        elevation: 0,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.full),
+          child: SizedBox(
+            height: ControlTokens.pillSmallHeight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.md),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.bar_chart_rounded,
+                    size: IconTokens.inline,
+                    color: ColorTokens.textFaint,
                   ),
-                ),
-                const SizedBox(width: SpaceTokens.xs),
-                const Icon(
-                  Icons.local_fire_department_rounded,
-                  color: ColorTokens.warning,
-                  size: IconTokens.inline,
-                ),
-              ],
+                  const SizedBox(width: SpaceTokens.sm),
+                  Text(
+                    MediaQuery.sizeOf(context).width <
+                            LayoutTokens.hideBarCaptionsBelow
+                        ? '$count'
+                        : semanticLabel,
+                    style: TypographyTokens.microLabel.copyWith(
+                      color: ColorTokens.textSecondary,
+                    ),
+                  ),
+                  const SizedBox(width: SpaceTokens.xs),
+                  const Icon(
+                    Icons.local_fire_department_rounded,
+                    color: ColorTokens.warning,
+                    size: IconTokens.inline,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -296,55 +463,35 @@ class FloatingBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    height: LayoutTokens.homeDockHeight + ControlTokens.pillSmallHeight,
+    key: const Key('home-glass-dock'),
+    height: LayoutTokens.homeDockHeight + LayoutTokens.homeDockFadeHeight,
     child: Stack(
       alignment: Alignment.bottomCenter,
       children: [
         Positioned.fill(
-          top: ControlTokens.pillSmallHeight,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(RadiusTokens.sheet),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: GlassTokens.barBlur,
-                sigmaY: GlassTokens.barBlur,
-              ),
-              child: DecoratedBox(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [GlassTokens.barFill, ColorTokens.primaryTint],
-                  ),
+          child: IgnorePointer(
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: GlassTokens.barBlur,
+                  sigmaY: GlassTokens.barBlur,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: SpaceTokens.lg,
-                  ),
-                  child: LayoutBuilder(
-                    builder: (context, constraints) => Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _DockButton(
-                          label: historyLabel,
-                          icon: Icons.rotate_left_rounded,
-                          onPressed: onHistory,
-                        ),
-                        _DockButton(
-                          label: menuLabel,
-                          icon: Icons.stars_rounded,
-                          onPressed: onMenu,
-                          showLabel:
-                              constraints.maxWidth >=
-                              LayoutTokens.hideBarCaptionsBelow,
-                        ),
-                        _DockButton(
-                          label: settingsLabel,
-                          icon: Icons.wb_sunny_outlined,
-                          onPressed: onSettings,
-                        ),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        GlassTokens.homeDockTint.withValues(alpha: 0),
+                        GlassTokens.homeDockTint,
+                        GlassTokens.homeDockTint,
+                      ],
+                      stops: const [
+                        0,
+                        LayoutTokens.homeDockFadeHeight /
+                            (LayoutTokens.homeDockHeight +
+                                LayoutTokens.homeDockFadeHeight),
+                        1,
                       ],
                     ),
                   ),
@@ -353,8 +500,41 @@ class FloatingBottomBar extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(
+          height: LayoutTokens.homeDockHeight,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: SpaceTokens.lg),
+            child: LayoutBuilder(
+              builder: (context, constraints) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _DockButton(
+                    label: historyLabel,
+                    icon: Icons.rotate_left_rounded,
+                    onPressed: onHistory,
+                  ),
+                  _DockButton(
+                    label: menuLabel,
+                    icon: Icons.stars_rounded,
+                    onPressed: onMenu,
+                    showLabel:
+                        constraints.maxWidth >=
+                        LayoutTokens.hideBarCaptionsBelow,
+                  ),
+                  _DockButton(
+                    label: settingsLabel,
+                    icon: Icons.wb_sunny_outlined,
+                    onPressed: onSettings,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         Positioned(
-          top: SpaceTokens.md,
+          top:
+              LayoutTokens.homeDockFadeHeight -
+              ControlTokens.pillSmallHeight / 2,
           child: StreakPill(
             count: streakCount,
             semanticLabel: streakLabel,
@@ -618,7 +798,7 @@ class FeatureBanner extends StatelessWidget {
               padding: const EdgeInsets.all(SpaceTokens.lg),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [accessible.brandFill, ColorTokens.primaryTextOnTint],
+                  colors: FeatureTokens.homeFlashcardGradient,
                 ),
                 borderRadius: BorderRadius.circular(RadiusTokens.card),
               ),

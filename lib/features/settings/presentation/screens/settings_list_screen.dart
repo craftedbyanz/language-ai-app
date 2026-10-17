@@ -11,6 +11,8 @@ class SettingsListScreen extends StatelessWidget {
     required this.onLessonPressed,
     required this.onAppearancePressed,
     required this.currentLanguage,
+    required this.learningLevel,
+    required this.onLearningLanguagePressed,
     super.key,
   });
 
@@ -20,6 +22,8 @@ class SettingsListScreen extends StatelessWidget {
   final VoidCallback onLessonPressed;
   final VoidCallback onAppearancePressed;
   final String currentLanguage;
+  final String learningLevel;
+  final VoidCallback onLearningLanguagePressed;
 
   @override
   Widget build(BuildContext context) => AppScaffold(
@@ -166,9 +170,14 @@ class SettingsListScreen extends StatelessWidget {
                     const SizedBox(height: SpaceTokens.xxl),
                     _GroupTitle(copy.studying),
                     const SizedBox(height: SpaceTokens.sm),
-                    _LearningLanguageCard(
-                      label: copy.learningLanguage,
-                      english: copy.english,
+                    InkWell(
+                      onTap: onLearningLanguagePressed,
+                      borderRadius: BorderRadius.circular(RadiusTokens.card),
+                      child: _LearningLanguageCard(
+                        label: copy.learningLanguage,
+                        english: copy.english,
+                        level: learningLevel,
+                      ),
                     ),
                     const SizedBox(height: SpaceTokens.xl),
                     _GroupTitle(copy.general),
@@ -253,14 +262,19 @@ class SettingsListScreen extends StatelessWidget {
 }
 
 class _LearningLanguageCard extends StatelessWidget {
-  const _LearningLanguageCard({required this.label, required this.english});
+  const _LearningLanguageCard({
+    required this.label,
+    required this.english,
+    required this.level,
+  });
 
   final String label;
   final String english;
+  final String level;
 
   @override
   Widget build(BuildContext context) => Semantics(
-    label: '$label: $english, A1',
+    label: '$label: $english, $level',
     child: Container(
       constraints: const BoxConstraints(minHeight: LayoutTokens.rowSettings),
       padding: const EdgeInsets.symmetric(
@@ -302,7 +316,7 @@ class _LearningLanguageCard extends StatelessWidget {
                 horizontal: SpaceTokens.sm,
                 vertical: SpaceTokens.xs,
               ),
-              child: Text('A1', style: TypographyTokens.caption),
+              child: Text(level, style: TypographyTokens.caption),
             ),
           ),
         ],

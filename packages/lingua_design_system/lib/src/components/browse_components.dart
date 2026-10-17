@@ -587,12 +587,16 @@ class _PagerDotsState extends State<PagerDots> {
                         dimension: ControlTokens.minTouchTarget,
                         child: Center(
                           child: Container(
-                            width:
-                                widget.variant == PagerDotsVariant.lesson &&
-                                    dot == widget.index
+                            width: widget.variant == PagerDotsVariant.dashboard
+                                ? (dot == widget.index
+                                      ? SpaceTokens.xl
+                                      : SpaceTokens.xs)
+                                : dot == widget.index
                                 ? SpaceTokens.lg
                                 : SpaceTokens.sm,
-                            height: SpaceTokens.sm,
+                            height: widget.variant == PagerDotsVariant.dashboard
+                                ? SpaceTokens.xs
+                                : SpaceTokens.sm,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                 RadiusTokens.full,

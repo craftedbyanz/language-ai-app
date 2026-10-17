@@ -22,3 +22,4 @@ export 'src/primitives/app_surface.dart';
 export 'src/primitives/canonical_focus_indicator.dart';
 export 'src/theme/app_theme.dart';
 export 'src/tokens/generated/design_tokens.dart';
+export 'src/components/country_flag.dart';

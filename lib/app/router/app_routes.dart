@@ -17,6 +17,82 @@ import '../localization/generated/app_localizations.dart';
 
 part 'app_routes.g.dart';
 
+LearningLanguageCopy _learningLanguageCopy(BuildContext context) {
+  final s = AppLocalizations.of(context)!;
+  return LearningLanguageCopy(
+    title: s.learningLanguageTitle,
+    chooseLanguage: s.learningChooseLanguage,
+    caption: s.learningLanguageCaption,
+    languagesLabel: s.learningLanguagesLabel,
+    languageNames: [
+      s.learningEnglish,
+      s.learningKorean,
+      s.learningChinese,
+      s.learningJapanese,
+    ],
+    nativeNames: [
+      s.learningEnglishNative,
+      s.learningKoreanNative,
+      s.learningChineseNative,
+      s.learningJapaneseNative,
+    ],
+    comingSoon: s.learningComingSoon,
+    currentLevel: s.learningCurrentLevel,
+    confirm: s.learningConfirm,
+    back: s.back,
+    levelTitle: s.learningLevelTitle,
+    levelIntro: s.learningLevelIntro,
+    levelPrompt: s.learningLevelPrompt,
+    levelsLabel: s.learningLevelsLabel,
+    levelNames: [
+      s.learningLevelA1,
+      s.learningLevelA2,
+      s.learningLevelB1,
+      s.learningLevelB2,
+      s.learningLevelC1,
+      s.learningLevelC2,
+    ],
+    levelDescriptions: [
+      s.learningLevelA1Description,
+      s.learningLevelA2Description,
+      s.learningLevelB1Description,
+      s.learningLevelB2Description,
+      s.learningLevelC1Description,
+      s.learningLevelC2Description,
+    ],
+    saveFailed: s.settingsSaveFailed,
+  );
+}
+
+@TypedGoRoute<LearningLanguageRoute>(path: '/learning-language')
+class LearningLanguageRoute extends GoRouteData with $LearningLanguageRoute {
+  const LearningLanguageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      LearningLanguageScreen(
+        copy: _learningLanguageCopy(context),
+        onBack: () => context.pop(),
+        onChooseLevel: (level) =>
+            LearningLevelRoute(level: level).push<LearningLevel>(context),
+      );
+}
+
+@TypedGoRoute<LearningLevelRoute>(path: '/learning-language/level')
+class LearningLevelRoute extends GoRouteData with $LearningLevelRoute {
+  const LearningLevelRoute({this.level = LearningLevel.a1});
+  final LearningLevel level;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      LearningLevelScreen(
+        copy: _learningLanguageCopy(context),
+        initialLevel: level,
+        onBack: () => context.pop(),
+        onConfirm: (value) => context.pop(value),
+      );
+}
+
 HomeDashboardCopy _homeCopy(BuildContext context, int streakCount) {
   final strings = AppLocalizations.of(context)!;
   return HomeDashboardCopy(
@@ -369,6 +445,10 @@ class HomeRoute extends GoRouteData with $HomeRoute {
         copy: _homeCopy(context, streakCount),
         streakCount: streakCount,
         cardStyle: cardStyle,
+        learningLanguageLabel: AppLocalizations.of(context)!
+            .learningLanguageShortcut,
+        onLearningLanguagePressed: () =>
+            const LearningLanguageRoute().push<void>(context),
         onWritingPressed: () => const WritingTopicRoute().push<void>(context),
         onGrammarPressed: () => const GrammarTopicRoute().push<void>(context),
         onFlashcardsPressed: () =>
@@ -445,17 +525,27 @@ class SettingsRoute extends GoRouteData with $SettingsRoute {
   Widget build(BuildContext context, GoRouterState state) {
     final copy = _settingsCopy(context);
     final languageCode = Localizations.localeOf(context).languageCode;
-    return SettingsListScreen(
-      copy: copy,
-      currentLanguage: languageCode == 'vi' ? copy.vietnamese : copy.english,
-      onBack: () => context.pop(),
-      onLanguagePressed: () =>
-          const SettingsLanguageRoute().push<void>(context),
-      onLessonPressed: () =>
-          const SettingsPreferenceRoute(section: 'lesson').push<void>(context),
-      onAppearancePressed: () =>
-          const SettingsPreferenceRoute(section: 'appearance')
-              .push<void>(context),
+    return Consumer(
+      builder: (context, ref, _) => SettingsListScreen(
+        copy: copy,
+        learningLevel: ref
+            .watch(devicePreferencesProvider)
+            .learningLevel
+            .name
+            .toUpperCase(),
+        onLearningLanguagePressed: () =>
+            const LearningLanguageRoute().push<void>(context),
+        currentLanguage: languageCode == 'vi' ? copy.vietnamese : copy.english,
+        onBack: () => context.pop(),
+        onLanguagePressed: () =>
+            const SettingsLanguageRoute().push<void>(context),
+        onLessonPressed: () =>
+            const SettingsPreferenceRoute(section: 'lesson')
+                .push<void>(context),
+        onAppearancePressed: () =>
+            const SettingsPreferenceRoute(section: 'appearance')
+                .push<void>(context),
+      ),
     );
   }
 }

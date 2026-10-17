@@ -279,6 +279,12 @@ abstract final class ControlTokens {
   /// control.iconButton
   static const double iconButton = 36.0;
 
+  /// control.learningFlagHeight
+  static const double learningFlagHeight = 30.0;
+
+  /// control.learningFlagWidth
+  static const double learningFlagWidth = 40.0;
+
   /// control.minTouchTarget
   static const double minTouchTarget = 44.0;
 
@@ -390,8 +396,27 @@ abstract final class FeatureTokens {
   /// feature.grammar.progressCurrent
   static const Color grammarProgressCurrent = Color(0xFFDCEEEA);
 
+  /// feature.home.conversationFill
+  static const Color homeConversationFill = Color(0xFF0E7490);
+
+  /// feature.home.flashcardGradient
+  static const List<Color> homeFlashcardGradient = <Color>[
+    Color(0xFF0B0F21),
+    Color(0xFF1D4ED8),
+    Color(0xFF2563EB),
+  ];
+
+  /// feature.home.grammarFill
+  static const Color homeGrammarFill = Color(0xFF7C3AED);
+
   /// feature.home.promptEntryFill
   static const Color homePromptEntryFill = Color(0xFFFFFFFF);
+
+  /// feature.home.writingFill
+  static const Color homeWritingFill = Color(0xFF2563EB);
+
+  /// feature.learningLanguage.cta
+  static const Color learningLanguageCta = Color(0xFF19CCE5);
 
   /// feature.scenario.accent
   static const Color scenarioAccent = Color(0xFF3B82F6);
@@ -486,6 +511,9 @@ abstract final class GlassTokens {
   /// glass.button.fill
   static const Color buttonFill = Color.fromRGBO(255, 255, 255, 0.20);
 
+  /// glass.homeDockTint
+  static const Color homeDockTint = Color.fromRGBO(255, 255, 255, 0.42);
+
   /// glass.menu.blur
   static const double menuBlur = 20.0;
 
@@ -516,6 +544,9 @@ abstract final class IconTokens {
 
   /// icon.inline
   static const double inline = 15.0;
+
+  /// icon.learningLanguageHero
+  static const double learningLanguageHero = 48.0;
 
   /// icon.streakHero
   static const double streakHero = 96.0;
@@ -582,8 +613,17 @@ abstract final class LayoutTokens {
   /// layout.historyCardWidth
   static const double historyCardWidth = 123.0;
 
+  /// layout.homeDockFadeHeight
+  static const double homeDockFadeHeight = 32.0;
+
   /// layout.homeDockHeight
   static const double homeDockHeight = 62.0;
+
+  /// layout.homeModeCardAspectRatio
+  static const double homeModeCardAspectRatio = 1.75;
+
+  /// layout.homeModeMotifSize
+  static const double homeModeMotifSize = 160.0;
 
   /// layout.inlinePopoverOffset
   static const double inlinePopoverOffset = 4.0;
@@ -745,6 +785,16 @@ abstract final class ShadowTokens {
     ),
   ];
 
+  /// shadow.homeStreak
+  static const List<BoxShadow> homeStreak = <BoxShadow>[
+    BoxShadow(
+      offset: Offset(0, 2),
+      blurRadius: 8,
+      spreadRadius: 0,
+      color: Color.fromRGBO(11, 15, 33, 0.10),
+    ),
+  ];
+
   /// shadow.none
   static const List<BoxShadow> none = <BoxShadow>[];
 
@@ -782,6 +832,18 @@ abstract final class SpaceTokens {
 abstract final class StateTokens {
   /// state.disabledOpacity
   static const double disabledOpacity = 0.4;
+
+  /// state.homeCardMotifOpacity
+  static const double homeCardMotifOpacity = 0.08;
+
+  /// state.homeInactiveCardBlur
+  static const double homeInactiveCardBlur = 1.5;
+
+  /// state.homeInactiveCardOpacity
+  static const double homeInactiveCardOpacity = 0.46;
+
+  /// state.homeInactiveCardScale
+  static const double homeInactiveCardScale = 0.96;
 
   /// state.modeCardDividerOpacity
   static const double modeCardDividerOpacity = 0.25;
@@ -843,6 +905,14 @@ abstract final class TypographyTokens {
     fontSize: 17,
     height: 1.2941176470588236,
     fontWeight: FontWeight.w700,
+  );
+
+  /// typography.homeModeIndex
+  static const TextStyle homeModeIndex = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 96,
+    height: 1.1458333333333333,
+    fontWeight: FontWeight.w800,
   );
 
   /// typography.microLabel

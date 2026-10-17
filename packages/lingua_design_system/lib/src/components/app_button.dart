@@ -6,7 +6,7 @@ import '../primitives/canonical_focus_indicator.dart';
 
 enum AppButtonVariant { primary, secondary, accent, link }
 
-enum AppButtonAccent { writing, grammar, conversation }
+enum AppButtonAccent { writing, grammar, conversation, learningLanguage }
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -68,12 +68,15 @@ class AppButton extends StatelessWidget {
         style: FilledButton.styleFrom(
           minimumSize: const Size(0, ControlTokens.minTouchTarget),
           backgroundColor: switch (accent!) {
+            AppButtonAccent.learningLanguage =>
+              FeatureTokens.learningLanguageCta,
             AppButtonAccent.writing => FeatureTokens.writingCta,
             AppButtonAccent.grammar => FeatureTokens.grammarCta,
             AppButtonAccent.conversation => FeatureTokens.conversationCta,
           },
           foregroundColor: switch (accent!) {
-            AppButtonAccent.grammar => ColorTokens.textPrimary,
+            AppButtonAccent.grammar ||
+            AppButtonAccent.learningLanguage => ColorTokens.textPrimary,
             AppButtonAccent.writing ||
             AppButtonAccent.conversation => accessible.onBrand,
           },

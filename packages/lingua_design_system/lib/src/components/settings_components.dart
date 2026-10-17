@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../primitives/canonical_focus_indicator.dart';
+import 'country_flag.dart';
 import '../theme/app_theme.dart';
 import '../tokens/generated/design_tokens.dart';
 
@@ -146,6 +147,7 @@ class SelectableRow extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(SpaceTokens.lg),
               decoration: BoxDecoration(
+                color: ColorTokens.surface,
                 borderRadius: BorderRadius.circular(RadiusTokens.card),
                 boxShadow: ShadowTokens.hairline,
               ),
@@ -183,4 +185,110 @@ class SelectableRow extends StatelessWidget {
       ),
     );
   }
+}
+
+class LearningLanguageTile extends StatelessWidget {
+  const LearningLanguageTile({
+    required this.label,
+    required this.nativeLabel,
+    required this.flag,
+    required this.selected,
+    this.comingSoonLabel,
+    this.onPressed,
+    super.key,
+  });
+  final String label;
+  final String nativeLabel;
+  final CountryFlag flag;
+  final bool selected;
+  final String? comingSoonLabel;
+  final VoidCallback? onPressed;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    enabled: onPressed != null,
+    selected: selected,
+    label:
+        '$label, $nativeLabel${comingSoonLabel == null ? '' : ', $comingSoonLabel'}',
+    excludeSemantics: true,
+    child: CanonicalFocusIndicator(
+      borderRadius: BorderRadius.circular(RadiusTokens.card),
+      child: Material(
+        color: ColorTokens.surface,
+        borderRadius: BorderRadius.circular(RadiusTokens.card),
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(RadiusTokens.card),
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: LayoutTokens.rowSettings,
+            ),
+            padding: const EdgeInsets.all(SpaceTokens.lg),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(RadiusTokens.card),
+              border: selected ? Border.all(color: ColorTokens.border) : null,
+            ),
+            child: Row(
+              children: [
+                CountryFlagIcon(country: flag),
+                const SizedBox(width: SpaceTokens.lg),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: SpaceTokens.xs,
+                        children: [
+                          Text(
+                            label,
+                            style: TypographyTokens.bodyStrong.copyWith(
+                              color: onPressed == null
+                                  ? ColorTokens.textSecondary
+                                  : ColorTokens.textPrimary,
+                            ),
+                          ),
+                          if (selected)
+                            const Icon(
+                              Icons.verified_rounded,
+                              color: ColorTokens.warning,
+                              size: IconTokens.inline,
+                            ),
+                          if (comingSoonLabel != null)
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: SpaceTokens.xs,
+                              ),
+                              decoration: BoxDecoration(
+                                color: ColorTokens.streakBadgeBackground,
+                                borderRadius: BorderRadius.circular(
+                                  RadiusTokens.full,
+                                ),
+                              ),
+                              child: Text(
+                                comingSoonLabel!,
+                                style: TypographyTokens.microLabel.copyWith(
+                                  color: ColorTokens.warningText,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                      Text(
+                        nativeLabel,
+                        style: TypographyTokens.caption.copyWith(
+                          color: ColorTokens.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }

@@ -1447,6 +1447,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'add'**
   String get grammarCorrectionInserted;
+
+  /// No description provided for @learningEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get learningEnglish;
+
+  /// No description provided for @learningKorean.
+  ///
+  /// In en, this message translates to:
+  /// **'Korean'**
+  String get learningKorean;
+
+  /// No description provided for @learningChinese.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese'**
+  String get learningChinese;
+
+  /// No description provided for @learningJapanese.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese'**
+  String get learningJapanese;
+
+  /// No description provided for @learningEnglishNative.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get learningEnglishNative;
+
+  /// No description provided for @learningKoreanNative.
+  ///
+  /// In en, this message translates to:
+  /// **'한국어'**
+  String get learningKoreanNative;
+
+  /// No description provided for @learningChineseNative.
+  ///
+  /// In en, this message translates to:
+  /// **'中文'**
+  String get learningChineseNative;
+
+  /// No description provided for @learningJapaneseNative.
+  ///
+  /// In en, this message translates to:
+  /// **'日本語'**
+  String get learningJapaneseNative;
+
+  /// No description provided for @learningLevelA1.
+  ///
+  /// In en, this message translates to:
+  /// **'A1 - Beginner'**
+  String get learningLevelA1;
+
+  /// No description provided for @learningLevelA2.
+  ///
+  /// In en, this message translates to:
+  /// **'A2 - Elementary'**
+  String get learningLevelA2;
+
+  /// No description provided for @learningLevelB1.
+  ///
+  /// In en, this message translates to:
+  /// **'B1 - Intermediate'**
+  String get learningLevelB1;
+
+  /// No description provided for @learningLevelB2.
+  ///
+  /// In en, this message translates to:
+  /// **'B2 - Upper Intermediate'**
+  String get learningLevelB2;
+
+  /// No description provided for @learningLevelC1.
+  ///
+  /// In en, this message translates to:
+  /// **'C1 - Advanced'**
+  String get learningLevelC1;
+
+  /// No description provided for @learningLevelC2.
+  ///
+  /// In en, this message translates to:
+  /// **'C2 - Proficient'**
+  String get learningLevelC2;
+
+  /// No description provided for @learningLanguageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning language'**
+  String get learningLanguageTitle;
+
+  /// No description provided for @learningLanguageShortcut.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning language: English'**
+  String get learningLanguageShortcut;
+
+  /// No description provided for @learningChooseLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your learning language'**
+  String get learningChooseLanguage;
+
+  /// No description provided for @learningLanguageCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the language you want to learn. More languages are coming soon.'**
+  String get learningLanguageCaption;
+
+  /// No description provided for @learningLanguagesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get learningLanguagesLabel;
+
+  /// No description provided for @learningComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get learningComingSoon;
+
+  /// No description provided for @learningCurrentLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Current level'**
+  String get learningCurrentLevel;
+
+  /// No description provided for @learningConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get learningConfirm;
+
+  /// No description provided for @learningLevelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your level'**
+  String get learningLevelTitle;
+
+  /// No description provided for @learningLevelIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'The Common European Framework of Reference (CEFR) describes six levels, from beginner to proficient.'**
+  String get learningLevelIntro;
+
+  /// No description provided for @learningLevelPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the level that best matches your current language skills.'**
+  String get learningLevelPrompt;
+
+  /// No description provided for @learningLevelsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your level'**
+  String get learningLevelsLabel;
+
+  /// No description provided for @learningLevelA1Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write and complete very short sentences with familiar vocabulary. Practise basic patterns and simple ideas.'**
+  String get learningLevelA1Description;
+
+  /// No description provided for @learningLevelA2Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write simple sentences on familiar topics. Start connecting ideas into short paragraphs.'**
+  String get learningLevelA2Description;
+
+  /// No description provided for @learningLevelB1Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write clear paragraphs about familiar topics, experiences, plans and opinions.'**
+  String get learningLevelB1Description;
+
+  /// No description provided for @learningLevelB2Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write natural, structured paragraphs and explain opinions and arguments in more detail.'**
+  String get learningLevelB2Description;
+
+  /// No description provided for @learningLevelC1Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write fluently and flexibly for academic, professional and personal purposes.'**
+  String get learningLevelC1Description;
+
+  /// No description provided for @learningLevelC2Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write precisely and naturally, express complex ideas and control subtle shades of meaning.'**
+  String get learningLevelC2Description;
 }
 
 class _AppLocalizationsDelegate

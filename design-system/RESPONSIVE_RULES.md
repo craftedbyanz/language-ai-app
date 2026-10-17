@@ -26,8 +26,8 @@ Evidence status
 - Lists and rows span the full `contentWidth`; do not add extra inner margins.
 
 ## 3. Content width
-- `contentWidth = min(viewport − 2×margin, layout.contentMaxWidth)`; `contentMaxWidth` = 764 (reference content width; ESTIMATED as a cap).
-- In *wide* viewports, centre a column of `contentMaxWidth`; backgrounds still fill the viewport. Do not stretch cards.
+- **Home exception (DD-27)**: dashboard content spans `viewport − 2×layout.marginDashboard` at every window width. Other screens use `contentWidth = min(viewport − 2×margin, layout.contentMaxWidth)`; `contentMaxWidth` = 764 (reference content width; ESTIMATED as a cap).
+- In *wide* viewports, centre reading/detail screens at `contentMaxWidth`. Home fills the window; its mode-card height follows `layout.homeModeCardAspectRatio` with a content minimum.
 - Chat bubbles: `max-width = layout.chatBubbleMaxWidthRatio × contentWidth`.
 
 ## 4. Grid behaviour
