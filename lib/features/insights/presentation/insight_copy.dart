@@ -4,6 +4,8 @@ final class InsightCopy {
     required this.history,
     required this.streak,
     required this.streakOnFire,
+    required this.streakCurrentLabel,
+    required this.streakLongestLabel,
     required this.streakConsecutiveDays,
     required this.streakStartPrompt,
     required this.streakStudiedDays,
@@ -38,6 +40,8 @@ final class InsightCopy {
   final String history;
   final String streak;
   final String streakOnFire;
+  final String streakCurrentLabel;
+  final String streakLongestLabel;
   final String streakConsecutiveDays;
   final String streakStartPrompt;
   final String Function(int count) streakStudiedDays;

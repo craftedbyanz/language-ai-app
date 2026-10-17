@@ -211,6 +211,9 @@ abstract final class ColorTokens {
   /// color.primaryTint
   static const Color primaryTint = Color(0xFFDBEAFE);
 
+  /// color.streakBadgeBackground
+  static const Color streakBadgeBackground = Color(0xFFFFF7ED);
+
   /// color.success
   static const Color success = Color(0xFF10B981);
 
@@ -654,6 +657,9 @@ abstract final class LayoutTokens {
   /// layout.stepperSegmentMinWidth
   static const double stepperSegmentMinWidth = 4.0;
 
+  /// layout.streakPromptMaxWidth
+  static const double streakPromptMaxWidth = 168.0;
+
   /// layout.topicCardHeight
   static const double topicCardHeight = 123.0;
 }
@@ -848,6 +854,62 @@ abstract final class TypographyTokens {
     letterSpacing: 0.8,
   );
   static const String microLabelTransform = "uppercase";
+
+  /// typography.streakCount
+  static const TextStyle streakCount = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 56,
+    height: 1.25,
+    fontWeight: FontWeight.w800,
+  );
+
+  /// typography.streakDay
+  static const TextStyle streakDay = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// typography.streakMonth
+  static const TextStyle streakMonth = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.2857142857142858,
+    fontWeight: FontWeight.w800,
+  );
+
+  /// typography.streakNavTitle
+  static const TextStyle streakNavTitle = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 14,
+    height: 1.2857142857142858,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// typography.streakPrompt
+  static const TextStyle streakPrompt = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// typography.streakStatValue
+  static const TextStyle streakStatValue = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 20,
+    height: 1.3,
+    fontWeight: FontWeight.w800,
+  );
+
+  /// typography.streakUnit
+  static const TextStyle streakUnit = TextStyle(
+    fontFamily: TypographyTokens.family,
+    fontSize: 12,
+    height: 1.3333333333333333,
+    fontWeight: FontWeight.w700,
+  );
 
   /// typography.title
   static const TextStyle title = TextStyle(

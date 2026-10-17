@@ -631,3 +631,9 @@ These were used by earlier entries (`FeedbackActionRow`, `Dialog`, `Sheet/Create
 - **Appearance**: packaged reference Lottie compositions; zero streak uses the grey artwork, positive streak the colour artwork. Preserve the embedded layered gradients and rising embers.
 - **Motion**: render the original path morphs, layer transforms and particles at the composition's own 24 fps and 26-frame duration (about 1.083 seconds). Do not approximate with sine-wave tip offsets.
 - **Accessibility**: excluded from semantics; first frame only with reduced motion. Pause outside the active application or an enabled ticker subtree.
+
+
+## InsightStreakSummary / streak calendar typography
+- `InsightStreakSummary`: ON FIRE in a `streakBadgeBackground` pill with `warningText`, `microLabel`, `space.sm` horizontal / `space.xs` vertical padding; count `streakCount`; unit `streakUnit`; motivation `streakPrompt` capped at `layout.streakPromptMaxWidth`; decorative `StreakFlame` alongside.
+- Streak header title: `streakNavTitle`. Calendar variant `streak`: `streakMonth` heading and `streakDay` numerals, with elapsed days `textPrimary` and future dates `textMuted`. Overview retains its existing styles.
+- Streak stat tiles use dedicated localized uppercase short labels and `streakStatValue`. The overview's longer current/longest labels remain unchanged. See DD-08a.

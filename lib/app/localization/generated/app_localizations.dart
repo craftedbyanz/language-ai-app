@@ -260,6 +260,18 @@ abstract class AppLocalizations {
   /// **'Upgrade Gramify Plus'**
   String get menuUpgrade;
 
+  /// No description provided for @streakCurrentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'CURRENT'**
+  String get streakCurrentLabel;
+
+  /// No description provided for @streakLongestLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'LONGEST'**
+  String get streakLongestLabel;
+
   /// No description provided for @streakOnFire.
   ///
   /// In en, this message translates to:

@@ -35,7 +35,16 @@ class _StreakScreenState extends ConsumerState<StreakScreen> {
           ContentConstraints(
             child: AppHeader(
               variant: AppHeaderVariant.pushed,
-              title: widget.copy.streak,
+              centre: Semantics(
+                header: true,
+                child: Text(
+                  widget.copy.streak,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TypographyTokens.streakNavTitle,
+                ),
+              ),
               leadingLabel: widget.copy.back,
               onLeadingPressed: widget.onBack,
             ),
@@ -49,45 +58,17 @@ class _StreakScreenState extends ConsumerState<StreakScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: SpaceTokens.lg),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.copy.streakOnFire,
-                                  style: TypographyTokens.microLabel.copyWith(
-                                    color: ColorTokens.warningText,
-                                  ),
-                                ),
-                                const SizedBox(height: SpaceTokens.sm),
-                                Text(
-                                  '${snapshot.currentStreak}',
-                                  style: TypographyTokens.display,
-                                ),
-                                Text(
-                                  widget.copy.streakConsecutiveDays,
-                                  style: TypographyTokens.caption.copyWith(
-                                    color: ColorTokens.textSecondary,
-                                  ),
-                                ),
-                                const SizedBox(height: SpaceTokens.sm),
-                                Text(
-                                  widget.copy.streakStartPrompt,
-                                  style: TypographyTokens.caption.copyWith(
-                                    color: ColorTokens.textSecondary,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          StreakFlame(isActive: snapshot.currentStreak > 0),
-                        ],
+                      InsightStreakSummary(
+                        onFireLabel: widget.copy.streakOnFire,
+                        count: '${snapshot.currentStreak}',
+                        unitLabel: widget.copy.streakConsecutiveDays,
+                        prompt: widget.copy.streakStartPrompt,
+                        isActive: snapshot.currentStreak > 0,
                       ),
                       const SizedBox(height: SpaceTokens.xxl),
                       InsightCalendarCard(
+                        variant: InsightCalendarVariant.streak,
+                        lastElapsedDay: isCurrentMonth ? now.day : null,
                         title: widget.copy.monthYear(_month.month, _month.year),
                         studiedDaysLabel: widget.copy.streakStudiedDays(
                           activeDays.length,
@@ -118,7 +99,7 @@ class _StreakScreenState extends ConsumerState<StreakScreen> {
                             child: InsightStreakStatCard(
                               icon: Icons.local_fire_department_rounded,
                               value: '${snapshot.currentStreak}',
-                              label: widget.copy.currentStreak,
+                              label: widget.copy.streakCurrentLabel,
                               accent: ColorTokens.warning,
                             ),
                           ),
@@ -127,7 +108,7 @@ class _StreakScreenState extends ConsumerState<StreakScreen> {
                             child: InsightStreakStatCard(
                               icon: Icons.bolt_rounded,
                               value: '${snapshot.longestStreak}',
-                              label: widget.copy.longestStreak,
+                              label: widget.copy.streakLongestLabel,
                               accent: ColorTokens.warning,
                             ),
                           ),

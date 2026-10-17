@@ -40,8 +40,8 @@ void main() {
       await tester.pump();
       await tester.pump(const Duration(seconds: 1));
       expect(find.byType(StreakFlame), findsOneWidget);
-      expect(find.text('Current streak'), findsOneWidget);
-      expect(find.text('Longest streak'), findsOneWidget);
+      expect(find.text('CURRENT'), findsOneWidget);
+      expect(find.text('LONGEST'), findsOneWidget);
       expect(find.byType(InsightCalendarCard), findsOneWidget);
       await tester.tap(find.byKey(const Key('app-header-leading')));
       await tester.pumpAndSettle();
@@ -85,4 +85,40 @@ void main() {
     expect(find.byType(InsightCalendarCard), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+  for (final scale in [1.0, 2.0]) {
+    testWidgets('Vietnamese Streak labels and scaling at $scale', (
+      tester,
+    ) async {
+      await tester.binding.setSurfaceSize(const Size(390, 900));
+      tester.binding.platformDispatcher.textScaleFactorTestValue = scale;
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      addTearDown(
+        tester.binding.platformDispatcher.clearTextScaleFactorTestValue,
+      );
+      await tester.pumpWidget(
+        createAppRoot(
+          config: const AppConfig(environment: AppEnvironment.production),
+          initialLocale: const Locale('vi'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(StreakPill));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.text('Chuỗi Streak'), findsOneWidget);
+      expect(find.text('HIỆN TẠI'), findsOneWidget);
+      expect(find.text('DÀI NHẤT'), findsOneWidget);
+      expect(find.text('Chuỗi hiện tại'), findsNothing);
+      final unit = tester.widget<Text>(find.text('ngày liên tiếp'));
+      expect(
+        unit.style,
+        TypographyTokens.streakUnit.copyWith(color: ColorTokens.textSecondary),
+      );
+      await tester.ensureVisible(find.text('DÀI NHẤT'));
+      await tester.pump();
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.byKey(const Key('app-header-leading')));
+      await tester.pumpAndSettle();
+    });
+  }
 }

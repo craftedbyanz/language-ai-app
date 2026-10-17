@@ -103,6 +103,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuUpgrade => 'Upgrade Gramify Plus';
 
   @override
+  String get streakCurrentLabel => 'CURRENT';
+
+  @override
+  String get streakLongestLabel => 'LONGEST';
+
+  @override
   String get streakOnFire => 'ON FIRE';
 
   @override

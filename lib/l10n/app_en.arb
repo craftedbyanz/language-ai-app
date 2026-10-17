@@ -32,6 +32,8 @@
   "insightWordGame": "Word game",
   "menuClose": "Close menu",
   "menuUpgrade": "Upgrade Gramify Plus",
+  "streakCurrentLabel": "CURRENT",
+  "streakLongestLabel": "LONGEST",
   "streakOnFire": "ON FIRE",
   "streakConsecutiveDays": "consecutive days",
   "streakStartPrompt": "Start your learning streak today!",

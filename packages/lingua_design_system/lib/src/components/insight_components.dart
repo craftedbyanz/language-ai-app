@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../primitives/canonical_focus_indicator.dart';
 import '../tokens/generated/design_tokens.dart';
+import 'streak_flame.dart';
 
 class InsightStatCard extends StatelessWidget {
   const InsightStatCard({
@@ -40,6 +41,75 @@ class InsightStatCard extends StatelessWidget {
         ),
       ],
     ),
+  );
+}
+
+/// Streak-specific hierarchy; the large number is independent of page headings.
+class InsightStreakSummary extends StatelessWidget {
+  const InsightStreakSummary({
+    required this.onFireLabel,
+    required this.count,
+    required this.unitLabel,
+    required this.prompt,
+    required this.isActive,
+    super.key,
+  });
+
+  final String onFireLabel;
+  final String count;
+  final String unitLabel;
+  final String prompt;
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) => Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SpaceTokens.sm,
+                vertical: SpaceTokens.xs,
+              ),
+              decoration: BoxDecoration(
+                color: ColorTokens.streakBadgeBackground,
+                borderRadius: BorderRadius.circular(RadiusTokens.full),
+              ),
+              child: Text(
+                onFireLabel,
+                style: TypographyTokens.microLabel.copyWith(
+                  color: ColorTokens.warningText,
+                ),
+              ),
+            ),
+            const SizedBox(height: SpaceTokens.sm),
+            Text(count, style: TypographyTokens.streakCount),
+            Text(
+              unitLabel,
+              style: TypographyTokens.streakUnit.copyWith(
+                color: ColorTokens.textSecondary,
+              ),
+            ),
+            const SizedBox(height: SpaceTokens.sm),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: LayoutTokens.streakPromptMaxWidth,
+              ),
+              child: Text(
+                prompt,
+                style: TypographyTokens.streakPrompt.copyWith(
+                  color: ColorTokens.textMuted,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      StreakFlame(isActive: isActive),
+    ],
   );
 }
 
@@ -82,11 +152,13 @@ class InsightStreakStatCard extends StatelessWidget {
             ),
           ],
         ),
-        Text(value, style: TypographyTokens.heading),
+        Text(value, style: TypographyTokens.streakStatValue),
       ],
     ),
   );
 }
+
+enum InsightCalendarVariant { overview, streak }
 
 class InsightCalendarCard extends StatelessWidget {
   const InsightCalendarCard({
@@ -95,6 +167,8 @@ class InsightCalendarCard extends StatelessWidget {
     required this.leadingBlankDays,
     required this.daysInMonth,
     this.activeDays = const {},
+    this.variant = InsightCalendarVariant.overview,
+    this.lastElapsedDay,
     this.studiedDaysLabel,
     this.previousMonthLabel,
     this.nextMonthLabel,
@@ -103,6 +177,8 @@ class InsightCalendarCard extends StatelessWidget {
     super.key,
   }) : assert(weekdayLabels.length == 7);
 
+  final InsightCalendarVariant variant;
+  final int? lastElapsedDay;
   final String title;
   final List<String> weekdayLabels;
   final int leadingBlankDays;
@@ -131,7 +207,12 @@ class InsightCalendarCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TypographyTokens.heading),
+                  Text(
+                    title,
+                    style: variant == InsightCalendarVariant.streak
+                        ? TypographyTokens.streakMonth
+                        : TypographyTokens.heading,
+                  ),
                   if (studiedDaysLabel != null)
                     Text(
                       studiedDaysLabel!,
@@ -173,7 +254,9 @@ class InsightCalendarCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TypographyTokens.microLabel.copyWith(
-                    color: ColorTokens.textSecondary,
+                    color: variant == InsightCalendarVariant.streak
+                        ? ColorTokens.textMuted
+                        : ColorTokens.textSecondary,
                   ),
                 ),
               ),
@@ -192,6 +275,14 @@ class InsightCalendarCard extends StatelessWidget {
             final day = index - leadingBlankDays + 1;
             if (day < 1) return const SizedBox.shrink();
             final active = activeDays.contains(day);
+            final dayColor = switch ((active, variant)) {
+              (true, _) => ColorTokens.textOnPrimary,
+              (false, _) when lastElapsedDay != null && day > lastElapsedDay! =>
+                ColorTokens.textMuted,
+              (false, InsightCalendarVariant.streak) => ColorTokens.textPrimary,
+              (false, InsightCalendarVariant.overview) =>
+                ColorTokens.textSecondary,
+            };
             return Center(
               child: Container(
                 width: IconTokens.container,
@@ -203,11 +294,11 @@ class InsightCalendarCard extends StatelessWidget {
                 ),
                 child: Text(
                   '$day',
-                  style: TypographyTokens.microLabel.copyWith(
-                    color: active
-                        ? ColorTokens.textOnPrimary
-                        : ColorTokens.textSecondary,
-                  ),
+                  style:
+                      (variant == InsightCalendarVariant.streak
+                              ? TypographyTokens.streakDay
+                              : TypographyTokens.microLabel)
+                          .copyWith(color: dayColor),
                 ),
               ),
             );

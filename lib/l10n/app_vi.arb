@@ -29,6 +29,8 @@
   "insightWordGame": "Trò chơi từ vựng",
   "menuClose": "Đóng trình đơn",
   "menuUpgrade": "Nâng cấp Gramify Plus",
+  "streakCurrentLabel": "HIỆN TẠI",
+  "streakLongestLabel": "DÀI NHẤT",
   "streakOnFire": "ON FIRE",
   "streakConsecutiveDays": "ngày liên tiếp",
   "streakStartPrompt": "Bắt đầu chuỗi học tập ngay hôm nay!",

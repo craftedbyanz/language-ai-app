@@ -54,6 +54,8 @@ InsightCopy _insightCopy(BuildContext context) {
     history: strings.history,
     streak: strings.insightStreak,
     streakOnFire: strings.streakOnFire,
+    streakCurrentLabel: strings.streakCurrentLabel,
+    streakLongestLabel: strings.streakLongestLabel,
     streakConsecutiveDays: strings.streakConsecutiveDays,
     streakStartPrompt: strings.streakStartPrompt,
     streakStudiedDays: strings.streakStudiedDays,

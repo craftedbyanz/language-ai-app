@@ -97,6 +97,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get menuUpgrade => 'Nâng cấp Gramify Plus';
 
   @override
+  String get streakCurrentLabel => 'HIỆN TẠI';
+
+  @override
+  String get streakLongestLabel => 'DÀI NHẤT';
+
+  @override
   String get streakOnFire => 'ON FIRE';
 
   @override

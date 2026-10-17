@@ -116,6 +116,11 @@ Notes on the focus areas: typography (DD-08) has a complete default scale and sy
 - **Default**: bundle the OFL release of Plus Jakarta Sans for English and Vietnamese at the sizes in `typography.*` (body floor 14). `typography.*.ref` is informational only, never used in code.
 - **Free to choose?** Family is fixed; size estimates may be refined by visual comparison while keeping the hierarchy and body floor.
 
+### DD-08a Streak typography and localized labels
+- **Request/evidence**: live comparison of GramaGo and Lingua's streak screens on 2026-10-17. Both use Plus Jakarta Sans, but the generic 32px display style understated the reference's large 56px streak count. The reference has a pill-backed ON FIRE eyebrow, bold consecutive-days caption, narrow wrapped motivation text, a compact heavy month heading and uppercase HIỆN TẠI / DÀI NHẤT stat labels.
+- **Decision**: add scoped `typography.streak*` tokens, `layout.streakPromptMaxWidth` and `color.streakBadgeBackground`. Keep the shared type scale and overview calendar unchanged. Add a streak calendar variant for month/day typography; use dedicated localized stat labels instead of the longer overview labels.
+- **Production policy**: retain caption floor 12 and micro-label floor 10, accessible neutral text colours, scalable text and normal focus/touch targets. Reference inactive-window text colours are not authoritative (DD-19). The motivation string is unchanged; its short wrapping is restored.
+
 ### DD-09 Dark mode
 - **Evidence**: none; the "appearance" setting is a card-style picker, not a theme.
 - **Default**: light only at launch. If dark is added, derive from semantic tokens, not per-component overrides.
